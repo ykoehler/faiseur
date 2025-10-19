@@ -120,7 +120,7 @@ jobs:
       - name: Create dev Firebase options
         run: |
           mkdir -p lib
-          cat > lib/firebase_options.dart << 'EOF'
+          cat > lib/firebase_options_dev.dart << 'EOF'
           // Placeholder for CI - will be replaced with actual config
           import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
           import 'package:flutter/foundation.dart' show defaultTargetPlatform, kIsWeb, TargetPlatform;
@@ -212,7 +212,7 @@ jobs:
       - name: Create dev Firebase options (placeholder)
         run: |
           mkdir -p lib
-          echo "// Placeholder - see build-web job for full content" > lib/firebase_options.dart
+          echo "// Placeholder - see build-web job for full content" > lib/firebase_options_dev.dart
 
       - name: Build macOS
         run: flutter build macos --release --dart-define=FLAVOR=dev

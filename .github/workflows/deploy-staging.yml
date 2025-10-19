@@ -44,7 +44,7 @@ jobs:
       - name: Create staging Firebase options
         run: |
           mkdir -p lib
-          echo '${{ secrets.FIREBASE_OPTIONS_STAGING }}' > lib/firebase_options.dart
+          echo '${{ secrets.FIREBASE_OPTIONS_STAGING }}' > lib/firebase_options_staging.dart
 
       - name: Build web for staging
         run: flutter build web --release --dart-define=FLAVOR=staging
