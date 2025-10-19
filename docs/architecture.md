@@ -817,7 +817,7 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           channelId: live
-          projectId: faiseur-prod
+          projectId: faiseur
           
   build-ios:
     needs: test

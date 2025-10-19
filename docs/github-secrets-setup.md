@@ -22,7 +22,7 @@ Create three separate Firebase projects in the [Firebase Console](https://consol
 
 1. `faiseur-dev` - Development
 2. `faiseur-staging` - Staging
-3. `faiseur-prod` - Production
+3. `faiseur` - Production
 
 For each project:
 - Enable Authentication (Email/Password, Anonymous)
@@ -49,7 +49,7 @@ flutterfire configure \
 
 # Production
 flutterfire configure \
-  --project=faiseur-prod \
+  --project=faiseur \
   --out=lib/firebase_options_prod.dart \
   --platforms=web,ios,android,macos
 ```
@@ -105,7 +105,7 @@ For deployment to Firebase Hosting, you need service account keys.
 ```json
 {
   "type": "service_account",
-  "project_id": "faiseur-prod",
+  "project_id": "faiseur",
   "private_key_id": "...",
   "private_key": "...",
   ...
@@ -121,7 +121,7 @@ faiseur-staging
 
 **FIREBASE_PROJECT_ID_PROD**
 ```
-faiseur-prod
+faiseur
 ```
 
 #### iOS Secrets (for App Store deployment)
@@ -405,7 +405,7 @@ firebase use faiseur-staging
 firebase deploy --only firestore:rules
 
 # Production
-firebase use faiseur-prod
+firebase use faiseur
 firebase deploy --only firestore:rules
 ```
 

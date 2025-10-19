@@ -40,7 +40,7 @@ Cross-platform todo app built with Flutter and Firebase supporting web, macOS, i
 1. **Create Firebase Projects** (see `docs/firebase-setup.md`)
    - Create `faiseur-dev` project
    - Create `faiseur-staging` project  
-   - Create `faiseur-prod` project
+   - Create `faiseur` project (production)
    - Enable Auth, Firestore, Storage, Hosting for each
 
 2. **Configure Firebase with FlutterFire CLI**
@@ -51,7 +51,7 @@ Cross-platform todo app built with Flutter and Firebase supporting web, macOS, i
    # Configure each environment
    flutterfire configure --project=faiseur-dev --out=lib/firebase_options_dev.dart
    flutterfire configure --project=faiseur-staging --out=lib/firebase_options_staging.dart
-   flutterfire configure --project=faiseur-prod --out=lib/firebase_options_prod.dart
+   flutterfire configure --project=faiseur --out=lib/firebase_options_prod.dart
    ```
 
 3. **Configure GitHub Secrets** (see `docs/github-secrets-setup.md`)

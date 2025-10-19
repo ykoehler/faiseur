@@ -26,7 +26,7 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 3. Create **three separate projects**:
    - `faiseur-dev` (Development)
    - `faiseur-staging` (Staging)
-   - `faiseur-prod` (Production)
+   - `faiseur` (Production)
 
 ## Step 3: Enable Firebase Services
 
@@ -92,7 +92,7 @@ flutterfire configure \
 
 # Production
 flutterfire configure \
-  --project=faiseur-prod \
+  --project=faiseur \
   --out=lib/firebase_options_prod.dart \
   --ios-bundle-id=com.faiseur.faiseur \
   --macos-bundle-id=com.faiseur.faiseur \
