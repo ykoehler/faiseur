@@ -1,4 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'core/theme/app_theme.dart';
@@ -19,11 +23,9 @@ void main() async {
       debugPrint('📦 Flavor: ${FirebaseConfig.flavor}');
     }
 
-    // TODO: Initialize Firebase emulators in development
-    // Uncomment after Firebase setup is complete:
-    // if (FirebaseConfig.useEmulators && kDebugMode) {
-    //   await _connectToEmulators();
-    // }
+    if (FirebaseConfig.useEmulators && kDebugMode) {
+      await _connectToEmulators();
+    }
   } catch (e) {
     // If Firebase is not configured yet, show helpful error message
     debugPrint('⚠️  Firebase not initialized: $e');
@@ -36,13 +38,12 @@ void main() async {
 
 /// Connects to Firebase emulators for local development.
 ///
-/// Uncomment and use this after Firebase setup is complete.
-// Future<void> _connectToEmulators() async {
-//   await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
-//   FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
-//   await FirebaseStorage.instance.useStorageEmulator('localhost', 9199);
-//   debugPrint('🔧 Connected to Firebase emulators');
-// }
+Future<void> _connectToEmulators() async {
+  await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+  FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+  await FirebaseStorage.instance.useStorageEmulator('localhost', 9199);
+  debugPrint('🔧 Connected to Firebase emulators');
+}
 
 class FaiseurApp extends StatelessWidget {
   const FaiseurApp({super.key});
