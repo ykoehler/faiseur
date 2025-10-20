@@ -74,8 +74,7 @@ class ValidationConstants {
 
   // Validation error messages
   static const String requiredField = 'This field is required.';
-  static const String invalidEmail =
-      'Please enter a valid email address.';
+  static const String invalidEmail = 'Please enter a valid email address.';
   static const String invalidPassword =
       'Password must be at least 8 characters.';
   static const String invalidUsername =
@@ -172,8 +171,7 @@ class ErrorMessages {
   /// Network error messages
   static const String networkError =
       'Network error occurred. Please try again.';
-  static const String timeoutError =
-      'Request timed out. Please try again.';
+  static const String timeoutError = 'Request timed out. Please try again.';
   static const String serverError =
       'Server error occurred. Please try again later.';
 
@@ -185,8 +183,7 @@ class ErrorMessages {
   static const String passwordResetFailed = 'Password reset failed.';
 
   /// Validation error messages
-  static const String invalidEmail =
-      'Please enter a valid email address.';
+  static const String invalidEmail = 'Please enter a valid email address.';
   static const String invalidPassword =
       'Password must be at least 8 characters.';
   static const String invalidUsername =
@@ -202,10 +199,8 @@ class ErrorMessages {
 
   /// Generic error messages
   static const String unknownError = 'An unknown error occurred.';
-  static const String operationFailed =
-      'Operation failed. Please try again.';
-  static const String operationCancelled =
-      'Operation was cancelled.';
+  static const String operationFailed = 'Operation failed. Please try again.';
+  static const String operationCancelled = 'Operation was cancelled.';
 }
 
 /// Firebase emulator configuration

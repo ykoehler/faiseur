@@ -8,9 +8,9 @@ library;
 /// Base failure class for all application failures.
 abstract class Failure {
   const Failure(this.message);
-  
+
   final String message;
-  
+
   @override
   String toString() => '$runtimeType: $message';
 }
@@ -38,21 +38,21 @@ class AuthorizationFailure extends Failure {
 /// Validation error
 class ValidationFailure extends Failure {
   const ValidationFailure(super.message, [this.field]);
-  
+
   final String? field;
-  
+
   @override
-  String toString() => field != null 
-      ? 'ValidationFailure($field): $message' 
+  String toString() => field != null
+      ? 'ValidationFailure($field): $message'
       : 'ValidationFailure: $message';
 }
 
 /// Firestore database error
 class FirestoreFailure extends Failure {
   const FirestoreFailure(super.message, [this.code]);
-  
+
   final String? code;
-  
+
   @override
   String toString() => code != null
       ? 'FirestoreFailure($code): $message'

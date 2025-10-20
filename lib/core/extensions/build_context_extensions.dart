@@ -112,24 +112,25 @@ extension BuildContextExtensions on BuildContext {
     required String message,
     String confirmText = 'Confirm',
     String cancelText = 'Cancel',
-  }) async => await showDialog<bool>(
-          context: this,
-          builder: (context) => AlertDialog(
-            title: Text(title),
-            content: Text(message),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context, false),
-                child: Text(cancelText),
-              ),
-              TextButton(
-                onPressed: () => Navigator.pop(context, true),
-                child: Text(confirmText),
-              ),
-            ],
-          ),
-        ) ??
-        false;
+  }) async =>
+      await showDialog<bool>(
+        context: this,
+        builder: (context) => AlertDialog(
+          title: Text(title),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: Text(cancelText),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: Text(confirmText),
+            ),
+          ],
+        ),
+      ) ??
+      false;
 
   /// Shows an alert dialog
   Future<void> showAlertDialog({
@@ -137,18 +138,18 @@ extension BuildContextExtensions on BuildContext {
     required String message,
     String buttonText = 'OK',
   }) async => showDialog(
-      context: this,
-      builder: (context) => AlertDialog(
-        title: Text(title),
-        content: Text(message),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(buttonText),
-          ),
-        ],
-      ),
-    );
+    context: this,
+    builder: (context) => AlertDialog(
+      title: Text(title),
+      content: Text(message),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: Text(buttonText),
+        ),
+      ],
+    ),
+  );
 
   /// Shows a loading dialog
   void showLoadingDialog({String message = 'Loading...'}) {

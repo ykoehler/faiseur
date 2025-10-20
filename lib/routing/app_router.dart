@@ -1,8 +1,3 @@
-/// Go Router configuration for the entire app.
-///
-/// Defines all routes, authentication guards, redirects, and navigation logic.
-/// This is the single source of truth for app navigation.
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -24,37 +19,26 @@ part 'app_router.g.dart';
 // ROUTER PROVIDER
 // ============================================================================
 
-/// Provides the GoRouter instance for the entire app.
-///
-/// Watches authentication state and app initialization to manage redirects.
-/// This provider should be accessed via `ref.watch(goRouterProvider)` in
-/// `MaterialApp.router(routerConfig: ...)`.
 @riverpod
 GoRouter goRouter(Ref ref) {
   // isAppReadyProvider returns bool directly (not async)
   final isAppReady = ref.watch(isAppReadyProvider);
-  
+
   // isAuthenticatedProvider returns AsyncValue<bool> (stream-based)
   final isAuthenticatedAsync = ref.watch(isAuthenticatedProvider);
 
   return GoRouter(
     initialLocation: kSplashRoute,
     debugLogDiagnostics: kDebugMode,
-    redirect: (context, state) => _handleRedirect(
-      context,
-      state,
-      isAuthenticatedAsync,
-      isAppReady,
-    ),
+    redirect: (context, state) =>
+        _handleRedirect(context, state, isAuthenticatedAsync, isAppReady),
     routes: [
       _buildSplashRoute(),
       _buildAuthRoutes(),
       _buildMainRoutes(),
       _buildErrorRoute(),
     ],
-    errorBuilder: (context, state) => ErrorPage(
-      error: state.error?.toString(),
-    ),
+    errorBuilder: (context, state) => ErrorPage(error: state.error?.toString()),
   );
 }
 
@@ -121,111 +105,95 @@ String? _handleRedirect(
 // ============================================================================
 
 /// Builds the splash screen route.
-GoRoute _buildSplashRoute() {
-  return GoRoute(
-    path: kSplashRoute,
-    builder: (context, state) => const SplashPage(),
-  );
-}
+GoRoute _buildSplashRoute() => GoRoute(
+  path: kSplashRoute,
+  builder: (context, state) => const SplashPage(),
+);
 
 /// Builds all authentication-related routes.
 ///
 /// These routes are only accessible when user is NOT authenticated.
 /// Contains: login, signup, forgot password
-GoRoute _buildAuthRoutes() {
-  return GoRoute(
-    path: kAuthRoute,
-    builder: (context, state) => const LoginPage(), // Fallback
-    routes: [
-      GoRoute(
-        path: 'login',
-        name: kLoginRouteName,
-        builder: (context, state) => const LoginPage(),
-      ),
-      GoRoute(
-        path: 'signup',
-        name: kSignupRouteName,
-        builder: (context, state) => const SignupPage(),
-      ),
-      GoRoute(
-        path: 'forgot-password',
-        name: kForgotPasswordRouteName,
-        builder: (context, state) => const SplashPage(), // TODO: ForgotPasswordPage
-      ),
-    ],
-  );
-}
+GoRoute _buildAuthRoutes() => GoRoute(
+  path: kAuthRoute,
+  builder: (context, state) => const LoginPage(), // Fallback
+  routes: [
+    GoRoute(
+      path: 'login',
+      name: kLoginRouteName,
+      builder: (context, state) => const LoginPage(),
+    ),
+    GoRoute(
+      path: 'signup',
+      name: kSignupRouteName,
+      builder: (context, state) => const SignupPage(),
+    ),
+    GoRoute(
+      path: 'forgot-password',
+      name: kForgotPasswordRouteName,
+      builder: (context, state) => const SplashPage(),
+    ),
+  ],
+);
 
 /// Builds all authenticated routes with shell for consistent layout.
 ///
 /// Uses ShellRoute for a persistent navigation structure.
 /// All nested routes share the same parent scaffold/layout.
 /// Routes: lists, settings, about
-ShellRoute _buildMainRoutes() {
-  return ShellRoute(
-    builder: (context, state, child) {
-      // TODO: Wrap with navigation scaffold
-      // This will include bottom nav, app bar, etc.
-      return child;
-    },
-    routes: [
-      GoRoute(
-        path: 'lists',
-        name: kListsRouteName,
-        builder: (context, state) => const ListsPage(),
-        routes: [
-          GoRoute(
-            path: ':${kListIdParam}',
-            name: kListDetailRouteName,
-            builder: (context, state) {
-              final listId = state.pathParameters[kListIdParam];
-              if (listId == null) {
-                return const ErrorPage(
-                  error: 'List ID is required',
+ShellRoute _buildMainRoutes() => ShellRoute(
+  builder: (context, state, child) => child,
+  routes: [
+    GoRoute(
+      path: 'lists',
+      name: kListsRouteName,
+      builder: (context, state) => const ListsPage(),
+      routes: [
+        GoRoute(
+          path: ':$kListIdParam',
+          name: kListDetailRouteName,
+          builder: (context, state) {
+            final listId = state.pathParameters[kListIdParam];
+            if (listId == null) {
+              return const ErrorPage(error: 'List ID is required');
+            }
+            return ListsPage(selectedListId: listId);
+          },
+          routes: [
+            GoRoute(
+              path: 'todo/:$kTodoIdParam',
+              name: kTodoDetailRouteName,
+              builder: (context, state) {
+                final listId = state.pathParameters[kListIdParam];
+                final todoId = state.pathParameters[kTodoIdParam];
+                if (listId == null || todoId == null) {
+                  return const ErrorPage(
+                    error: 'List ID and Todo ID are required',
+                  );
+                }
+                return ListsPage(
+                  selectedListId: listId,
+                  selectedTodoId: todoId,
                 );
-              }
-              return ListsPage(selectedListId: listId); // TODO: ListDetailPage
-            },
-            routes: [
-              GoRoute(
-                path: 'todo/:${kTodoIdParam}',
-                name: kTodoDetailRouteName,
-                builder: (context, state) {
-                  final listId = state.pathParameters[kListIdParam];
-                  final todoId = state.pathParameters[kTodoIdParam];
-                  if (listId == null || todoId == null) {
-                    return const ErrorPage(
-                      error: 'List ID and Todo ID are required',
-                    );
-                  }
-                  return ListsPage(
-                    selectedListId: listId,
-                    selectedTodoId: todoId,
-                  ); // TODO: TodoDetailSheet
-                },
-              ),
-            ],
-          ),
-        ],
-      ),
-      GoRoute(
-        path: 'settings',
-        name: kSettingsRouteName,
-        builder: (context, state) => const SettingsPage(),
-      ),
-      GoRoute(
-        path: 'about',
-        name: kAboutRouteName,
-        builder: (context, state) => const SplashPage(), // TODO: AboutPage
-      ),
-    ],
-  );
-}
+              },
+            ),
+          ],
+        ),
+      ],
+    ),
+    GoRoute(
+      path: 'settings',
+      name: kSettingsRouteName,
+      builder: (context, state) => const SettingsPage(),
+    ),
+    GoRoute(
+      path: 'about',
+      name: kAboutRouteName,
+      builder: (context, state) => const SplashPage(),
+    ),
+  ],
+);
 
 /// Builds error handling routes.
-GoRoute _buildErrorRoute() {
-  return GoRoute(
-    path: kErrorRoute,
-    builder: (context, state) => const ErrorPage(),
-  );
-}
+GoRoute _buildErrorRoute() =>
+    GoRoute(path: kErrorRoute, builder: (context, state) => const ErrorPage());

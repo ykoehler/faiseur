@@ -1,7 +1,3 @@
-/// Navigation observer for logging route changes and analytics.
-///
-/// Tracks navigation events for debugging, analytics, and user behavior tracking.
-
 import 'package:flutter/material.dart';
 
 /// Observer for route navigation events.
@@ -10,13 +6,11 @@ import 'package:flutter/material.dart';
 /// Can be extended to track analytics, log navigation, or record user journeys.
 class AppRouteObserver extends NavigatorObserver {
   /// Creates a route observer.
-  AppRouteObserver({
-    this.onRouteChange,
-  });
+  AppRouteObserver({this.onRouteChange});
 
   /// Callback when route changes
   /// Called with (previousRoute, currentRoute)
-  final void Function(Route?, Route?)? onRouteChange;
+  final void Function(Route<Object?>?, Route<Object?>?)? onRouteChange;
 
   @override
   void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
@@ -40,10 +34,7 @@ class AppRouteObserver extends NavigatorObserver {
   }
 
   @override
-  void didReplace({
-    Route<dynamic>? newRoute,
-    Route<dynamic>? oldRoute,
-  }) {
+  void didReplace({Route<dynamic>? newRoute, Route<dynamic>? oldRoute}) {
     super.didReplace(newRoute: newRoute, oldRoute: oldRoute);
     _logNavigation('REPLACE', oldRoute, newRoute);
     onRouteChange?.call(oldRoute, newRoute);
@@ -59,17 +50,14 @@ class AppRouteObserver extends NavigatorObserver {
     final toName = _getRouteName(toRoute);
 
     // ignore: avoid_print
-    print(
-      '🧭 Navigation: $action | $fromName → $toName',
-    );
-
-    // TODO: Send to analytics service
-    // analyticsService.logNavigation(action, fromName, toName);
+    print('🧭 Navigation: $action | $fromName → $toName');
   }
 
   /// Extract route name for logging
   String _getRouteName(Route<dynamic>? route) {
-    if (route == null) return 'null';
+    if (route == null) {
+      return 'null';
+    }
     if (route.settings.name?.isNotEmpty ?? false) {
       return route.settings.name!;
     }

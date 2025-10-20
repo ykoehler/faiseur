@@ -4,119 +4,102 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('App Smoke Tests', () {
-    testWidgets(
-      'App launches and renders home screen',
-      (tester) async {
-        // Build the app and trigger a frame
-        await tester.pumpWidget(const FaiseurApp());
+    testWidgets('App launches and renders home screen', (tester) async {
+      // Build the app and trigger a frame
+      await tester.pumpWidget(const FaiseurApp());
 
-        // Wait for Firebase initialization and initial build
-        await tester.pumpAndSettle(const Duration(seconds: 2));
+      // Wait for Firebase initialization and initial build
+      await tester.pumpAndSettle(const Duration(seconds: 2));
 
-        // Verify the app is still mounted (didn't crash)
-        expect(find.byType(FaiseurApp), findsOneWidget);
+      // Verify the app is still mounted (didn't crash)
+      expect(find.byType(FaiseurApp), findsOneWidget);
 
-        // Verify we have a Material app
-        expect(find.byType(MaterialApp), findsOneWidget);
+      // Verify we have a Material app
+      expect(find.byType(MaterialApp), findsOneWidget);
 
-        // Verify scaffold exists (basic layout check)
-        expect(find.byType(Scaffold), findsWidgets);
+      // Verify scaffold exists (basic layout check)
+      expect(find.byType(Scaffold), findsWidgets);
 
-        // Verify at least one text widget is rendered
-        expect(find.byType(Text), findsWidgets);
+      // Verify at least one text widget is rendered
+      expect(find.byType(Text), findsWidgets);
 
-        // Verify the app rendered without exceptions
-        expect(tester.takeException(), isNull);
-      },
-    );
+      // Verify the app rendered without exceptions
+      expect(tester.takeException(), isNull);
+    });
 
-    testWidgets(
-      'App renders AppBar or primary navigation',
-      (tester) async {
-        await tester.pumpWidget(const FaiseurApp());
-        await tester.pumpAndSettle(const Duration(seconds: 2));
+    testWidgets('App renders AppBar or primary navigation', (tester) async {
+      await tester.pumpWidget(const FaiseurApp());
+      await tester.pumpAndSettle(const Duration(seconds: 2));
 
-        // Check for AppBar (most Material apps have one)
-        // or any navigation widget
-        final hasAppBar =
-            find.byType(AppBar).evaluate().isNotEmpty;
-        final hasNavBar =
-            find.byType(NavigationBar).evaluate().isNotEmpty;
-        final hasRail =
-            find.byType(NavigationRail).evaluate().isNotEmpty;
-        final hasDrawer =
-            find.byType(Drawer).evaluate().isNotEmpty;
+      // Check for AppBar (most Material apps have one)
+      // or any navigation widget
+      final hasAppBar = find.byType(AppBar).evaluate().isNotEmpty;
+      final hasNavBar = find.byType(NavigationBar).evaluate().isNotEmpty;
+      final hasRail = find.byType(NavigationRail).evaluate().isNotEmpty;
+      final hasDrawer = find.byType(Drawer).evaluate().isNotEmpty;
 
-        expect(
-          hasAppBar || hasNavBar || hasRail || hasDrawer,
-          isTrue,
-          reason:
-              'Expected at least one navigation component '
-              '(AppBar, NavigationBar, NavigationRail, or Drawer)',
-        );
-      },
-    );
+      expect(
+        hasAppBar || hasNavBar || hasRail || hasDrawer,
+        isTrue,
+        reason:
+            'Expected at least one navigation component '
+            '(AppBar, NavigationBar, NavigationRail, or Drawer)',
+      );
+    });
 
-    testWidgets(
-      'App responds to screen resize (responsive design)',
-      (tester) async {
-        await tester.pumpWidget(const FaiseurApp());
-        await tester.pumpAndSettle(const Duration(seconds: 1));
+    testWidgets('App responds to screen resize (responsive design)', (
+      tester,
+    ) async {
+      await tester.pumpWidget(const FaiseurApp());
+      await tester.pumpAndSettle(const Duration(seconds: 1));
 
-        expect(find.byType(FaiseurApp), findsOneWidget);
+      expect(find.byType(FaiseurApp), findsOneWidget);
 
-        // Simulate window resize by pumping widget multiple times
-        // at different configurations
-        await tester.pumpWidget(const FaiseurApp());
-        await tester.pumpAndSettle(const Duration(seconds: 1));
+      // Simulate window resize by pumping widget multiple times
+      // at different configurations
+      await tester.pumpWidget(const FaiseurApp());
+      await tester.pumpAndSettle(const Duration(seconds: 1));
 
-        expect(find.byType(FaiseurApp), findsOneWidget);
+      expect(find.byType(FaiseurApp), findsOneWidget);
 
-        // Verify no exceptions during operations
-        expect(tester.takeException(), isNull);
-      },
-    );
+      // Verify no exceptions during operations
+      expect(tester.takeException(), isNull);
+    });
 
-    testWidgets(
-      'Theme applies correctly (light and dark modes)',
-      (tester) async {
-        await tester.pumpWidget(const FaiseurApp());
-        await tester.pumpAndSettle(const Duration(seconds: 2));
+    testWidgets('Theme applies correctly (light and dark modes)', (
+      tester,
+    ) async {
+      await tester.pumpWidget(const FaiseurApp());
+      await tester.pumpAndSettle(const Duration(seconds: 2));
 
-        // Verify theme data exists
-        final context = tester.element(find.byType(FaiseurApp));
-        final theme = Theme.of(context);
+      // Verify theme data exists
+      final context = tester.element(find.byType(FaiseurApp));
+      final theme = Theme.of(context);
 
-        expect(theme, isNotNull);
-        expect(theme.colorScheme, isNotNull);
-        expect(theme.textTheme, isNotNull);
+      expect(theme, isNotNull);
+      expect(theme.colorScheme, isNotNull);
+      expect(theme.textTheme, isNotNull);
 
-        // Verify we have Material 3 color scheme
-        expect(theme.colorScheme.primary, isNotNull);
-        expect(theme.colorScheme.secondary, isNotNull);
-        expect(theme.colorScheme.tertiary, isNotNull);
-      },
-    );
+      // Verify we have Material 3 color scheme
+      expect(theme.colorScheme.primary, isNotNull);
+      expect(theme.colorScheme.secondary, isNotNull);
+      expect(theme.colorScheme.tertiary, isNotNull);
+    });
 
-    testWidgets(
-      'App handles hot reload gracefully',
-      (tester) async {
-        await tester.pumpWidget(const FaiseurApp());
-        await tester.pumpAndSettle(const Duration(seconds: 2));
+    testWidgets('App handles hot reload gracefully', (tester) async {
+      await tester.pumpWidget(const FaiseurApp());
+      await tester.pumpAndSettle(const Duration(seconds: 2));
 
-        final initialWidgetCount =
-            find.byType(FaiseurApp).evaluate().length;
+      final initialWidgetCount = find.byType(FaiseurApp).evaluate().length;
 
-        // Simulate hot reload by rebuilding
-        await tester.pumpWidget(const FaiseurApp());
-        await tester.pumpAndSettle(const Duration(seconds: 1));
+      // Simulate hot reload by rebuilding
+      await tester.pumpWidget(const FaiseurApp());
+      await tester.pumpAndSettle(const Duration(seconds: 1));
 
-        final afterReloadWidgetCount =
-            find.byType(FaiseurApp).evaluate().length;
+      final afterReloadWidgetCount = find.byType(FaiseurApp).evaluate().length;
 
-        expect(afterReloadWidgetCount, equals(initialWidgetCount));
-        expect(tester.takeException(), isNull);
-      },
-    );
+      expect(afterReloadWidgetCount, equals(initialWidgetCount));
+      expect(tester.takeException(), isNull);
+    });
   });
 }

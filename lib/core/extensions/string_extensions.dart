@@ -47,8 +47,7 @@ extension StringExtensions on String {
 
   /// Returns true if string matches email regex pattern
   bool get isValidEmail {
-    const pattern =
-        r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
+    const pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
     return RegExp(pattern).hasMatch(this);
   }
 
@@ -94,9 +93,9 @@ extension StringExtensions on String {
 
   /// Returns slug version of string (lowercase, dashes instead of spaces)
   String get toSlug => lowercase
-        .replaceAll(RegExp(r'[^\w\s-]'), '')
-        .trim()
-        .replaceAll(RegExp(r'[-\s]+'), '-');
+      .replaceAll(RegExp(r'[^\w\s-]'), '')
+      .trim()
+      .replaceAll(RegExp(r'[-\s]+'), '-');
 
   /// Splits string into chunks of specified size
   List<String> chunk(int size) {

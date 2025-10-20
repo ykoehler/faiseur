@@ -15,9 +15,7 @@ void main() async {
 
   // Initialize Firebase with environment-specific configuration
   try {
-    await Firebase.initializeApp(
-      options: FirebaseConfig.currentPlatform,
-    );
+    await Firebase.initializeApp(options: FirebaseConfig.currentPlatform);
 
     // Log environment information in non-production builds
     if (FirebaseConfig.showDebugInfo) {
@@ -35,11 +33,7 @@ void main() async {
     debugPrint('📖 See docs/firebase-setup.md for detailed instructions.');
   }
 
-  runApp(
-    const ProviderScope(
-      child: FaiseurApp(),
-    ),
-  );
+  runApp(const ProviderScope(child: FaiseurApp()));
 }
 
 /// Connects to Firebase emulators for local development.

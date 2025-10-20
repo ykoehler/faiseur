@@ -1,11 +1,10 @@
-/// App route definitions and constants for type-safe navigation.
-///
-/// This file contains all route paths, route names, and helper methods
-/// for building routes with parameters. This ensures:
-/// - Type safety: No string typos in navigation
-/// - Maintainability: Change routes in one place
-/// - Consistency: Same route format everywhere
-library app_routes;
+// App route definitions and constants for type-safe navigation.
+//
+// This file contains all route paths, route names, and helper methods
+// for building routes with parameters. This ensures:
+// - Type safety: No string typos in navigation
+// - Maintainability: Change routes in one place
+// - Consistency: Same route format everywhere
 
 // ============================================================================
 // ROUTE PATHS - Use these to check current location or build URLs

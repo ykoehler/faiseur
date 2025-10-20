@@ -1,16 +1,8 @@
-/// Navigation service for imperative navigation.
-///
-/// Provides convenient methods for navigating between routes alongside
-/// the declarative Go Router. Useful for:
-/// - Navigation triggered by business logic (e.g., after login success)
-/// - Navigation that needs context (e.g., with snackbars/dialogs)
-/// - Deep linking programmatically
-
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'app_routes.dart';
 import 'app_router.dart';
+import 'app_routes.dart';
 
 part 'navigation_service.g.dart';
 
@@ -20,7 +12,7 @@ part 'navigation_service.g.dart';
 
 /// Provides navigation service for imperative navigation.
 @riverpod
-NavigationService navigationService(NavigationServiceRef ref) {
+NavigationService navigationService(Ref ref) {
   final router = ref.watch(goRouterProvider);
   return NavigationService(router);
 }
@@ -67,10 +59,7 @@ class NavigationService {
   void goToTodoDetail(String listId, String todoId) {
     _router.goNamed(
       kTodoDetailRouteName,
-      pathParameters: {
-        kListIdParam: listId,
-        kTodoIdParam: todoId,
-      },
+      pathParameters: {kListIdParam: listId, kTodoIdParam: todoId},
     );
   }
 
@@ -116,18 +105,12 @@ class NavigationService {
   bool canGoBack() => _router.canPop();
 
   /// Get current route location
-  String get currentLocation => _router.routeInformationProvider.value.location;
+  String get currentLocation =>
+      _router.routeInformationProvider.value.uri.toString();
 
   /// Check if currently at route
-  bool isAtRoute(String routeName) {
-    return currentLocation.contains(routeName);
-  }
+  bool isAtRoute(String routeName) => currentLocation.contains(routeName);
 
   /// Navigate to error page with optional error message
-  void goToError(String? error) {
-    _router.go(
-      kErrorRoute,
-      extra: error,
-    );
-  }
+  void goToError(String? error) => _router.go(kErrorRoute, extra: error);
 }
