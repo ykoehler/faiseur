@@ -1,0 +1,17 @@
+# Build configuration for build_runner
+# Skips custom_lint and other problematic builders
+
+targets:
+  $default:
+    builders:
+      # Run freezed code generation
+      freezed:
+        enabled: true
+      # Run riverpod_generator
+      riverpod_generator:
+        enabled: true
+      # Skip problematic builders
+      custom_lint:
+        enabled: false
+      json_serializable:
+        enabled: false

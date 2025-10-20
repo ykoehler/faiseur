@@ -13,6 +13,8 @@ part 'failures.freezed.dart';
 /// Uses Freezed for immutability and pattern matching support.
 @freezed
 sealed class Failure with _$Failure {
+  const Failure._(); // Required for getters
+  
   /// Network connectivity error
   const factory Failure.network({
     required String message,

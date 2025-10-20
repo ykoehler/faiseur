@@ -43,11 +43,11 @@ dev_dependencies:
   
   # Code Generation
   build_runner: ^2.4.13
-  freezed: ^2.5.7
-  json_serializable: ^6.8.0
+  freezed: ^2.5.8
   riverpod_generator: ^2.6.2
-  custom_lint: ^0.7.0
-  riverpod_lint: ^2.6.3
+  
+  # Force compatible analyzer_plugin version
+  analyzer_plugin: ^0.13.1
 
 flutter:
   uses-material-design: true
