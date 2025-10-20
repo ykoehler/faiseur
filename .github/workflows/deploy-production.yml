@@ -65,8 +65,8 @@ jobs:
       - name: Create .env file from secrets
         run: |
           cat > .env << 'EOF'
-          # Production Firebase Configuration (from GitHub Actions secrets)
-          PROD_FIREBASE_PROJECT_ID=${{ secrets.PROD_FIREBASE_PROJECT_ID }}
+          # Production Firebase Configuration
+          PROD_FIREBASE_PROJECT_ID=${{ secrets.FIREBASE_PROJECT_ID_PROD }}
           PROD_FIREBASE_API_KEY=${{ secrets.PROD_FIREBASE_API_KEY }}
           PROD_FIREBASE_APP_ID_WEB=${{ secrets.PROD_FIREBASE_APP_ID_WEB }}
           PROD_FIREBASE_APP_ID_ANDROID=${{ secrets.PROD_FIREBASE_APP_ID_ANDROID }}
