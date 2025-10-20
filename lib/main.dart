@@ -4,9 +4,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/theme/app_theme.dart';
 import 'firebase_config.dart';
+import 'routing/app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +35,11 @@ void main() async {
     debugPrint('📖 See docs/firebase-setup.md for detailed instructions.');
   }
 
-  runApp(const FaiseurApp());
+  runApp(
+    const ProviderScope(
+      child: FaiseurApp(),
+    ),
+  );
 }
 
 /// Connects to Firebase emulators for local development.
@@ -45,83 +51,24 @@ Future<void> _connectToEmulators() async {
   debugPrint('🔧 Connected to Firebase emulators');
 }
 
-class FaiseurApp extends StatelessWidget {
+/// Main app widget.
+///
+/// Provides Riverpod scope and configures Material 3 theme with Go Router.
+class FaiseurApp extends ConsumerWidget {
+  /// Creates the Faiseur app.
   const FaiseurApp({super.key});
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(goRouterProvider);
+
+    return MaterialApp.router(
       title: 'Faiseur',
       debugShowCheckedModeBanner: FirebaseConfig.showDebugInfo,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: const HomePage(),
+      routerConfig: router,
     );
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(
-        title: const Text('Faiseur'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              '👷 Faiseur Todo App',
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              'Environment: ${FirebaseConfig.environmentName}',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Flavor: ${FirebaseConfig.flavor}',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.grey,
-                  ),
-            ),
-            const SizedBox(height: 32),
-            const Card(
-              margin: EdgeInsets.all(16),
-              child: Padding(
-                padding: EdgeInsets.all(24),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '🚧 Setup Required',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    Text('Next steps:'),
-                    SizedBox(height: 8),
-                    Text('1. Create Firebase projects (dev, staging, prod)'),
-                    Text('2. Run `flutterfire configure` for each environment'),
-                    Text('3. Configure GitHub secrets'),
-                    Text('4. Begin Phase 1 implementation'),
-                    SizedBox(height: 16),
-                    Text(
-                      '📖 See docs/firebase-setup.md and '
-                      'docs/github-secrets-setup.md',
-                      style: TextStyle(fontStyle: FontStyle.italic),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+  }
 }
