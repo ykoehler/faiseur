@@ -2,6 +2,7 @@
 ///
 /// Defines the text styles used throughout the application following
 /// Material Design 3 guidelines.
+library;
 
 import 'package:flutter/material.dart';
 
@@ -19,8 +20,7 @@ class AppTypography {
     required double lineHeight,
     Color? color,
     TextDecoration? decoration,
-  }) {
-    return TextStyle(
+  }) => TextStyle(
       fontSize: fontSize,
       fontWeight: fontWeight,
       height: lineHeight / fontSize,
@@ -29,13 +29,18 @@ class AppTypography {
       decoration: decoration,
       fontFamily: fontFamily,
     );
-  }
 
   /// Calculates letter spacing based on font size per Material Design 3
   static double _getLetterSpacing(double fontSize) {
-    if (fontSize <= 12) return 0.5;
-    if (fontSize <= 14) return 0.25;
-    if (fontSize == 16) return 0.15;
+    if (fontSize <= 12) {
+      return 0.5;
+    }
+    if (fontSize <= 14) {
+      return 0.25;
+    }
+    if (fontSize == 16) {
+      return 0.15;
+    }
     return 0;
   }
 

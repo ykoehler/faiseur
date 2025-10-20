@@ -3,6 +3,7 @@
 /// Failures are used in repositories and use cases to represent
 /// error states without throwing exceptions. This allows for better
 /// error handling and type-safe error propagation.
+library;
 
 /// Base failure class for all application failures.
 abstract class Failure {

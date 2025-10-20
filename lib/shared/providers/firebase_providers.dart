@@ -15,9 +15,7 @@ part 'firebase_providers.g.dart';
 /// final firebaseApp = ref.watch(firebaseAppProvider);
 /// ```
 @Riverpod(keepAlive: true)
-FirebaseApp firebaseApp(FirebaseAppRef ref) {
-  return Firebase.app();
-}
+FirebaseApp firebaseApp(FirebaseAppRef ref) => Firebase.app();
 
 /// Singleton Firestore instance
 ///
@@ -30,9 +28,7 @@ FirebaseApp firebaseApp(FirebaseAppRef ref) {
 /// final docs = await firestore.collection('todos').get();
 /// ```
 @Riverpod(keepAlive: true)
-FirebaseFirestore firestore(FirestoreRef ref) {
-  return FirebaseFirestore.instance;
-}
+FirebaseFirestore firestore(FirestoreRef ref) => FirebaseFirestore.instance;
 
 /// Singleton Firebase Authentication instance
 ///
@@ -45,9 +41,7 @@ FirebaseFirestore firestore(FirestoreRef ref) {
 /// final user = auth.currentUser;
 /// ```
 @Riverpod(keepAlive: true)
-FirebaseAuth firebaseAuth(FirebaseAuthRef ref) {
-  return FirebaseAuth.instance;
-}
+FirebaseAuth firebaseAuth(FirebaseAuthRef ref) => FirebaseAuth.instance;
 
 /// Current authenticated user
 ///

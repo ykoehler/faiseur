@@ -3,6 +3,7 @@
 /// Failures are used in repositories and use cases to represent
 /// error states without throwing exceptions. This allows for better
 /// error handling and type-safe error propagation.
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -73,26 +74,27 @@ sealed class Failure with _$Failure {
   }) = UnknownFailure;
 
   /// Returns a user-friendly error message
-  String get userMessage {
-    return when(
-      network: (message) => 'Unable to connect. Please check your internet.',
-      timeout: (message) => 'Request timed out. Please try again.',
-      authentication: (message) => 'Authentication failed. Please sign in again.',
-      authorization: (message) => 'You do not have permission for this action.',
-      validation: (message, field) =>
-          field != null ? '$field: $message' : message,
-      firestore: (message, code) => 'Database error occurred.',
-      storage: (message) => 'Storage error occurred.',
-      notFound: (message) => 'The requested item was not found.',
-      state: (message) => message,
-      cancelled: (message) => 'Operation was cancelled.',
-      unknown: (message) => 'An unexpected error occurred.',
-    );
-  }
+  String get userMessage => when(
+        network: (message) =>
+            'Unable to connect. Please check your internet.',
+        timeout: (message) => 'Request timed out. Please try again.',
+        authentication: (message) =>
+            'Authentication failed. Please sign in again.',
+        authorization: (message) =>
+            'You do not have permission for this action.',
+        validation: (message, field) =>
+            field != null ? '$field: $message' : message,
+        firestore: (message, code) => 'Database error occurred.',
+        storage: (message) => 'Storage error occurred.',
+        notFound: (message) =>
+            'The requested item was not found.',
+        state: (message) => message,
+        cancelled: (message) => 'Operation was cancelled.',
+        unknown: (message) => 'An unexpected error occurred.',
+      );
 
   /// Returns the error code if available
-  String? get errorCode {
-    return when(
+  String? get errorCode => when(
       network: (_) => 'NETWORK_ERROR',
       timeout: (_) => 'TIMEOUT_ERROR',
       authentication: (_) => 'AUTH_ERROR',
@@ -105,5 +107,4 @@ sealed class Failure with _$Failure {
       cancelled: (_) => 'CANCELLED',
       unknown: (_) => 'UNKNOWN_ERROR',
     );
-  }
 }

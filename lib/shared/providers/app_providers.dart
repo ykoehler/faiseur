@@ -21,14 +21,12 @@ part 'app_providers.g.dart';
 @riverpod
 class AppStateController extends _$AppStateController {
   @override
-  AppState build() {
-    return const AppState(
+  AppState build() => const AppState(
       isInitialized: false,
       currentUserId: null,
       isLoading: false,
       errorMessage: null,
     );
-  }
 
   /// Initialize the app (called on startup)
   Future<void> initialize() async {

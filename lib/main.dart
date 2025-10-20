@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_config.dart';
+import 'package:flutter/material.dart';
+
 import 'core/theme/app_theme.dart';
+import 'firebase_config.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,8 +48,7 @@ class FaiseurApp extends StatelessWidget {
   const FaiseurApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context) => MaterialApp(
       title: 'Faiseur',
       debugShowCheckedModeBanner: FirebaseConfig.showDebugInfo,
       theme: AppTheme.lightTheme,
@@ -56,15 +56,13 @@ class FaiseurApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       home: const HomePage(),
     );
-  }
 }
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
         title: const Text('Faiseur'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -125,5 +123,4 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
-  }
 }

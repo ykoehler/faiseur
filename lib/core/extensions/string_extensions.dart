@@ -2,6 +2,7 @@
 ///
 /// Provides convenient methods for common string operations
 /// like trimming, validation, and formatting.
+library;
 
 /// Extension methods on String
 extension StringExtensions on String {
@@ -16,16 +17,18 @@ extension StringExtensions on String {
 
   /// Capitalizes the first character of the string
   String get capitalize {
-    if (isEmpty) return this;
+    if (isEmpty) {
+      return this;
+    }
     return '${this[0].toUpperCase()}${substring(1)}';
   }
 
   /// Capitalizes the first character of each word
   String get capitalizeEachWord {
-    if (isEmpty) return this;
-    return split(' ')
-        .map((word) => word.capitalize)
-        .join(' ');
+    if (isEmpty) {
+      return this;
+    }
+    return split(' ').map((word) => word.capitalize).join(' ');
   }
 
   /// Returns string with all lowercase
@@ -36,7 +39,9 @@ extension StringExtensions on String {
 
   /// Truncates string to maxLength and adds ellipsis if longer
   String truncate(int maxLength, {String ellipsis = '...'}) {
-    if (length <= maxLength) return this;
+    if (length <= maxLength) {
+      return this;
+    }
     return '${substring(0, maxLength - ellipsis.length)}$ellipsis';
   }
 
@@ -88,16 +93,16 @@ extension StringExtensions on String {
   }
 
   /// Returns slug version of string (lowercase, dashes instead of spaces)
-  String get toSlug {
-    return lowercase
+  String get toSlug => lowercase
         .replaceAll(RegExp(r'[^\w\s-]'), '')
         .trim()
         .replaceAll(RegExp(r'[-\s]+'), '-');
-  }
 
   /// Splits string into chunks of specified size
   List<String> chunk(int size) {
-    if (size <= 0) return [];
+    if (size <= 0) {
+      return [];
+    }
     final chunks = <String>[];
     for (int i = 0; i < length; i += size) {
       chunks.add(substring(i, i + size > length ? length : i + size));
@@ -106,12 +111,11 @@ extension StringExtensions on String {
   }
 }
 
-/// Extension methods on List<String>
+/// Extension methods on List of String
 extension ListStringExtensions on List<String> {
   /// Joins strings with separator, filtering out empty strings
-  String joinNonEmpty(String separator) {
-    return where((s) => s.isNotBlankOrEmpty).join(separator);
-  }
+  String joinNonEmpty(String separator) =>
+      where((s) => s.isNotBlankOrEmpty).join(separator);
 
   /// Returns CSV representation
   String toCsv() => joinNonEmpty(',');

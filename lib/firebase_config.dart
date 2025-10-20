@@ -2,8 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 
 // Import all environment configs
 import 'firebase_options_dev.dart' as dev;
-import 'firebase_options_staging.dart' as staging;
 import 'firebase_options_prod.dart' as prod;
+import 'firebase_options_staging.dart' as staging;
 
 /// Firebase configuration manager that selects the appropriate Firebase options
 /// based on the environment (dev, staging, production).

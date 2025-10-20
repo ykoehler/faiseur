@@ -2,6 +2,7 @@
 ///
 /// This file centralizes all constant values to ensure consistency
 /// and make them easy to modify across the application.
+library;
 
 /// Network and API constants
 class NetworkConstants {
@@ -17,7 +18,7 @@ class NetworkConstants {
   static const int maxRetries = 3;
 
   /// Retry delay multiplier (exponential backoff)
-  static const double retryDelayMultiplier = 2.0;
+  static const double retryDelayMultiplier = 2;
 }
 
 /// Firestore database constants
@@ -73,9 +74,13 @@ class ValidationConstants {
 
   // Validation error messages
   static const String requiredField = 'This field is required.';
-  static const String invalidEmail = 'Please enter a valid email address.';
-  static const String invalidPassword = 'Password must be at least 8 characters.';
-  static const String invalidUsername = 'Username must be 3-32 characters with only letters, numbers, underscores, and hyphens.';
+  static const String invalidEmail =
+      'Please enter a valid email address.';
+  static const String invalidPassword =
+      'Password must be at least 8 characters.';
+  static const String invalidUsername =
+      'Username must be 3-32 characters with only letters, numbers, '
+      'underscores, and hyphens.';
 }
 
 /// UI and UX constants
@@ -165,9 +170,12 @@ class ErrorMessages {
   ErrorMessages._();
 
   /// Network error messages
-  static const String networkError = 'Network error occurred. Please try again.';
-  static const String timeoutError = 'Request timed out. Please try again.';
-  static const String serverError = 'Server error occurred. Please try again later.';
+  static const String networkError =
+      'Network error occurred. Please try again.';
+  static const String timeoutError =
+      'Request timed out. Please try again.';
+  static const String serverError =
+      'Server error occurred. Please try again later.';
 
   /// Authentication error messages
   static const String authenticationFailed = 'Authentication failed.';
@@ -177,20 +185,27 @@ class ErrorMessages {
   static const String passwordResetFailed = 'Password reset failed.';
 
   /// Validation error messages
-  static const String invalidEmail = 'Please enter a valid email address.';
-  static const String invalidPassword = 'Password must be at least 8 characters.';
-  static const String invalidUsername = 'Username must be 3-32 characters with only letters, numbers, underscores, and hyphens.';
+  static const String invalidEmail =
+      'Please enter a valid email address.';
+  static const String invalidPassword =
+      'Password must be at least 8 characters.';
+  static const String invalidUsername =
+      'Username must be 3-32 characters with only letters, numbers, '
+      'underscores, and hyphens.';
   static const String requiredField = 'This field is required.';
 
   /// Firestore error messages
   static const String firestoreError = 'Database error occurred.';
   static const String documentNotFound = 'Document not found.';
-  static const String permissionDenied = 'You do not have permission to perform this action.';
+  static const String permissionDenied =
+      'You do not have permission to perform this action.';
 
   /// Generic error messages
   static const String unknownError = 'An unknown error occurred.';
-  static const String operationFailed = 'Operation failed. Please try again.';
-  static const String operationCancelled = 'Operation was cancelled.';
+  static const String operationFailed =
+      'Operation failed. Please try again.';
+  static const String operationCancelled =
+      'Operation was cancelled.';
 }
 
 /// Firebase emulator configuration

@@ -1,6 +1,7 @@
 /// Input validators for Faiseur forms.
 ///
 /// Provides reusable validation functions for common input types.
+library;
 
 import 'package:faiseur/core/constants/app_constants.dart';
 import 'package:faiseur/core/extensions/string_extensions.dart';
@@ -33,11 +34,15 @@ class Validators {
     if (value?.isBlankNullOrEmpty ?? true) {
       return ValidationConstants.requiredField;
     }
-    if ((value?.length ?? 0) < ValidationConstants.minPasswordLength) {
-      return 'Password must be at least ${ValidationConstants.minPasswordLength} characters';
+    if ((value?.length ?? 0) <
+        ValidationConstants.minPasswordLength) {
+      return 'Password must be at least '
+          '${ValidationConstants.minPasswordLength} characters';
     }
-    if ((value?.length ?? 0) > ValidationConstants.maxPasswordLength) {
-      return 'Password cannot exceed ${ValidationConstants.maxPasswordLength} characters';
+    if ((value?.length ?? 0) >
+        ValidationConstants.maxPasswordLength) {
+      return 'Password cannot exceed '
+          '${ValidationConstants.maxPasswordLength} characters';
     }
     return null;
   }
@@ -58,13 +63,18 @@ class Validators {
     if (value?.isBlankNullOrEmpty ?? true) {
       return ValidationConstants.requiredField;
     }
-    if ((value?.length ?? 0) < ValidationConstants.minUsernameLength) {
-      return 'Username must be at least ${ValidationConstants.minUsernameLength} characters';
+    if ((value?.length ?? 0) <
+        ValidationConstants.minUsernameLength) {
+      return 'Username must be at least '
+          '${ValidationConstants.minUsernameLength} characters';
     }
-    if ((value?.length ?? 0) > ValidationConstants.maxUsernameLength) {
-      return 'Username cannot exceed ${ValidationConstants.maxUsernameLength} characters';
+    if ((value?.length ?? 0) >
+        ValidationConstants.maxUsernameLength) {
+      return 'Username cannot exceed '
+          '${ValidationConstants.maxUsernameLength} characters';
     }
-    if (!RegExp(ValidationConstants.usernamePattern).hasMatch(value ?? '')) {
+    if (!RegExp(ValidationConstants.usernamePattern)
+        .hasMatch(value ?? '')) {
       return ValidationConstants.invalidUsername;
     }
     return null;
@@ -75,11 +85,14 @@ class Validators {
     if (value?.isBlankNullOrEmpty ?? true) {
       return ValidationConstants.requiredField;
     }
-    if ((value?.length ?? 0) < ValidationConstants.minListNameLength) {
+    if ((value?.length ?? 0) <
+        ValidationConstants.minListNameLength) {
       return 'List name must have at least one character';
     }
-    if ((value?.length ?? 0) > ValidationConstants.maxListNameLength) {
-      return 'List name cannot exceed ${ValidationConstants.maxListNameLength} characters';
+    if ((value?.length ?? 0) >
+        ValidationConstants.maxListNameLength) {
+      return 'List name cannot exceed '
+          '${ValidationConstants.maxListNameLength} characters';
     }
     return null;
   }
@@ -89,19 +102,24 @@ class Validators {
     if (value?.isBlankNullOrEmpty ?? true) {
       return ValidationConstants.requiredField;
     }
-    if ((value?.length ?? 0) < ValidationConstants.minTodoTitleLength) {
+    if ((value?.length ?? 0) <
+        ValidationConstants.minTodoTitleLength) {
       return 'Todo title must have at least one character';
     }
-    if ((value?.length ?? 0) > ValidationConstants.maxTodoTitleLength) {
-      return 'Todo title cannot exceed ${ValidationConstants.maxTodoTitleLength} characters';
+    if ((value?.length ?? 0) >
+        ValidationConstants.maxTodoTitleLength) {
+      return 'Todo title cannot exceed '
+          '${ValidationConstants.maxTodoTitleLength} characters';
     }
     return null;
   }
 
   /// Validates todo description
   static String? todoDescription(String? value) {
-    if ((value?.length ?? 0) > ValidationConstants.maxTodoDescriptionLength) {
-      return 'Description cannot exceed ${ValidationConstants.maxTodoDescriptionLength} characters';
+    if ((value?.length ?? 0) >
+        ValidationConstants.maxTodoDescriptionLength) {
+      return 'Description cannot exceed '
+          '${ValidationConstants.maxTodoDescriptionLength} characters';
     }
     return null;
   }
@@ -176,7 +194,9 @@ class Validators {
   /// Validates numeric range
   static String? numericRange(String? value, int min, int max) {
     final numError = numeric(value);
-    if (numError != null) return numError;
+    if (numError != null) {
+      return numError;
+    }
 
     final num = int.parse(value!);
     if (num < min || num > max) {
@@ -186,7 +206,8 @@ class Validators {
   }
 
   /// Compose multiple validators
-  static String? compose(String? value, List<String? Function(String?)> validators) {
+  static String? compose(String? value,
+      List<String? Function(String?)> validators) {
     for (final validator in validators) {
       final result = validator(value);
       if (result != null) {

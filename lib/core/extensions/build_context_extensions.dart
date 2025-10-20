@@ -2,6 +2,7 @@
 ///
 /// Provides convenient methods for accessing common properties and
 /// showing dialogs/snackbars without verbose imports.
+library;
 
 import 'package:flutter/material.dart';
 
@@ -65,9 +66,7 @@ extension BuildContextExtensions on BuildContext {
   bool get isLightMode => theme.brightness == Brightness.light;
 
   /// Returns bottom padding (includes safe area and keyboard)
-  double get bottomPadding {
-    return devicePadding.bottom + viewInsets.bottom;
-  }
+  double get bottomPadding => devicePadding.bottom + viewInsets.bottom;
 
   /// Returns top padding (safe area)
   double get topPadding => devicePadding.top;
@@ -113,8 +112,7 @@ extension BuildContextExtensions on BuildContext {
     required String message,
     String confirmText = 'Confirm',
     String cancelText = 'Cancel',
-  }) async {
-    return await showDialog<bool>(
+  }) async => await showDialog<bool>(
           context: this,
           builder: (context) => AlertDialog(
             title: Text(title),
@@ -132,15 +130,13 @@ extension BuildContextExtensions on BuildContext {
           ),
         ) ??
         false;
-  }
 
   /// Shows an alert dialog
   Future<void> showAlertDialog({
     required String title,
     required String message,
     String buttonText = 'OK',
-  }) async {
-    return showDialog(
+  }) async => showDialog(
       context: this,
       builder: (context) => AlertDialog(
         title: Text(title),
@@ -153,11 +149,10 @@ extension BuildContextExtensions on BuildContext {
         ],
       ),
     );
-  }
 
   /// Shows a loading dialog
   void showLoadingDialog({String message = 'Loading...'}) {
-    showDialog(
+    showDialog<void>(
       context: this,
       barrierDismissible: false,
       builder: (context) => AlertDialog(

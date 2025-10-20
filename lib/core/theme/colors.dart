@@ -2,6 +2,7 @@
 ///
 /// Defines all colors used throughout the application to ensure
 /// consistency and support for both light and dark themes.
+library;
 
 import 'package:flutter/material.dart';
 
