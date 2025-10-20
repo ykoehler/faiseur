@@ -2,15 +2,15 @@
 
 ## Current Status
 
-✅ **Already Configured:**
-- `FIREBASE_PROJECT_ID_PROD`
-- `FIREBASE_PROJECT_ID_STAGING`
-- `FIREBASE_SERVICE_ACCOUNT_PROD`
-- `FIREBASE_SERVICE_ACCOUNT_STAGING`
+✅ **Already Configured (4 secrets - to be renamed):**
+- `FIREBASE_PROJECT_ID_PROD` → rename to `PROD_FIREBASE_PROJECT_ID`
+- `FIREBASE_PROJECT_ID_STAGING` → rename to `STAGING_FIREBASE_PROJECT_ID`
+- `FIREBASE_SERVICE_ACCOUNT_PROD` → rename to `PROD_FIREBASE_SERVICE_ACCOUNT`
+- `FIREBASE_SERVICE_ACCOUNT_STAGING` → rename to `STAGING_FIREBASE_SERVICE_ACCOUNT`
 
-⚠️ **Still Needed (11 secrets):**
+⚠️ **Still Needed (10 new secrets for web-only deployment):**
 
-These individual Firebase credentials must be added for the CI/CD workflows to build successfully.
+Since Faiseur currently deploys **web only**, you only need the web-specific Firebase credentials. Mobile (Android, iOS, macOS) secrets are not required yet.
 
 ## Why These Secrets?
 
@@ -18,7 +18,15 @@ The CI/CD workflows create a `.env` file during builds using these secrets:
 - `deploy-production.yml` reads `PROD_FIREBASE_*` secrets to build the `.env` file
 - `deploy-staging.yml` reads `STAGING_FIREBASE_*` secrets to build the `.env` file
 - Then `flutter pub get` loads these values via `flutter_dotenv`
-- `lib/firebase_options_prod.dart` and `lib/firebase_options_staging.dart` read them
+- `lib/firebase_options_prod.dart` reads the **web** configuration
+
+Web builds only use 6 fields from `FirebaseOptions`:
+- `apiKey` ← `PROD_FIREBASE_API_KEY`
+- `appId` ← `PROD_FIREBASE_APP_ID_WEB`
+- `messagingSenderId` ← `PROD_FIREBASE_MESSAGING_SENDER_ID`
+- `projectId` ← `PROD_FIREBASE_PROJECT_ID`
+- `authDomain` ← `PROD_FIREBASE_AUTH_DOMAIN`
+- `storageBucket` ← `PROD_FIREBASE_STORAGE_BUCKET`
 
 Without these secrets, the build fails with: `Undefined name 'DefaultFirebaseOptions'`
 
@@ -30,37 +38,29 @@ Click **New repository secret** for each of these:
 
 ### Production Secrets (PROD_FIREBASE_*)
 
-From your local `.env` file or Firebase Console:
+For web deployment, add these 5 values to GitHub Secrets:
 
-| Secret Name | Value | Source |
-|---|---|---|
-| `PROD_FIREBASE_API_KEY` | `AIzaSyA9nYA6THfK2euIOjO0KORDfgXgNUFW-Rw` | `.env` file (PROD_FIREBASE_API_KEY) |
-| `PROD_FIREBASE_APP_ID_WEB` | `1:406108331781:web:5b3eb44dfc61142860a16c` | `.env` file (PROD_FIREBASE_APP_ID_WEB) |
-| `PROD_FIREBASE_APP_ID_ANDROID` | Get from `.env` | `.env` file (PROD_FIREBASE_APP_ID_ANDROID) |
-| `PROD_FIREBASE_APP_ID_IOS` | Get from `.env` | `.env` file (PROD_FIREBASE_APP_ID_IOS) |
-| `PROD_FIREBASE_APP_ID_MACOS` | Get from `.env` | `.env` file (PROD_FIREBASE_APP_ID_MACOS) |
-| `PROD_FIREBASE_AUTH_DOMAIN` | `faiseur.firebaseapp.com` | `.env` file (PROD_FIREBASE_AUTH_DOMAIN) |
-| `PROD_FIREBASE_DATABASE_URL` | `https://faiseur.firebaseio.com` | `.env` file (PROD_FIREBASE_DATABASE_URL) |
-| `PROD_FIREBASE_STORAGE_BUCKET` | `faiseur.appspot.com` | `.env` file (PROD_FIREBASE_STORAGE_BUCKET) |
-| `PROD_FIREBASE_MESSAGING_SENDER_ID` | `406108331781` | `.env` file (PROD_FIREBASE_MESSAGING_SENDER_ID) |
-| `PROD_FIREBASE_MEASUREMENT_ID` | Get from `.env` or Firebase | `.env` file (PROD_FIREBASE_MEASUREMENT_ID) |
+| Secret Name | Value |
+|---|---|
+| `PROD_FIREBASE_PROJECT_ID` | `faiseur` |
+| `PROD_FIREBASE_API_KEY` | `AIzaSyA9nYA6THfK2euIOjO0KORDfgXgNUFW-Rw` |
+| `PROD_FIREBASE_APP_ID_WEB` | `1:406108331781:web:5b3eb44dfc61142860a16c` |
+| `PROD_FIREBASE_AUTH_DOMAIN` | `faiseur.firebaseapp.com` |
+| `PROD_FIREBASE_STORAGE_BUCKET` | `faiseur.appspot.com` |
+| `PROD_FIREBASE_MESSAGING_SENDER_ID` | `406108331781` |
 
 ### Staging Secrets (STAGING_FIREBASE_*)
 
-From your local `.env` file or Firebase Console:
+For web deployment, add these 5 values to GitHub Secrets:
 
-| Secret Name | Value | Source |
-|---|---|---|
-| `STAGING_FIREBASE_API_KEY` | `AIzaSyC4A-yi-F5ckIRWSHWWo4i4idwSfJBFF-k` | `.env` file (STAGING_FIREBASE_API_KEY) |
-| `STAGING_FIREBASE_APP_ID_WEB` | `1:987894355541:web:8b9880882a3544c4bda6dc` | `.env` file (STAGING_FIREBASE_APP_ID_WEB) |
-| `STAGING_FIREBASE_APP_ID_ANDROID` | Get from `.env` | `.env` file (STAGING_FIREBASE_APP_ID_ANDROID) |
-| `STAGING_FIREBASE_APP_ID_IOS` | Get from `.env` | `.env` file (STAGING_FIREBASE_APP_ID_IOS) |
-| `STAGING_FIREBASE_APP_ID_MACOS` | Get from `.env` | `.env` file (STAGING_FIREBASE_APP_ID_MACOS) |
-| `STAGING_FIREBASE_AUTH_DOMAIN` | `faiseur-staging.firebaseapp.com` | `.env` file (STAGING_FIREBASE_AUTH_DOMAIN) |
-| `STAGING_FIREBASE_DATABASE_URL` | `https://faiseur-staging.firebaseio.com` | `.env` file (STAGING_FIREBASE_DATABASE_URL) |
-| `STAGING_FIREBASE_STORAGE_BUCKET` | `faiseur-staging.appspot.com` | `.env` file (STAGING_FIREBASE_STORAGE_BUCKET) |
-| `STAGING_FIREBASE_MESSAGING_SENDER_ID` | `987894355541` | `.env` file (STAGING_FIREBASE_MESSAGING_SENDER_ID) |
-| `STAGING_FIREBASE_MEASUREMENT_ID` | Get from `.env` or Firebase | `.env` file (STAGING_FIREBASE_MEASUREMENT_ID) |
+| Secret Name | Value |
+|---|---|
+| `STAGING_FIREBASE_PROJECT_ID` | `faiseur-staging` |
+| `STAGING_FIREBASE_API_KEY` | `AIzaSyC4A-yi-F5ckIRWSHWWo4i4idwSfJBFF-k` |
+| `STAGING_FIREBASE_APP_ID_WEB` | `1:987894355541:web:8b9880882a3544c4bda6dc` |
+| `STAGING_FIREBASE_AUTH_DOMAIN` | `faiseur-staging.firebaseapp.com` |
+| `STAGING_FIREBASE_STORAGE_BUCKET` | `faiseur-staging.appspot.com` |
+| `STAGING_FIREBASE_MESSAGING_SENDER_ID` | `987894355541` |
 
 ## How to Get These Values
 
@@ -177,12 +177,21 @@ Once you've added the secrets:
 
 ## What's Next?
 
-Once all secrets are added:
+Once all 10 web secrets are added:
 
 1. ✅ Commit and push a change to test the workflow
 2. ✅ Monitor the deployment to verify it succeeds
 3. ✅ Set up branch protection rules
 4. ✅ Begin Phase 1.2: Core Domain Models
+
+### When Adding Mobile Platforms (Future)
+
+When you add Android, iOS, or macOS deployment, you'll also need:
+- `PROD_FIREBASE_APP_ID_ANDROID`
+- `PROD_FIREBASE_APP_ID_IOS`
+- `PROD_FIREBASE_APP_ID_MACOS`
+- `PROD_FIREBASE_DATABASE_URL`
+- (Same 5 for STAGING_FIREBASE_*)
 
 ---
 
