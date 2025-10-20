@@ -6,7 +6,20 @@ part of 'firebase_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$firebaseAppHash() => r'ae360e335e4745f313eb388b738ee9c3490a6235';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+/// Singleton Firebase App instance
+///
+/// Provides access to the Firebase App for the current environment.
+/// This is a singleton that's shared across the entire app.
+///
+/// Example:
+/// ```dart
+/// final firebaseApp = ref.watch(firebaseAppProvider);
+/// ```
+
+@ProviderFor(firebaseApp)
+const firebaseAppProvider = FirebaseAppProvider._();
 
 /// Singleton Firebase App instance
 ///
@@ -17,23 +30,53 @@ String _$firebaseAppHash() => r'ae360e335e4745f313eb388b738ee9c3490a6235';
 /// ```dart
 /// final firebaseApp = ref.watch(firebaseAppProvider);
 /// ```
-///
-/// Copied from [firebaseApp].
-@ProviderFor(firebaseApp)
-final firebaseAppProvider = Provider<FirebaseApp>.internal(
-  firebaseApp,
-  name: r'firebaseAppProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$firebaseAppHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef FirebaseAppRef = ProviderRef<FirebaseApp>;
-String _$firestoreHash() => r'e271f8f7be694ee819f397232f4d140c15a5f921';
+final class FirebaseAppProvider
+    extends $FunctionalProvider<FirebaseApp, FirebaseApp, FirebaseApp>
+    with $Provider<FirebaseApp> {
+  /// Singleton Firebase App instance
+  ///
+  /// Provides access to the Firebase App for the current environment.
+  /// This is a singleton that's shared across the entire app.
+  ///
+  /// Example:
+  /// ```dart
+  /// final firebaseApp = ref.watch(firebaseAppProvider);
+  /// ```
+  const FirebaseAppProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'firebaseAppProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$firebaseAppHash();
+
+  @$internal
+  @override
+  $ProviderElement<FirebaseApp> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  FirebaseApp create(Ref ref) {
+    return firebaseApp(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(FirebaseApp value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<FirebaseApp>(value),
+    );
+  }
+}
+
+String _$firebaseAppHash() => r'439aae163af009a7ca65e74976600e6e64cc17c5';
 
 /// Singleton Firestore instance
 ///
@@ -45,23 +88,74 @@ String _$firestoreHash() => r'e271f8f7be694ee819f397232f4d140c15a5f921';
 /// final firestore = ref.watch(firestoreProvider);
 /// final docs = await firestore.collection('todos').get();
 /// ```
-///
-/// Copied from [firestore].
-@ProviderFor(firestore)
-final firestoreProvider = Provider<FirebaseFirestore>.internal(
-  firestore,
-  name: r'firestoreProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$firestoreHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef FirestoreRef = ProviderRef<FirebaseFirestore>;
-String _$firebaseAuthHash() => r'46c40b7c5cf8ab936c0daa96a6af106bd2ae5d51';
+@ProviderFor(firestore)
+const firestoreProvider = FirestoreProvider._();
+
+/// Singleton Firestore instance
+///
+/// Provides access to Cloud Firestore.
+/// Automatically connects to the appropriate project based on environment.
+///
+/// Example:
+/// ```dart
+/// final firestore = ref.watch(firestoreProvider);
+/// final docs = await firestore.collection('todos').get();
+/// ```
+
+final class FirestoreProvider
+    extends
+        $FunctionalProvider<
+          FirebaseFirestore,
+          FirebaseFirestore,
+          FirebaseFirestore
+        >
+    with $Provider<FirebaseFirestore> {
+  /// Singleton Firestore instance
+  ///
+  /// Provides access to Cloud Firestore.
+  /// Automatically connects to the appropriate project based on environment.
+  ///
+  /// Example:
+  /// ```dart
+  /// final firestore = ref.watch(firestoreProvider);
+  /// final docs = await firestore.collection('todos').get();
+  /// ```
+  const FirestoreProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'firestoreProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$firestoreHash();
+
+  @$internal
+  @override
+  $ProviderElement<FirebaseFirestore> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  FirebaseFirestore create(Ref ref) {
+    return firestore(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(FirebaseFirestore value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<FirebaseFirestore>(value),
+    );
+  }
+}
+
+String _$firestoreHash() => r'864285def6284159b44f9598dcde96347e0c1dce';
 
 /// Singleton Firebase Authentication instance
 ///
@@ -73,23 +167,68 @@ String _$firebaseAuthHash() => r'46c40b7c5cf8ab936c0daa96a6af106bd2ae5d51';
 /// final auth = ref.watch(firebaseAuthProvider);
 /// final user = auth.currentUser;
 /// ```
-///
-/// Copied from [firebaseAuth].
-@ProviderFor(firebaseAuth)
-final firebaseAuthProvider = Provider<FirebaseAuth>.internal(
-  firebaseAuth,
-  name: r'firebaseAuthProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$firebaseAuthHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef FirebaseAuthRef = ProviderRef<FirebaseAuth>;
-String _$currentUserHash() => r'490ec2bae73aae8c157ef1428923ce98f4171a33';
+@ProviderFor(firebaseAuth)
+const firebaseAuthProvider = FirebaseAuthProvider._();
+
+/// Singleton Firebase Authentication instance
+///
+/// Provides access to Firebase Authentication.
+/// Use to manage user login/logout and auth state.
+///
+/// Example:
+/// ```dart
+/// final auth = ref.watch(firebaseAuthProvider);
+/// final user = auth.currentUser;
+/// ```
+
+final class FirebaseAuthProvider
+    extends $FunctionalProvider<FirebaseAuth, FirebaseAuth, FirebaseAuth>
+    with $Provider<FirebaseAuth> {
+  /// Singleton Firebase Authentication instance
+  ///
+  /// Provides access to Firebase Authentication.
+  /// Use to manage user login/logout and auth state.
+  ///
+  /// Example:
+  /// ```dart
+  /// final auth = ref.watch(firebaseAuthProvider);
+  /// final user = auth.currentUser;
+  /// ```
+  const FirebaseAuthProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'firebaseAuthProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$firebaseAuthHash();
+
+  @$internal
+  @override
+  $ProviderElement<FirebaseAuth> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  FirebaseAuth create(Ref ref) {
+    return firebaseAuth(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(FirebaseAuth value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<FirebaseAuth>(value),
+    );
+  }
+}
+
+String _$firebaseAuthHash() => r'8c3e9d11b27110ca96130356b5ef4d5d34a5ffc2';
 
 /// Current authenticated user
 ///
@@ -106,23 +245,70 @@ String _$currentUserHash() => r'490ec2bae73aae8c157ef1428923ce98f4171a33';
 ///   error: (err, st) => ErrorScreen(err),
 /// );
 /// ```
-///
-/// Copied from [currentUser].
-@ProviderFor(currentUser)
-final currentUserProvider = AutoDisposeStreamProvider<User?>.internal(
-  currentUser,
-  name: r'currentUserProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$currentUserHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef CurrentUserRef = AutoDisposeStreamProviderRef<User?>;
-String _$currentUserIdHash() => r'406736a3415c602925d6c9ce782a698a38ca3b71';
+@ProviderFor(currentUser)
+const currentUserProvider = CurrentUserProvider._();
+
+/// Current authenticated user
+///
+/// Watches Firebase Auth state and returns the current user.
+/// Returns null if no user is authenticated.
+/// This is a stream provider that handles authentication state changes.
+///
+/// Example:
+/// ```dart
+/// final userAsync = ref.watch(currentUserProvider);
+/// userAsync.when(
+///   data: (user) => user != null ? ShowApp() : ShowLogin(),
+///   loading: () => LoadingScreen(),
+///   error: (err, st) => ErrorScreen(err),
+/// );
+/// ```
+
+final class CurrentUserProvider
+    extends $FunctionalProvider<AsyncValue<User?>, User?, Stream<User?>>
+    with $FutureModifier<User?>, $StreamProvider<User?> {
+  /// Current authenticated user
+  ///
+  /// Watches Firebase Auth state and returns the current user.
+  /// Returns null if no user is authenticated.
+  /// This is a stream provider that handles authentication state changes.
+  ///
+  /// Example:
+  /// ```dart
+  /// final userAsync = ref.watch(currentUserProvider);
+  /// userAsync.when(
+  ///   data: (user) => user != null ? ShowApp() : ShowLogin(),
+  ///   loading: () => LoadingScreen(),
+  ///   error: (err, st) => ErrorScreen(err),
+  /// );
+  /// ```
+  const CurrentUserProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'currentUserProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$currentUserHash();
+
+  @$internal
+  @override
+  $StreamProviderElement<User?> $createElement($ProviderPointer pointer) =>
+      $StreamProviderElement(pointer);
+
+  @override
+  Stream<User?> create(Ref ref) {
+    return currentUser(ref);
+  }
+}
+
+String _$currentUserHash() => r'b01f57dfbfa1b5127d3511bd98a63f38187876ae';
 
 /// Current authenticated user ID
 ///
@@ -138,23 +324,68 @@ String _$currentUserIdHash() => r'406736a3415c602925d6c9ce782a698a38ca3b71';
 ///   error: (err, st) => ErrorScreen(err),
 /// );
 /// ```
-///
-/// Copied from [currentUserId].
-@ProviderFor(currentUserId)
-final currentUserIdProvider = AutoDisposeStreamProvider<String?>.internal(
-  currentUserId,
-  name: r'currentUserIdProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$currentUserIdHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef CurrentUserIdRef = AutoDisposeStreamProviderRef<String?>;
-String _$isAuthenticatedHash() => r'79919caf2945e0e1b79ee1ed982c9782f4ea02ee';
+@ProviderFor(currentUserId)
+const currentUserIdProvider = CurrentUserIdProvider._();
+
+/// Current authenticated user ID
+///
+/// Convenient access to just the user ID.
+/// Returns null if no user is authenticated.
+///
+/// Example:
+/// ```dart
+/// final userIdAsync = ref.watch(currentUserIdProvider);
+/// userIdAsync.when(
+///   data: (id) => Text('User: $id'),
+///   loading: () => CircularProgressIndicator(),
+///   error: (err, st) => ErrorScreen(err),
+/// );
+/// ```
+
+final class CurrentUserIdProvider
+    extends $FunctionalProvider<AsyncValue<String?>, String?, Stream<String?>>
+    with $FutureModifier<String?>, $StreamProvider<String?> {
+  /// Current authenticated user ID
+  ///
+  /// Convenient access to just the user ID.
+  /// Returns null if no user is authenticated.
+  ///
+  /// Example:
+  /// ```dart
+  /// final userIdAsync = ref.watch(currentUserIdProvider);
+  /// userIdAsync.when(
+  ///   data: (id) => Text('User: $id'),
+  ///   loading: () => CircularProgressIndicator(),
+  ///   error: (err, st) => ErrorScreen(err),
+  /// );
+  /// ```
+  const CurrentUserIdProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'currentUserIdProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$currentUserIdHash();
+
+  @$internal
+  @override
+  $StreamProviderElement<String?> $createElement($ProviderPointer pointer) =>
+      $StreamProviderElement(pointer);
+
+  @override
+  Stream<String?> create(Ref ref) {
+    return currentUserId(ref);
+  }
+}
+
+String _$currentUserIdHash() => r'a9b7839df39a776a86485ecf60c03140f92d4795';
 
 /// Whether the current user is authenticated
 ///
@@ -176,21 +407,77 @@ String _$isAuthenticatedHash() => r'79919caf2945e0e1b79ee1ed982c9782f4ea02ee';
 ///   error: (err, st) => ErrorScreen(err),
 /// );
 /// ```
-///
-/// Copied from [isAuthenticated].
-@ProviderFor(isAuthenticated)
-final isAuthenticatedProvider = AutoDisposeStreamProvider<bool>.internal(
-  isAuthenticated,
-  name: r'isAuthenticatedProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$isAuthenticatedHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef IsAuthenticatedRef = AutoDisposeStreamProviderRef<bool>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+@ProviderFor(isAuthenticated)
+const isAuthenticatedProvider = IsAuthenticatedProvider._();
+
+/// Whether the current user is authenticated
+///
+/// Simple boolean to check if user is logged in.
+/// True if currentUser is not null, false otherwise.
+///
+/// Example:
+/// ```dart
+/// final isAuthedAsync = ref.watch(isAuthenticatedProvider);
+/// isAuthedAsync.when(
+///   data: (authed) {
+///     if (authed) {
+///       GoRouter.of(context).go('/home');
+///     } else {
+///       GoRouter.of(context).go('/login');
+///     }
+///   },
+///   loading: () => LoadingScreen(),
+///   error: (err, st) => ErrorScreen(err),
+/// );
+/// ```
+
+final class IsAuthenticatedProvider
+    extends $FunctionalProvider<AsyncValue<bool>, bool, Stream<bool>>
+    with $FutureModifier<bool>, $StreamProvider<bool> {
+  /// Whether the current user is authenticated
+  ///
+  /// Simple boolean to check if user is logged in.
+  /// True if currentUser is not null, false otherwise.
+  ///
+  /// Example:
+  /// ```dart
+  /// final isAuthedAsync = ref.watch(isAuthenticatedProvider);
+  /// isAuthedAsync.when(
+  ///   data: (authed) {
+  ///     if (authed) {
+  ///       GoRouter.of(context).go('/home');
+  ///     } else {
+  ///       GoRouter.of(context).go('/login');
+  ///     }
+  ///   },
+  ///   loading: () => LoadingScreen(),
+  ///   error: (err, st) => ErrorScreen(err),
+  /// );
+  /// ```
+  const IsAuthenticatedProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'isAuthenticatedProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$isAuthenticatedHash();
+
+  @$internal
+  @override
+  $StreamProviderElement<bool> $createElement($ProviderPointer pointer) =>
+      $StreamProviderElement(pointer);
+
+  @override
+  Stream<bool> create(Ref ref) {
+    return isAuthenticated(ref);
+  }
+}
+
+String _$isAuthenticatedHash() => r'9eb42cd2169dd249a00dd6e9d43e0cd10d402734';

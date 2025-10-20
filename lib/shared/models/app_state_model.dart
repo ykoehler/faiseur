@@ -18,7 +18,7 @@ part 'app_state_model.freezed.dart';
 /// }
 /// ```
 @freezed
-class AppState with _$AppState {
+sealed class AppState with _$AppState {
   const factory AppState({
     /// Whether the app has completed initialization
     /// (Firebase connected, user loaded, etc.)

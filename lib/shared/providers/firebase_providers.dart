@@ -15,7 +15,7 @@ part 'firebase_providers.g.dart';
 /// final firebaseApp = ref.watch(firebaseAppProvider);
 /// ```
 @Riverpod(keepAlive: true)
-FirebaseApp firebaseApp(FirebaseAppRef ref) => Firebase.app();
+FirebaseApp firebaseApp(Ref ref) => Firebase.app();
 
 /// Singleton Firestore instance
 ///
@@ -28,7 +28,7 @@ FirebaseApp firebaseApp(FirebaseAppRef ref) => Firebase.app();
 /// final docs = await firestore.collection('todos').get();
 /// ```
 @Riverpod(keepAlive: true)
-FirebaseFirestore firestore(FirestoreRef ref) => FirebaseFirestore.instance;
+FirebaseFirestore firestore(Ref ref) => FirebaseFirestore.instance;
 
 /// Singleton Firebase Authentication instance
 ///
@@ -41,7 +41,7 @@ FirebaseFirestore firestore(FirestoreRef ref) => FirebaseFirestore.instance;
 /// final user = auth.currentUser;
 /// ```
 @Riverpod(keepAlive: true)
-FirebaseAuth firebaseAuth(FirebaseAuthRef ref) => FirebaseAuth.instance;
+FirebaseAuth firebaseAuth(Ref ref) => FirebaseAuth.instance;
 
 /// Current authenticated user
 ///
@@ -59,7 +59,7 @@ FirebaseAuth firebaseAuth(FirebaseAuthRef ref) => FirebaseAuth.instance;
 /// );
 /// ```
 @riverpod
-Stream<User?> currentUser(CurrentUserRef ref) {
+Stream<User?> currentUser(Ref ref) {
   final auth = ref.watch(firebaseAuthProvider);
   return auth.authStateChanges();
 }
@@ -79,10 +79,9 @@ Stream<User?> currentUser(CurrentUserRef ref) {
 /// );
 /// ```
 @riverpod
-Stream<String?> currentUserId(CurrentUserIdRef ref) async* {
-  await for (final user in ref.watch(currentUserProvider.stream)) {
-    yield user?.uid;
-  }
+Stream<String?> currentUserId(Ref ref) {
+  final auth = ref.watch(firebaseAuthProvider);
+  return auth.authStateChanges().map((user) => user?.uid);
 }
 
 /// Whether the current user is authenticated
@@ -106,8 +105,7 @@ Stream<String?> currentUserId(CurrentUserIdRef ref) async* {
 /// );
 /// ```
 @riverpod
-Stream<bool> isAuthenticated(IsAuthenticatedRef ref) async* {
-  await for (final user in ref.watch(currentUserProvider.stream)) {
-    yield user != null;
-  }
+Stream<bool> isAuthenticated(Ref ref) {
+  final auth = ref.watch(firebaseAuthProvider);
+  return auth.authStateChanges().map((user) => user != null);
 }

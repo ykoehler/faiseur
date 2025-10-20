@@ -87,7 +87,7 @@ class AppStateController extends _$AppStateController {
 /// );
 /// ```
 @riverpod
-Future<void> appInitialization(AppInitializationRef ref) async {
+Future<void> appInitialization(Ref ref) async {
   final controller = ref.read(appStateControllerProvider.notifier);
   await controller.initialize();
 
@@ -111,7 +111,7 @@ Future<void> appInitialization(AppInitializationRef ref) async {
 /// print('Current user: $userId');
 /// ```
 @riverpod
-String? currentUserIdFromState(CurrentUserIdFromStateRef ref) {
+String? currentUserIdFromState(Ref ref) {
   final appState = ref.watch(appStateControllerProvider);
   return appState.currentUserId;
 }
@@ -131,7 +131,7 @@ String? currentUserIdFromState(CurrentUserIdFromStateRef ref) {
 /// }
 /// ```
 @riverpod
-bool isAppReady(IsAppReadyRef ref) {
+bool isAppReady(Ref ref) {
   final appState = ref.watch(appStateControllerProvider);
   return appState.isReady;
 }
@@ -149,7 +149,7 @@ bool isAppReady(IsAppReadyRef ref) {
 /// }
 /// ```
 @riverpod
-String? appError(AppErrorRef ref) {
+String? appError(Ref ref) {
   final appState = ref.watch(appStateControllerProvider);
   return appState.errorMessage;
 }
@@ -166,7 +166,7 @@ String? appError(AppErrorRef ref) {
 /// }
 /// ```
 @riverpod
-bool appIsLoading(AppIsLoadingRef ref) {
+bool appIsLoading(Ref ref) {
   final appState = ref.watch(appStateControllerProvider);
   return appState.isLoading;
 }

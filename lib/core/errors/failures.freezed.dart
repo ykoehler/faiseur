@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,2414 +9,981 @@ part of 'failures.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
 mixin _$Failure {
-  String get message => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String message) network,
-    required TResult Function(String message) timeout,
-    required TResult Function(String message) authentication,
-    required TResult Function(String message) authorization,
-    required TResult Function(String message, String? field) validation,
-    required TResult Function(String message, String? code) firestore,
-    required TResult Function(String message) storage,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) state,
-    required TResult Function(String message) cancelled,
-    required TResult Function(String message) unknown,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? timeout,
-    TResult? Function(String message)? authentication,
-    TResult? Function(String message)? authorization,
-    TResult? Function(String message, String? field)? validation,
-    TResult? Function(String message, String? code)? firestore,
-    TResult? Function(String message)? storage,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? state,
-    TResult? Function(String message)? cancelled,
-    TResult? Function(String message)? unknown,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message)? network,
-    TResult Function(String message)? timeout,
-    TResult Function(String message)? authentication,
-    TResult Function(String message)? authorization,
-    TResult Function(String message, String? field)? validation,
-    TResult Function(String message, String? code)? firestore,
-    TResult Function(String message)? storage,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? state,
-    TResult Function(String message)? cancelled,
-    TResult Function(String message)? unknown,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(NetworkFailure value) network,
-    required TResult Function(TimeoutFailure value) timeout,
-    required TResult Function(AuthenticationFailure value) authentication,
-    required TResult Function(AuthorizationFailure value) authorization,
-    required TResult Function(ValidationFailure value) validation,
-    required TResult Function(FirestoreFailure value) firestore,
-    required TResult Function(StorageFailure value) storage,
-    required TResult Function(NotFoundFailure value) notFound,
-    required TResult Function(StateFailure value) state,
-    required TResult Function(CancelledFailure value) cancelled,
-    required TResult Function(UnknownFailure value) unknown,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NetworkFailure value)? network,
-    TResult? Function(TimeoutFailure value)? timeout,
-    TResult? Function(AuthenticationFailure value)? authentication,
-    TResult? Function(AuthorizationFailure value)? authorization,
-    TResult? Function(ValidationFailure value)? validation,
-    TResult? Function(FirestoreFailure value)? firestore,
-    TResult? Function(StorageFailure value)? storage,
-    TResult? Function(NotFoundFailure value)? notFound,
-    TResult? Function(StateFailure value)? state,
-    TResult? Function(CancelledFailure value)? cancelled,
-    TResult? Function(UnknownFailure value)? unknown,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(NetworkFailure value)? network,
-    TResult Function(TimeoutFailure value)? timeout,
-    TResult Function(AuthenticationFailure value)? authentication,
-    TResult Function(AuthorizationFailure value)? authorization,
-    TResult Function(ValidationFailure value)? validation,
-    TResult Function(FirestoreFailure value)? firestore,
-    TResult Function(StorageFailure value)? storage,
-    TResult Function(NotFoundFailure value)? notFound,
-    TResult Function(StateFailure value)? state,
-    TResult Function(CancelledFailure value)? cancelled,
-    TResult Function(UnknownFailure value)? unknown,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $FailureCopyWith<Failure> get copyWith => throw _privateConstructorUsedError;
+ String get message;
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$FailureCopyWith<Failure> get copyWith => _$FailureCopyWithImpl<Failure>(this as Failure, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Failure&&(identical(other.message, message) || other.message == message));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,message);
+
+@override
+String toString() {
+  return 'Failure(message: $message)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $FailureCopyWith<$Res> {
-  factory $FailureCopyWith(Failure value, $Res Function(Failure) then) =
-      _$FailureCopyWithImpl<$Res, Failure>;
-  @useResult
-  $Res call({String message});
-}
+abstract mixin class $FailureCopyWith<$Res>  {
+  factory $FailureCopyWith(Failure value, $Res Function(Failure) _then) = _$FailureCopyWithImpl;
+@useResult
+$Res call({
+ String message
+});
 
+
+
+
+}
 /// @nodoc
-class _$FailureCopyWithImpl<$Res, $Val extends Failure>
+class _$FailureCopyWithImpl<$Res>
     implements $FailureCopyWith<$Res> {
-  _$FailureCopyWithImpl(this._value, this._then);
+  _$FailureCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Failure _self;
+  final $Res Function(Failure) _then;
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _value.copyWith(
-            message: null == message
-                ? _value.message
-                : message // ignore: cast_nullable_to_non_nullable
-                      as String,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? message = null,}) {
+  return _then(_self.copyWith(
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$NetworkFailureImplCopyWith<$Res>
-    implements $FailureCopyWith<$Res> {
-  factory _$$NetworkFailureImplCopyWith(
-    _$NetworkFailureImpl value,
-    $Res Function(_$NetworkFailureImpl) then,
-  ) = __$$NetworkFailureImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String message});
 }
 
-/// @nodoc
-class __$$NetworkFailureImplCopyWithImpl<$Res>
-    extends _$FailureCopyWithImpl<$Res, _$NetworkFailureImpl>
-    implements _$$NetworkFailureImplCopyWith<$Res> {
-  __$$NetworkFailureImplCopyWithImpl(
-    _$NetworkFailureImpl _value,
-    $Res Function(_$NetworkFailureImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$NetworkFailureImpl(
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
+/// Adds pattern-matching-related methods to [Failure].
+extension FailurePatterns on Failure {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( NetworkFailure value)?  network,TResult Function( TimeoutFailure value)?  timeout,TResult Function( AuthenticationFailure value)?  authentication,TResult Function( AuthorizationFailure value)?  authorization,TResult Function( ValidationFailure value)?  validation,TResult Function( FirestoreFailure value)?  firestore,TResult Function( StorageFailure value)?  storage,TResult Function( NotFoundFailure value)?  notFound,TResult Function( StateFailure value)?  state,TResult Function( CancelledFailure value)?  cancelled,TResult Function( UnknownFailure value)?  unknown,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case NetworkFailure() when network != null:
+return network(_that);case TimeoutFailure() when timeout != null:
+return timeout(_that);case AuthenticationFailure() when authentication != null:
+return authentication(_that);case AuthorizationFailure() when authorization != null:
+return authorization(_that);case ValidationFailure() when validation != null:
+return validation(_that);case FirestoreFailure() when firestore != null:
+return firestore(_that);case StorageFailure() when storage != null:
+return storage(_that);case NotFoundFailure() when notFound != null:
+return notFound(_that);case StateFailure() when state != null:
+return state(_that);case CancelledFailure() when cancelled != null:
+return cancelled(_that);case UnknownFailure() when unknown != null:
+return unknown(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( NetworkFailure value)  network,required TResult Function( TimeoutFailure value)  timeout,required TResult Function( AuthenticationFailure value)  authentication,required TResult Function( AuthorizationFailure value)  authorization,required TResult Function( ValidationFailure value)  validation,required TResult Function( FirestoreFailure value)  firestore,required TResult Function( StorageFailure value)  storage,required TResult Function( NotFoundFailure value)  notFound,required TResult Function( StateFailure value)  state,required TResult Function( CancelledFailure value)  cancelled,required TResult Function( UnknownFailure value)  unknown,}){
+final _that = this;
+switch (_that) {
+case NetworkFailure():
+return network(_that);case TimeoutFailure():
+return timeout(_that);case AuthenticationFailure():
+return authentication(_that);case AuthorizationFailure():
+return authorization(_that);case ValidationFailure():
+return validation(_that);case FirestoreFailure():
+return firestore(_that);case StorageFailure():
+return storage(_that);case NotFoundFailure():
+return notFound(_that);case StateFailure():
+return state(_that);case CancelledFailure():
+return cancelled(_that);case UnknownFailure():
+return unknown(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( NetworkFailure value)?  network,TResult? Function( TimeoutFailure value)?  timeout,TResult? Function( AuthenticationFailure value)?  authentication,TResult? Function( AuthorizationFailure value)?  authorization,TResult? Function( ValidationFailure value)?  validation,TResult? Function( FirestoreFailure value)?  firestore,TResult? Function( StorageFailure value)?  storage,TResult? Function( NotFoundFailure value)?  notFound,TResult? Function( StateFailure value)?  state,TResult? Function( CancelledFailure value)?  cancelled,TResult? Function( UnknownFailure value)?  unknown,}){
+final _that = this;
+switch (_that) {
+case NetworkFailure() when network != null:
+return network(_that);case TimeoutFailure() when timeout != null:
+return timeout(_that);case AuthenticationFailure() when authentication != null:
+return authentication(_that);case AuthorizationFailure() when authorization != null:
+return authorization(_that);case ValidationFailure() when validation != null:
+return validation(_that);case FirestoreFailure() when firestore != null:
+return firestore(_that);case StorageFailure() when storage != null:
+return storage(_that);case NotFoundFailure() when notFound != null:
+return notFound(_that);case StateFailure() when state != null:
+return state(_that);case CancelledFailure() when cancelled != null:
+return cancelled(_that);case UnknownFailure() when unknown != null:
+return unknown(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String message)?  network,TResult Function( String message)?  timeout,TResult Function( String message)?  authentication,TResult Function( String message)?  authorization,TResult Function( String message,  String? field)?  validation,TResult Function( String message,  String? code)?  firestore,TResult Function( String message)?  storage,TResult Function( String message)?  notFound,TResult Function( String message)?  state,TResult Function( String message)?  cancelled,TResult Function( String message)?  unknown,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case NetworkFailure() when network != null:
+return network(_that.message);case TimeoutFailure() when timeout != null:
+return timeout(_that.message);case AuthenticationFailure() when authentication != null:
+return authentication(_that.message);case AuthorizationFailure() when authorization != null:
+return authorization(_that.message);case ValidationFailure() when validation != null:
+return validation(_that.message,_that.field);case FirestoreFailure() when firestore != null:
+return firestore(_that.message,_that.code);case StorageFailure() when storage != null:
+return storage(_that.message);case NotFoundFailure() when notFound != null:
+return notFound(_that.message);case StateFailure() when state != null:
+return state(_that.message);case CancelledFailure() when cancelled != null:
+return cancelled(_that.message);case UnknownFailure() when unknown != null:
+return unknown(_that.message);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String message)  network,required TResult Function( String message)  timeout,required TResult Function( String message)  authentication,required TResult Function( String message)  authorization,required TResult Function( String message,  String? field)  validation,required TResult Function( String message,  String? code)  firestore,required TResult Function( String message)  storage,required TResult Function( String message)  notFound,required TResult Function( String message)  state,required TResult Function( String message)  cancelled,required TResult Function( String message)  unknown,}) {final _that = this;
+switch (_that) {
+case NetworkFailure():
+return network(_that.message);case TimeoutFailure():
+return timeout(_that.message);case AuthenticationFailure():
+return authentication(_that.message);case AuthorizationFailure():
+return authorization(_that.message);case ValidationFailure():
+return validation(_that.message,_that.field);case FirestoreFailure():
+return firestore(_that.message,_that.code);case StorageFailure():
+return storage(_that.message);case NotFoundFailure():
+return notFound(_that.message);case StateFailure():
+return state(_that.message);case CancelledFailure():
+return cancelled(_that.message);case UnknownFailure():
+return unknown(_that.message);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String message)?  network,TResult? Function( String message)?  timeout,TResult? Function( String message)?  authentication,TResult? Function( String message)?  authorization,TResult? Function( String message,  String? field)?  validation,TResult? Function( String message,  String? code)?  firestore,TResult? Function( String message)?  storage,TResult? Function( String message)?  notFound,TResult? Function( String message)?  state,TResult? Function( String message)?  cancelled,TResult? Function( String message)?  unknown,}) {final _that = this;
+switch (_that) {
+case NetworkFailure() when network != null:
+return network(_that.message);case TimeoutFailure() when timeout != null:
+return timeout(_that.message);case AuthenticationFailure() when authentication != null:
+return authentication(_that.message);case AuthorizationFailure() when authorization != null:
+return authorization(_that.message);case ValidationFailure() when validation != null:
+return validation(_that.message,_that.field);case FirestoreFailure() when firestore != null:
+return firestore(_that.message,_that.code);case StorageFailure() when storage != null:
+return storage(_that.message);case NotFoundFailure() when notFound != null:
+return notFound(_that.message);case StateFailure() when state != null:
+return state(_that.message);case CancelledFailure() when cancelled != null:
+return cancelled(_that.message);case UnknownFailure() when unknown != null:
+return unknown(_that.message);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-
-class _$NetworkFailureImpl extends NetworkFailure {
-  const _$NetworkFailureImpl({required this.message}) : super._();
-
-  @override
-  final String message;
-
-  @override
-  String toString() {
-    return 'Failure.network(message: $message)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NetworkFailureImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$NetworkFailureImplCopyWith<_$NetworkFailureImpl> get copyWith =>
-      __$$NetworkFailureImplCopyWithImpl<_$NetworkFailureImpl>(
-        this,
-        _$identity,
-      );
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String message) network,
-    required TResult Function(String message) timeout,
-    required TResult Function(String message) authentication,
-    required TResult Function(String message) authorization,
-    required TResult Function(String message, String? field) validation,
-    required TResult Function(String message, String? code) firestore,
-    required TResult Function(String message) storage,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) state,
-    required TResult Function(String message) cancelled,
-    required TResult Function(String message) unknown,
-  }) {
-    return network(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? timeout,
-    TResult? Function(String message)? authentication,
-    TResult? Function(String message)? authorization,
-    TResult? Function(String message, String? field)? validation,
-    TResult? Function(String message, String? code)? firestore,
-    TResult? Function(String message)? storage,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? state,
-    TResult? Function(String message)? cancelled,
-    TResult? Function(String message)? unknown,
-  }) {
-    return network?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message)? network,
-    TResult Function(String message)? timeout,
-    TResult Function(String message)? authentication,
-    TResult Function(String message)? authorization,
-    TResult Function(String message, String? field)? validation,
-    TResult Function(String message, String? code)? firestore,
-    TResult Function(String message)? storage,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? state,
-    TResult Function(String message)? cancelled,
-    TResult Function(String message)? unknown,
-    required TResult orElse(),
-  }) {
-    if (network != null) {
-      return network(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(NetworkFailure value) network,
-    required TResult Function(TimeoutFailure value) timeout,
-    required TResult Function(AuthenticationFailure value) authentication,
-    required TResult Function(AuthorizationFailure value) authorization,
-    required TResult Function(ValidationFailure value) validation,
-    required TResult Function(FirestoreFailure value) firestore,
-    required TResult Function(StorageFailure value) storage,
-    required TResult Function(NotFoundFailure value) notFound,
-    required TResult Function(StateFailure value) state,
-    required TResult Function(CancelledFailure value) cancelled,
-    required TResult Function(UnknownFailure value) unknown,
-  }) {
-    return network(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NetworkFailure value)? network,
-    TResult? Function(TimeoutFailure value)? timeout,
-    TResult? Function(AuthenticationFailure value)? authentication,
-    TResult? Function(AuthorizationFailure value)? authorization,
-    TResult? Function(ValidationFailure value)? validation,
-    TResult? Function(FirestoreFailure value)? firestore,
-    TResult? Function(StorageFailure value)? storage,
-    TResult? Function(NotFoundFailure value)? notFound,
-    TResult? Function(StateFailure value)? state,
-    TResult? Function(CancelledFailure value)? cancelled,
-    TResult? Function(UnknownFailure value)? unknown,
-  }) {
-    return network?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(NetworkFailure value)? network,
-    TResult Function(TimeoutFailure value)? timeout,
-    TResult Function(AuthenticationFailure value)? authentication,
-    TResult Function(AuthorizationFailure value)? authorization,
-    TResult Function(ValidationFailure value)? validation,
-    TResult Function(FirestoreFailure value)? firestore,
-    TResult Function(StorageFailure value)? storage,
-    TResult Function(NotFoundFailure value)? notFound,
-    TResult Function(StateFailure value)? state,
-    TResult Function(CancelledFailure value)? cancelled,
-    TResult Function(UnknownFailure value)? unknown,
-    required TResult orElse(),
-  }) {
-    if (network != null) {
-      return network(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class NetworkFailure extends Failure {
-  const factory NetworkFailure({required final String message}) =
-      _$NetworkFailureImpl;
-  const NetworkFailure._() : super._();
-
-  @override
-  String get message;
-
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NetworkFailureImplCopyWith<_$NetworkFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$TimeoutFailureImplCopyWith<$Res>
-    implements $FailureCopyWith<$Res> {
-  factory _$$TimeoutFailureImplCopyWith(
-    _$TimeoutFailureImpl value,
-    $Res Function(_$TimeoutFailureImpl) then,
-  ) = __$$TimeoutFailureImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String message});
-}
-
-/// @nodoc
-class __$$TimeoutFailureImplCopyWithImpl<$Res>
-    extends _$FailureCopyWithImpl<$Res, _$TimeoutFailureImpl>
-    implements _$$TimeoutFailureImplCopyWith<$Res> {
-  __$$TimeoutFailureImplCopyWithImpl(
-    _$TimeoutFailureImpl _value,
-    $Res Function(_$TimeoutFailureImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$TimeoutFailureImpl(
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$TimeoutFailureImpl extends TimeoutFailure {
-  const _$TimeoutFailureImpl({required this.message}) : super._();
 
-  @override
-  final String message;
+class NetworkFailure extends Failure {
+  const NetworkFailure({required this.message}): super._();
+  
 
-  @override
-  String toString() {
-    return 'Failure.timeout(message: $message)';
-  }
+@override final  String message;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TimeoutFailureImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$NetworkFailureCopyWith<NetworkFailure> get copyWith => _$NetworkFailureCopyWithImpl<NetworkFailure>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TimeoutFailureImplCopyWith<_$TimeoutFailureImpl> get copyWith =>
-      __$$TimeoutFailureImplCopyWithImpl<_$TimeoutFailureImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String message) network,
-    required TResult Function(String message) timeout,
-    required TResult Function(String message) authentication,
-    required TResult Function(String message) authorization,
-    required TResult Function(String message, String? field) validation,
-    required TResult Function(String message, String? code) firestore,
-    required TResult Function(String message) storage,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) state,
-    required TResult Function(String message) cancelled,
-    required TResult Function(String message) unknown,
-  }) {
-    return timeout(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? timeout,
-    TResult? Function(String message)? authentication,
-    TResult? Function(String message)? authorization,
-    TResult? Function(String message, String? field)? validation,
-    TResult? Function(String message, String? code)? firestore,
-    TResult? Function(String message)? storage,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? state,
-    TResult? Function(String message)? cancelled,
-    TResult? Function(String message)? unknown,
-  }) {
-    return timeout?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message)? network,
-    TResult Function(String message)? timeout,
-    TResult Function(String message)? authentication,
-    TResult Function(String message)? authorization,
-    TResult Function(String message, String? field)? validation,
-    TResult Function(String message, String? code)? firestore,
-    TResult Function(String message)? storage,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? state,
-    TResult Function(String message)? cancelled,
-    TResult Function(String message)? unknown,
-    required TResult orElse(),
-  }) {
-    if (timeout != null) {
-      return timeout(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(NetworkFailure value) network,
-    required TResult Function(TimeoutFailure value) timeout,
-    required TResult Function(AuthenticationFailure value) authentication,
-    required TResult Function(AuthorizationFailure value) authorization,
-    required TResult Function(ValidationFailure value) validation,
-    required TResult Function(FirestoreFailure value) firestore,
-    required TResult Function(StorageFailure value) storage,
-    required TResult Function(NotFoundFailure value) notFound,
-    required TResult Function(StateFailure value) state,
-    required TResult Function(CancelledFailure value) cancelled,
-    required TResult Function(UnknownFailure value) unknown,
-  }) {
-    return timeout(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NetworkFailure value)? network,
-    TResult? Function(TimeoutFailure value)? timeout,
-    TResult? Function(AuthenticationFailure value)? authentication,
-    TResult? Function(AuthorizationFailure value)? authorization,
-    TResult? Function(ValidationFailure value)? validation,
-    TResult? Function(FirestoreFailure value)? firestore,
-    TResult? Function(StorageFailure value)? storage,
-    TResult? Function(NotFoundFailure value)? notFound,
-    TResult? Function(StateFailure value)? state,
-    TResult? Function(CancelledFailure value)? cancelled,
-    TResult? Function(UnknownFailure value)? unknown,
-  }) {
-    return timeout?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(NetworkFailure value)? network,
-    TResult Function(TimeoutFailure value)? timeout,
-    TResult Function(AuthenticationFailure value)? authentication,
-    TResult Function(AuthorizationFailure value)? authorization,
-    TResult Function(ValidationFailure value)? validation,
-    TResult Function(FirestoreFailure value)? firestore,
-    TResult Function(StorageFailure value)? storage,
-    TResult Function(NotFoundFailure value)? notFound,
-    TResult Function(StateFailure value)? state,
-    TResult Function(CancelledFailure value)? cancelled,
-    TResult Function(UnknownFailure value)? unknown,
-    required TResult orElse(),
-  }) {
-    if (timeout != null) {
-      return timeout(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NetworkFailure&&(identical(other.message, message) || other.message == message));
 }
 
-abstract class TimeoutFailure extends Failure {
-  const factory TimeoutFailure({required final String message}) =
-      _$TimeoutFailureImpl;
-  const TimeoutFailure._() : super._();
 
-  @override
-  String get message;
+@override
+int get hashCode => Object.hash(runtimeType,message);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TimeoutFailureImplCopyWith<_$TimeoutFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'Failure.network(message: $message)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$AuthenticationFailureImplCopyWith<$Res>
-    implements $FailureCopyWith<$Res> {
-  factory _$$AuthenticationFailureImplCopyWith(
-    _$AuthenticationFailureImpl value,
-    $Res Function(_$AuthenticationFailureImpl) then,
-  ) = __$$AuthenticationFailureImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String message});
+abstract mixin class $NetworkFailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
+  factory $NetworkFailureCopyWith(NetworkFailure value, $Res Function(NetworkFailure) _then) = _$NetworkFailureCopyWithImpl;
+@override @useResult
+$Res call({
+ String message
+});
+
+
+
+
+}
+/// @nodoc
+class _$NetworkFailureCopyWithImpl<$Res>
+    implements $NetworkFailureCopyWith<$Res> {
+  _$NetworkFailureCopyWithImpl(this._self, this._then);
+
+  final NetworkFailure _self;
+  final $Res Function(NetworkFailure) _then;
+
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(NetworkFailure(
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$AuthenticationFailureImplCopyWithImpl<$Res>
-    extends _$FailureCopyWithImpl<$Res, _$AuthenticationFailureImpl>
-    implements _$$AuthenticationFailureImplCopyWith<$Res> {
-  __$$AuthenticationFailureImplCopyWithImpl(
-    _$AuthenticationFailureImpl _value,
-    $Res Function(_$AuthenticationFailureImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$AuthenticationFailureImpl(
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$AuthenticationFailureImpl extends AuthenticationFailure {
-  const _$AuthenticationFailureImpl({required this.message}) : super._();
 
-  @override
-  final String message;
+class TimeoutFailure extends Failure {
+  const TimeoutFailure({required this.message}): super._();
+  
 
-  @override
-  String toString() {
-    return 'Failure.authentication(message: $message)';
-  }
+@override final  String message;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AuthenticationFailureImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TimeoutFailureCopyWith<TimeoutFailure> get copyWith => _$TimeoutFailureCopyWithImpl<TimeoutFailure>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AuthenticationFailureImplCopyWith<_$AuthenticationFailureImpl>
-  get copyWith =>
-      __$$AuthenticationFailureImplCopyWithImpl<_$AuthenticationFailureImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String message) network,
-    required TResult Function(String message) timeout,
-    required TResult Function(String message) authentication,
-    required TResult Function(String message) authorization,
-    required TResult Function(String message, String? field) validation,
-    required TResult Function(String message, String? code) firestore,
-    required TResult Function(String message) storage,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) state,
-    required TResult Function(String message) cancelled,
-    required TResult Function(String message) unknown,
-  }) {
-    return authentication(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? timeout,
-    TResult? Function(String message)? authentication,
-    TResult? Function(String message)? authorization,
-    TResult? Function(String message, String? field)? validation,
-    TResult? Function(String message, String? code)? firestore,
-    TResult? Function(String message)? storage,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? state,
-    TResult? Function(String message)? cancelled,
-    TResult? Function(String message)? unknown,
-  }) {
-    return authentication?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message)? network,
-    TResult Function(String message)? timeout,
-    TResult Function(String message)? authentication,
-    TResult Function(String message)? authorization,
-    TResult Function(String message, String? field)? validation,
-    TResult Function(String message, String? code)? firestore,
-    TResult Function(String message)? storage,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? state,
-    TResult Function(String message)? cancelled,
-    TResult Function(String message)? unknown,
-    required TResult orElse(),
-  }) {
-    if (authentication != null) {
-      return authentication(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(NetworkFailure value) network,
-    required TResult Function(TimeoutFailure value) timeout,
-    required TResult Function(AuthenticationFailure value) authentication,
-    required TResult Function(AuthorizationFailure value) authorization,
-    required TResult Function(ValidationFailure value) validation,
-    required TResult Function(FirestoreFailure value) firestore,
-    required TResult Function(StorageFailure value) storage,
-    required TResult Function(NotFoundFailure value) notFound,
-    required TResult Function(StateFailure value) state,
-    required TResult Function(CancelledFailure value) cancelled,
-    required TResult Function(UnknownFailure value) unknown,
-  }) {
-    return authentication(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NetworkFailure value)? network,
-    TResult? Function(TimeoutFailure value)? timeout,
-    TResult? Function(AuthenticationFailure value)? authentication,
-    TResult? Function(AuthorizationFailure value)? authorization,
-    TResult? Function(ValidationFailure value)? validation,
-    TResult? Function(FirestoreFailure value)? firestore,
-    TResult? Function(StorageFailure value)? storage,
-    TResult? Function(NotFoundFailure value)? notFound,
-    TResult? Function(StateFailure value)? state,
-    TResult? Function(CancelledFailure value)? cancelled,
-    TResult? Function(UnknownFailure value)? unknown,
-  }) {
-    return authentication?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(NetworkFailure value)? network,
-    TResult Function(TimeoutFailure value)? timeout,
-    TResult Function(AuthenticationFailure value)? authentication,
-    TResult Function(AuthorizationFailure value)? authorization,
-    TResult Function(ValidationFailure value)? validation,
-    TResult Function(FirestoreFailure value)? firestore,
-    TResult Function(StorageFailure value)? storage,
-    TResult Function(NotFoundFailure value)? notFound,
-    TResult Function(StateFailure value)? state,
-    TResult Function(CancelledFailure value)? cancelled,
-    TResult Function(UnknownFailure value)? unknown,
-    required TResult orElse(),
-  }) {
-    if (authentication != null) {
-      return authentication(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TimeoutFailure&&(identical(other.message, message) || other.message == message));
 }
 
-abstract class AuthenticationFailure extends Failure {
-  const factory AuthenticationFailure({required final String message}) =
-      _$AuthenticationFailureImpl;
-  const AuthenticationFailure._() : super._();
 
-  @override
-  String get message;
+@override
+int get hashCode => Object.hash(runtimeType,message);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AuthenticationFailureImplCopyWith<_$AuthenticationFailureImpl>
-  get copyWith => throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'Failure.timeout(message: $message)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$AuthorizationFailureImplCopyWith<$Res>
-    implements $FailureCopyWith<$Res> {
-  factory _$$AuthorizationFailureImplCopyWith(
-    _$AuthorizationFailureImpl value,
-    $Res Function(_$AuthorizationFailureImpl) then,
-  ) = __$$AuthorizationFailureImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String message});
+abstract mixin class $TimeoutFailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
+  factory $TimeoutFailureCopyWith(TimeoutFailure value, $Res Function(TimeoutFailure) _then) = _$TimeoutFailureCopyWithImpl;
+@override @useResult
+$Res call({
+ String message
+});
+
+
+
+
+}
+/// @nodoc
+class _$TimeoutFailureCopyWithImpl<$Res>
+    implements $TimeoutFailureCopyWith<$Res> {
+  _$TimeoutFailureCopyWithImpl(this._self, this._then);
+
+  final TimeoutFailure _self;
+  final $Res Function(TimeoutFailure) _then;
+
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(TimeoutFailure(
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$AuthorizationFailureImplCopyWithImpl<$Res>
-    extends _$FailureCopyWithImpl<$Res, _$AuthorizationFailureImpl>
-    implements _$$AuthorizationFailureImplCopyWith<$Res> {
-  __$$AuthorizationFailureImplCopyWithImpl(
-    _$AuthorizationFailureImpl _value,
-    $Res Function(_$AuthorizationFailureImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$AuthorizationFailureImpl(
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$AuthorizationFailureImpl extends AuthorizationFailure {
-  const _$AuthorizationFailureImpl({required this.message}) : super._();
 
-  @override
-  final String message;
+class AuthenticationFailure extends Failure {
+  const AuthenticationFailure({required this.message}): super._();
+  
 
-  @override
-  String toString() {
-    return 'Failure.authorization(message: $message)';
-  }
+@override final  String message;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AuthorizationFailureImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AuthenticationFailureCopyWith<AuthenticationFailure> get copyWith => _$AuthenticationFailureCopyWithImpl<AuthenticationFailure>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AuthorizationFailureImplCopyWith<_$AuthorizationFailureImpl>
-  get copyWith =>
-      __$$AuthorizationFailureImplCopyWithImpl<_$AuthorizationFailureImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String message) network,
-    required TResult Function(String message) timeout,
-    required TResult Function(String message) authentication,
-    required TResult Function(String message) authorization,
-    required TResult Function(String message, String? field) validation,
-    required TResult Function(String message, String? code) firestore,
-    required TResult Function(String message) storage,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) state,
-    required TResult Function(String message) cancelled,
-    required TResult Function(String message) unknown,
-  }) {
-    return authorization(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? timeout,
-    TResult? Function(String message)? authentication,
-    TResult? Function(String message)? authorization,
-    TResult? Function(String message, String? field)? validation,
-    TResult? Function(String message, String? code)? firestore,
-    TResult? Function(String message)? storage,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? state,
-    TResult? Function(String message)? cancelled,
-    TResult? Function(String message)? unknown,
-  }) {
-    return authorization?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message)? network,
-    TResult Function(String message)? timeout,
-    TResult Function(String message)? authentication,
-    TResult Function(String message)? authorization,
-    TResult Function(String message, String? field)? validation,
-    TResult Function(String message, String? code)? firestore,
-    TResult Function(String message)? storage,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? state,
-    TResult Function(String message)? cancelled,
-    TResult Function(String message)? unknown,
-    required TResult orElse(),
-  }) {
-    if (authorization != null) {
-      return authorization(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(NetworkFailure value) network,
-    required TResult Function(TimeoutFailure value) timeout,
-    required TResult Function(AuthenticationFailure value) authentication,
-    required TResult Function(AuthorizationFailure value) authorization,
-    required TResult Function(ValidationFailure value) validation,
-    required TResult Function(FirestoreFailure value) firestore,
-    required TResult Function(StorageFailure value) storage,
-    required TResult Function(NotFoundFailure value) notFound,
-    required TResult Function(StateFailure value) state,
-    required TResult Function(CancelledFailure value) cancelled,
-    required TResult Function(UnknownFailure value) unknown,
-  }) {
-    return authorization(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NetworkFailure value)? network,
-    TResult? Function(TimeoutFailure value)? timeout,
-    TResult? Function(AuthenticationFailure value)? authentication,
-    TResult? Function(AuthorizationFailure value)? authorization,
-    TResult? Function(ValidationFailure value)? validation,
-    TResult? Function(FirestoreFailure value)? firestore,
-    TResult? Function(StorageFailure value)? storage,
-    TResult? Function(NotFoundFailure value)? notFound,
-    TResult? Function(StateFailure value)? state,
-    TResult? Function(CancelledFailure value)? cancelled,
-    TResult? Function(UnknownFailure value)? unknown,
-  }) {
-    return authorization?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(NetworkFailure value)? network,
-    TResult Function(TimeoutFailure value)? timeout,
-    TResult Function(AuthenticationFailure value)? authentication,
-    TResult Function(AuthorizationFailure value)? authorization,
-    TResult Function(ValidationFailure value)? validation,
-    TResult Function(FirestoreFailure value)? firestore,
-    TResult Function(StorageFailure value)? storage,
-    TResult Function(NotFoundFailure value)? notFound,
-    TResult Function(StateFailure value)? state,
-    TResult Function(CancelledFailure value)? cancelled,
-    TResult Function(UnknownFailure value)? unknown,
-    required TResult orElse(),
-  }) {
-    if (authorization != null) {
-      return authorization(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthenticationFailure&&(identical(other.message, message) || other.message == message));
 }
 
-abstract class AuthorizationFailure extends Failure {
-  const factory AuthorizationFailure({required final String message}) =
-      _$AuthorizationFailureImpl;
-  const AuthorizationFailure._() : super._();
 
-  @override
-  String get message;
+@override
+int get hashCode => Object.hash(runtimeType,message);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AuthorizationFailureImplCopyWith<_$AuthorizationFailureImpl>
-  get copyWith => throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'Failure.authentication(message: $message)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$ValidationFailureImplCopyWith<$Res>
-    implements $FailureCopyWith<$Res> {
-  factory _$$ValidationFailureImplCopyWith(
-    _$ValidationFailureImpl value,
-    $Res Function(_$ValidationFailureImpl) then,
-  ) = __$$ValidationFailureImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String message, String? field});
+abstract mixin class $AuthenticationFailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
+  factory $AuthenticationFailureCopyWith(AuthenticationFailure value, $Res Function(AuthenticationFailure) _then) = _$AuthenticationFailureCopyWithImpl;
+@override @useResult
+$Res call({
+ String message
+});
+
+
+
+
+}
+/// @nodoc
+class _$AuthenticationFailureCopyWithImpl<$Res>
+    implements $AuthenticationFailureCopyWith<$Res> {
+  _$AuthenticationFailureCopyWithImpl(this._self, this._then);
+
+  final AuthenticationFailure _self;
+  final $Res Function(AuthenticationFailure) _then;
+
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(AuthenticationFailure(
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$ValidationFailureImplCopyWithImpl<$Res>
-    extends _$FailureCopyWithImpl<$Res, _$ValidationFailureImpl>
-    implements _$$ValidationFailureImplCopyWith<$Res> {
-  __$$ValidationFailureImplCopyWithImpl(
-    _$ValidationFailureImpl _value,
-    $Res Function(_$ValidationFailureImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? message = null, Object? field = freezed}) {
-    return _then(
-      _$ValidationFailureImpl(
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-        field: freezed == field
-            ? _value.field
-            : field // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$ValidationFailureImpl extends ValidationFailure {
-  const _$ValidationFailureImpl({required this.message, this.field})
-    : super._();
 
-  @override
-  final String message;
-  @override
-  final String? field;
+class AuthorizationFailure extends Failure {
+  const AuthorizationFailure({required this.message}): super._();
+  
 
-  @override
-  String toString() {
-    return 'Failure.validation(message: $message, field: $field)';
-  }
+@override final  String message;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ValidationFailureImpl &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.field, field) || other.field == field));
-  }
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AuthorizationFailureCopyWith<AuthorizationFailure> get copyWith => _$AuthorizationFailureCopyWithImpl<AuthorizationFailure>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, message, field);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ValidationFailureImplCopyWith<_$ValidationFailureImpl> get copyWith =>
-      __$$ValidationFailureImplCopyWithImpl<_$ValidationFailureImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String message) network,
-    required TResult Function(String message) timeout,
-    required TResult Function(String message) authentication,
-    required TResult Function(String message) authorization,
-    required TResult Function(String message, String? field) validation,
-    required TResult Function(String message, String? code) firestore,
-    required TResult Function(String message) storage,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) state,
-    required TResult Function(String message) cancelled,
-    required TResult Function(String message) unknown,
-  }) {
-    return validation(message, field);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? timeout,
-    TResult? Function(String message)? authentication,
-    TResult? Function(String message)? authorization,
-    TResult? Function(String message, String? field)? validation,
-    TResult? Function(String message, String? code)? firestore,
-    TResult? Function(String message)? storage,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? state,
-    TResult? Function(String message)? cancelled,
-    TResult? Function(String message)? unknown,
-  }) {
-    return validation?.call(message, field);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message)? network,
-    TResult Function(String message)? timeout,
-    TResult Function(String message)? authentication,
-    TResult Function(String message)? authorization,
-    TResult Function(String message, String? field)? validation,
-    TResult Function(String message, String? code)? firestore,
-    TResult Function(String message)? storage,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? state,
-    TResult Function(String message)? cancelled,
-    TResult Function(String message)? unknown,
-    required TResult orElse(),
-  }) {
-    if (validation != null) {
-      return validation(message, field);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(NetworkFailure value) network,
-    required TResult Function(TimeoutFailure value) timeout,
-    required TResult Function(AuthenticationFailure value) authentication,
-    required TResult Function(AuthorizationFailure value) authorization,
-    required TResult Function(ValidationFailure value) validation,
-    required TResult Function(FirestoreFailure value) firestore,
-    required TResult Function(StorageFailure value) storage,
-    required TResult Function(NotFoundFailure value) notFound,
-    required TResult Function(StateFailure value) state,
-    required TResult Function(CancelledFailure value) cancelled,
-    required TResult Function(UnknownFailure value) unknown,
-  }) {
-    return validation(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NetworkFailure value)? network,
-    TResult? Function(TimeoutFailure value)? timeout,
-    TResult? Function(AuthenticationFailure value)? authentication,
-    TResult? Function(AuthorizationFailure value)? authorization,
-    TResult? Function(ValidationFailure value)? validation,
-    TResult? Function(FirestoreFailure value)? firestore,
-    TResult? Function(StorageFailure value)? storage,
-    TResult? Function(NotFoundFailure value)? notFound,
-    TResult? Function(StateFailure value)? state,
-    TResult? Function(CancelledFailure value)? cancelled,
-    TResult? Function(UnknownFailure value)? unknown,
-  }) {
-    return validation?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(NetworkFailure value)? network,
-    TResult Function(TimeoutFailure value)? timeout,
-    TResult Function(AuthenticationFailure value)? authentication,
-    TResult Function(AuthorizationFailure value)? authorization,
-    TResult Function(ValidationFailure value)? validation,
-    TResult Function(FirestoreFailure value)? firestore,
-    TResult Function(StorageFailure value)? storage,
-    TResult Function(NotFoundFailure value)? notFound,
-    TResult Function(StateFailure value)? state,
-    TResult Function(CancelledFailure value)? cancelled,
-    TResult Function(UnknownFailure value)? unknown,
-    required TResult orElse(),
-  }) {
-    if (validation != null) {
-      return validation(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthorizationFailure&&(identical(other.message, message) || other.message == message));
 }
 
-abstract class ValidationFailure extends Failure {
-  const factory ValidationFailure({
-    required final String message,
-    final String? field,
-  }) = _$ValidationFailureImpl;
-  const ValidationFailure._() : super._();
 
-  @override
-  String get message;
-  String? get field;
+@override
+int get hashCode => Object.hash(runtimeType,message);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ValidationFailureImplCopyWith<_$ValidationFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'Failure.authorization(message: $message)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$FirestoreFailureImplCopyWith<$Res>
-    implements $FailureCopyWith<$Res> {
-  factory _$$FirestoreFailureImplCopyWith(
-    _$FirestoreFailureImpl value,
-    $Res Function(_$FirestoreFailureImpl) then,
-  ) = __$$FirestoreFailureImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String message, String? code});
+abstract mixin class $AuthorizationFailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
+  factory $AuthorizationFailureCopyWith(AuthorizationFailure value, $Res Function(AuthorizationFailure) _then) = _$AuthorizationFailureCopyWithImpl;
+@override @useResult
+$Res call({
+ String message
+});
+
+
+
+
+}
+/// @nodoc
+class _$AuthorizationFailureCopyWithImpl<$Res>
+    implements $AuthorizationFailureCopyWith<$Res> {
+  _$AuthorizationFailureCopyWithImpl(this._self, this._then);
+
+  final AuthorizationFailure _self;
+  final $Res Function(AuthorizationFailure) _then;
+
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(AuthorizationFailure(
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$FirestoreFailureImplCopyWithImpl<$Res>
-    extends _$FailureCopyWithImpl<$Res, _$FirestoreFailureImpl>
-    implements _$$FirestoreFailureImplCopyWith<$Res> {
-  __$$FirestoreFailureImplCopyWithImpl(
-    _$FirestoreFailureImpl _value,
-    $Res Function(_$FirestoreFailureImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? message = null, Object? code = freezed}) {
-    return _then(
-      _$FirestoreFailureImpl(
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-        code: freezed == code
-            ? _value.code
-            : code // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$FirestoreFailureImpl extends FirestoreFailure {
-  const _$FirestoreFailureImpl({required this.message, this.code}) : super._();
 
-  @override
-  final String message;
-  @override
-  final String? code;
+class ValidationFailure extends Failure {
+  const ValidationFailure({required this.message, this.field}): super._();
+  
 
-  @override
-  String toString() {
-    return 'Failure.firestore(message: $message, code: $code)';
-  }
+@override final  String message;
+ final  String? field;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FirestoreFailureImpl &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.code, code) || other.code == code));
-  }
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ValidationFailureCopyWith<ValidationFailure> get copyWith => _$ValidationFailureCopyWithImpl<ValidationFailure>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, message, code);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FirestoreFailureImplCopyWith<_$FirestoreFailureImpl> get copyWith =>
-      __$$FirestoreFailureImplCopyWithImpl<_$FirestoreFailureImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String message) network,
-    required TResult Function(String message) timeout,
-    required TResult Function(String message) authentication,
-    required TResult Function(String message) authorization,
-    required TResult Function(String message, String? field) validation,
-    required TResult Function(String message, String? code) firestore,
-    required TResult Function(String message) storage,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) state,
-    required TResult Function(String message) cancelled,
-    required TResult Function(String message) unknown,
-  }) {
-    return firestore(message, code);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? timeout,
-    TResult? Function(String message)? authentication,
-    TResult? Function(String message)? authorization,
-    TResult? Function(String message, String? field)? validation,
-    TResult? Function(String message, String? code)? firestore,
-    TResult? Function(String message)? storage,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? state,
-    TResult? Function(String message)? cancelled,
-    TResult? Function(String message)? unknown,
-  }) {
-    return firestore?.call(message, code);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message)? network,
-    TResult Function(String message)? timeout,
-    TResult Function(String message)? authentication,
-    TResult Function(String message)? authorization,
-    TResult Function(String message, String? field)? validation,
-    TResult Function(String message, String? code)? firestore,
-    TResult Function(String message)? storage,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? state,
-    TResult Function(String message)? cancelled,
-    TResult Function(String message)? unknown,
-    required TResult orElse(),
-  }) {
-    if (firestore != null) {
-      return firestore(message, code);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(NetworkFailure value) network,
-    required TResult Function(TimeoutFailure value) timeout,
-    required TResult Function(AuthenticationFailure value) authentication,
-    required TResult Function(AuthorizationFailure value) authorization,
-    required TResult Function(ValidationFailure value) validation,
-    required TResult Function(FirestoreFailure value) firestore,
-    required TResult Function(StorageFailure value) storage,
-    required TResult Function(NotFoundFailure value) notFound,
-    required TResult Function(StateFailure value) state,
-    required TResult Function(CancelledFailure value) cancelled,
-    required TResult Function(UnknownFailure value) unknown,
-  }) {
-    return firestore(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NetworkFailure value)? network,
-    TResult? Function(TimeoutFailure value)? timeout,
-    TResult? Function(AuthenticationFailure value)? authentication,
-    TResult? Function(AuthorizationFailure value)? authorization,
-    TResult? Function(ValidationFailure value)? validation,
-    TResult? Function(FirestoreFailure value)? firestore,
-    TResult? Function(StorageFailure value)? storage,
-    TResult? Function(NotFoundFailure value)? notFound,
-    TResult? Function(StateFailure value)? state,
-    TResult? Function(CancelledFailure value)? cancelled,
-    TResult? Function(UnknownFailure value)? unknown,
-  }) {
-    return firestore?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(NetworkFailure value)? network,
-    TResult Function(TimeoutFailure value)? timeout,
-    TResult Function(AuthenticationFailure value)? authentication,
-    TResult Function(AuthorizationFailure value)? authorization,
-    TResult Function(ValidationFailure value)? validation,
-    TResult Function(FirestoreFailure value)? firestore,
-    TResult Function(StorageFailure value)? storage,
-    TResult Function(NotFoundFailure value)? notFound,
-    TResult Function(StateFailure value)? state,
-    TResult Function(CancelledFailure value)? cancelled,
-    TResult Function(UnknownFailure value)? unknown,
-    required TResult orElse(),
-  }) {
-    if (firestore != null) {
-      return firestore(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ValidationFailure&&(identical(other.message, message) || other.message == message)&&(identical(other.field, field) || other.field == field));
 }
 
-abstract class FirestoreFailure extends Failure {
-  const factory FirestoreFailure({
-    required final String message,
-    final String? code,
-  }) = _$FirestoreFailureImpl;
-  const FirestoreFailure._() : super._();
 
-  @override
-  String get message;
-  String? get code;
+@override
+int get hashCode => Object.hash(runtimeType,message,field);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FirestoreFailureImplCopyWith<_$FirestoreFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'Failure.validation(message: $message, field: $field)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$StorageFailureImplCopyWith<$Res>
-    implements $FailureCopyWith<$Res> {
-  factory _$$StorageFailureImplCopyWith(
-    _$StorageFailureImpl value,
-    $Res Function(_$StorageFailureImpl) then,
-  ) = __$$StorageFailureImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String message});
+abstract mixin class $ValidationFailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
+  factory $ValidationFailureCopyWith(ValidationFailure value, $Res Function(ValidationFailure) _then) = _$ValidationFailureCopyWithImpl;
+@override @useResult
+$Res call({
+ String message, String? field
+});
+
+
+
+
+}
+/// @nodoc
+class _$ValidationFailureCopyWithImpl<$Res>
+    implements $ValidationFailureCopyWith<$Res> {
+  _$ValidationFailureCopyWithImpl(this._self, this._then);
+
+  final ValidationFailure _self;
+  final $Res Function(ValidationFailure) _then;
+
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? message = null,Object? field = freezed,}) {
+  return _then(ValidationFailure(
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,field: freezed == field ? _self.field : field // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-class __$$StorageFailureImplCopyWithImpl<$Res>
-    extends _$FailureCopyWithImpl<$Res, _$StorageFailureImpl>
-    implements _$$StorageFailureImplCopyWith<$Res> {
-  __$$StorageFailureImplCopyWithImpl(
-    _$StorageFailureImpl _value,
-    $Res Function(_$StorageFailureImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$StorageFailureImpl(
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$StorageFailureImpl extends StorageFailure {
-  const _$StorageFailureImpl({required this.message}) : super._();
 
-  @override
-  final String message;
+class FirestoreFailure extends Failure {
+  const FirestoreFailure({required this.message, this.code}): super._();
+  
 
-  @override
-  String toString() {
-    return 'Failure.storage(message: $message)';
-  }
+@override final  String message;
+ final  String? code;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$StorageFailureImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$FirestoreFailureCopyWith<FirestoreFailure> get copyWith => _$FirestoreFailureCopyWithImpl<FirestoreFailure>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$StorageFailureImplCopyWith<_$StorageFailureImpl> get copyWith =>
-      __$$StorageFailureImplCopyWithImpl<_$StorageFailureImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String message) network,
-    required TResult Function(String message) timeout,
-    required TResult Function(String message) authentication,
-    required TResult Function(String message) authorization,
-    required TResult Function(String message, String? field) validation,
-    required TResult Function(String message, String? code) firestore,
-    required TResult Function(String message) storage,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) state,
-    required TResult Function(String message) cancelled,
-    required TResult Function(String message) unknown,
-  }) {
-    return storage(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? timeout,
-    TResult? Function(String message)? authentication,
-    TResult? Function(String message)? authorization,
-    TResult? Function(String message, String? field)? validation,
-    TResult? Function(String message, String? code)? firestore,
-    TResult? Function(String message)? storage,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? state,
-    TResult? Function(String message)? cancelled,
-    TResult? Function(String message)? unknown,
-  }) {
-    return storage?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message)? network,
-    TResult Function(String message)? timeout,
-    TResult Function(String message)? authentication,
-    TResult Function(String message)? authorization,
-    TResult Function(String message, String? field)? validation,
-    TResult Function(String message, String? code)? firestore,
-    TResult Function(String message)? storage,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? state,
-    TResult Function(String message)? cancelled,
-    TResult Function(String message)? unknown,
-    required TResult orElse(),
-  }) {
-    if (storage != null) {
-      return storage(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(NetworkFailure value) network,
-    required TResult Function(TimeoutFailure value) timeout,
-    required TResult Function(AuthenticationFailure value) authentication,
-    required TResult Function(AuthorizationFailure value) authorization,
-    required TResult Function(ValidationFailure value) validation,
-    required TResult Function(FirestoreFailure value) firestore,
-    required TResult Function(StorageFailure value) storage,
-    required TResult Function(NotFoundFailure value) notFound,
-    required TResult Function(StateFailure value) state,
-    required TResult Function(CancelledFailure value) cancelled,
-    required TResult Function(UnknownFailure value) unknown,
-  }) {
-    return storage(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NetworkFailure value)? network,
-    TResult? Function(TimeoutFailure value)? timeout,
-    TResult? Function(AuthenticationFailure value)? authentication,
-    TResult? Function(AuthorizationFailure value)? authorization,
-    TResult? Function(ValidationFailure value)? validation,
-    TResult? Function(FirestoreFailure value)? firestore,
-    TResult? Function(StorageFailure value)? storage,
-    TResult? Function(NotFoundFailure value)? notFound,
-    TResult? Function(StateFailure value)? state,
-    TResult? Function(CancelledFailure value)? cancelled,
-    TResult? Function(UnknownFailure value)? unknown,
-  }) {
-    return storage?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(NetworkFailure value)? network,
-    TResult Function(TimeoutFailure value)? timeout,
-    TResult Function(AuthenticationFailure value)? authentication,
-    TResult Function(AuthorizationFailure value)? authorization,
-    TResult Function(ValidationFailure value)? validation,
-    TResult Function(FirestoreFailure value)? firestore,
-    TResult Function(StorageFailure value)? storage,
-    TResult Function(NotFoundFailure value)? notFound,
-    TResult Function(StateFailure value)? state,
-    TResult Function(CancelledFailure value)? cancelled,
-    TResult Function(UnknownFailure value)? unknown,
-    required TResult orElse(),
-  }) {
-    if (storage != null) {
-      return storage(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FirestoreFailure&&(identical(other.message, message) || other.message == message)&&(identical(other.code, code) || other.code == code));
 }
 
-abstract class StorageFailure extends Failure {
-  const factory StorageFailure({required final String message}) =
-      _$StorageFailureImpl;
-  const StorageFailure._() : super._();
 
-  @override
-  String get message;
+@override
+int get hashCode => Object.hash(runtimeType,message,code);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StorageFailureImplCopyWith<_$StorageFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'Failure.firestore(message: $message, code: $code)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$NotFoundFailureImplCopyWith<$Res>
-    implements $FailureCopyWith<$Res> {
-  factory _$$NotFoundFailureImplCopyWith(
-    _$NotFoundFailureImpl value,
-    $Res Function(_$NotFoundFailureImpl) then,
-  ) = __$$NotFoundFailureImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String message});
+abstract mixin class $FirestoreFailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
+  factory $FirestoreFailureCopyWith(FirestoreFailure value, $Res Function(FirestoreFailure) _then) = _$FirestoreFailureCopyWithImpl;
+@override @useResult
+$Res call({
+ String message, String? code
+});
+
+
+
+
+}
+/// @nodoc
+class _$FirestoreFailureCopyWithImpl<$Res>
+    implements $FirestoreFailureCopyWith<$Res> {
+  _$FirestoreFailureCopyWithImpl(this._self, this._then);
+
+  final FirestoreFailure _self;
+  final $Res Function(FirestoreFailure) _then;
+
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? message = null,Object? code = freezed,}) {
+  return _then(FirestoreFailure(
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,code: freezed == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-class __$$NotFoundFailureImplCopyWithImpl<$Res>
-    extends _$FailureCopyWithImpl<$Res, _$NotFoundFailureImpl>
-    implements _$$NotFoundFailureImplCopyWith<$Res> {
-  __$$NotFoundFailureImplCopyWithImpl(
-    _$NotFoundFailureImpl _value,
-    $Res Function(_$NotFoundFailureImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$NotFoundFailureImpl(
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$NotFoundFailureImpl extends NotFoundFailure {
-  const _$NotFoundFailureImpl({required this.message}) : super._();
 
-  @override
-  final String message;
+class StorageFailure extends Failure {
+  const StorageFailure({required this.message}): super._();
+  
 
-  @override
-  String toString() {
-    return 'Failure.notFound(message: $message)';
-  }
+@override final  String message;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NotFoundFailureImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$StorageFailureCopyWith<StorageFailure> get copyWith => _$StorageFailureCopyWithImpl<StorageFailure>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$NotFoundFailureImplCopyWith<_$NotFoundFailureImpl> get copyWith =>
-      __$$NotFoundFailureImplCopyWithImpl<_$NotFoundFailureImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String message) network,
-    required TResult Function(String message) timeout,
-    required TResult Function(String message) authentication,
-    required TResult Function(String message) authorization,
-    required TResult Function(String message, String? field) validation,
-    required TResult Function(String message, String? code) firestore,
-    required TResult Function(String message) storage,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) state,
-    required TResult Function(String message) cancelled,
-    required TResult Function(String message) unknown,
-  }) {
-    return notFound(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? timeout,
-    TResult? Function(String message)? authentication,
-    TResult? Function(String message)? authorization,
-    TResult? Function(String message, String? field)? validation,
-    TResult? Function(String message, String? code)? firestore,
-    TResult? Function(String message)? storage,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? state,
-    TResult? Function(String message)? cancelled,
-    TResult? Function(String message)? unknown,
-  }) {
-    return notFound?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message)? network,
-    TResult Function(String message)? timeout,
-    TResult Function(String message)? authentication,
-    TResult Function(String message)? authorization,
-    TResult Function(String message, String? field)? validation,
-    TResult Function(String message, String? code)? firestore,
-    TResult Function(String message)? storage,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? state,
-    TResult Function(String message)? cancelled,
-    TResult Function(String message)? unknown,
-    required TResult orElse(),
-  }) {
-    if (notFound != null) {
-      return notFound(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(NetworkFailure value) network,
-    required TResult Function(TimeoutFailure value) timeout,
-    required TResult Function(AuthenticationFailure value) authentication,
-    required TResult Function(AuthorizationFailure value) authorization,
-    required TResult Function(ValidationFailure value) validation,
-    required TResult Function(FirestoreFailure value) firestore,
-    required TResult Function(StorageFailure value) storage,
-    required TResult Function(NotFoundFailure value) notFound,
-    required TResult Function(StateFailure value) state,
-    required TResult Function(CancelledFailure value) cancelled,
-    required TResult Function(UnknownFailure value) unknown,
-  }) {
-    return notFound(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NetworkFailure value)? network,
-    TResult? Function(TimeoutFailure value)? timeout,
-    TResult? Function(AuthenticationFailure value)? authentication,
-    TResult? Function(AuthorizationFailure value)? authorization,
-    TResult? Function(ValidationFailure value)? validation,
-    TResult? Function(FirestoreFailure value)? firestore,
-    TResult? Function(StorageFailure value)? storage,
-    TResult? Function(NotFoundFailure value)? notFound,
-    TResult? Function(StateFailure value)? state,
-    TResult? Function(CancelledFailure value)? cancelled,
-    TResult? Function(UnknownFailure value)? unknown,
-  }) {
-    return notFound?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(NetworkFailure value)? network,
-    TResult Function(TimeoutFailure value)? timeout,
-    TResult Function(AuthenticationFailure value)? authentication,
-    TResult Function(AuthorizationFailure value)? authorization,
-    TResult Function(ValidationFailure value)? validation,
-    TResult Function(FirestoreFailure value)? firestore,
-    TResult Function(StorageFailure value)? storage,
-    TResult Function(NotFoundFailure value)? notFound,
-    TResult Function(StateFailure value)? state,
-    TResult Function(CancelledFailure value)? cancelled,
-    TResult Function(UnknownFailure value)? unknown,
-    required TResult orElse(),
-  }) {
-    if (notFound != null) {
-      return notFound(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is StorageFailure&&(identical(other.message, message) || other.message == message));
 }
 
-abstract class NotFoundFailure extends Failure {
-  const factory NotFoundFailure({required final String message}) =
-      _$NotFoundFailureImpl;
-  const NotFoundFailure._() : super._();
 
-  @override
-  String get message;
+@override
+int get hashCode => Object.hash(runtimeType,message);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NotFoundFailureImplCopyWith<_$NotFoundFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'Failure.storage(message: $message)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$StateFailureImplCopyWith<$Res>
-    implements $FailureCopyWith<$Res> {
-  factory _$$StateFailureImplCopyWith(
-    _$StateFailureImpl value,
-    $Res Function(_$StateFailureImpl) then,
-  ) = __$$StateFailureImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String message});
+abstract mixin class $StorageFailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
+  factory $StorageFailureCopyWith(StorageFailure value, $Res Function(StorageFailure) _then) = _$StorageFailureCopyWithImpl;
+@override @useResult
+$Res call({
+ String message
+});
+
+
+
+
+}
+/// @nodoc
+class _$StorageFailureCopyWithImpl<$Res>
+    implements $StorageFailureCopyWith<$Res> {
+  _$StorageFailureCopyWithImpl(this._self, this._then);
+
+  final StorageFailure _self;
+  final $Res Function(StorageFailure) _then;
+
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(StorageFailure(
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$StateFailureImplCopyWithImpl<$Res>
-    extends _$FailureCopyWithImpl<$Res, _$StateFailureImpl>
-    implements _$$StateFailureImplCopyWith<$Res> {
-  __$$StateFailureImplCopyWithImpl(
-    _$StateFailureImpl _value,
-    $Res Function(_$StateFailureImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$StateFailureImpl(
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$StateFailureImpl extends StateFailure {
-  const _$StateFailureImpl({required this.message}) : super._();
 
-  @override
-  final String message;
+class NotFoundFailure extends Failure {
+  const NotFoundFailure({required this.message}): super._();
+  
 
-  @override
-  String toString() {
-    return 'Failure.state(message: $message)';
-  }
+@override final  String message;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$StateFailureImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$NotFoundFailureCopyWith<NotFoundFailure> get copyWith => _$NotFoundFailureCopyWithImpl<NotFoundFailure>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$StateFailureImplCopyWith<_$StateFailureImpl> get copyWith =>
-      __$$StateFailureImplCopyWithImpl<_$StateFailureImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String message) network,
-    required TResult Function(String message) timeout,
-    required TResult Function(String message) authentication,
-    required TResult Function(String message) authorization,
-    required TResult Function(String message, String? field) validation,
-    required TResult Function(String message, String? code) firestore,
-    required TResult Function(String message) storage,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) state,
-    required TResult Function(String message) cancelled,
-    required TResult Function(String message) unknown,
-  }) {
-    return state(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? timeout,
-    TResult? Function(String message)? authentication,
-    TResult? Function(String message)? authorization,
-    TResult? Function(String message, String? field)? validation,
-    TResult? Function(String message, String? code)? firestore,
-    TResult? Function(String message)? storage,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? state,
-    TResult? Function(String message)? cancelled,
-    TResult? Function(String message)? unknown,
-  }) {
-    return state?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message)? network,
-    TResult Function(String message)? timeout,
-    TResult Function(String message)? authentication,
-    TResult Function(String message)? authorization,
-    TResult Function(String message, String? field)? validation,
-    TResult Function(String message, String? code)? firestore,
-    TResult Function(String message)? storage,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? state,
-    TResult Function(String message)? cancelled,
-    TResult Function(String message)? unknown,
-    required TResult orElse(),
-  }) {
-    if (state != null) {
-      return state(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(NetworkFailure value) network,
-    required TResult Function(TimeoutFailure value) timeout,
-    required TResult Function(AuthenticationFailure value) authentication,
-    required TResult Function(AuthorizationFailure value) authorization,
-    required TResult Function(ValidationFailure value) validation,
-    required TResult Function(FirestoreFailure value) firestore,
-    required TResult Function(StorageFailure value) storage,
-    required TResult Function(NotFoundFailure value) notFound,
-    required TResult Function(StateFailure value) state,
-    required TResult Function(CancelledFailure value) cancelled,
-    required TResult Function(UnknownFailure value) unknown,
-  }) {
-    return state(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NetworkFailure value)? network,
-    TResult? Function(TimeoutFailure value)? timeout,
-    TResult? Function(AuthenticationFailure value)? authentication,
-    TResult? Function(AuthorizationFailure value)? authorization,
-    TResult? Function(ValidationFailure value)? validation,
-    TResult? Function(FirestoreFailure value)? firestore,
-    TResult? Function(StorageFailure value)? storage,
-    TResult? Function(NotFoundFailure value)? notFound,
-    TResult? Function(StateFailure value)? state,
-    TResult? Function(CancelledFailure value)? cancelled,
-    TResult? Function(UnknownFailure value)? unknown,
-  }) {
-    return state?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(NetworkFailure value)? network,
-    TResult Function(TimeoutFailure value)? timeout,
-    TResult Function(AuthenticationFailure value)? authentication,
-    TResult Function(AuthorizationFailure value)? authorization,
-    TResult Function(ValidationFailure value)? validation,
-    TResult Function(FirestoreFailure value)? firestore,
-    TResult Function(StorageFailure value)? storage,
-    TResult Function(NotFoundFailure value)? notFound,
-    TResult Function(StateFailure value)? state,
-    TResult Function(CancelledFailure value)? cancelled,
-    TResult Function(UnknownFailure value)? unknown,
-    required TResult orElse(),
-  }) {
-    if (state != null) {
-      return state(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotFoundFailure&&(identical(other.message, message) || other.message == message));
 }
 
-abstract class StateFailure extends Failure {
-  const factory StateFailure({required final String message}) =
-      _$StateFailureImpl;
-  const StateFailure._() : super._();
 
-  @override
-  String get message;
+@override
+int get hashCode => Object.hash(runtimeType,message);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StateFailureImplCopyWith<_$StateFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'Failure.notFound(message: $message)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$CancelledFailureImplCopyWith<$Res>
-    implements $FailureCopyWith<$Res> {
-  factory _$$CancelledFailureImplCopyWith(
-    _$CancelledFailureImpl value,
-    $Res Function(_$CancelledFailureImpl) then,
-  ) = __$$CancelledFailureImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String message});
+abstract mixin class $NotFoundFailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
+  factory $NotFoundFailureCopyWith(NotFoundFailure value, $Res Function(NotFoundFailure) _then) = _$NotFoundFailureCopyWithImpl;
+@override @useResult
+$Res call({
+ String message
+});
+
+
+
+
+}
+/// @nodoc
+class _$NotFoundFailureCopyWithImpl<$Res>
+    implements $NotFoundFailureCopyWith<$Res> {
+  _$NotFoundFailureCopyWithImpl(this._self, this._then);
+
+  final NotFoundFailure _self;
+  final $Res Function(NotFoundFailure) _then;
+
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(NotFoundFailure(
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$CancelledFailureImplCopyWithImpl<$Res>
-    extends _$FailureCopyWithImpl<$Res, _$CancelledFailureImpl>
-    implements _$$CancelledFailureImplCopyWith<$Res> {
-  __$$CancelledFailureImplCopyWithImpl(
-    _$CancelledFailureImpl _value,
-    $Res Function(_$CancelledFailureImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$CancelledFailureImpl(
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$CancelledFailureImpl extends CancelledFailure {
-  const _$CancelledFailureImpl({required this.message}) : super._();
 
-  @override
-  final String message;
+class StateFailure extends Failure {
+  const StateFailure({required this.message}): super._();
+  
 
-  @override
-  String toString() {
-    return 'Failure.cancelled(message: $message)';
-  }
+@override final  String message;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CancelledFailureImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$StateFailureCopyWith<StateFailure> get copyWith => _$StateFailureCopyWithImpl<StateFailure>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CancelledFailureImplCopyWith<_$CancelledFailureImpl> get copyWith =>
-      __$$CancelledFailureImplCopyWithImpl<_$CancelledFailureImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String message) network,
-    required TResult Function(String message) timeout,
-    required TResult Function(String message) authentication,
-    required TResult Function(String message) authorization,
-    required TResult Function(String message, String? field) validation,
-    required TResult Function(String message, String? code) firestore,
-    required TResult Function(String message) storage,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) state,
-    required TResult Function(String message) cancelled,
-    required TResult Function(String message) unknown,
-  }) {
-    return cancelled(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? timeout,
-    TResult? Function(String message)? authentication,
-    TResult? Function(String message)? authorization,
-    TResult? Function(String message, String? field)? validation,
-    TResult? Function(String message, String? code)? firestore,
-    TResult? Function(String message)? storage,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? state,
-    TResult? Function(String message)? cancelled,
-    TResult? Function(String message)? unknown,
-  }) {
-    return cancelled?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message)? network,
-    TResult Function(String message)? timeout,
-    TResult Function(String message)? authentication,
-    TResult Function(String message)? authorization,
-    TResult Function(String message, String? field)? validation,
-    TResult Function(String message, String? code)? firestore,
-    TResult Function(String message)? storage,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? state,
-    TResult Function(String message)? cancelled,
-    TResult Function(String message)? unknown,
-    required TResult orElse(),
-  }) {
-    if (cancelled != null) {
-      return cancelled(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(NetworkFailure value) network,
-    required TResult Function(TimeoutFailure value) timeout,
-    required TResult Function(AuthenticationFailure value) authentication,
-    required TResult Function(AuthorizationFailure value) authorization,
-    required TResult Function(ValidationFailure value) validation,
-    required TResult Function(FirestoreFailure value) firestore,
-    required TResult Function(StorageFailure value) storage,
-    required TResult Function(NotFoundFailure value) notFound,
-    required TResult Function(StateFailure value) state,
-    required TResult Function(CancelledFailure value) cancelled,
-    required TResult Function(UnknownFailure value) unknown,
-  }) {
-    return cancelled(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NetworkFailure value)? network,
-    TResult? Function(TimeoutFailure value)? timeout,
-    TResult? Function(AuthenticationFailure value)? authentication,
-    TResult? Function(AuthorizationFailure value)? authorization,
-    TResult? Function(ValidationFailure value)? validation,
-    TResult? Function(FirestoreFailure value)? firestore,
-    TResult? Function(StorageFailure value)? storage,
-    TResult? Function(NotFoundFailure value)? notFound,
-    TResult? Function(StateFailure value)? state,
-    TResult? Function(CancelledFailure value)? cancelled,
-    TResult? Function(UnknownFailure value)? unknown,
-  }) {
-    return cancelled?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(NetworkFailure value)? network,
-    TResult Function(TimeoutFailure value)? timeout,
-    TResult Function(AuthenticationFailure value)? authentication,
-    TResult Function(AuthorizationFailure value)? authorization,
-    TResult Function(ValidationFailure value)? validation,
-    TResult Function(FirestoreFailure value)? firestore,
-    TResult Function(StorageFailure value)? storage,
-    TResult Function(NotFoundFailure value)? notFound,
-    TResult Function(StateFailure value)? state,
-    TResult Function(CancelledFailure value)? cancelled,
-    TResult Function(UnknownFailure value)? unknown,
-    required TResult orElse(),
-  }) {
-    if (cancelled != null) {
-      return cancelled(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is StateFailure&&(identical(other.message, message) || other.message == message));
 }
 
-abstract class CancelledFailure extends Failure {
-  const factory CancelledFailure({required final String message}) =
-      _$CancelledFailureImpl;
-  const CancelledFailure._() : super._();
 
-  @override
-  String get message;
+@override
+int get hashCode => Object.hash(runtimeType,message);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CancelledFailureImplCopyWith<_$CancelledFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'Failure.state(message: $message)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$UnknownFailureImplCopyWith<$Res>
-    implements $FailureCopyWith<$Res> {
-  factory _$$UnknownFailureImplCopyWith(
-    _$UnknownFailureImpl value,
-    $Res Function(_$UnknownFailureImpl) then,
-  ) = __$$UnknownFailureImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String message});
+abstract mixin class $StateFailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
+  factory $StateFailureCopyWith(StateFailure value, $Res Function(StateFailure) _then) = _$StateFailureCopyWithImpl;
+@override @useResult
+$Res call({
+ String message
+});
+
+
+
+
+}
+/// @nodoc
+class _$StateFailureCopyWithImpl<$Res>
+    implements $StateFailureCopyWith<$Res> {
+  _$StateFailureCopyWithImpl(this._self, this._then);
+
+  final StateFailure _self;
+  final $Res Function(StateFailure) _then;
+
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(StateFailure(
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$UnknownFailureImplCopyWithImpl<$Res>
-    extends _$FailureCopyWithImpl<$Res, _$UnknownFailureImpl>
-    implements _$$UnknownFailureImplCopyWith<$Res> {
-  __$$UnknownFailureImplCopyWithImpl(
-    _$UnknownFailureImpl _value,
-    $Res Function(_$UnknownFailureImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$UnknownFailureImpl(
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$UnknownFailureImpl extends UnknownFailure {
-  const _$UnknownFailureImpl({required this.message}) : super._();
 
-  @override
-  final String message;
+class CancelledFailure extends Failure {
+  const CancelledFailure({required this.message}): super._();
+  
 
-  @override
-  String toString() {
-    return 'Failure.unknown(message: $message)';
-  }
+@override final  String message;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UnknownFailureImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CancelledFailureCopyWith<CancelledFailure> get copyWith => _$CancelledFailureCopyWithImpl<CancelledFailure>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UnknownFailureImplCopyWith<_$UnknownFailureImpl> get copyWith =>
-      __$$UnknownFailureImplCopyWithImpl<_$UnknownFailureImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String message) network,
-    required TResult Function(String message) timeout,
-    required TResult Function(String message) authentication,
-    required TResult Function(String message) authorization,
-    required TResult Function(String message, String? field) validation,
-    required TResult Function(String message, String? code) firestore,
-    required TResult Function(String message) storage,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) state,
-    required TResult Function(String message) cancelled,
-    required TResult Function(String message) unknown,
-  }) {
-    return unknown(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? timeout,
-    TResult? Function(String message)? authentication,
-    TResult? Function(String message)? authorization,
-    TResult? Function(String message, String? field)? validation,
-    TResult? Function(String message, String? code)? firestore,
-    TResult? Function(String message)? storage,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? state,
-    TResult? Function(String message)? cancelled,
-    TResult? Function(String message)? unknown,
-  }) {
-    return unknown?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message)? network,
-    TResult Function(String message)? timeout,
-    TResult Function(String message)? authentication,
-    TResult Function(String message)? authorization,
-    TResult Function(String message, String? field)? validation,
-    TResult Function(String message, String? code)? firestore,
-    TResult Function(String message)? storage,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? state,
-    TResult Function(String message)? cancelled,
-    TResult Function(String message)? unknown,
-    required TResult orElse(),
-  }) {
-    if (unknown != null) {
-      return unknown(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(NetworkFailure value) network,
-    required TResult Function(TimeoutFailure value) timeout,
-    required TResult Function(AuthenticationFailure value) authentication,
-    required TResult Function(AuthorizationFailure value) authorization,
-    required TResult Function(ValidationFailure value) validation,
-    required TResult Function(FirestoreFailure value) firestore,
-    required TResult Function(StorageFailure value) storage,
-    required TResult Function(NotFoundFailure value) notFound,
-    required TResult Function(StateFailure value) state,
-    required TResult Function(CancelledFailure value) cancelled,
-    required TResult Function(UnknownFailure value) unknown,
-  }) {
-    return unknown(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NetworkFailure value)? network,
-    TResult? Function(TimeoutFailure value)? timeout,
-    TResult? Function(AuthenticationFailure value)? authentication,
-    TResult? Function(AuthorizationFailure value)? authorization,
-    TResult? Function(ValidationFailure value)? validation,
-    TResult? Function(FirestoreFailure value)? firestore,
-    TResult? Function(StorageFailure value)? storage,
-    TResult? Function(NotFoundFailure value)? notFound,
-    TResult? Function(StateFailure value)? state,
-    TResult? Function(CancelledFailure value)? cancelled,
-    TResult? Function(UnknownFailure value)? unknown,
-  }) {
-    return unknown?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(NetworkFailure value)? network,
-    TResult Function(TimeoutFailure value)? timeout,
-    TResult Function(AuthenticationFailure value)? authentication,
-    TResult Function(AuthorizationFailure value)? authorization,
-    TResult Function(ValidationFailure value)? validation,
-    TResult Function(FirestoreFailure value)? firestore,
-    TResult Function(StorageFailure value)? storage,
-    TResult Function(NotFoundFailure value)? notFound,
-    TResult Function(StateFailure value)? state,
-    TResult Function(CancelledFailure value)? cancelled,
-    TResult Function(UnknownFailure value)? unknown,
-    required TResult orElse(),
-  }) {
-    if (unknown != null) {
-      return unknown(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CancelledFailure&&(identical(other.message, message) || other.message == message));
 }
 
-abstract class UnknownFailure extends Failure {
-  const factory UnknownFailure({required final String message}) =
-      _$UnknownFailureImpl;
-  const UnknownFailure._() : super._();
 
-  @override
-  String get message;
+@override
+int get hashCode => Object.hash(runtimeType,message);
 
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UnknownFailureImplCopyWith<_$UnknownFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'Failure.cancelled(message: $message)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class $CancelledFailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
+  factory $CancelledFailureCopyWith(CancelledFailure value, $Res Function(CancelledFailure) _then) = _$CancelledFailureCopyWithImpl;
+@override @useResult
+$Res call({
+ String message
+});
+
+
+
+
+}
+/// @nodoc
+class _$CancelledFailureCopyWithImpl<$Res>
+    implements $CancelledFailureCopyWith<$Res> {
+  _$CancelledFailureCopyWithImpl(this._self, this._then);
+
+  final CancelledFailure _self;
+  final $Res Function(CancelledFailure) _then;
+
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(CancelledFailure(
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class UnknownFailure extends Failure {
+  const UnknownFailure({required this.message}): super._();
+  
+
+@override final  String message;
+
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UnknownFailureCopyWith<UnknownFailure> get copyWith => _$UnknownFailureCopyWithImpl<UnknownFailure>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UnknownFailure&&(identical(other.message, message) || other.message == message));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,message);
+
+@override
+String toString() {
+  return 'Failure.unknown(message: $message)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $UnknownFailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
+  factory $UnknownFailureCopyWith(UnknownFailure value, $Res Function(UnknownFailure) _then) = _$UnknownFailureCopyWithImpl;
+@override @useResult
+$Res call({
+ String message
+});
+
+
+
+
+}
+/// @nodoc
+class _$UnknownFailureCopyWithImpl<$Res>
+    implements $UnknownFailureCopyWith<$Res> {
+  _$UnknownFailureCopyWithImpl(this._self, this._then);
+
+  final UnknownFailure _self;
+  final $Res Function(UnknownFailure) _then;
+
+/// Create a copy of Failure
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(UnknownFailure(
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on
