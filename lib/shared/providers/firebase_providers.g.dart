@@ -31,8 +31,7 @@ const firebaseAppProvider = FirebaseAppProvider._();
 /// final firebaseApp = ref.watch(firebaseAppProvider);
 /// ```
 
-final class FirebaseAppProvider
-    extends $FunctionalProvider<FirebaseApp, FirebaseApp, FirebaseApp>
+final class FirebaseAppProvider extends $FunctionalProvider<FirebaseApp, FirebaseApp, FirebaseApp>
     with $Provider<FirebaseApp> {
   /// Singleton Firebase App instance
   ///
@@ -44,23 +43,22 @@ final class FirebaseAppProvider
   /// final firebaseApp = ref.watch(firebaseAppProvider);
   /// ```
   const FirebaseAppProvider._()
-      : super(
-          from: null,
-          argument: null,
-          retry: null,
-          name: r'firebaseAppProvider',
-          isAutoDispose: false,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'firebaseAppProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
   @override
   String debugGetCreateSourceHash() => _$firebaseAppHash();
 
   @$internal
   @override
-  $ProviderElement<FirebaseApp> $createElement($ProviderPointer pointer) =>
-      $ProviderElement(pointer);
+  $ProviderElement<FirebaseApp> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
 
   @override
   FirebaseApp create(Ref ref) {
@@ -69,10 +67,7 @@ final class FirebaseAppProvider
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(FirebaseApp value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<FirebaseApp>(value),
-    );
+    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<FirebaseApp>(value));
   }
 }
 
@@ -103,8 +98,8 @@ const firestoreProvider = FirestoreProvider._();
 /// final docs = await firestore.collection('todos').get();
 /// ```
 
-final class FirestoreProvider extends $FunctionalProvider<FirebaseFirestore,
-    FirebaseFirestore, FirebaseFirestore> with $Provider<FirebaseFirestore> {
+final class FirestoreProvider extends $FunctionalProvider<FirebaseFirestore, FirebaseFirestore, FirebaseFirestore>
+    with $Provider<FirebaseFirestore> {
   /// Singleton Firestore instance
   ///
   /// Provides access to Cloud Firestore.
@@ -116,25 +111,22 @@ final class FirestoreProvider extends $FunctionalProvider<FirebaseFirestore,
   /// final docs = await firestore.collection('todos').get();
   /// ```
   const FirestoreProvider._()
-      : super(
-          from: null,
-          argument: null,
-          retry: null,
-          name: r'firestoreProvider',
-          isAutoDispose: false,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'firestoreProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
   @override
   String debugGetCreateSourceHash() => _$firestoreHash();
 
   @$internal
   @override
-  $ProviderElement<FirebaseFirestore> $createElement(
-    $ProviderPointer pointer,
-  ) =>
-      $ProviderElement(pointer);
+  $ProviderElement<FirebaseFirestore> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
 
   @override
   FirebaseFirestore create(Ref ref) {
@@ -143,10 +135,7 @@ final class FirestoreProvider extends $FunctionalProvider<FirebaseFirestore,
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(FirebaseFirestore value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<FirebaseFirestore>(value),
-    );
+    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<FirebaseFirestore>(value));
   }
 }
 
@@ -177,8 +166,7 @@ const firebaseAuthProvider = FirebaseAuthProvider._();
 /// final user = auth.currentUser;
 /// ```
 
-final class FirebaseAuthProvider
-    extends $FunctionalProvider<FirebaseAuth, FirebaseAuth, FirebaseAuth>
+final class FirebaseAuthProvider extends $FunctionalProvider<FirebaseAuth, FirebaseAuth, FirebaseAuth>
     with $Provider<FirebaseAuth> {
   /// Singleton Firebase Authentication instance
   ///
@@ -191,23 +179,22 @@ final class FirebaseAuthProvider
   /// final user = auth.currentUser;
   /// ```
   const FirebaseAuthProvider._()
-      : super(
-          from: null,
-          argument: null,
-          retry: null,
-          name: r'firebaseAuthProvider',
-          isAutoDispose: false,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'firebaseAuthProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
   @override
   String debugGetCreateSourceHash() => _$firebaseAuthHash();
 
   @$internal
   @override
-  $ProviderElement<FirebaseAuth> $createElement($ProviderPointer pointer) =>
-      $ProviderElement(pointer);
+  $ProviderElement<FirebaseAuth> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
 
   @override
   FirebaseAuth create(Ref ref) {
@@ -216,10 +203,7 @@ final class FirebaseAuthProvider
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(FirebaseAuth value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<FirebaseAuth>(value),
-    );
+    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<FirebaseAuth>(value));
   }
 }
 
@@ -260,8 +244,7 @@ const currentUserProvider = CurrentUserProvider._();
 /// );
 /// ```
 
-final class CurrentUserProvider
-    extends $FunctionalProvider<AsyncValue<User?>, User?, Stream<User?>>
+final class CurrentUserProvider extends $FunctionalProvider<AsyncValue<User?>, User?, Stream<User?>>
     with $FutureModifier<User?>, $StreamProvider<User?> {
   /// Current authenticated user
   ///
@@ -279,23 +262,22 @@ final class CurrentUserProvider
   /// );
   /// ```
   const CurrentUserProvider._()
-      : super(
-          from: null,
-          argument: null,
-          retry: null,
-          name: r'currentUserProvider',
-          isAutoDispose: true,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'currentUserProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
   @override
   String debugGetCreateSourceHash() => _$currentUserHash();
 
   @$internal
   @override
-  $StreamProviderElement<User?> $createElement($ProviderPointer pointer) =>
-      $StreamProviderElement(pointer);
+  $StreamProviderElement<User?> $createElement($ProviderPointer pointer) => $StreamProviderElement(pointer);
 
   @override
   Stream<User?> create(Ref ref) {
@@ -338,8 +320,7 @@ const currentUserIdProvider = CurrentUserIdProvider._();
 /// );
 /// ```
 
-final class CurrentUserIdProvider
-    extends $FunctionalProvider<AsyncValue<String?>, String?, Stream<String?>>
+final class CurrentUserIdProvider extends $FunctionalProvider<AsyncValue<String?>, String?, Stream<String?>>
     with $FutureModifier<String?>, $StreamProvider<String?> {
   /// Current authenticated user ID
   ///
@@ -356,23 +337,22 @@ final class CurrentUserIdProvider
   /// );
   /// ```
   const CurrentUserIdProvider._()
-      : super(
-          from: null,
-          argument: null,
-          retry: null,
-          name: r'currentUserIdProvider',
-          isAutoDispose: true,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'currentUserIdProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
   @override
   String debugGetCreateSourceHash() => _$currentUserIdHash();
 
   @$internal
   @override
-  $StreamProviderElement<String?> $createElement($ProviderPointer pointer) =>
-      $StreamProviderElement(pointer);
+  $StreamProviderElement<String?> $createElement($ProviderPointer pointer) => $StreamProviderElement(pointer);
 
   @override
   Stream<String?> create(Ref ref) {
@@ -427,8 +407,7 @@ const isAuthenticatedProvider = IsAuthenticatedProvider._();
 /// );
 /// ```
 
-final class IsAuthenticatedProvider
-    extends $FunctionalProvider<AsyncValue<bool>, bool, Stream<bool>>
+final class IsAuthenticatedProvider extends $FunctionalProvider<AsyncValue<bool>, bool, Stream<bool>>
     with $FutureModifier<bool>, $StreamProvider<bool> {
   /// Whether the current user is authenticated
   ///
@@ -451,23 +430,22 @@ final class IsAuthenticatedProvider
   /// );
   /// ```
   const IsAuthenticatedProvider._()
-      : super(
-          from: null,
-          argument: null,
-          retry: null,
-          name: r'isAuthenticatedProvider',
-          isAutoDispose: true,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'isAuthenticatedProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
   @override
   String debugGetCreateSourceHash() => _$isAuthenticatedHash();
 
   @$internal
   @override
-  $StreamProviderElement<bool> $createElement($ProviderPointer pointer) =>
-      $StreamProviderElement(pointer);
+  $StreamProviderElement<bool> $createElement($ProviderPointer pointer) => $StreamProviderElement(pointer);
 
   @override
   Stream<bool> create(Ref ref) {

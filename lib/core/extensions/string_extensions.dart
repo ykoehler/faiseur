@@ -92,10 +92,7 @@ extension StringExtensions on String {
   }
 
   /// Returns slug version of string (lowercase, dashes instead of spaces)
-  String get toSlug => lowercase
-      .replaceAll(RegExp(r'[^\w\s-]'), '')
-      .trim()
-      .replaceAll(RegExp(r'[-\s]+'), '-');
+  String get toSlug => lowercase.replaceAll(RegExp(r'[^\w\s-]'), '').trim().replaceAll(RegExp(r'[-\s]+'), '-');
 
   /// Splits string into chunks of specified size
   List<String> chunk(int size) {
@@ -113,8 +110,7 @@ extension StringExtensions on String {
 /// Extension methods on List of String
 extension ListStringExtensions on List<String> {
   /// Joins strings with separator, filtering out empty strings
-  String joinNonEmpty(String separator) =>
-      where((s) => s.isNotBlankOrEmpty).join(separator);
+  String joinNonEmpty(String separator) => where((s) => s.isNotBlankOrEmpty).join(separator);
 
   /// Returns CSV representation
   String toCsv() => joinNonEmpty(',');

@@ -30,14 +30,8 @@ GoRouter goRouter(Ref ref) {
   return GoRouter(
     initialLocation: kSplashRoute,
     debugLogDiagnostics: kDebugMode,
-    redirect: (context, state) =>
-        _handleRedirect(context, state, isAuthenticatedAsync, isAppReady),
-    routes: [
-      _buildSplashRoute(),
-      _buildAuthRoutes(),
-      _buildMainRoutes(),
-      _buildErrorRoute(),
-    ],
+    redirect: (context, state) => _handleRedirect(context, state, isAuthenticatedAsync, isAppReady),
+    routes: [_buildSplashRoute(), _buildAuthRoutes(), _buildMainRoutes(), _buildErrorRoute()],
     errorBuilder: (context, state) => ErrorPage(error: state.error?.toString()),
   );
 }
@@ -72,8 +66,7 @@ String? _handleRedirect(
   );
 
   // If we're already at splash/error, allow it
-  if (state.matchedLocation == kSplashRoute ||
-      state.matchedLocation == kErrorRoute) {
+  if (state.matchedLocation == kSplashRoute || state.matchedLocation == kErrorRoute) {
     return null; // No redirect
   }
 
@@ -105,36 +98,21 @@ String? _handleRedirect(
 // ============================================================================
 
 /// Builds the splash screen route.
-GoRoute _buildSplashRoute() => GoRoute(
-      path: kSplashRoute,
-      builder: (context, state) => const SplashPage(),
-    );
+GoRoute _buildSplashRoute() => GoRoute(path: kSplashRoute, builder: (context, state) => const SplashPage());
 
 /// Builds all authentication-related routes.
 ///
 /// These routes are only accessible when user is NOT authenticated.
 /// Contains: login, signup, forgot password
 GoRoute _buildAuthRoutes() => GoRoute(
-      path: kAuthRoute,
-      builder: (context, state) => const LoginPage(), // Fallback
-      routes: [
-        GoRoute(
-          path: 'login',
-          name: kLoginRouteName,
-          builder: (context, state) => const LoginPage(),
-        ),
-        GoRoute(
-          path: 'signup',
-          name: kSignupRouteName,
-          builder: (context, state) => const SignupPage(),
-        ),
-        GoRoute(
-          path: 'forgot-password',
-          name: kForgotPasswordRouteName,
-          builder: (context, state) => const SplashPage(),
-        ),
-      ],
-    );
+  path: kAuthRoute,
+  builder: (context, state) => const LoginPage(), // Fallback
+  routes: [
+    GoRoute(path: 'login', name: kLoginRouteName, builder: (context, state) => const LoginPage()),
+    GoRoute(path: 'signup', name: kSignupRouteName, builder: (context, state) => const SignupPage()),
+    GoRoute(path: 'forgot-password', name: kForgotPasswordRouteName, builder: (context, state) => const SplashPage()),
+  ],
+);
 
 /// Builds all authenticated routes with shell for consistent layout.
 ///
@@ -142,58 +120,44 @@ GoRoute _buildAuthRoutes() => GoRoute(
 /// All nested routes share the same parent scaffold/layout.
 /// Routes: lists, settings, about
 ShellRoute _buildMainRoutes() => ShellRoute(
-      builder: (context, state, child) => child,
+  builder: (context, state, child) => child,
+  routes: [
+    GoRoute(
+      path: 'lists',
+      name: kListsRouteName,
+      builder: (context, state) => const ListsPage(),
       routes: [
         GoRoute(
-          path: 'lists',
-          name: kListsRouteName,
-          builder: (context, state) => const ListsPage(),
+          path: ':$kListIdParam',
+          name: kListDetailRouteName,
+          builder: (context, state) {
+            final listId = state.pathParameters[kListIdParam];
+            if (listId == null) {
+              return const ErrorPage(error: 'List ID is required');
+            }
+            return ListsPage(selectedListId: listId);
+          },
           routes: [
             GoRoute(
-              path: ':$kListIdParam',
-              name: kListDetailRouteName,
+              path: 'todo/:$kTodoIdParam',
+              name: kTodoDetailRouteName,
               builder: (context, state) {
                 final listId = state.pathParameters[kListIdParam];
-                if (listId == null) {
-                  return const ErrorPage(error: 'List ID is required');
+                final todoId = state.pathParameters[kTodoIdParam];
+                if (listId == null || todoId == null) {
+                  return const ErrorPage(error: 'List ID and Todo ID are required');
                 }
-                return ListsPage(selectedListId: listId);
+                return ListsPage(selectedListId: listId, selectedTodoId: todoId);
               },
-              routes: [
-                GoRoute(
-                  path: 'todo/:$kTodoIdParam',
-                  name: kTodoDetailRouteName,
-                  builder: (context, state) {
-                    final listId = state.pathParameters[kListIdParam];
-                    final todoId = state.pathParameters[kTodoIdParam];
-                    if (listId == null || todoId == null) {
-                      return const ErrorPage(
-                        error: 'List ID and Todo ID are required',
-                      );
-                    }
-                    return ListsPage(
-                      selectedListId: listId,
-                      selectedTodoId: todoId,
-                    );
-                  },
-                ),
-              ],
             ),
           ],
         ),
-        GoRoute(
-          path: 'settings',
-          name: kSettingsRouteName,
-          builder: (context, state) => const SettingsPage(),
-        ),
-        GoRoute(
-          path: 'about',
-          name: kAboutRouteName,
-          builder: (context, state) => const SplashPage(),
-        ),
       ],
-    );
+    ),
+    GoRoute(path: 'settings', name: kSettingsRouteName, builder: (context, state) => const SettingsPage()),
+    GoRoute(path: 'about', name: kAboutRouteName, builder: (context, state) => const SplashPage()),
+  ],
+);
 
 /// Builds error handling routes.
-GoRoute _buildErrorRoute() =>
-    GoRoute(path: kErrorRoute, builder: (context, state) => const ErrorPage());
+GoRoute _buildErrorRoute() => GoRoute(path: kErrorRoute, builder: (context, state) => const ErrorPage());

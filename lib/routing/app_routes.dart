@@ -101,8 +101,7 @@ String listDetailRoute(String listId) => '/lists/$listId';
 /// Build todo detail route with list ID and todo ID parameters
 ///
 /// Example: `todoDetailRoute('list1', 'todo1')` → `/lists/list1/todo/todo1`
-String todoDetailRoute(String listId, String todoId) =>
-    '/lists/$listId/todo/$todoId';
+String todoDetailRoute(String listId, String todoId) => '/lists/$listId/todo/$todoId';
 
 // ============================================================================
 // ROUTE VALIDATION HELPERS - Useful for debugging

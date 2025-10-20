@@ -65,8 +65,7 @@ class ValidationConstants {
   static const int maxTodoDescriptionLength = 5000;
 
   /// Email validation pattern
-  static const String emailPattern =
-      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
+  static const String emailPattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
 
   /// Password constraints
   static const int minPasswordLength = 8;
@@ -75,8 +74,7 @@ class ValidationConstants {
   // Validation error messages
   static const String requiredField = 'This field is required.';
   static const String invalidEmail = 'Please enter a valid email address.';
-  static const String invalidPassword =
-      'Password must be at least 8 characters.';
+  static const String invalidPassword = 'Password must be at least 8 characters.';
   static const String invalidUsername =
       'Username must be 3-32 characters with only letters, numbers, '
       'underscores, and hyphens.';
@@ -169,11 +167,9 @@ class ErrorMessages {
   ErrorMessages._();
 
   /// Network error messages
-  static const String networkError =
-      'Network error occurred. Please try again.';
+  static const String networkError = 'Network error occurred. Please try again.';
   static const String timeoutError = 'Request timed out. Please try again.';
-  static const String serverError =
-      'Server error occurred. Please try again later.';
+  static const String serverError = 'Server error occurred. Please try again later.';
 
   /// Authentication error messages
   static const String authenticationFailed = 'Authentication failed.';
@@ -184,8 +180,7 @@ class ErrorMessages {
 
   /// Validation error messages
   static const String invalidEmail = 'Please enter a valid email address.';
-  static const String invalidPassword =
-      'Password must be at least 8 characters.';
+  static const String invalidPassword = 'Password must be at least 8 characters.';
   static const String invalidUsername =
       'Username must be 3-32 characters with only letters, numbers, '
       'underscores, and hyphens.';
@@ -194,8 +189,7 @@ class ErrorMessages {
   /// Firestore error messages
   static const String firestoreError = 'Database error occurred.';
   static const String documentNotFound = 'Document not found.';
-  static const String permissionDenied =
-      'You do not have permission to perform this action.';
+  static const String permissionDenied = 'You do not have permission to perform this action.';
 
   /// Generic error messages
   static const String unknownError = 'An unknown error occurred.';

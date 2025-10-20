@@ -28,7 +28,7 @@ FAILED=0
 # 1. CHECK FORMATTING
 # ============================================================================
 echo "📋 Checking code formatting..."
-if dart format --set-exit-if-changed --line-length 80 lib/ test/ integration_test/ > /dev/null 2>&1; then
+if dart format --set-exit-if-changed --line-length 120 lib/ test/ integration_test/ > /dev/null 2>&1; then
   echo -e "${GREEN}✓${NC} Code formatting is correct"
 else
   echo -e "${YELLOW}⚠ Code formatting issues found${NC}"

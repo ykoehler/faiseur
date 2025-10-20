@@ -41,14 +41,13 @@ void main() {
       expect(
         hasAppBar || hasNavBar || hasRail || hasDrawer,
         isTrue,
-        reason: 'Expected at least one navigation component '
+        reason:
+            'Expected at least one navigation component '
             '(AppBar, NavigationBar, NavigationRail, or Drawer)',
       );
     });
 
-    testWidgets('App responds to screen resize (responsive design)', (
-      tester,
-    ) async {
+    testWidgets('App responds to screen resize (responsive design)', (tester) async {
       await tester.pumpWidget(const FaiseurApp());
       await tester.pumpAndSettle(const Duration(seconds: 1));
 
@@ -65,9 +64,7 @@ void main() {
       expect(tester.takeException(), isNull);
     });
 
-    testWidgets('Theme applies correctly (light and dark modes)', (
-      tester,
-    ) async {
+    testWidgets('Theme applies correctly (light and dark modes)', (tester) async {
       await tester.pumpWidget(const FaiseurApp());
       await tester.pumpAndSettle(const Duration(seconds: 2));
 
