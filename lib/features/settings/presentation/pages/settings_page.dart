@@ -8,26 +8,26 @@ class SettingsPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => Scaffold(
-    appBar: AppBar(title: const Text('Settings')),
-    body: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Icon(Icons.settings, size: 64),
-          const SizedBox(height: 16),
-          const Text('Settings Page'),
-          const SizedBox(height: 24),
-          ElevatedButton(
-            onPressed: () {
-              // TODO: Implement settings
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('TODO: Implement settings')),
-              );
-            },
-            child: const Text('Save Settings'),
+        appBar: AppBar(title: const Text('Settings')),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.settings, size: 64),
+              const SizedBox(height: 16),
+              const Text('Settings Page'),
+              const SizedBox(height: 24),
+              ElevatedButton(
+                onPressed: () {
+                  // TODO: Implement settings
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('TODO: Implement settings')),
+                  );
+                },
+                child: const Text('Save Settings'),
+              ),
+            ],
           ),
-        ],
-      ),
-    ),
-  );
+        ),
+      );
 }

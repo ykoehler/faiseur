@@ -211,7 +211,7 @@ See the [Implementation Plan](docs/implementation-plan.md) for the detailed deve
 ### Current Focus: Phase 1 (MVP)
 - [x] Project setup and architecture
 - [x] Planning documents
-- [ ] Firebase configuration
+- [x] Firebase configuration (dev, staging, production)
 - [ ] Authentication system
 - [ ] Lists and todos functionality
 - [ ] Settings and preferences

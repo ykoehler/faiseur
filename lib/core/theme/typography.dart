@@ -20,15 +20,16 @@ class AppTypography {
     required double lineHeight,
     Color? color,
     TextDecoration? decoration,
-  }) => TextStyle(
-    fontSize: fontSize,
-    fontWeight: fontWeight,
-    height: lineHeight / fontSize,
-    letterSpacing: _getLetterSpacing(fontSize),
-    color: color,
-    decoration: decoration,
-    fontFamily: fontFamily,
-  );
+  }) =>
+      TextStyle(
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        height: lineHeight / fontSize,
+        letterSpacing: _getLetterSpacing(fontSize),
+        color: color,
+        decoration: decoration,
+        fontFamily: fontFamily,
+      );
 
   /// Calculates letter spacing based on font size per Material Design 3
   static double _getLetterSpacing(double fontSize) {

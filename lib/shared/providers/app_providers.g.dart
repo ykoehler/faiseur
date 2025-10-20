@@ -51,15 +51,15 @@ final class AppStateControllerProvider
   /// }
   /// ```
   const AppStateControllerProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'appStateControllerProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'appStateControllerProvider',
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$appStateControllerHash();
@@ -100,14 +100,8 @@ abstract class _$AppStateController extends $Notifier<AppState> {
   void runBuild() {
     final created = build();
     final ref = this.ref as $Ref<AppState, AppState>;
-    final element =
-        ref.element
-            as $ClassProviderElement<
-              AnyNotifier<AppState, AppState>,
-              AppState,
-              Object?,
-              Object?
-            >;
+    final element = ref.element as $ClassProviderElement<
+        AnyNotifier<AppState, AppState>, AppState, Object?, Object?>;
     element.handleValue(ref, created);
   }
 }
@@ -163,15 +157,15 @@ final class AppInitializationProvider
   /// );
   /// ```
   const AppInitializationProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'appInitializationProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'appInitializationProvider',
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$appInitializationHash();
@@ -237,15 +231,15 @@ final class CurrentUserIdFromStateProvider
   /// print('Current user: $userId');
   /// ```
   const CurrentUserIdFromStateProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'currentUserIdFromStateProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'currentUserIdFromStateProvider',
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$currentUserIdFromStateHash();
@@ -322,15 +316,15 @@ final class IsAppReadyProvider extends $FunctionalProvider<bool, bool, bool>
   /// }
   /// ```
   const IsAppReadyProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'isAppReadyProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'isAppReadyProvider',
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$isAppReadyHash();
@@ -401,15 +395,15 @@ final class AppErrorProvider
   /// }
   /// ```
   const AppErrorProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'appErrorProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'appErrorProvider',
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$appErrorHash();
@@ -476,15 +470,15 @@ final class AppIsLoadingProvider extends $FunctionalProvider<bool, bool, bool>
   /// }
   /// ```
   const AppIsLoadingProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'appIsLoadingProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'appIsLoadingProvider',
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$appIsLoadingHash();

@@ -55,32 +55,34 @@ sealed class Failure with _$Failure {
 
   /// Returns a user-friendly error message
   String get userMessage => when(
-    network: (message) => 'Unable to connect. Please check your internet.',
-    timeout: (message) => 'Request timed out. Please try again.',
-    authentication: (message) => 'Authentication failed. Please sign in again.',
-    authorization: (message) => 'You do not have permission for this action.',
-    validation: (message, field) =>
-        field != null ? '$field: $message' : message,
-    firestore: (message, code) => 'Database error occurred.',
-    storage: (message) => 'Storage error occurred.',
-    notFound: (message) => 'The requested item was not found.',
-    state: (message) => message,
-    cancelled: (message) => 'Operation was cancelled.',
-    unknown: (message) => 'An unexpected error occurred.',
-  );
+        network: (message) => 'Unable to connect. Please check your internet.',
+        timeout: (message) => 'Request timed out. Please try again.',
+        authentication: (message) =>
+            'Authentication failed. Please sign in again.',
+        authorization: (message) =>
+            'You do not have permission for this action.',
+        validation: (message, field) =>
+            field != null ? '$field: $message' : message,
+        firestore: (message, code) => 'Database error occurred.',
+        storage: (message) => 'Storage error occurred.',
+        notFound: (message) => 'The requested item was not found.',
+        state: (message) => message,
+        cancelled: (message) => 'Operation was cancelled.',
+        unknown: (message) => 'An unexpected error occurred.',
+      );
 
   /// Returns the error code if available
   String? get errorCode => when(
-    network: (_) => 'NETWORK_ERROR',
-    timeout: (_) => 'TIMEOUT_ERROR',
-    authentication: (_) => 'AUTH_ERROR',
-    authorization: (_) => 'AUTHZ_ERROR',
-    validation: (_, __) => 'VALIDATION_ERROR',
-    firestore: (_, code) => code ?? 'FIRESTORE_ERROR',
-    storage: (_) => 'STORAGE_ERROR',
-    notFound: (_) => 'NOT_FOUND',
-    state: (_) => 'STATE_ERROR',
-    cancelled: (_) => 'CANCELLED',
-    unknown: (_) => 'UNKNOWN_ERROR',
-  );
+        network: (_) => 'NETWORK_ERROR',
+        timeout: (_) => 'TIMEOUT_ERROR',
+        authentication: (_) => 'AUTH_ERROR',
+        authorization: (_) => 'AUTHZ_ERROR',
+        validation: (_, __) => 'VALIDATION_ERROR',
+        firestore: (_, code) => code ?? 'FIRESTORE_ERROR',
+        storage: (_) => 'STORAGE_ERROR',
+        notFound: (_) => 'NOT_FOUND',
+        state: (_) => 'STATE_ERROR',
+        cancelled: (_) => 'CANCELLED',
+        unknown: (_) => 'UNKNOWN_ERROR',
+      );
 }

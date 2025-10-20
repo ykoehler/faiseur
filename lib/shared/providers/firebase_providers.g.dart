@@ -44,15 +44,15 @@ final class FirebaseAppProvider
   /// final firebaseApp = ref.watch(firebaseAppProvider);
   /// ```
   const FirebaseAppProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'firebaseAppProvider',
-        isAutoDispose: false,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'firebaseAppProvider',
+          isAutoDispose: false,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$firebaseAppHash();
@@ -103,14 +103,8 @@ const firestoreProvider = FirestoreProvider._();
 /// final docs = await firestore.collection('todos').get();
 /// ```
 
-final class FirestoreProvider
-    extends
-        $FunctionalProvider<
-          FirebaseFirestore,
-          FirebaseFirestore,
-          FirebaseFirestore
-        >
-    with $Provider<FirebaseFirestore> {
+final class FirestoreProvider extends $FunctionalProvider<FirebaseFirestore,
+    FirebaseFirestore, FirebaseFirestore> with $Provider<FirebaseFirestore> {
   /// Singleton Firestore instance
   ///
   /// Provides access to Cloud Firestore.
@@ -122,15 +116,15 @@ final class FirestoreProvider
   /// final docs = await firestore.collection('todos').get();
   /// ```
   const FirestoreProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'firestoreProvider',
-        isAutoDispose: false,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'firestoreProvider',
+          isAutoDispose: false,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$firestoreHash();
@@ -139,7 +133,8 @@ final class FirestoreProvider
   @override
   $ProviderElement<FirebaseFirestore> $createElement(
     $ProviderPointer pointer,
-  ) => $ProviderElement(pointer);
+  ) =>
+      $ProviderElement(pointer);
 
   @override
   FirebaseFirestore create(Ref ref) {
@@ -196,15 +191,15 @@ final class FirebaseAuthProvider
   /// final user = auth.currentUser;
   /// ```
   const FirebaseAuthProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'firebaseAuthProvider',
-        isAutoDispose: false,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'firebaseAuthProvider',
+          isAutoDispose: false,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$firebaseAuthHash();
@@ -284,15 +279,15 @@ final class CurrentUserProvider
   /// );
   /// ```
   const CurrentUserProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'currentUserProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'currentUserProvider',
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$currentUserHash();
@@ -361,15 +356,15 @@ final class CurrentUserIdProvider
   /// );
   /// ```
   const CurrentUserIdProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'currentUserIdProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'currentUserIdProvider',
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$currentUserIdHash();
@@ -456,15 +451,15 @@ final class IsAuthenticatedProvider
   /// );
   /// ```
   const IsAuthenticatedProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'isAuthenticatedProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'isAuthenticatedProvider',
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$isAuthenticatedHash();

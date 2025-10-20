@@ -22,11 +22,11 @@ part 'app_providers.g.dart';
 class AppStateController extends _$AppStateController {
   @override
   AppState build() => const AppState(
-    isInitialized: false,
-    currentUserId: null,
-    isLoading: false,
-    errorMessage: null,
-  );
+        isInitialized: false,
+        currentUserId: null,
+        isLoading: false,
+        errorMessage: null,
+      );
 
   /// Initialize the app (called on startup)
   Future<void> initialize() async {

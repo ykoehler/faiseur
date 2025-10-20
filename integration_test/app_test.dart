@@ -41,8 +41,7 @@ void main() {
       expect(
         hasAppBar || hasNavBar || hasRail || hasDrawer,
         isTrue,
-        reason:
-            'Expected at least one navigation component '
+        reason: 'Expected at least one navigation component '
             '(AppBar, NavigationBar, NavigationRail, or Drawer)',
       );
     });

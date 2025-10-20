@@ -137,19 +137,20 @@ extension BuildContextExtensions on BuildContext {
     required String title,
     required String message,
     String buttonText = 'OK',
-  }) async => showDialog(
-    context: this,
-    builder: (context) => AlertDialog(
-      title: Text(title),
-      content: Text(message),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: Text(buttonText),
+  }) async =>
+      showDialog(
+        context: this,
+        builder: (context) => AlertDialog(
+          title: Text(title),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(buttonText),
+            ),
+          ],
         ),
-      ],
-    ),
-  );
+      );
 
   /// Shows a loading dialog
   void showLoadingDialog({String message = 'Loading...'}) {

@@ -114,41 +114,42 @@ class AppTheme {
   }
 
   static TextTheme _buildTextTheme(Color onSurface) => TextTheme(
-    displayLarge: AppTypography.displayLarge.copyWith(color: onSurface),
-    displayMedium: AppTypography.displayMedium.copyWith(color: onSurface),
-    displaySmall: AppTypography.displaySmall.copyWith(color: onSurface),
-    headlineLarge: AppTypography.headlineLarge.copyWith(color: onSurface),
-    headlineMedium: AppTypography.headlineMedium.copyWith(color: onSurface),
-    headlineSmall: AppTypography.headlineSmall.copyWith(color: onSurface),
-    titleLarge: AppTypography.titleLarge.copyWith(color: onSurface),
-    titleMedium: AppTypography.titleMedium.copyWith(color: onSurface),
-    titleSmall: AppTypography.titleSmall.copyWith(color: onSurface),
-    bodyLarge: AppTypography.bodyLarge.copyWith(color: onSurface),
-    bodyMedium: AppTypography.bodyMedium.copyWith(color: onSurface),
-    bodySmall: AppTypography.bodySmall.copyWith(color: onSurface),
-    labelLarge: AppTypography.labelLarge.copyWith(color: onSurface),
-    labelMedium: AppTypography.labelMedium.copyWith(color: onSurface),
-    labelSmall: AppTypography.labelSmall.copyWith(color: onSurface),
-  );
+        displayLarge: AppTypography.displayLarge.copyWith(color: onSurface),
+        displayMedium: AppTypography.displayMedium.copyWith(color: onSurface),
+        displaySmall: AppTypography.displaySmall.copyWith(color: onSurface),
+        headlineLarge: AppTypography.headlineLarge.copyWith(color: onSurface),
+        headlineMedium: AppTypography.headlineMedium.copyWith(color: onSurface),
+        headlineSmall: AppTypography.headlineSmall.copyWith(color: onSurface),
+        titleLarge: AppTypography.titleLarge.copyWith(color: onSurface),
+        titleMedium: AppTypography.titleMedium.copyWith(color: onSurface),
+        titleSmall: AppTypography.titleSmall.copyWith(color: onSurface),
+        bodyLarge: AppTypography.bodyLarge.copyWith(color: onSurface),
+        bodyMedium: AppTypography.bodyMedium.copyWith(color: onSurface),
+        bodySmall: AppTypography.bodySmall.copyWith(color: onSurface),
+        labelLarge: AppTypography.labelLarge.copyWith(color: onSurface),
+        labelMedium: AppTypography.labelMedium.copyWith(color: onSurface),
+        labelSmall: AppTypography.labelSmall.copyWith(color: onSurface),
+      );
 
   static AppBarTheme _buildAppBarTheme(ColorScheme colorScheme) => AppBarTheme(
-    backgroundColor: colorScheme.surface,
-    foregroundColor: colorScheme.onSurface,
-    elevation: 2,
-    centerTitle: true,
-    titleTextStyle: AppTypography.titleLarge.copyWith(
-      color: colorScheme.onSurface,
-    ),
-  );
+        backgroundColor: colorScheme.surface,
+        foregroundColor: colorScheme.onSurface,
+        elevation: 2,
+        centerTitle: true,
+        titleTextStyle: AppTypography.titleLarge.copyWith(
+          color: colorScheme.onSurface,
+        ),
+      );
 
   static FloatingActionButtonThemeData _buildFabTheme(
     ColorScheme colorScheme,
-  ) => FloatingActionButtonThemeData(
-    backgroundColor: colorScheme.primary,
-    foregroundColor: colorScheme.onPrimary,
-    elevation: 6,
-    highlightElevation: 8,
-  );
+  ) =>
+      FloatingActionButtonThemeData(
+        backgroundColor: colorScheme.primary,
+        foregroundColor: colorScheme.onPrimary,
+        elevation: 6,
+        highlightElevation: 8,
+      );
 
   static CardThemeData _buildCardTheme(ColorScheme colorScheme) =>
       CardThemeData(
@@ -160,26 +161,28 @@ class AppTheme {
 
   static ElevatedButtonThemeData _buildElevatedButtonTheme(
     ColorScheme colorScheme,
-  ) => ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
-      backgroundColor: colorScheme.primary,
-      foregroundColor: colorScheme.onPrimary,
-      elevation: 2,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-    ),
-  );
+  ) =>
+      ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: colorScheme.primary,
+          foregroundColor: colorScheme.onPrimary,
+          elevation: 2,
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
+      );
 
   static OutlinedButtonThemeData _buildOutlinedButtonTheme(
     ColorScheme colorScheme,
-  ) => OutlinedButtonThemeData(
-    style: OutlinedButton.styleFrom(
-      foregroundColor: colorScheme.primary,
-      side: BorderSide(color: colorScheme.outline),
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-    ),
-  );
+  ) =>
+      OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: colorScheme.primary,
+          side: BorderSide(color: colorScheme.outline),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
+      );
 
   static TextButtonThemeData _buildTextButtonTheme(ColorScheme colorScheme) =>
       TextButtonThemeData(
@@ -191,33 +194,35 @@ class AppTheme {
 
   static InputDecorationTheme _buildInputDecorationTheme(
     ColorScheme colorScheme,
-  ) => InputDecorationTheme(
-    filled: true,
-    fillColor: colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
-    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: colorScheme.outline),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: colorScheme.outline),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: colorScheme.primary, width: 2),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: colorScheme.error),
-    ),
-    focusedErrorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: colorScheme.error, width: 2),
-    ),
-    labelStyle: TextStyle(color: colorScheme.onSurfaceVariant),
-    hintStyle: TextStyle(color: colorScheme.onSurfaceVariant),
-  );
+  ) =>
+      InputDecorationTheme(
+        filled: true,
+        fillColor: colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: colorScheme.outline),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: colorScheme.outline),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: colorScheme.primary, width: 2),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: colorScheme.error),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: colorScheme.error, width: 2),
+        ),
+        labelStyle: TextStyle(color: colorScheme.onSurfaceVariant),
+        hintStyle: TextStyle(color: colorScheme.onSurfaceVariant),
+      );
 
   static ChipThemeData _buildChipTheme(ColorScheme colorScheme) =>
       ChipThemeData(
@@ -232,11 +237,12 @@ class AppTheme {
 
   static ProgressIndicatorThemeData _buildProgressIndicatorTheme(
     ColorScheme colorScheme,
-  ) => ProgressIndicatorThemeData(
-    color: colorScheme.primary,
-    linearTrackColor: colorScheme.surfaceContainerHighest,
-    circularTrackColor: colorScheme.surfaceContainerHighest,
-  );
+  ) =>
+      ProgressIndicatorThemeData(
+        color: colorScheme.primary,
+        linearTrackColor: colorScheme.surfaceContainerHighest,
+        circularTrackColor: colorScheme.surfaceContainerHighest,
+      );
 
   static SnackBarThemeData _buildSnackBarTheme(ColorScheme colorScheme) =>
       SnackBarThemeData(

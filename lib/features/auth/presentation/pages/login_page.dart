@@ -8,26 +8,26 @@ class LoginPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => Scaffold(
-    appBar: AppBar(title: const Text('Sign In')),
-    body: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Icon(Icons.login, size: 64),
-          const SizedBox(height: 16),
-          const Text('Login Page'),
-          const SizedBox(height: 24),
-          ElevatedButton(
-            onPressed: () {
-              // TODO: Implement sign in
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('TODO: Implement sign in')),
-              );
-            },
-            child: const Text('Sign In'),
+        appBar: AppBar(title: const Text('Sign In')),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.login, size: 64),
+              const SizedBox(height: 16),
+              const Text('Login Page'),
+              const SizedBox(height: 24),
+              ElevatedButton(
+                onPressed: () {
+                  // TODO: Implement sign in
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('TODO: Implement sign in')),
+                  );
+                },
+                child: const Text('Sign In'),
+              ),
+            ],
           ),
-        ],
-      ),
-    ),
-  );
+        ),
+      );
 }
