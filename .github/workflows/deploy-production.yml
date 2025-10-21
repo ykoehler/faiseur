@@ -115,27 +115,6 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Send Slack notification
-        if: always()
-        uses: slackapi/slack-github-action@v1.24.0
-        with:
-          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          payload: |
-            {
-              "text": "Production Deployment ${{ job.status }}",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "🚀 *Production Deployment* - ${{ job.status }}\n*Branch:* main\n*Commit:* ${{ github.sha }}\n*URL:* https://faiseur.app"
-                  }
-                }
-              ]
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-
   # iOS deployment - commented out until iOS secrets are configured
   # To enable: Uncomment this section and add the following secrets to GitHub:
   # - IOS_PROVISIONING_PROFILE: Base64-encoded provisioning profile
