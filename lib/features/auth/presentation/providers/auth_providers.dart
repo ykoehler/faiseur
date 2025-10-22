@@ -2,13 +2,20 @@ import 'package:faiseur/features/auth/data/repositories/auth_repository_impl.dar
 import 'package:faiseur/features/auth/domain/entities/user.dart';
 import 'package:faiseur/features/auth/domain/repositories/auth_repository.dart';
 import 'package:faiseur/features/auth/domain/usecases/usecases.dart';
+import 'package:faiseur/shared/providers/firebase_providers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_providers.g.dart';
 
 /// Provider for the AuthRepository singleton instance
 @riverpod
-AuthRepository authRepository(Ref ref) => AuthRepositoryImpl();
+AuthRepository authRepository(Ref ref) {
+  // Get Firebase instances from providers to ensure Firebase is initialized
+  final firebaseAuth = ref.watch(firebaseAuthProvider);
+  final firestore = ref.watch(firestoreProvider);
+  return AuthRepositoryImpl(firebaseAuth: firebaseAuth, firestore: firestore);
+}
 
 /// Provider for SignInWithEmailUseCase
 @riverpod
@@ -49,13 +56,16 @@ class AuthNotifier extends _$AuthNotifier {
   AsyncValue<User?> build() {
     // Listen to auth state changes and update local state
     ref.listen(authStateChangesProvider, (previous, next) {
-      next.whenData((user) {
-        state = AsyncValue.data(user);
-      });
+      next.when(
+        data: (user) => state = AsyncValue.data(user),
+        loading: () {}, // Don't update on loading
+        error: (err, stack) => state = AsyncValue.error(err, stack),
+      );
     });
 
-    // Initial state: fetch current user
-    return const AsyncValue.loading();
+    // Initial state: not logged in (null user, not loading)
+    // The authStateChanges stream will update this when Firebase auth initializes
+    return const AsyncValue.data(null);
   }
 
   /// Signs in with email and password
@@ -85,11 +95,36 @@ class AuthNotifier extends _$AuthNotifier {
 
   /// Signs in anonymously
   Future<void> signInAnonymously() async {
+    if (kDebugMode) {
+      print('[AUTH_NOTIFIER] Starting anonymous sign-in...');
+    }
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final user = await ref.read(signInAnonymouslyUseCaseProvider).call();
+      if (kDebugMode) {
+        print('[AUTH_NOTIFIER] Anonymous sign-in completed: user=${user.id}');
+      }
       return user;
     });
+    state.when(
+      data: (user) {
+        if (kDebugMode) {
+          final userId = user?.id ?? 'null';
+          print('[AUTH_NOTIFIER] State after sign-in (data): $userId');
+        }
+      },
+      loading: () {
+        if (kDebugMode) {
+          print('[AUTH_NOTIFIER] State after sign-in: still loading');
+        }
+      },
+      error: (error, stack) {
+        if (kDebugMode) {
+          print('[AUTH_NOTIFIER] State after sign-in (ERROR): $error');
+          print('[AUTH_NOTIFIER] Stack trace: $stack');
+        }
+      },
+    );
   }
 
   /// Signs out the current user

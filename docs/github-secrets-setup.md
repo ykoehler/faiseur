@@ -1,6 +1,7 @@
 # GitHub Secrets and Environment Configuration
 
-This document provides detailed instructions for setting up GitHub Secrets and managing different environments (dev, staging, production) for the Faiseur project.
+This document provides instructions for setting up GitHub Secrets and managing
+environments (dev, staging, production) for the Faiseur project.
 
 ## Overview
 
@@ -56,7 +57,8 @@ flutterfire configure \
 
 ### 3. Extract Configuration for GitHub Secrets
 
-After running `flutterfire configure`, you'll have three files. Copy the **entire content** of each file to use as GitHub Secrets.
+After running `flutterfire configure`, you'll have three files. Copy the
+**entire content** of each file to use as GitHub Secrets.
 
 ---
 

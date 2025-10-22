@@ -11,6 +11,22 @@ This directory contains Flutter integration tests for the Faiseur app. These tes
   - App handles hot reload
   - Responsive behavior works
 
+- **web_e2e_test.dart**: Comprehensive end-to-end tests for web platform
+  - **Initialization Tests**: Firebase setup, provider initialization, splash screen handling
+  - **Navigation Tests**: Router initialization, responsive design (desktop/tablet/mobile)
+  - **UI/UX Tests**: Material 3 theme, layout issues, text rendering
+  - **Performance Tests**: Initialization time, rendering responsiveness
+  - **Error Handling**: Graceful error recovery, stability
+
+- **macos_e2e_test.dart**: Comprehensive end-to-end tests for macOS platform (⭐ **Best for debugging splash/init**)
+  - **Splash Screen & Initialization**: Detailed timing and transition analysis
+  - **Routing & Navigation**: Router setup, redirects, authentication flow
+  - **UI Rendering**: Theme application, layout validation, window resize handling
+  - **Performance & Stability**: Initialization benchmarks, memory leak detection
+  - **Error Handling**: Firebase errors, exception detection, graceful failures
+  - **Debug Information**: Comprehensive runtime state collection
+  - See [MACOS_E2E_TESTS.md](./MACOS_E2E_TESTS.md) for detailed documentation
+
 ## Running Integration Tests
 
 ### Prerequisites
@@ -24,13 +40,19 @@ flutter pub get
 
 ```bash
 # Run all integration tests
+flutter test integration_test/ -d chrome
+
+# Run smoke tests
 flutter test integration_test/app_test.dart -d chrome
 
+# Run E2E tests  
+flutter test integration_test/web_e2e_test.dart -d chrome
+
 # Run with verbose output
-flutter test integration_test/app_test.dart -d chrome -v
+flutter test integration_test/ -d chrome -v
 
 # Run specific test
-flutter test integration_test/app_test.dart::App\ Smoke\ Tests::App\ launches\ and\ renders\ home\ screen -d chrome
+flutter test integration_test/app_test.dart -k "launches and renders" -d chrome
 ```
 
 ### Run on Android
@@ -50,7 +72,23 @@ flutter test integration_test/app_test.dart -d ios
 ### Run on macOS
 
 ```bash
+# Basic smoke tests
 flutter test integration_test/app_test.dart -d macos
+
+# Comprehensive E2E tests with splash/init debugging (recommended)
+flutter test integration_test/macos_e2e_test.dart \
+  --dart-define=FLAVOR=dev \
+  --device=macos
+
+# Quick script (see run_macos_e2e.sh)
+chmod +x run_macos_e2e.sh
+./run_macos_e2e.sh
+
+# Run specific test group
+./run_macos_e2e.sh --test-name "Splash Screen"
+
+# Collect debug information
+./run_macos_e2e.sh --test-name "Debug Info"
 ```
 
 ### Run on Desktop (macOS/Linux/Windows)

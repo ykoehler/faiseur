@@ -37,8 +37,13 @@ sealed class AppState with _$AppState {
 
 /// Extension for AppState with convenience methods
 extension AppStateX on AppState {
-  /// Whether the app is ready to show main content
-  bool get isReady => isInitialized && currentUserId != null && !isLoading;
+  /// Whether the app is ready to show content (past splash screen)
+  ///
+  /// App is ready when initialization is complete.
+  /// Authentication check (login vs main app) is handled by the router separately.
+  ///
+  /// This should be true as soon as Firebase is initialized, not waiting for user login.
+  bool get isReady => isInitialized && !isLoading;
 
   /// Whether the app is in an error state
   bool get hasError => errorMessage != null && errorMessage!.isNotEmpty;

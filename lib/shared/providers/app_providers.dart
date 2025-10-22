@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../models/app_state_model.dart';
@@ -21,25 +20,16 @@ part 'app_providers.g.dart';
 @riverpod
 class AppStateController extends _$AppStateController {
   @override
-  AppState build() => const AppState(isInitialized: false, currentUserId: null, isLoading: false, errorMessage: null);
-
-  /// Initialize the app (called on startup)
-  Future<void> initialize() async {
-    state = state.copyWith(isLoading: true);
+  AppState build() {
+    // Initialize immediately when the provider is first built
+    // This avoids the circular dependency issue with appInitializationProvider
     try {
-      // Firebase is already initialized in main.dart
-      // Just mark as initialized
       final auth = ref.read(firebaseAuthProvider);
       final currentUser = auth.currentUser;
 
-      state = state.copyWith(
-        isInitialized: true,
-        currentUserId: currentUser?.uid,
-        isLoading: false,
-        errorMessage: null,
-      );
+      return AppState(isInitialized: true, currentUserId: currentUser?.uid, isLoading: false, errorMessage: null);
     } catch (e) {
-      state = state.copyWith(isLoading: false, errorMessage: 'Initialization failed: $e');
+      return AppState(isInitialized: true, isLoading: false, errorMessage: 'Initialization failed: $e');
     }
   }
 
@@ -64,10 +54,14 @@ class AppStateController extends _$AppStateController {
   }
 }
 
-/// App initialization provider
+/// App initialization provider (async)
 ///
-/// Async provider that handles app startup initialization.
-/// Should be watched in main() to ensure app is initialized before showing UI.
+/// Async provider that completes when the app state is initialized.
+/// Used by the splash page to show loading/error states.
+///
+/// This is a FutureProvider that simply waits for app state to be ready.
+/// Since app state initializes synchronously in its build() method,
+/// this completes immediately.
 ///
 /// Example:
 /// ```dart
@@ -80,13 +74,32 @@ class AppStateController extends _$AppStateController {
 /// ```
 @riverpod
 Future<void> appInitialization(Ref ref) async {
-  final controller = ref.read(appStateControllerProvider.notifier);
-  await controller.initialize();
+  // Watch the app state - since it initializes in build(), this completes immediately
+  ref.watch(appStateControllerProvider);
+}
 
-  // Listen to auth changes and update app state
-  ref.listen<AsyncValue<User?>>(currentUserProvider, (_, next) {
-    next.whenData((user) => controller.setCurrentUserId(user?.uid));
-  }, fireImmediately: true);
+/// App initialization sync provider
+///
+/// Sync provider that ensures the app state is initialized.
+/// This simply watches the app state controller and returns it.
+/// The controller initializes itself in its build() method.
+///
+/// Returns true when initialization is complete.
+///
+/// Example:
+/// ```dart
+/// final isReady = ref.watch(appInitializedProvider);
+/// if (isReady) {
+///   return MainApp();
+/// }
+/// ```
+@riverpod
+bool appInitialized(Ref ref) {
+  // Watch the app state controller to trigger its initialization
+  final appState = ref.watch(appStateControllerProvider);
+
+  // Return whether it's initialized
+  return appState.isInitialized;
 }
 
 /// Current user ID from app state

@@ -47,7 +47,7 @@ final class AuthRepositoryProvider extends $FunctionalProvider<AuthRepository, A
   }
 }
 
-String _$authRepositoryHash() => r'73f2cf57238e6fa5dfc299eb58ae9b96f900bd76';
+String _$authRepositoryHash() => r'e043b81210609f43312d3dbcc2d4bf3f7eece0b1';
 
 /// Provider for SignInWithEmailUseCase
 
@@ -371,7 +371,7 @@ final class AuthNotifierProvider extends $NotifierProvider<AuthNotifier, AsyncVa
   }
 }
 
-String _$authNotifierHash() => r'002caab4ffb37c17360923a9c6c96bd0658dae5c';
+String _$authNotifierHash() => r'ba23c2adfa5229013cf4fabd49efa6712030bd6c';
 
 /// Notifier for auth state management
 /// Handles all auth operations and maintains auth state

@@ -9,7 +9,8 @@
 
 ## What is Step 1.1?
 
-Step 1.1 is the **Project Initialization Phase** that establishes the complete foundation for Faiseur before building features. It covers five major phases:
+Step 1.1 is the **Project Initialization Phase** that establishes the complete foundation for
+Faiseur before building features. It covers five major phases:
 
 - **Phase A**: Foundation (folder structure, theme, errors)
 - **Phase B**: Riverpod State Management (providers, code generation)

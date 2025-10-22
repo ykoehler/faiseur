@@ -73,7 +73,7 @@ final class AppStateControllerProvider extends $NotifierProvider<AppStateControl
   }
 }
 
-String _$appStateControllerHash() => r'b3f06b025fb42cf4f8f5818f04f7252b377ad06b';
+String _$appStateControllerHash() => r'0c5cb14d797a2be5ea98ae35076bbbde82551477';
 
 /// Global app state controller
 ///
@@ -100,10 +100,14 @@ abstract class _$AppStateController extends $Notifier<AppState> {
   }
 }
 
-/// App initialization provider
+/// App initialization provider (async)
 ///
-/// Async provider that handles app startup initialization.
-/// Should be watched in main() to ensure app is initialized before showing UI.
+/// Async provider that completes when the app state is initialized.
+/// Used by the splash page to show loading/error states.
+///
+/// This is a FutureProvider that simply waits for app state to be ready.
+/// Since app state initializes synchronously in its build() method,
+/// this completes immediately.
 ///
 /// Example:
 /// ```dart
@@ -118,10 +122,14 @@ abstract class _$AppStateController extends $Notifier<AppState> {
 @ProviderFor(appInitialization)
 const appInitializationProvider = AppInitializationProvider._();
 
-/// App initialization provider
+/// App initialization provider (async)
 ///
-/// Async provider that handles app startup initialization.
-/// Should be watched in main() to ensure app is initialized before showing UI.
+/// Async provider that completes when the app state is initialized.
+/// Used by the splash page to show loading/error states.
+///
+/// This is a FutureProvider that simply waits for app state to be ready.
+/// Since app state initializes synchronously in its build() method,
+/// this completes immediately.
 ///
 /// Example:
 /// ```dart
@@ -135,10 +143,14 @@ const appInitializationProvider = AppInitializationProvider._();
 
 final class AppInitializationProvider extends $FunctionalProvider<AsyncValue<void>, void, FutureOr<void>>
     with $FutureModifier<void>, $FutureProvider<void> {
-  /// App initialization provider
+  /// App initialization provider (async)
   ///
-  /// Async provider that handles app startup initialization.
-  /// Should be watched in main() to ensure app is initialized before showing UI.
+  /// Async provider that completes when the app state is initialized.
+  /// Used by the splash page to show loading/error states.
+  ///
+  /// This is a FutureProvider that simply waits for app state to be ready.
+  /// Since app state initializes synchronously in its build() method,
+  /// this completes immediately.
   ///
   /// Example:
   /// ```dart
@@ -173,7 +185,89 @@ final class AppInitializationProvider extends $FunctionalProvider<AsyncValue<voi
   }
 }
 
-String _$appInitializationHash() => r'a8d0ec325a59d3dc2a09b7529ee10f1da2ce6e5a';
+String _$appInitializationHash() => r'd3012f08ef7aed7188732177b7d80c9b1ca97692';
+
+/// App initialization sync provider
+///
+/// Sync provider that ensures the app state is initialized.
+/// This simply watches the app state controller and returns it.
+/// The controller initializes itself in its build() method.
+///
+/// Returns true when initialization is complete.
+///
+/// Example:
+/// ```dart
+/// final isReady = ref.watch(appInitializedProvider);
+/// if (isReady) {
+///   return MainApp();
+/// }
+/// ```
+
+@ProviderFor(appInitialized)
+const appInitializedProvider = AppInitializedProvider._();
+
+/// App initialization sync provider
+///
+/// Sync provider that ensures the app state is initialized.
+/// This simply watches the app state controller and returns it.
+/// The controller initializes itself in its build() method.
+///
+/// Returns true when initialization is complete.
+///
+/// Example:
+/// ```dart
+/// final isReady = ref.watch(appInitializedProvider);
+/// if (isReady) {
+///   return MainApp();
+/// }
+/// ```
+
+final class AppInitializedProvider extends $FunctionalProvider<bool, bool, bool> with $Provider<bool> {
+  /// App initialization sync provider
+  ///
+  /// Sync provider that ensures the app state is initialized.
+  /// This simply watches the app state controller and returns it.
+  /// The controller initializes itself in its build() method.
+  ///
+  /// Returns true when initialization is complete.
+  ///
+  /// Example:
+  /// ```dart
+  /// final isReady = ref.watch(appInitializedProvider);
+  /// if (isReady) {
+  ///   return MainApp();
+  /// }
+  /// ```
+  const AppInitializedProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'appInitializedProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$appInitializedHash();
+
+  @$internal
+  @override
+  $ProviderElement<bool> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+
+  @override
+  bool create(Ref ref) {
+    return appInitialized(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(bool value) {
+    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<bool>(value));
+  }
+}
+
+String _$appInitializedHash() => r'6cce33f18cb92b8141bf966f1c733ea65616b0b4';
 
 /// Current user ID from app state
 ///

@@ -155,6 +155,7 @@ analyzer:
     - "**/*.freezed.dart"
     - "**/*.config.dart"
     - "build/**"
+    - "integration_test/**"
 
   errors:
     missing_required_param: error

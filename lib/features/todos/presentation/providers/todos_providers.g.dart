@@ -277,7 +277,7 @@ final class WatchListTodosProvider extends $FunctionalProvider<AsyncValue<List<T
   }
 }
 
-String _$watchListTodosHash() => r'a44d8ce1a0b2e028afe1259924fe0d7f91b5706c';
+String _$watchListTodosHash() => r'6a7d7b31672a873d80fdd5c2cee5e54872705bc3';
 
 /// Stream provider for todos in a list (real-time updates)
 ///

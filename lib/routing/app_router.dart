@@ -19,21 +19,62 @@ part 'app_router.g.dart';
 // ROUTER PROVIDER
 // ============================================================================
 
-@riverpod
-GoRouter goRouter(Ref ref) {
-  // isAppReadyProvider returns bool directly (not async)
-  final isAppReady = ref.watch(isAppReadyProvider);
+/// Provider that creates a ChangeNotifier for GoRouter's refreshListenable
+/// This notifier will trigger GoRouter to re-evaluate redirects when auth state changes
+@Riverpod(keepAlive: true)
+Raw<AsyncValueNotifier<bool?>> authStateNotifier(Ref ref) {
+  final asyncValue = ref.watch(isAuthenticatedProvider);
+  final notifier = AsyncValueNotifier<bool?>(asyncValue);
 
-  // isAuthenticatedProvider returns AsyncValue<bool> (stream-based)
-  final isAuthenticatedAsync = ref.watch(isAuthenticatedProvider);
+  if (kDebugMode) {
+    print('[AUTH_NOTIFIER] Initial value: ${asyncValue.value}');
+  }
+
+  ref.listen<AsyncValue<bool?>>(isAuthenticatedProvider, (previous, next) {
+    if (kDebugMode) {
+      print('[AUTH_NOTIFIER] Auth state changed: ${previous?.value} -> ${next.value}');
+    }
+    notifier.update(next);
+  });
+
+  return notifier;
+}
+
+@Riverpod(keepAlive: true)
+GoRouter goRouter(Ref ref) {
+  // Get the notifier that will tell GoRouter when to refresh
+  final authNotifier = ref.watch(authStateProvider);
 
   return GoRouter(
     initialLocation: kSplashRoute,
     debugLogDiagnostics: kDebugMode,
-    redirect: (context, state) => _handleRedirect(context, state, isAuthenticatedAsync, isAppReady),
+    redirect: (context, state) {
+      // Read the latest values on every redirect
+      final isAuthenticatedAsync = ref.read(isAuthenticatedProvider);
+      final isAppReady = ref.read(isAppReadyProvider);
+      return _handleRedirect(context, state, isAuthenticatedAsync, isAppReady);
+    },
+    // Tell GoRouter to refresh when auth state changes
+    refreshListenable: authNotifier,
     routes: [_buildSplashRoute(), _buildAuthRoutes(), _buildMainRoutes(), _buildErrorRoute()],
     errorBuilder: (context, state) => ErrorPage(error: state.error?.toString()),
   );
+}
+
+/// Helper class that wraps AsyncValue and notifies listeners when it changes
+/// This is needed because GoRouter's refreshListenable only works with ChangeNotifier
+class AsyncValueNotifier<T> extends ChangeNotifier {
+  AsyncValueNotifier(this._asyncValue);
+
+  AsyncValue<T> _asyncValue;
+  AsyncValue<T> get asyncValue => _asyncValue;
+
+  void update(AsyncValue<T> newValue) {
+    if (newValue != _asyncValue) {
+      _asyncValue = newValue;
+      notifyListeners();
+    }
+  }
 }
 
 // ============================================================================
@@ -53,44 +94,73 @@ String? _handleRedirect(
   AsyncValue<bool> isAuthenticatedAsync,
   bool isAppReady,
 ) {
+  if (kDebugMode) {
+    print(
+      '[REDIRECT] location=${state.matchedLocation}, appReady=$isAppReady, authAsync=${isAuthenticatedAsync.value}',
+    );
+  }
+
   // If app not ready, always show splash
   if (!isAppReady) {
+    // Don't redirect if already on splash
+    if (state.matchedLocation == kSplashRoute) {
+      return null;
+    }
     return kSplashRoute;
   }
 
   // Once app is ready, check authentication state
   final authed = isAuthenticatedAsync.when(
     data: (auth) => auth,
-    loading: () => null, // Let splash handle it
+    loading: () => null, // Still loading auth state
     error: (err, st) => false,
   );
 
-  // If we're already at splash/error, allow it
-  if (state.matchedLocation == kSplashRoute || state.matchedLocation == kErrorRoute) {
-    return null; // No redirect
+  // If still loading auth state, stay on current route
+  if (authed == null) {
+    if (kDebugMode) {
+      print('[REDIRECT] Auth still loading, staying on ${state.matchedLocation}');
+    }
+    return null;
+  }
+
+  // App is ready and we know auth state
+  // If on splash, redirect based on auth status
+  if (state.matchedLocation == kSplashRoute) {
+    final target = authed ? kListsRoute : kLoginRoute;
+    if (kDebugMode) {
+      print('[REDIRECT] From splash -> $target (authed=$authed)');
+    }
+    return target;
+  }
+
+  // Allow error route
+  if (state.matchedLocation == kErrorRoute) {
+    return null;
   }
 
   // If user is authenticated
-  if (authed == true) {
+  if (authed) {
     // Redirect auth routes to lists
     if (state.matchedLocation.startsWith('/auth')) {
+      if (kDebugMode) {
+        print('[REDIRECT] User authenticated, redirecting /auth -> /lists');
+      }
       return kListsRoute;
     }
-    return null; // Allow route
+    return null; // Allow other routes
   }
 
   // If user is not authenticated
-  if (authed == false) {
-    // Allow auth routes
-    if (state.matchedLocation.startsWith('/auth')) {
-      return null; // Allow route
-    }
-    // Redirect everything else to login
-    return kLoginRoute;
+  // Allow auth routes
+  if (state.matchedLocation.startsWith('/auth')) {
+    return null;
   }
-
-  // Still loading, show nothing (stay on current route)
-  return null;
+  // Redirect everything else to login
+  if (kDebugMode) {
+    print('[REDIRECT] User not authenticated, redirecting to login');
+  }
+  return kLoginRoute;
 }
 
 // ============================================================================

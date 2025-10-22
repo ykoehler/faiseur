@@ -10,7 +10,8 @@
 
 ⚠️ **Still Needed (10 new secrets for web-only deployment):**
 
-Since Faiseur currently deploys **web only**, you only need the web-specific Firebase credentials. Mobile (Android, iOS, macOS) secrets are not required yet.
+Since Faiseur currently deploys **web only**, you only need the web-specific Firebase
+credentials. Mobile (Android, iOS, macOS) secrets are not required yet.
 
 ## Why These Secrets?
 
@@ -195,4 +196,5 @@ When you add Android, iOS, or macOS deployment, you'll also need:
 
 ---
 
-**Questions?** Check the GitHub Actions logs in the "Actions" tab of your repository. Failed workflows show which step failed and why.
+**Questions?** Check the GitHub Actions logs in the "Actions" tab of your repository.
+Failed workflows show which step failed and why.

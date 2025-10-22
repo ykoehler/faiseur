@@ -9,9 +9,12 @@
 
 ## Executive Summary
 
-Phase B establishes Riverpod state management infrastructure for the entire Faiseur app. This phase sets up the code generation pipeline and creates example providers that will be used by all features in subsequent phases.
+Phase B establishes Riverpod state management infrastructure for the entire Faiseur app. This
+phase sets up the code generation pipeline and creates example providers that will be used by
+all features in subsequent phases.
 
-**Objective**: Enable Riverpod-based state management by creating shared providers infrastructure, running code generation, and verifying everything works correctly.
+**Objective**: Enable Riverpod-based state management by creating shared providers infrastructure,
+running code generation, and verifying everything works correctly.
 
 ---
 
@@ -408,13 +411,16 @@ faiseur/
 ## Questions & Clarifications
 
 ### Q: Why `keepAlive: true` for Firebase?
-**A**: Firebase instances are expensive to create. `keepAlive: true` prevents Riverpod from garbage collecting them, keeping them in memory for the app lifetime.
+**A**: Firebase instances are expensive to create. `keepAlive: true` prevents Riverpod from
+garbage collecting them, keeping them in memory for the app lifetime.
 
 ### Q: What if Firebase initialization fails?
-**A**: `firebaseApp` will throw an error. The error will propagate to dependents. Phase C's splash screen catches this and shows error state.
+**A**: `firebaseApp` will throw an error. The error will propagate to dependents. Phase C's
+splash screen catches this and shows error state.
 
 ### Q: Can I create feature providers now?
-**A**: Better to wait for Phase 1.2. This phase focuses on shared infrastructure. Feature providers will follow the same pattern.
+**A**: Better to wait for Phase 1.2. This phase focuses on shared infrastructure. Feature
+providers will follow the same pattern.
 
 ### Q: How do I access these providers in widgets?
 **A**: Use `ref.watch(providerName)` in `ConsumerWidget`. Phase 1.2 will show examples.

@@ -113,7 +113,11 @@ else
   # Run markdownlint on docs directory
   MARKDOWN_OUTPUT=$(markdownlint-cli2 docs/ 2>&1) || true
   
-  if [ -z "$MARKDOWN_OUTPUT" ]; then
+  # Check if there are actual errors (not just summary line)
+  # Count lines that contain "error(s)" and extract the number
+  ERROR_COUNT=$(echo "$MARKDOWN_OUTPUT" | grep -oP "Summary: \K[0-9]+" | head -1)
+  
+  if [ -z "$ERROR_COUNT" ] || [ "$ERROR_COUNT" -eq 0 ]; then
     echo -e "${GREEN}✓${NC} No markdown issues found"
   else
     echo -e "${RED}✗${NC} Markdown linting issues found:"

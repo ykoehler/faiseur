@@ -4,7 +4,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/theme/app_theme.dart';
@@ -14,32 +13,38 @@ import 'routing/app_router.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Load environment variables from .env file
-  // In GitHub Actions, these are provided via secrets instead
-  try {
-    await dotenv.load(fileName: '.env');
-  } catch (e) {
-    debugPrint('⚠️  Note: .env file not found. Using GitHub Actions secrets or defaults.');
-  }
-
   // Initialize Firebase with environment-specific configuration
+  // Environment is set via --dart-define or --dart-define-from-file at build time
   try {
+    debugPrint('🔧 Initializing Firebase for ${FirebaseConfig.environmentName}...');
+
     await Firebase.initializeApp(options: FirebaseConfig.currentPlatform);
+
+    debugPrint('✅ Firebase initialized successfully');
 
     // Log environment information in non-production builds
     if (FirebaseConfig.showDebugInfo) {
       debugPrint('🚀 Running in ${FirebaseConfig.environmentName} environment');
       debugPrint('📦 Flavor: ${FirebaseConfig.flavor}');
+      debugPrint('🌐 Platform: ${kIsWeb ? 'Web' : defaultTargetPlatform}');
     }
 
     if (FirebaseConfig.useEmulators && kDebugMode) {
       await _connectToEmulators();
     }
-  } catch (e) {
+  } catch (e, stackTrace) {
     // If Firebase is not configured yet, show helpful error message
-    debugPrint('⚠️  Firebase not initialized: $e');
-    debugPrint('💡 Run `flutterfire configure` to set up Firebase.');
-    debugPrint('📖 See docs/firebase-setup.md for detailed instructions.');
+    debugPrint('❌ Firebase initialization failed: $e');
+    if (kDebugMode) {
+      debugPrint('Stack trace: $stackTrace');
+    }
+    debugPrint('💡 Troubleshooting steps:');
+    debugPrint('   1. Use --dart-define-from-file to set environment variables:');
+    debugPrint('      flutter run --dart-define-from-file=.env.dev');
+    debugPrint('   2. Or use individual --dart-define flags:');
+    debugPrint('      flutter run --dart-define=FLAVOR=dev');
+    debugPrint('   3. Ensure Firebase options are generated in lib/firebase_options_*.dart');
+    debugPrint('   4. Check docs/firebase-setup.md for detailed instructions.');
   }
 
   runApp(const ProviderScope(child: FaiseurApp()));

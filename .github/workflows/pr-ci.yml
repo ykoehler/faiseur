@@ -121,7 +121,7 @@ jobs:
         run: dart run build_runner build --delete-conflicting-outputs
 
       - name: Build web
-        run: flutter build web --release --dart-define=FLAVOR=dev
+        run: flutter build web --release --dart-define-from-file=.env --dart-define=FLAVOR=dev
 
       - name: Upload web build artifact
         uses: actions/upload-artifact@v3
@@ -151,7 +151,7 @@ jobs:
         run: flutter pub get
 
       - name: Build macOS
-        run: flutter build macos --release --dart-define=FLAVOR=dev
+        run: flutter build macos --release --dart-define-from-file=.env --dart-define=FLAVOR=dev
 
       - name: Upload macOS build artifact
         uses: actions/upload-artifact@v3

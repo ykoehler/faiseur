@@ -8,7 +8,9 @@
 **Backend:** Firebase (Firestore, Authentication, Cloud Functions, Storage)
 
 ## Vision Statement
-Create a flexible, gamified todo list management system that supports individual and collaborative task management, with template-based workflows, multi-view presentations, and optional gamification features for motivation and engagement.
+Create a flexible, gamified todo list management system that supports individual and collaborative
+task management, with template-based workflows, multi-view presentations, and optional gamification
+features for motivation and engagement.
 
 ---
 
@@ -309,7 +311,8 @@ Create a flexible, gamified todo list management system that supports individual
 
 ## Approval
 
-This requirements document serves as the foundation for the Faiseur project. Implementation will proceed in phases as defined in the Implementation Plan.
+This requirements document serves as the foundation for the Faiseur project. Implementation
+will proceed in phases as defined in the Implementation Plan.
 
 **Status:** Draft - Pending Review  
 **Next Steps:** Review → Design Document → Architecture Document → Implementation Plan

@@ -1,10 +1,14 @@
 // ignore_for_file: type=lint
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart' show defaultTargetPlatform, kIsWeb, TargetPlatform;
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Firebase options for Development environment
-/// All values are loaded from environment variables (.env file or GitHub Actions secrets)
+/// All values are loaded from compile-time defines via --dart-define-from-file
+///
+/// Usage:
+/// ```bash
+/// flutter run --dart-define-from-file=.env.dev
+/// ```
 ///
 /// To use this in your app:
 /// ```dart
@@ -35,51 +39,51 @@ class DefaultFirebaseOptions {
     }
   }
 
-  // Web Firebase Options (from environment variables)
+  // Web Firebase Options
   static FirebaseOptions get web {
     return FirebaseOptions(
-      apiKey: dotenv.env['DEV_FIREBASE_API_KEY'] ?? '',
-      appId: dotenv.env['DEV_FIREBASE_APP_ID_WEB'] ?? '',
-      messagingSenderId: dotenv.env['DEV_FIREBASE_MESSAGING_SENDER_ID'] ?? '',
-      projectId: dotenv.env['DEV_FIREBASE_PROJECT_ID'] ?? 'faiseur-dev',
-      authDomain: dotenv.env['DEV_FIREBASE_AUTH_DOMAIN'] ?? 'faiseur-dev.firebaseapp.com',
-      storageBucket: dotenv.env['DEV_FIREBASE_STORAGE_BUCKET'] ?? 'faiseur-dev.appspot.com',
-      measurementId: dotenv.env['DEV_FIREBASE_MEASUREMENT_ID'],
+      apiKey: const String.fromEnvironment('DEV_FIREBASE_API_KEY'),
+      appId: const String.fromEnvironment('DEV_FIREBASE_APP_ID_WEB'),
+      messagingSenderId: const String.fromEnvironment('DEV_FIREBASE_MESSAGING_SENDER_ID'),
+      projectId: const String.fromEnvironment('DEV_FIREBASE_PROJECT_ID'),
+      authDomain: const String.fromEnvironment('DEV_FIREBASE_AUTH_DOMAIN'),
+      storageBucket: const String.fromEnvironment('DEV_FIREBASE_STORAGE_BUCKET'),
+      measurementId: const String.fromEnvironment('DEV_FIREBASE_MEASUREMENT_ID'),
     );
   }
 
-  // Android Firebase Options (from environment variables)
+  // Android Firebase Options
   static FirebaseOptions get android {
     return FirebaseOptions(
-      apiKey: dotenv.env['DEV_FIREBASE_API_KEY'] ?? '',
-      appId: dotenv.env['DEV_FIREBASE_APP_ID_ANDROID'] ?? '',
-      messagingSenderId: dotenv.env['DEV_FIREBASE_MESSAGING_SENDER_ID'] ?? '',
-      projectId: dotenv.env['DEV_FIREBASE_PROJECT_ID'] ?? 'faiseur-dev',
-      storageBucket: dotenv.env['DEV_FIREBASE_STORAGE_BUCKET'] ?? 'faiseur-dev.appspot.com',
+      apiKey: const String.fromEnvironment('DEV_FIREBASE_API_KEY'),
+      appId: const String.fromEnvironment('DEV_FIREBASE_APP_ID_ANDROID'),
+      messagingSenderId: const String.fromEnvironment('DEV_FIREBASE_MESSAGING_SENDER_ID'),
+      projectId: const String.fromEnvironment('DEV_FIREBASE_PROJECT_ID'),
+      storageBucket: const String.fromEnvironment('DEV_FIREBASE_STORAGE_BUCKET'),
     );
   }
 
-  // iOS Firebase Options (from environment variables)
+  // iOS Firebase Options
   static FirebaseOptions get ios {
     return FirebaseOptions(
-      apiKey: dotenv.env['DEV_FIREBASE_API_KEY'] ?? '',
-      appId: dotenv.env['DEV_FIREBASE_APP_ID_IOS'] ?? '',
-      messagingSenderId: dotenv.env['DEV_FIREBASE_MESSAGING_SENDER_ID'] ?? '',
-      projectId: dotenv.env['DEV_FIREBASE_PROJECT_ID'] ?? 'faiseur-dev',
-      storageBucket: dotenv.env['DEV_FIREBASE_STORAGE_BUCKET'] ?? 'faiseur-dev.appspot.com',
-      iosBundleId: 'com.ykoehler.faiseur.dev',
+      apiKey: const String.fromEnvironment('DEV_FIREBASE_API_KEY'),
+      appId: const String.fromEnvironment('DEV_FIREBASE_APP_ID_IOS'),
+      messagingSenderId: const String.fromEnvironment('DEV_FIREBASE_MESSAGING_SENDER_ID'),
+      projectId: const String.fromEnvironment('DEV_FIREBASE_PROJECT_ID'),
+      storageBucket: const String.fromEnvironment('DEV_FIREBASE_STORAGE_BUCKET'),
+      iosBundleId: 'com.faiseur.faiseur',
     );
   }
 
-  // macOS Firebase Options (from environment variables)
+  // macOS Firebase Options
   static FirebaseOptions get macos {
     return FirebaseOptions(
-      apiKey: dotenv.env['DEV_FIREBASE_API_KEY'] ?? '',
-      appId: dotenv.env['DEV_FIREBASE_APP_ID_MACOS'] ?? '',
-      messagingSenderId: dotenv.env['DEV_FIREBASE_MESSAGING_SENDER_ID'] ?? '',
-      projectId: dotenv.env['DEV_FIREBASE_PROJECT_ID'] ?? 'faiseur-dev',
-      storageBucket: dotenv.env['DEV_FIREBASE_STORAGE_BUCKET'] ?? 'faiseur-dev.appspot.com',
-      iosBundleId: 'com.ykoehler.faiseur.dev',
+      apiKey: const String.fromEnvironment('DEV_FIREBASE_API_KEY'),
+      appId: const String.fromEnvironment('DEV_FIREBASE_APP_ID_MACOS'),
+      messagingSenderId: const String.fromEnvironment('DEV_FIREBASE_MESSAGING_SENDER_ID'),
+      projectId: const String.fromEnvironment('DEV_FIREBASE_PROJECT_ID'),
+      storageBucket: const String.fromEnvironment('DEV_FIREBASE_STORAGE_BUCKET'),
+      iosBundleId: 'com.faiseur.faiseur',
     );
   }
 }
