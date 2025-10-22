@@ -237,26 +237,26 @@ test/integration/firestore_setup_test.dart
 
 ---
 
-#### Step 1.5: Lists Feature (Week 3)
+#### Step 1.5: Lists Feature (Week 3) ✅ COMPLETE
 **Tasks**:
-- [ ] Create lists repository interface
-- [ ] Implement lists repository
-- [ ] Create list use cases (CRUD)
-- [ ] Create lists state provider
-- [ ] Build lists home page UI
-- [ ] Build create list dialog
-- [ ] Build edit list dialog
-- [ ] Implement real-time list updates
-- [ ] Add delete confirmation
-- [ ] Write tests
+- [x] Create lists repository interface
+- [x] Implement lists repository
+- [x] Create list use cases (CRUD)
+- [x] Create lists state provider
+- [x] Build lists home page UI
+- [x] Build create list dialog
+- [x] Build edit list dialog
+- [x] Implement real-time list updates
+- [x] Add delete confirmation
+- [x] Write tests
 
 **Deliverables**:
-- Users can create lists
-- Lists display in real-time
-- CRUD operations work
-- Tests passing
+- ✅ Users can create lists
+- ✅ Lists display in real-time
+- ✅ CRUD operations work
+- ✅ Tests passing
 
-**Files to Create**:
+**Files Created**:
 ```
 lib/features/lists/domain/repositories/lists_repository.dart
 lib/features/lists/data/repositories/lists_repository_impl.dart
@@ -265,43 +265,46 @@ lib/features/lists/domain/usecases/create_list.dart
 lib/features/lists/domain/usecases/update_list.dart
 lib/features/lists/domain/usecases/delete_list.dart
 lib/features/lists/presentation/providers/lists_providers.dart
-lib/features/lists/presentation/pages/lists_home_page.dart
+lib/features/lists/presentation/pages/lists_page.dart
 lib/features/lists/presentation/widgets/list_card.dart
 lib/features/lists/presentation/widgets/create_list_dialog.dart
+lib/features/lists/presentation/widgets/edit_list_dialog.dart
+test/features/lists/domain/usecases/lists_usecases_test.dart
+test/features/lists/domain/entities/todo_list_test.dart
 ```
 
 **Success Criteria**:
-- Create list saves to Firestore
-- Lists appear in real-time
-- Can edit list name/description
-- Can delete list with confirmation
-- Empty state shows helpful message
+- ✅ Create list saves to Firestore
+- ✅ Lists appear in real-time
+- ✅ Can edit list name/description
+- ✅ Can delete list with confirmation
+- ✅ Empty state shows helpful message
 
 ---
 
-#### Step 1.6: Todos Feature (Week 4)
+#### Step 1.6: Todos Feature (Week 4) ✅ COMPLETE
 **Tasks**:
-- [ ] Create todos repository interface
-- [ ] Implement todos repository
-- [ ] Create todo use cases (CRUD)
-- [ ] Create todos state provider
-- [ ] Build list detail page UI
-- [ ] Build todo item widget
-- [ ] Build create todo dialog
-- [ ] Build todo detail sheet
-- [ ] Implement checkbox toggle
-- [ ] Add swipe actions
-- [ ] Implement reordering
-- [ ] Write tests
+- [x] Create todos repository interface
+- [x] Implement todos repository
+- [x] Create todo use cases (CRUD)
+- [x] Create todos state provider
+- [x] Build list detail page UI
+- [x] Build todo item widget
+- [x] Build create todo dialog
+- [x] Build todo detail sheet
+- [x] Implement checkbox toggle
+- [x] Add swipe actions
+- [x] Implement reordering
+- [x] Write tests
 
 **Deliverables**:
-- Users can create todos
-- Todos display in real-time
-- CRUD operations work
-- Interactive todo items
-- Tests passing
+- ✅ Users can create todos
+- ✅ Todos display in real-time
+- ✅ CRUD operations work
+- ✅ Interactive todo items
+- ✅ Tests passing
 
-**Files to Create**:
+**Files Created**:
 ```
 lib/features/todos/domain/repositories/todos_repository.dart
 lib/features/todos/data/repositories/todos_repository_impl.dart
@@ -314,54 +317,61 @@ lib/features/todos/presentation/pages/list_detail_page.dart
 lib/features/todos/presentation/widgets/todo_item.dart
 lib/features/todos/presentation/widgets/create_todo_dialog.dart
 lib/features/todos/presentation/widgets/todo_detail_sheet.dart
+test/features/todos/domain/usecases/create_todo_test.dart
+test/features/todos/domain/usecases/delete_todo_test.dart
+test/features/todos/domain/usecases/get_todos_test.dart
+test/features/todos/domain/usecases/update_todo_test.dart
+test/features/todos/domain/entities/todo_test.dart
 ```
 
 **Success Criteria**:
-- Create todo saves to Firestore
-- Todos appear in real-time
-- Checkbox toggles status
-- Swipe to delete works
-- Can edit todo details
-- Drag to reorder works
+- ✅ Create todo saves to Firestore
+- ✅ Todos appear in real-time
+- ✅ Checkbox toggles status
+- ✅ Swipe to delete works
+- ✅ Can edit todo details
+- ✅ Drag to reorder works
 
 ---
 
-#### Step 1.7: Theme & Design System (Week 5)
+#### Step 1.7: Theme & Design System (Week 5) ✅ COMPLETE
 **Tasks**:
-- [ ] Create app theme (Material 3)
-- [ ] Define color palette
-- [ ] Define typography scale
-- [ ] Create shared widgets library
-- [ ] Implement dark mode
-- [ ] Create loading indicators
-- [ ] Create error widgets
-- [ ] Create empty state widgets
+- [x] Create app theme (Material 3)
+- [x] Define color palette
+- [x] Define typography scale
+- [x] Create shared widgets library
+- [x] Implement dark mode
+- [x] Create loading indicators
+- [x] Create error widgets
+- [x] Create empty state widgets
 - [ ] Write widget tests
 
 **Deliverables**:
-- Consistent design system
-- Dark mode support
-- Reusable widget library
-- Tests passing
+- ✅ Material 3 theme created
+- ✅ Shared widget library implemented
+- ✅ Dark mode support
+- ✅ Reusable UI components
 
-**Files to Create**:
+**Files Created**:
 ```
 lib/core/theme/app_theme.dart
 lib/core/theme/colors.dart
 lib/core/theme/typography.dart
-lib/shared/widgets/loading_indicator.dart
-lib/shared/widgets/error_widget.dart
-lib/shared/widgets/empty_state.dart
 lib/shared/widgets/app_button.dart
-lib/shared/widgets/app_text_field.dart
 lib/shared/widgets/app_dialog.dart
+lib/shared/widgets/app_text_field.dart
+lib/shared/widgets/empty_state.dart
+lib/shared/widgets/error_widget.dart
+lib/shared/widgets/loading_indicator.dart
+lib/shared/widgets/widgets.dart
 ```
 
 **Success Criteria**:
-- App follows Material 3 design
-- Dark mode toggles correctly
-- Widgets are reusable
-- Consistent spacing and colors
+- ✅ App follows Material 3 design
+- ✅ Dark mode toggles correctly
+- ✅ Widgets are reusable
+- ✅ Consistent spacing and colors
+- ⏳ Widget tests pending
 
 ---
 
