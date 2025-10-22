@@ -127,16 +127,16 @@ Each phase must meet:
 
 ---
 
-#### Step 1.2: Core Domain Models (Week 1)
+#### Step 1.2: Core Domain Models (Week 1) ✅ COMPLETE
 **Tasks**:
-- [ ] Create User entity and model
-- [ ] Create TodoList entity and model
-- [ ] Create Todo entity and model
-- [ ] Create Status enum
-- [ ] Create Priority enum
-- [ ] Set up Freezed for immutability
-- [ ] Set up JSON serialization
-- [ ] Write unit tests for models
+- [x] Create User entity and model
+- [x] Create TodoList entity and model
+- [x] Create Todo entity and model
+- [x] Create Status enum
+- [x] Create Priority enum
+- [x] Set up Freezed for immutability
+- [x] Set up JSON serialization
+- [x] Write unit tests for models
 
 **Deliverables**:
 - Domain models with Freezed
@@ -156,17 +156,17 @@ lib/core/constants/enums.dart
 
 ---
 
-#### Step 1.3: Authentication Feature (Week 2)
+#### Step 1.3: Authentication Feature (Week 2) ✅ COMPLETE
 **Tasks**:
-- [ ] Create auth repository interface
-- [ ] Implement Firebase Auth repository
-- [ ] Create auth use cases (sign in, sign up, sign out)
-- [ ] Create auth state provider
-- [ ] Build sign-in page UI
-- [ ] Build sign-up page UI
-- [ ] Implement auth guards in router
-- [ ] Add error handling
-- [ ] Write tests
+- [x] Create auth repository interface
+- [x] Implement Firebase Auth repository
+- [x] Create auth use cases (sign in, sign up, sign out)
+- [x] Create auth state provider
+- [x] Build sign-in page UI
+- [x] Build sign-up page UI
+- [x] Implement auth guards in router
+- [x] Add error handling
+- [x] Write tests
 
 **Deliverables**:
 - Working sign-in/sign-up flow
