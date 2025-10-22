@@ -162,13 +162,12 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Stream<User?> get authStateChanges =>
-      _firebaseAuth.authStateChanges().asyncMap((firebaseUser) async {
-        if (firebaseUser == null) {
-          return null;
-        }
-        return _firebaseUserToUser(firebaseUser);
-      });
+  Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges().asyncMap((firebaseUser) async {
+    if (firebaseUser == null) {
+      return null;
+    }
+    return _firebaseUserToUser(firebaseUser);
+  });
 
   @override
   Future<bool> isUsernameAvailable(String username) async {
