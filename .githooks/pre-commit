@@ -28,12 +28,39 @@ FAILED=0
 # 1. CHECK FORMATTING
 # ============================================================================
 echo "📋 Checking code formatting..."
-if dart format --set-exit-if-changed --line-length 120 lib/ test/ integration_test/ > /dev/null 2>&1; then
-  echo -e "${GREEN}✓${NC} Code formatting is correct"
-else
+echo ""
+
+# Create a temporary file to capture dart format output
+TEMP_FORMAT=$(mktemp)
+trap "rm -f $TEMP_FORMAT" EXIT
+
+# Run dart format and capture output (this will reformat files if needed)
+echo "  Analyzing code formatting..."
+dart format --line-length 120 lib/ test/ integration_test/ > "$TEMP_FORMAT" 2>&1
+
+# Check if any files were actually changed (not just analyzed)
+# Pattern: "Formatted X files (Y changed)" - we only fail if Y > 0
+if grep -E "Formatted.*\([1-9]" "$TEMP_FORMAT" > /dev/null; then
+  echo ""
   echo -e "${YELLOW}⚠ Code formatting issues found${NC}"
-  echo "  Run: dart format lib/ test/ integration_test/"
+  echo ""
+  echo "📝 Summary:"
+  echo "────────────────────────────────────────────────────────────────"
+  grep "^Formatted\|^Changed" "$TEMP_FORMAT" | sed 's/^/  /'
+  echo "────────────────────────────────────────────────────────────────"
+  echo ""
+  echo "🔧 To fix formatting, run:"
+  echo ""
+  echo "  ${YELLOW}dart format lib/ test/ integration_test/${NC}"
+  echo ""
+  echo "📌 Then stage all changes and retry:"
+  echo ""
+  echo "  ${YELLOW}git add -A${NC}"
+  echo "  ${YELLOW}git commit${NC}"
+  echo ""
   FAILED=1
+else
+  echo -e "${GREEN}✓${NC} Code formatting is correct"
 fi
 
 echo ""
@@ -41,12 +68,26 @@ echo ""
 # ============================================================================
 # 2. RUN LINTING
 # ============================================================================
+echo ""
 echo "🔎 Running linting analysis..."
-if flutter analyze --no-pub 2>/dev/null | grep -q "No issues found"; then
+echo ""
+
+# Capture lint output
+LINT_OUTPUT=$(flutter analyze --no-pub 2>&1)
+
+if echo "$LINT_OUTPUT" | grep -q "No issues found"; then
   echo -e "${GREEN}✓${NC} No linting issues found"
 else
   echo -e "${RED}✗${NC} Linting issues found:"
-  flutter analyze --no-pub | grep -E "info|warning|error" | head -20
+  echo ""
+  echo "📋 Issues:"
+  echo "────────────────────────────────────────────────────────────────"
+  echo "$LINT_OUTPUT" | grep -E "^   (info|warning|error)" | head -30
+  echo "────────────────────────────────────────────────────────────────"
+  echo ""
+  echo "💡 Tips:"
+  echo "  • Run 'flutter analyze' to see all issues"
+  echo "  • Most issues can be auto-fixed with 'dart fix --apply'"
   echo ""
   FAILED=1
 fi
@@ -56,12 +97,17 @@ echo ""
 # ============================================================================
 # 3. RUN UNIT TESTS
 # ============================================================================
+echo ""
 echo "🧪 Running unit tests..."
-if flutter test test/core/constants/enums_test.dart --reporter json 2>/dev/null | grep -q '"success":true'; then
+echo ""
+
+# Run full test suite
+if flutter test 2>&1 | tail -20 | grep -q "All tests passed"; then
   echo -e "${GREEN}✓${NC} All unit tests passed"
 else
-  echo -e "${YELLOW}⚠${NC} Some tests may have issues"
-  flutter test test/core/constants/enums_test.dart 2>&1 | tail -10
+  echo -e "${YELLOW}⚠${NC} Some tests may have failed"
+  echo ""
+  flutter test 2>&1 | tail -15
   FAILED=1
 fi
 
@@ -70,15 +116,32 @@ echo ""
 # ============================================================================
 # SUMMARY
 # ============================================================================
+echo ""
 if [ $FAILED -eq 0 ]; then
+  echo "═══════════════════════════════════════════════════════════════════"
   echo -e "${GREEN}✅ All pre-commit checks passed!${NC}"
+  echo "═══════════════════════════════════════════════════════════════════"
   echo "🚀 Ready to commit"
+  echo ""
   exit 0
 else
+  echo "═══════════════════════════════════════════════════════════════════"
   echo -e "${RED}❌ Pre-commit verification failed${NC}"
+  echo "═══════════════════════════════════════════════════════════════════"
   echo ""
-  echo "Fix the issues above and try again."
-  echo "To skip checks (not recommended): git commit --no-verify"
+  echo "📝 What happened:"
+  echo "  • Formatting: Check the files listed above"
+  echo "  • Linting: Review the issues and fix them"
+  echo "  • Tests: Ensure all tests pass"
+  echo ""
+  echo "🛠️  Quick fixes:"
+  echo "  1. ${YELLOW}dart format lib/ test/ integration_test/${NC} (fix formatting)"
+  echo "  2. ${YELLOW}dart fix --apply${NC} (auto-fix some lint issues)"
+  echo "  3. ${YELLOW}flutter test${NC} (run tests locally)"
+  echo "  4. ${YELLOW}git add -A && git commit${NC} (retry)"
+  echo ""
+  echo "⚡ To bypass these checks (not recommended):"
+  echo "  ${YELLOW}git commit --no-verify${NC}"
   echo ""
   exit 1
 fi
