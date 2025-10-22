@@ -36,7 +36,8 @@ const appStateControllerProvider = AppStateControllerProvider._();
 ///   return MainApp();
 /// }
 /// ```
-final class AppStateControllerProvider extends $NotifierProvider<AppStateController, AppState> {
+final class AppStateControllerProvider
+    extends $NotifierProvider<AppStateController, AppState> {
   /// Global app state controller
   ///
   /// Manages the global state of the application including initialization,
@@ -69,11 +70,15 @@ final class AppStateControllerProvider extends $NotifierProvider<AppStateControl
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(AppState value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<AppState>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AppState>(value),
+    );
   }
 }
 
-String _$appStateControllerHash() => r'b3f06b025fb42cf4f8f5818f04f7252b377ad06b';
+String _$appStateControllerHash() =>
+    r'b3f06b025fb42cf4f8f5818f04f7252b377ad06b';
 
 /// Global app state controller
 ///
@@ -95,7 +100,14 @@ abstract class _$AppStateController extends $Notifier<AppState> {
   void runBuild() {
     final created = build();
     final ref = this.ref as $Ref<AppState, AppState>;
-    final element = ref.element as $ClassProviderElement<AnyNotifier<AppState, AppState>, AppState, Object?, Object?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AppState, AppState>,
+              AppState,
+              Object?,
+              Object?
+            >;
     element.handleValue(ref, created);
   }
 }
@@ -133,7 +145,8 @@ const appInitializationProvider = AppInitializationProvider._();
 /// );
 /// ```
 
-final class AppInitializationProvider extends $FunctionalProvider<AsyncValue<void>, void, FutureOr<void>>
+final class AppInitializationProvider
+    extends $FunctionalProvider<AsyncValue<void>, void, FutureOr<void>>
     with $FutureModifier<void>, $FutureProvider<void> {
   /// App initialization provider
   ///
@@ -165,7 +178,8 @@ final class AppInitializationProvider extends $FunctionalProvider<AsyncValue<voi
 
   @$internal
   @override
-  $FutureProviderElement<void> $createElement($ProviderPointer pointer) => $FutureProviderElement(pointer);
+  $FutureProviderElement<void> $createElement($ProviderPointer pointer) =>
+      $FutureProviderElement(pointer);
 
   @override
   FutureOr<void> create(Ref ref) {
@@ -206,7 +220,8 @@ const currentUserIdFromStateProvider = CurrentUserIdFromStateProvider._();
 /// print('Current user: $userId');
 /// ```
 
-final class CurrentUserIdFromStateProvider extends $FunctionalProvider<String?, String?, String?>
+final class CurrentUserIdFromStateProvider
+    extends $FunctionalProvider<String?, String?, String?>
     with $Provider<String?> {
   /// Current user ID from app state
   ///
@@ -237,7 +252,8 @@ final class CurrentUserIdFromStateProvider extends $FunctionalProvider<String?, 
 
   @$internal
   @override
-  $ProviderElement<String?> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<String?> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
 
   @override
   String? create(Ref ref) {
@@ -246,11 +262,15 @@ final class CurrentUserIdFromStateProvider extends $FunctionalProvider<String?, 
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(String? value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<String?>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<String?>(value),
+    );
   }
 }
 
-String _$currentUserIdFromStateHash() => r'558eedbdd725d32c740adaa909ac2ac484cde742';
+String _$currentUserIdFromStateHash() =>
+    r'558eedbdd725d32c740adaa909ac2ac484cde742';
 
 /// App is ready to show main content
 ///
@@ -285,7 +305,8 @@ const isAppReadyProvider = IsAppReadyProvider._();
 /// }
 /// ```
 
-final class IsAppReadyProvider extends $FunctionalProvider<bool, bool, bool> with $Provider<bool> {
+final class IsAppReadyProvider extends $FunctionalProvider<bool, bool, bool>
+    with $Provider<bool> {
   /// App is ready to show main content
   ///
   /// Derived provider that indicates if the app has completed initialization
@@ -316,7 +337,8 @@ final class IsAppReadyProvider extends $FunctionalProvider<bool, bool, bool> wit
 
   @$internal
   @override
-  $ProviderElement<bool> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<bool> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
 
   @override
   bool create(Ref ref) {
@@ -325,7 +347,10 @@ final class IsAppReadyProvider extends $FunctionalProvider<bool, bool, bool> wit
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(bool value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<bool>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<bool>(value),
+    );
   }
 }
 
@@ -360,7 +385,9 @@ const appErrorProvider = AppErrorProvider._();
 /// }
 /// ```
 
-final class AppErrorProvider extends $FunctionalProvider<String?, String?, String?> with $Provider<String?> {
+final class AppErrorProvider
+    extends $FunctionalProvider<String?, String?, String?>
+    with $Provider<String?> {
   /// Current app error message
   ///
   /// Returns the current error message if any.
@@ -389,7 +416,8 @@ final class AppErrorProvider extends $FunctionalProvider<String?, String?, Strin
 
   @$internal
   @override
-  $ProviderElement<String?> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<String?> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
 
   @override
   String? create(Ref ref) {
@@ -398,7 +426,10 @@ final class AppErrorProvider extends $FunctionalProvider<String?, String?, Strin
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(String? value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<String?>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<String?>(value),
+    );
   }
 }
 
@@ -431,7 +462,8 @@ const appIsLoadingProvider = AppIsLoadingProvider._();
 /// }
 /// ```
 
-final class AppIsLoadingProvider extends $FunctionalProvider<bool, bool, bool> with $Provider<bool> {
+final class AppIsLoadingProvider extends $FunctionalProvider<bool, bool, bool>
+    with $Provider<bool> {
   /// Whether app is currently loading
   ///
   /// Useful for showing loading indicators.
@@ -459,7 +491,8 @@ final class AppIsLoadingProvider extends $FunctionalProvider<bool, bool, bool> w
 
   @$internal
   @override
-  $ProviderElement<bool> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<bool> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
 
   @override
   bool create(Ref ref) {
@@ -468,7 +501,10 @@ final class AppIsLoadingProvider extends $FunctionalProvider<bool, bool, bool> w
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(bool value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<bool>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<bool>(value),
+    );
   }
 }
 

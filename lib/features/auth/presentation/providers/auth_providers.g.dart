@@ -15,7 +15,8 @@ const authRepositoryProvider = AuthRepositoryProvider._();
 
 /// Provider for the AuthRepository singleton instance
 
-final class AuthRepositoryProvider extends $FunctionalProvider<AuthRepository, AuthRepository, AuthRepository>
+final class AuthRepositoryProvider
+    extends $FunctionalProvider<AuthRepository, AuthRepository, AuthRepository>
     with $Provider<AuthRepository> {
   /// Provider for the AuthRepository singleton instance
   const AuthRepositoryProvider._()
@@ -34,7 +35,8 @@ final class AuthRepositoryProvider extends $FunctionalProvider<AuthRepository, A
 
   @$internal
   @override
-  $ProviderElement<AuthRepository> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<AuthRepository> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
 
   @override
   AuthRepository create(Ref ref) {
@@ -43,7 +45,10 @@ final class AuthRepositoryProvider extends $FunctionalProvider<AuthRepository, A
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(AuthRepository value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<AuthRepository>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AuthRepository>(value),
+    );
   }
 }
 
@@ -57,7 +62,12 @@ const signInWithEmailUseCaseProvider = SignInWithEmailUseCaseProvider._();
 /// Provider for SignInWithEmailUseCase
 
 final class SignInWithEmailUseCaseProvider
-    extends $FunctionalProvider<SignInWithEmailUseCase, SignInWithEmailUseCase, SignInWithEmailUseCase>
+    extends
+        $FunctionalProvider<
+          SignInWithEmailUseCase,
+          SignInWithEmailUseCase,
+          SignInWithEmailUseCase
+        >
     with $Provider<SignInWithEmailUseCase> {
   /// Provider for SignInWithEmailUseCase
   const SignInWithEmailUseCaseProvider._()
@@ -76,7 +86,9 @@ final class SignInWithEmailUseCaseProvider
 
   @$internal
   @override
-  $ProviderElement<SignInWithEmailUseCase> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<SignInWithEmailUseCase> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
 
   @override
   SignInWithEmailUseCase create(Ref ref) {
@@ -85,11 +97,15 @@ final class SignInWithEmailUseCaseProvider
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(SignInWithEmailUseCase value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<SignInWithEmailUseCase>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<SignInWithEmailUseCase>(value),
+    );
   }
 }
 
-String _$signInWithEmailUseCaseHash() => r'4554d6035586722fcff491df1ed2e6f961093df0';
+String _$signInWithEmailUseCaseHash() =>
+    r'4554d6035586722fcff491df1ed2e6f961093df0';
 
 /// Provider for SignUpWithEmailUseCase
 
@@ -99,7 +115,12 @@ const signUpWithEmailUseCaseProvider = SignUpWithEmailUseCaseProvider._();
 /// Provider for SignUpWithEmailUseCase
 
 final class SignUpWithEmailUseCaseProvider
-    extends $FunctionalProvider<SignUpWithEmailUseCase, SignUpWithEmailUseCase, SignUpWithEmailUseCase>
+    extends
+        $FunctionalProvider<
+          SignUpWithEmailUseCase,
+          SignUpWithEmailUseCase,
+          SignUpWithEmailUseCase
+        >
     with $Provider<SignUpWithEmailUseCase> {
   /// Provider for SignUpWithEmailUseCase
   const SignUpWithEmailUseCaseProvider._()
@@ -118,7 +139,9 @@ final class SignUpWithEmailUseCaseProvider
 
   @$internal
   @override
-  $ProviderElement<SignUpWithEmailUseCase> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<SignUpWithEmailUseCase> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
 
   @override
   SignUpWithEmailUseCase create(Ref ref) {
@@ -127,11 +150,15 @@ final class SignUpWithEmailUseCaseProvider
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(SignUpWithEmailUseCase value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<SignUpWithEmailUseCase>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<SignUpWithEmailUseCase>(value),
+    );
   }
 }
 
-String _$signUpWithEmailUseCaseHash() => r'12d4a0a85a909006c9fe40d378af86dcf201578f';
+String _$signUpWithEmailUseCaseHash() =>
+    r'12d4a0a85a909006c9fe40d378af86dcf201578f';
 
 /// Provider for SignOutUseCase
 
@@ -140,7 +167,8 @@ const signOutUseCaseProvider = SignOutUseCaseProvider._();
 
 /// Provider for SignOutUseCase
 
-final class SignOutUseCaseProvider extends $FunctionalProvider<SignOutUseCase, SignOutUseCase, SignOutUseCase>
+final class SignOutUseCaseProvider
+    extends $FunctionalProvider<SignOutUseCase, SignOutUseCase, SignOutUseCase>
     with $Provider<SignOutUseCase> {
   /// Provider for SignOutUseCase
   const SignOutUseCaseProvider._()
@@ -159,7 +187,8 @@ final class SignOutUseCaseProvider extends $FunctionalProvider<SignOutUseCase, S
 
   @$internal
   @override
-  $ProviderElement<SignOutUseCase> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<SignOutUseCase> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
 
   @override
   SignOutUseCase create(Ref ref) {
@@ -168,7 +197,10 @@ final class SignOutUseCaseProvider extends $FunctionalProvider<SignOutUseCase, S
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(SignOutUseCase value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<SignOutUseCase>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<SignOutUseCase>(value),
+    );
   }
 }
 
@@ -182,7 +214,12 @@ const getCurrentUserUseCaseProvider = GetCurrentUserUseCaseProvider._();
 /// Provider for GetCurrentUserUseCase
 
 final class GetCurrentUserUseCaseProvider
-    extends $FunctionalProvider<GetCurrentUserUseCase, GetCurrentUserUseCase, GetCurrentUserUseCase>
+    extends
+        $FunctionalProvider<
+          GetCurrentUserUseCase,
+          GetCurrentUserUseCase,
+          GetCurrentUserUseCase
+        >
     with $Provider<GetCurrentUserUseCase> {
   /// Provider for GetCurrentUserUseCase
   const GetCurrentUserUseCaseProvider._()
@@ -201,7 +238,9 @@ final class GetCurrentUserUseCaseProvider
 
   @$internal
   @override
-  $ProviderElement<GetCurrentUserUseCase> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<GetCurrentUserUseCase> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
 
   @override
   GetCurrentUserUseCase create(Ref ref) {
@@ -210,11 +249,15 @@ final class GetCurrentUserUseCaseProvider
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(GetCurrentUserUseCase value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<GetCurrentUserUseCase>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<GetCurrentUserUseCase>(value),
+    );
   }
 }
 
-String _$getCurrentUserUseCaseHash() => r'4a27d130940e444424e46ed4afad7c5a5c8cf5b2';
+String _$getCurrentUserUseCaseHash() =>
+    r'4a27d130940e444424e46ed4afad7c5a5c8cf5b2';
 
 /// Provider for SignInAnonymouslyUseCase
 
@@ -224,7 +267,12 @@ const signInAnonymouslyUseCaseProvider = SignInAnonymouslyUseCaseProvider._();
 /// Provider for SignInAnonymouslyUseCase
 
 final class SignInAnonymouslyUseCaseProvider
-    extends $FunctionalProvider<SignInAnonymouslyUseCase, SignInAnonymouslyUseCase, SignInAnonymouslyUseCase>
+    extends
+        $FunctionalProvider<
+          SignInAnonymouslyUseCase,
+          SignInAnonymouslyUseCase,
+          SignInAnonymouslyUseCase
+        >
     with $Provider<SignInAnonymouslyUseCase> {
   /// Provider for SignInAnonymouslyUseCase
   const SignInAnonymouslyUseCaseProvider._()
@@ -243,7 +291,9 @@ final class SignInAnonymouslyUseCaseProvider
 
   @$internal
   @override
-  $ProviderElement<SignInAnonymouslyUseCase> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<SignInAnonymouslyUseCase> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
 
   @override
   SignInAnonymouslyUseCase create(Ref ref) {
@@ -252,11 +302,15 @@ final class SignInAnonymouslyUseCaseProvider
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(SignInAnonymouslyUseCase value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<SignInAnonymouslyUseCase>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<SignInAnonymouslyUseCase>(value),
+    );
   }
 }
 
-String _$signInAnonymouslyUseCaseHash() => r'41dceae4be76518427dce164729a976c9ccbfac6';
+String _$signInAnonymouslyUseCaseHash() =>
+    r'41dceae4be76518427dce164729a976c9ccbfac6';
 
 /// Stream provider for auth state changes
 /// Emits the current user whenever auth state changes
@@ -267,7 +321,8 @@ const authStateChangesProvider = AuthStateChangesProvider._();
 /// Stream provider for auth state changes
 /// Emits the current user whenever auth state changes
 
-final class AuthStateChangesProvider extends $FunctionalProvider<AsyncValue<User?>, User?, Stream<User?>>
+final class AuthStateChangesProvider
+    extends $FunctionalProvider<AsyncValue<User?>, User?, Stream<User?>>
     with $FutureModifier<User?>, $StreamProvider<User?> {
   /// Stream provider for auth state changes
   /// Emits the current user whenever auth state changes
@@ -287,7 +342,8 @@ final class AuthStateChangesProvider extends $FunctionalProvider<AsyncValue<User
 
   @$internal
   @override
-  $StreamProviderElement<User?> $createElement($ProviderPointer pointer) => $StreamProviderElement(pointer);
+  $StreamProviderElement<User?> $createElement($ProviderPointer pointer) =>
+      $StreamProviderElement(pointer);
 
   @override
   Stream<User?> create(Ref ref) {
@@ -306,7 +362,8 @@ const currentUserProvider = CurrentUserProvider._();
 /// Future provider for current user
 /// Fetches the current user from the repository
 
-final class CurrentUserProvider extends $FunctionalProvider<AsyncValue<User?>, User?, FutureOr<User?>>
+final class CurrentUserProvider
+    extends $FunctionalProvider<AsyncValue<User?>, User?, FutureOr<User?>>
     with $FutureModifier<User?>, $FutureProvider<User?> {
   /// Future provider for current user
   /// Fetches the current user from the repository
@@ -326,7 +383,8 @@ final class CurrentUserProvider extends $FunctionalProvider<AsyncValue<User?>, U
 
   @$internal
   @override
-  $FutureProviderElement<User?> $createElement($ProviderPointer pointer) => $FutureProviderElement(pointer);
+  $FutureProviderElement<User?> $createElement($ProviderPointer pointer) =>
+      $FutureProviderElement(pointer);
 
   @override
   FutureOr<User?> create(Ref ref) {
@@ -344,7 +402,8 @@ const authProvider = AuthNotifierProvider._();
 
 /// Notifier for auth state management
 /// Handles all auth operations and maintains auth state
-final class AuthNotifierProvider extends $NotifierProvider<AuthNotifier, AsyncValue<User?>> {
+final class AuthNotifierProvider
+    extends $NotifierProvider<AuthNotifier, AsyncValue<User?>> {
   /// Notifier for auth state management
   /// Handles all auth operations and maintains auth state
   const AuthNotifierProvider._()
@@ -367,7 +426,10 @@ final class AuthNotifierProvider extends $NotifierProvider<AuthNotifier, AsyncVa
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(AsyncValue<User?> value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<AsyncValue<User?>>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AsyncValue<User?>>(value),
+    );
   }
 }
 

@@ -76,7 +76,9 @@ class _SignupPageState extends ConsumerState<SignupPage> {
 
       // Sign up successful, navigation handled by router redirect
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Account created successfully!')));
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Account created successfully!')),
+        );
       }
     } on Failure catch (failure) {
       if (mounted) {
@@ -90,14 +92,18 @@ class _SignupPageState extends ConsumerState<SignupPage> {
   }
 
   void _showErrorSnackBar(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message), backgroundColor: Colors.red[400]));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message), backgroundColor: Colors.red[400]),
+    );
   }
 
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Email is required';
     }
-    if (!RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$').hasMatch(value)) {
+    if (!RegExp(
+      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+    ).hasMatch(value)) {
       return 'Please enter a valid email';
     }
     return null;
@@ -158,7 +164,11 @@ class _SignupPageState extends ConsumerState<SignupPage> {
     final isLoading = authNotifierState is AsyncLoading;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Create Account'), centerTitle: true, elevation: 0),
+      appBar: AppBar(
+        title: const Text('Create Account'),
+        centerTitle: true,
+        elevation: 0,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(24),
@@ -171,13 +181,17 @@ class _SignupPageState extends ConsumerState<SignupPage> {
               Text(
                 'Welcome to Faiseur',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 8),
               Text(
                 'Create an account to get started',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
               ),
               const SizedBox(height: 32),
 
@@ -194,7 +208,9 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                         labelText: 'Email',
                         hintText: 'you@example.com',
                         prefixIcon: const Icon(Icons.email),
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
                       keyboardType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.next,
@@ -210,8 +226,11 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                         labelText: 'Username',
                         hintText: 'john_doe',
                         prefixIcon: const Icon(Icons.person),
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                        helperText: 'Letters, numbers, underscores, and hyphens only',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        helperText:
+                            'Letters, numbers, underscores, and hyphens only',
                       ),
                       textInputAction: TextInputAction.next,
                       validator: _validateUsername,
@@ -226,7 +245,9 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                         labelText: 'Display Name',
                         hintText: 'John Doe',
                         prefixIcon: const Icon(Icons.badge),
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
                       textInputAction: TextInputAction.next,
                       validator: _validateDisplayName,
@@ -241,12 +262,20 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                         labelText: 'Password',
                         prefixIcon: const Icon(Icons.lock),
                         suffixIcon: IconButton(
-                          icon: Icon(_obscurePassword ? Icons.visibility : Icons.visibility_off),
+                          icon: Icon(
+                            _obscurePassword
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
                           onPressed: () {
-                            setState(() => _obscurePassword = !_obscurePassword);
+                            setState(
+                              () => _obscurePassword = !_obscurePassword,
+                            );
                           },
                         ),
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                         helperText: 'Minimum 6 characters',
                       ),
                       obscureText: _obscurePassword,
@@ -263,12 +292,21 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                         labelText: 'Confirm Password',
                         prefixIcon: const Icon(Icons.lock),
                         suffixIcon: IconButton(
-                          icon: Icon(_obscureConfirmPassword ? Icons.visibility : Icons.visibility_off),
+                          icon: Icon(
+                            _obscureConfirmPassword
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
                           onPressed: () {
-                            setState(() => _obscureConfirmPassword = !_obscureConfirmPassword);
+                            setState(
+                              () => _obscureConfirmPassword =
+                                  !_obscureConfirmPassword,
+                            );
                           },
                         ),
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
                       obscureText: _obscureConfirmPassword,
                       textInputAction: TextInputAction.done,
@@ -284,7 +322,9 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                           onChanged: isLoading
                               ? null
                               : (value) {
-                                  setState(() => _agreeToTerms = value ?? false);
+                                  setState(
+                                    () => _agreeToTerms = value ?? false,
+                                  );
                                 },
                         ),
                         Expanded(
@@ -323,9 +363,15 @@ class _SignupPageState extends ConsumerState<SignupPage> {
               // Sign up button
               FilledButton(
                 onPressed: isLoading ? null : _handleSignUp,
-                style: FilledButton.styleFrom(padding: const EdgeInsets.symmetric(vertical: 16)),
+                style: FilledButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                ),
                 child: isLoading
-                    ? const SizedBox(height: 20, width: 20, child: CircularProgressIndicator(strokeWidth: 2))
+                    ? const SizedBox(
+                        height: 20,
+                        width: 20,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
                     : const Text('Create Account'),
               ),
               const SizedBox(height: 16),
@@ -334,9 +380,14 @@ class _SignupPageState extends ConsumerState<SignupPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Already have an account? ', style: Theme.of(context).textTheme.bodyMedium),
+                  Text(
+                    'Already have an account? ',
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
                   TextButton(
-                    onPressed: isLoading ? null : () => context.go('/auth/login'),
+                    onPressed: isLoading
+                        ? null
+                        : () => context.go('/auth/login'),
                     child: const Text('Sign In'),
                   ),
                 ],

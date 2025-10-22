@@ -20,7 +20,8 @@ class SplashPage extends ConsumerWidget {
       body: appInit.when(
         data: (_) => _buildLoadingState(context),
         loading: () => _buildLoadingState(context),
-        error: (error, stackTrace) => _buildErrorState(context, error, stackTrace),
+        error: (error, stackTrace) =>
+            _buildErrorState(context, error, stackTrace),
       ),
     );
   }
@@ -32,19 +33,33 @@ class SplashPage extends ConsumerWidget {
       children: [
         const CircularProgressIndicator(),
         const SizedBox(height: 16),
-        Text('Initializing app...', style: Theme.of(context).textTheme.bodyMedium),
+        Text(
+          'Initializing app...',
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
       ],
     ),
   );
 
   /// Build error state with retry option
-  Widget _buildErrorState(BuildContext context, Object? error, StackTrace stackTrace) => Center(
+  Widget _buildErrorState(
+    BuildContext context,
+    Object? error,
+    StackTrace stackTrace,
+  ) => Center(
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(Icons.error_outline, size: 64, color: Theme.of(context).colorScheme.error),
+        Icon(
+          Icons.error_outline,
+          size: 64,
+          color: Theme.of(context).colorScheme.error,
+        ),
         const SizedBox(height: 16),
-        Text('Initialization Error', style: Theme.of(context).textTheme.titleLarge),
+        Text(
+          'Initialization Error',
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
         const SizedBox(height: 8),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32),
@@ -59,7 +74,9 @@ class SplashPage extends ConsumerWidget {
           onPressed: () {
             // Retry by navigating back to splash
             // This will trigger app initialization again
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Retrying...')));
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(const SnackBar(content: Text('Retrying...')));
           },
           icon: const Icon(Icons.refresh),
           label: const Text('Retry'),

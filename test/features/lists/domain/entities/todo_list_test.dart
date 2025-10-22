@@ -12,7 +12,13 @@ void main() {
       const color = '#FF5733';
       const ownerId = 'user123';
 
-      final list = TodoList(id: listId, title: title, color: color, ownerId: ownerId, createdAt: now);
+      final list = TodoList(
+        id: listId,
+        title: title,
+        color: color,
+        ownerId: ownerId,
+        createdAt: now,
+      );
 
       expect(list.id, equals(listId));
       expect(list.title, equals(title));
@@ -27,7 +33,10 @@ void main() {
 
     test('should create list with collaborators', () {
       final now = DateTime.now();
-      final collaborators = {'user456': UserRole.editor, 'user789': UserRole.viewer};
+      final collaborators = {
+        'user456': UserRole.editor,
+        'user789': UserRole.viewer,
+      };
 
       final list = TodoList(
         id: 'list123',
@@ -46,16 +55,34 @@ void main() {
     test('should support value equality', () {
       final now = DateTime.now();
 
-      final list1 = TodoList(id: 'list123', title: 'My Tasks', color: '#FF5733', ownerId: 'user123', createdAt: now);
+      final list1 = TodoList(
+        id: 'list123',
+        title: 'My Tasks',
+        color: '#FF5733',
+        ownerId: 'user123',
+        createdAt: now,
+      );
 
-      final list2 = TodoList(id: 'list123', title: 'My Tasks', color: '#FF5733', ownerId: 'user123', createdAt: now);
+      final list2 = TodoList(
+        id: 'list123',
+        title: 'My Tasks',
+        color: '#FF5733',
+        ownerId: 'user123',
+        createdAt: now,
+      );
 
       expect(list1, equals(list2));
     });
 
     test('should support copyWith method', () {
       final now = DateTime.now();
-      final list1 = TodoList(id: 'list123', title: 'My Tasks', color: '#FF5733', ownerId: 'user123', createdAt: now);
+      final list1 = TodoList(
+        id: 'list123',
+        title: 'My Tasks',
+        color: '#FF5733',
+        ownerId: 'user123',
+        createdAt: now,
+      );
 
       final list2 = list1.copyWith(title: 'Updated Tasks', todoCount: 5);
 

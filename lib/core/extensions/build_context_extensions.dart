@@ -76,15 +76,22 @@ extension BuildContextExtensions on BuildContext {
 
   /// Shows a snackbar with message
   void showSnackbar(String message, {Duration? duration}) {
-    ScaffoldMessenger.of(
-      this,
-    ).showSnackBar(SnackBar(content: Text(message), duration: duration ?? const Duration(seconds: 4)));
+    ScaffoldMessenger.of(this).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: duration ?? const Duration(seconds: 4),
+      ),
+    );
   }
 
   /// Shows an error snackbar
   void showErrorSnackbar(String message, {Duration? duration}) {
     ScaffoldMessenger.of(this).showSnackBar(
-      SnackBar(content: Text(message), backgroundColor: errorColor, duration: duration ?? const Duration(seconds: 4)),
+      SnackBar(
+        content: Text(message),
+        backgroundColor: errorColor,
+        duration: duration ?? const Duration(seconds: 4),
+      ),
     );
   }
 
@@ -112,23 +119,37 @@ extension BuildContextExtensions on BuildContext {
           title: Text(title),
           content: Text(message),
           actions: [
-            TextButton(onPressed: () => Navigator.pop(context, false), child: Text(cancelText)),
-            TextButton(onPressed: () => Navigator.pop(context, true), child: Text(confirmText)),
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: Text(cancelText),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: Text(confirmText),
+            ),
           ],
         ),
       ) ??
       false;
 
   /// Shows an alert dialog
-  Future<void> showAlertDialog({required String title, required String message, String buttonText = 'OK'}) async =>
-      showDialog(
-        context: this,
-        builder: (context) => AlertDialog(
-          title: Text(title),
-          content: Text(message),
-          actions: [TextButton(onPressed: () => Navigator.pop(context), child: Text(buttonText))],
+  Future<void> showAlertDialog({
+    required String title,
+    required String message,
+    String buttonText = 'OK',
+  }) async => showDialog(
+    context: this,
+    builder: (context) => AlertDialog(
+      title: Text(title),
+      content: Text(message),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: Text(buttonText),
         ),
-      );
+      ],
+    ),
+  );
 
   /// Shows a loading dialog
   void showLoadingDialog({String message = 'Loading...'}) {
@@ -136,7 +157,13 @@ extension BuildContextExtensions on BuildContext {
       context: this,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        content: Row(children: [const CircularProgressIndicator(), const SizedBox(width: 16), Text(message)]),
+        content: Row(
+          children: [
+            const CircularProgressIndicator(),
+            const SizedBox(width: 16),
+            Text(message),
+          ],
+        ),
       ),
     );
   }

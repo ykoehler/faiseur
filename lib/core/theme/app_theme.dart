@@ -136,24 +136,31 @@ class AppTheme {
     foregroundColor: colorScheme.onSurface,
     elevation: 2,
     centerTitle: true,
-    titleTextStyle: AppTypography.titleLarge.copyWith(color: colorScheme.onSurface),
+    titleTextStyle: AppTypography.titleLarge.copyWith(
+      color: colorScheme.onSurface,
+    ),
   );
 
-  static FloatingActionButtonThemeData _buildFabTheme(ColorScheme colorScheme) => FloatingActionButtonThemeData(
+  static FloatingActionButtonThemeData _buildFabTheme(
+    ColorScheme colorScheme,
+  ) => FloatingActionButtonThemeData(
     backgroundColor: colorScheme.primary,
     foregroundColor: colorScheme.onPrimary,
     elevation: 6,
     highlightElevation: 8,
   );
 
-  static CardThemeData _buildCardTheme(ColorScheme colorScheme) => CardThemeData(
-    color: colorScheme.surface,
-    shadowColor: colorScheme.scrim,
-    elevation: 2,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-  );
+  static CardThemeData _buildCardTheme(ColorScheme colorScheme) =>
+      CardThemeData(
+        color: colorScheme.surface,
+        shadowColor: colorScheme.scrim,
+        elevation: 2,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      );
 
-  static ElevatedButtonThemeData _buildElevatedButtonTheme(ColorScheme colorScheme) => ElevatedButtonThemeData(
+  static ElevatedButtonThemeData _buildElevatedButtonTheme(
+    ColorScheme colorScheme,
+  ) => ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: colorScheme.primary,
       foregroundColor: colorScheme.onPrimary,
@@ -163,7 +170,9 @@ class AppTheme {
     ),
   );
 
-  static OutlinedButtonThemeData _buildOutlinedButtonTheme(ColorScheme colorScheme) => OutlinedButtonThemeData(
+  static OutlinedButtonThemeData _buildOutlinedButtonTheme(
+    ColorScheme colorScheme,
+  ) => OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       foregroundColor: colorScheme.primary,
       side: BorderSide(color: colorScheme.outline),
@@ -172,14 +181,17 @@ class AppTheme {
     ),
   );
 
-  static TextButtonThemeData _buildTextButtonTheme(ColorScheme colorScheme) => TextButtonThemeData(
-    style: TextButton.styleFrom(
-      foregroundColor: colorScheme.primary,
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-    ),
-  );
+  static TextButtonThemeData _buildTextButtonTheme(ColorScheme colorScheme) =>
+      TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: colorScheme.primary,
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        ),
+      );
 
-  static InputDecorationTheme _buildInputDecorationTheme(ColorScheme colorScheme) => InputDecorationTheme(
+  static InputDecorationTheme _buildInputDecorationTheme(
+    ColorScheme colorScheme,
+  ) => InputDecorationTheme(
     filled: true,
     fillColor: colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -207,38 +219,48 @@ class AppTheme {
     hintStyle: TextStyle(color: colorScheme.onSurfaceVariant),
   );
 
-  static ChipThemeData _buildChipTheme(ColorScheme colorScheme) => ChipThemeData(
-    backgroundColor: colorScheme.surfaceContainerHighest,
-    disabledColor: colorScheme.surface,
-    selectedColor: colorScheme.primaryContainer,
-    labelStyle: TextStyle(color: colorScheme.onSurface),
-    secondaryLabelStyle: TextStyle(color: colorScheme.onSurfaceVariant),
-    brightness: colorScheme.brightness,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-  );
+  static ChipThemeData _buildChipTheme(ColorScheme colorScheme) =>
+      ChipThemeData(
+        backgroundColor: colorScheme.surfaceContainerHighest,
+        disabledColor: colorScheme.surface,
+        selectedColor: colorScheme.primaryContainer,
+        labelStyle: TextStyle(color: colorScheme.onSurface),
+        secondaryLabelStyle: TextStyle(color: colorScheme.onSurfaceVariant),
+        brightness: colorScheme.brightness,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      );
 
-  static ProgressIndicatorThemeData _buildProgressIndicatorTheme(ColorScheme colorScheme) => ProgressIndicatorThemeData(
+  static ProgressIndicatorThemeData _buildProgressIndicatorTheme(
+    ColorScheme colorScheme,
+  ) => ProgressIndicatorThemeData(
     color: colorScheme.primary,
     linearTrackColor: colorScheme.surfaceContainerHighest,
     circularTrackColor: colorScheme.surfaceContainerHighest,
   );
 
-  static SnackBarThemeData _buildSnackBarTheme(ColorScheme colorScheme) => SnackBarThemeData(
-    backgroundColor: colorScheme.onSurface,
-    contentTextStyle: TextStyle(color: colorScheme.surface),
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-  );
+  static SnackBarThemeData _buildSnackBarTheme(ColorScheme colorScheme) =>
+      SnackBarThemeData(
+        backgroundColor: colorScheme.onSurface,
+        contentTextStyle: TextStyle(color: colorScheme.surface),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      );
 
-  static DialogThemeData _buildDialogTheme(ColorScheme colorScheme) => DialogThemeData(
-    backgroundColor: colorScheme.surface,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-    elevation: 4,
-    titleTextStyle: AppTypography.headlineSmall.copyWith(color: colorScheme.onSurface),
-  );
+  static DialogThemeData _buildDialogTheme(ColorScheme colorScheme) =>
+      DialogThemeData(
+        backgroundColor: colorScheme.surface,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        elevation: 4,
+        titleTextStyle: AppTypography.headlineSmall.copyWith(
+          color: colorScheme.onSurface,
+        ),
+      );
 
-  static BottomSheetThemeData _buildBottomSheetTheme(ColorScheme colorScheme) => BottomSheetThemeData(
-    backgroundColor: colorScheme.surface,
-    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
-    elevation: 2,
-  );
+  static BottomSheetThemeData _buildBottomSheetTheme(ColorScheme colorScheme) =>
+      BottomSheetThemeData(
+        backgroundColor: colorScheme.surface,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+        ),
+        elevation: 2,
+      );
 }

@@ -21,7 +21,12 @@ part 'app_providers.g.dart';
 @riverpod
 class AppStateController extends _$AppStateController {
   @override
-  AppState build() => const AppState(isInitialized: false, currentUserId: null, isLoading: false, errorMessage: null);
+  AppState build() => const AppState(
+    isInitialized: false,
+    currentUserId: null,
+    isLoading: false,
+    errorMessage: null,
+  );
 
   /// Initialize the app (called on startup)
   Future<void> initialize() async {
@@ -39,7 +44,10 @@ class AppStateController extends _$AppStateController {
         errorMessage: null,
       );
     } catch (e) {
-      state = state.copyWith(isLoading: false, errorMessage: 'Initialization failed: $e');
+      state = state.copyWith(
+        isLoading: false,
+        errorMessage: 'Initialization failed: $e',
+      );
     }
   }
 

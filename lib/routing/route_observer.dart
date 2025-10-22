@@ -41,7 +41,11 @@ class AppRouteObserver extends NavigatorObserver {
   }
 
   /// Log navigation events
-  void _logNavigation(String action, Route<dynamic>? fromRoute, Route<dynamic>? toRoute) {
+  void _logNavigation(
+    String action,
+    Route<dynamic>? fromRoute,
+    Route<dynamic>? toRoute,
+  ) {
     final fromName = _getRouteName(fromRoute);
     final toName = _getRouteName(toRoute);
 

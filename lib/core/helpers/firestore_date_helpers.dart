@@ -24,7 +24,10 @@ DateTime parseFirestoreTimestamp(dynamic value, {required String fieldName}) {
 }
 
 /// Convert a nullable Firestore timestamp-like value into a nullable [DateTime].
-DateTime? parseFirestoreTimestampNullable(dynamic value, {required String fieldName}) {
+DateTime? parseFirestoreTimestampNullable(
+  dynamic value, {
+  required String fieldName,
+}) {
   if (value == null) {
     return null;
   }
@@ -35,4 +38,5 @@ DateTime? parseFirestoreTimestampNullable(dynamic value, {required String fieldN
 Object timestampFromDateTime(DateTime value) => Timestamp.fromDate(value);
 
 /// Convert a nullable [DateTime] into a Firestore-friendly value.
-Object? timestampFromNullableDateTime(DateTime? value) => value == null ? null : timestampFromDateTime(value);
+Object? timestampFromNullableDateTime(DateTime? value) =>
+    value == null ? null : timestampFromDateTime(value);

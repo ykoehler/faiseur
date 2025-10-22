@@ -20,7 +20,9 @@ class SettingsPage extends ConsumerWidget {
           ElevatedButton(
             onPressed: () {
               // TODO: Implement settings
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('TODO: Implement settings')));
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('TODO: Implement settings')),
+              );
             },
             child: const Text('Save Settings'),
           ),

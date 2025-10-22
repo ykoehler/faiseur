@@ -39,15 +39,26 @@ void main() {
         );
 
         when(
-          () => mockRepository.signInWithEmail(email: 'test@example.com', password: 'password123'),
+          () => mockRepository.signInWithEmail(
+            email: 'test@example.com',
+            password: 'password123',
+          ),
         ).thenAnswer((_) async => testUser);
 
         // Act
-        final result = await useCase.call(email: 'test@example.com', password: 'password123');
+        final result = await useCase.call(
+          email: 'test@example.com',
+          password: 'password123',
+        );
 
         // Assert
         expect(result, testUser);
-        verify(() => mockRepository.signInWithEmail(email: 'test@example.com', password: 'password123')).called(1);
+        verify(
+          () => mockRepository.signInWithEmail(
+            email: 'test@example.com',
+            password: 'password123',
+          ),
+        ).called(1);
       });
 
       test('should return user with correct properties', () async {
@@ -68,7 +79,10 @@ void main() {
         ).thenAnswer((_) async => testUser);
 
         // Act
-        final result = await useCase.call(email: 'john@example.com', password: 'password123');
+        final result = await useCase.call(
+          email: 'john@example.com',
+          password: 'password123',
+        );
 
         // Assert
         expect(result.email, 'john@example.com');
@@ -90,10 +104,18 @@ void main() {
             email: any(named: 'email'),
             password: any(named: 'password'),
           ),
-        ).thenThrow(const Failure.authentication(message: 'Incorrect password'));
+        ).thenThrow(
+          const Failure.authentication(message: 'Incorrect password'),
+        );
 
         // Act & Assert
-        expect(() => useCase.call(email: 'test@example.com', password: 'wrongpassword'), throwsA(isA<Failure>()));
+        expect(
+          () => useCase.call(
+            email: 'test@example.com',
+            password: 'wrongpassword',
+          ),
+          throwsA(isA<Failure>()),
+        );
       });
 
       test('should throw Failure.notFound for non-existent user', () async {
@@ -103,10 +125,18 @@ void main() {
             email: any(named: 'email'),
             password: any(named: 'password'),
           ),
-        ).thenThrow(const Failure.notFound(message: 'No user found with this email'));
+        ).thenThrow(
+          const Failure.notFound(message: 'No user found with this email'),
+        );
 
         // Act & Assert
-        expect(() => useCase.call(email: 'nonexistent@example.com', password: 'password123'), throwsA(isA<Failure>()));
+        expect(
+          () => useCase.call(
+            email: 'nonexistent@example.com',
+            password: 'password123',
+          ),
+          throwsA(isA<Failure>()),
+        );
       });
 
       test('should throw Failure.network on network error', () async {
@@ -116,10 +146,18 @@ void main() {
             email: any(named: 'email'),
             password: any(named: 'password'),
           ),
-        ).thenThrow(const Failure.network(message: 'Network error: No internet connection'));
+        ).thenThrow(
+          const Failure.network(
+            message: 'Network error: No internet connection',
+          ),
+        );
 
         // Act & Assert
-        expect(() => useCase.call(email: 'test@example.com', password: 'password123'), throwsA(isA<Failure>()));
+        expect(
+          () =>
+              useCase.call(email: 'test@example.com', password: 'password123'),
+          throwsA(isA<Failure>()),
+        );
       });
 
       test('should throw Failure.unknown on unexpected error', () async {
@@ -129,10 +167,16 @@ void main() {
             email: any(named: 'email'),
             password: any(named: 'password'),
           ),
-        ).thenThrow(const Failure.unknown(message: 'Unexpected error occurred'));
+        ).thenThrow(
+          const Failure.unknown(message: 'Unexpected error occurred'),
+        );
 
         // Act & Assert
-        expect(() => useCase.call(email: 'test@example.com', password: 'password123'), throwsA(isA<Failure>()));
+        expect(
+          () =>
+              useCase.call(email: 'test@example.com', password: 'password123'),
+          throwsA(isA<Failure>()),
+        );
       });
     });
 
@@ -151,7 +195,10 @@ void main() {
         ).thenThrow(const Failure.validation(message: 'Email cannot be empty'));
 
         // Act & Assert
-        expect(() => useCase.call(email: '', password: 'password123'), throwsA(isA<Failure>()));
+        expect(
+          () => useCase.call(email: '', password: 'password123'),
+          throwsA(isA<Failure>()),
+        );
       });
 
       test('should reject invalid email format', () async {
@@ -164,7 +211,10 @@ void main() {
         ).thenThrow(const Failure.validation(message: 'Invalid email format'));
 
         // Act & Assert
-        expect(() => useCase.call(email: 'invalid-email', password: 'password123'), throwsA(isA<Failure>()));
+        expect(
+          () => useCase.call(email: 'invalid-email', password: 'password123'),
+          throwsA(isA<Failure>()),
+        );
       });
 
       test('should reject empty password', () async {
@@ -174,10 +224,15 @@ void main() {
             email: any(named: 'email'),
             password: any(named: 'password'),
           ),
-        ).thenThrow(const Failure.validation(message: 'Password cannot be empty'));
+        ).thenThrow(
+          const Failure.validation(message: 'Password cannot be empty'),
+        );
 
         // Act & Assert
-        expect(() => useCase.call(email: 'test@example.com', password: ''), throwsA(isA<Failure>()));
+        expect(
+          () => useCase.call(email: 'test@example.com', password: ''),
+          throwsA(isA<Failure>()),
+        );
       });
 
       test('should reject password shorter than 6 characters', () async {
@@ -187,10 +242,17 @@ void main() {
             email: any(named: 'email'),
             password: any(named: 'password'),
           ),
-        ).thenThrow(const Failure.validation(message: 'Password must be at least 6 characters'));
+        ).thenThrow(
+          const Failure.validation(
+            message: 'Password must be at least 6 characters',
+          ),
+        );
 
         // Act & Assert
-        expect(() => useCase.call(email: 'test@example.com', password: 'short'), throwsA(isA<Failure>()));
+        expect(
+          () => useCase.call(email: 'test@example.com', password: 'short'),
+          throwsA(isA<Failure>()),
+        );
       });
     });
 
@@ -210,39 +272,51 @@ void main() {
         );
 
         when(
-          () => mockRepository.signInWithEmail(email: 'Test@Example.COM', password: 'password123'),
+          () => mockRepository.signInWithEmail(
+            email: 'Test@Example.COM',
+            password: 'password123',
+          ),
         ).thenAnswer((_) async => testUser);
 
         // Act
-        final result = await useCase.call(email: 'Test@Example.COM', password: 'password123');
+        final result = await useCase.call(
+          email: 'Test@Example.COM',
+          password: 'password123',
+        );
 
         // Assert
         expect(result.email, 'Test@Example.COM');
       });
 
-      test('should handle email with whitespace (trimmed by repository)', () async {
-        // Arrange
-        final testUser = User(
-          id: 'user-123',
-          email: 'test@example.com',
-          username: 'testuser',
-          displayName: 'Test User',
-          createdAt: DateTime.now(),
-        );
+      test(
+        'should handle email with whitespace (trimmed by repository)',
+        () async {
+          // Arrange
+          final testUser = User(
+            id: 'user-123',
+            email: 'test@example.com',
+            username: 'testuser',
+            displayName: 'Test User',
+            createdAt: DateTime.now(),
+          );
 
-        when(
-          () => mockRepository.signInWithEmail(
-            email: any(named: 'email'),
-            password: any(named: 'password'),
-          ),
-        ).thenAnswer((_) async => testUser);
+          when(
+            () => mockRepository.signInWithEmail(
+              email: any(named: 'email'),
+              password: any(named: 'password'),
+            ),
+          ).thenAnswer((_) async => testUser);
 
-        // Act - with whitespace
-        final result = await useCase.call(email: '  test@example.com  ', password: 'password123');
+          // Act - with whitespace
+          final result = await useCase.call(
+            email: '  test@example.com  ',
+            password: 'password123',
+          );
 
-        // Assert - should successfully call repository
-        expect(result, testUser);
-      });
+          // Assert - should successfully call repository
+          expect(result, testUser);
+        },
+      );
 
       test('should handle very long email address', () async {
         // Arrange
@@ -256,11 +330,17 @@ void main() {
         );
 
         when(
-          () => mockRepository.signInWithEmail(email: longEmail, password: 'password123'),
+          () => mockRepository.signInWithEmail(
+            email: longEmail,
+            password: 'password123',
+          ),
         ).thenAnswer((_) async => testUser);
 
         // Act
-        final result = await useCase.call(email: longEmail, password: 'password123');
+        final result = await useCase.call(
+          email: longEmail,
+          password: 'password123',
+        );
 
         // Assert
         expect(result.email, longEmail);
@@ -278,11 +358,17 @@ void main() {
         );
 
         when(
-          () => mockRepository.signInWithEmail(email: 'test@example.com', password: longPassword),
+          () => mockRepository.signInWithEmail(
+            email: 'test@example.com',
+            password: longPassword,
+          ),
         ).thenAnswer((_) async => testUser);
 
         // Act
-        final result = await useCase.call(email: 'test@example.com', password: longPassword);
+        final result = await useCase.call(
+          email: 'test@example.com',
+          password: longPassword,
+        );
 
         // Assert
         expect(result, testUser);
@@ -315,7 +401,12 @@ void main() {
         await useCase.call(email: 'test@example.com', password: 'password123');
 
         // Assert - verify exact call parameters
-        verify(() => mockRepository.signInWithEmail(email: 'test@example.com', password: 'password123')).called(1);
+        verify(
+          () => mockRepository.signInWithEmail(
+            email: 'test@example.com',
+            password: 'password123',
+          ),
+        ).called(1);
 
         // Ensure no other calls made
         verifyNoMoreInteractions(mockRepository);
@@ -331,7 +422,11 @@ void main() {
         ).thenThrow(Exception('Repository error'));
 
         // Act & Assert - exception should propagate
-        expect(() => useCase.call(email: 'test@example.com', password: 'password123'), throwsException);
+        expect(
+          () =>
+              useCase.call(email: 'test@example.com', password: 'password123'),
+          throwsException,
+        );
       });
     });
   });

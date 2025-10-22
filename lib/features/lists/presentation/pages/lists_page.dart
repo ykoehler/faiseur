@@ -28,7 +28,9 @@ class ListsPage extends ConsumerWidget {
           ElevatedButton(
             onPressed: () {
               // TODO: Implement lists feature
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('TODO: Implement lists')));
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('TODO: Implement lists')),
+              );
             },
             child: const Text('Create List'),
           ),

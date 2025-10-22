@@ -196,7 +196,10 @@ class Validators {
   }
 
   /// Compose multiple validators
-  static String? compose(String? value, List<String? Function(String?)> validators) {
+  static String? compose(
+    String? value,
+    List<String? Function(String?)> validators,
+  ) {
     for (final validator in validators) {
       final result = validator(value);
       if (result != null) {

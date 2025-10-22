@@ -28,7 +28,8 @@ class NetworkException extends AppException {
   const NetworkException(super.message, [super.stackTrace]);
 
   /// Creates a NetworkException from a network error code.
-  factory NetworkException.fromCode(int code) => NetworkException('Network error: $code');
+  factory NetworkException.fromCode(int code) =>
+      NetworkException('Network error: $code');
 
   @override
   String toString() => 'NetworkException: $message';
@@ -49,16 +50,19 @@ class AuthException extends AppException {
   const AuthException(super.message, [super.stackTrace]);
 
   /// Creates an AuthException for invalid credentials.
-  factory AuthException.invalidCredentials() => const AuthException('Invalid email or password');
+  factory AuthException.invalidCredentials() =>
+      const AuthException('Invalid email or password');
 
   /// Creates an AuthException for user not found.
   factory AuthException.userNotFound() => const AuthException('User not found');
 
   /// Creates an AuthException for user already exists.
-  factory AuthException.userAlreadyExists() => const AuthException('User already exists');
+  factory AuthException.userAlreadyExists() =>
+      const AuthException('User already exists');
 
   /// Creates an AuthException for authentication required.
-  factory AuthException.authRequired() => const AuthException('Authentication required');
+  factory AuthException.authRequired() =>
+      const AuthException('Authentication required');
 
   @override
   String toString() => 'AuthException: $message';
@@ -82,13 +86,16 @@ class FirestoreException extends AppException {
   const FirestoreException(super.message, [super.stackTrace]);
 
   /// Creates a FirestoreException for permission denied.
-  factory FirestoreException.permissionDenied() => const FirestoreException('Permission denied');
+  factory FirestoreException.permissionDenied() =>
+      const FirestoreException('Permission denied');
 
   /// Creates a FirestoreException for document not found.
-  factory FirestoreException.documentNotFound() => const FirestoreException('Document not found');
+  factory FirestoreException.documentNotFound() =>
+      const FirestoreException('Document not found');
 
   /// Creates a FirestoreException from a Firebase error code.
-  factory FirestoreException.fromCode(String code) => FirestoreException('Firestore error: $code');
+  factory FirestoreException.fromCode(String code) =>
+      FirestoreException('Firestore error: $code');
 
   @override
   String toString() => 'FirestoreException: $message';
@@ -100,10 +107,12 @@ class StorageException extends AppException {
   const StorageException(super.message, [super.stackTrace]);
 
   /// Creates a StorageException for file not found.
-  factory StorageException.fileNotFound() => const StorageException('File not found');
+  factory StorageException.fileNotFound() =>
+      const StorageException('File not found');
 
   /// Creates a StorageException for insufficient quota.
-  factory StorageException.quotaExceeded() => const StorageException('Storage quota exceeded');
+  factory StorageException.quotaExceeded() =>
+      const StorageException('Storage quota exceeded');
 
   @override
   String toString() => 'StorageException: $message';

@@ -18,7 +18,10 @@ abstract class AuthRepository {
   /// - [Failure.validation] - Email format invalid
   /// - [Failure.network] - Network connectivity issue
   /// - [Failure.unknown] - Unexpected error occurred
-  Future<User> signInWithEmail({required String email, required String password});
+  Future<User> signInWithEmail({
+    required String email,
+    required String password,
+  });
 
   /// Attempts to sign up a new user with email, password, and username.
   ///

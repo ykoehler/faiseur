@@ -39,7 +39,9 @@ void main() {
       expect(tester.takeException(), isNull);
     });
 
-    testWidgets('Theme applies correctly (light and dark modes)', (tester) async {
+    testWidgets('Theme applies correctly (light and dark modes)', (
+      tester,
+    ) async {
       await tester.pumpWidget(const ProviderScope(child: FaiseurApp()));
       await tester.pumpAndSettle(const Duration(seconds: 2));
 
