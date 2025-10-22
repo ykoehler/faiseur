@@ -17,13 +17,13 @@ Phase B establishes Riverpod state management infrastructure for the entire Fais
 
 ## What This Phase Accomplishes
 
-### ✅ Provides the Foundation For:
+### ✅ Provides the Foundation For
 - ✅ All feature-specific providers (Auth, Todos, Lists, etc.)
 - ✅ Global app state management (initialization, errors, theme)
 - ✅ Firebase service integration via dependency injection
 - ✅ Hot reload and code generation workflow
 
-### ✅ Creates:
+### ✅ Creates
 1. **Shared Models** - Freezed immutable app state model
 2. **Firebase Providers** - Singleton instances for Firebase services
 3. **App Providers** - App-level providers for initialization and error handling
@@ -423,8 +423,8 @@ faiseur/
 
 ## References
 
-- **Riverpod Docs**: https://riverpod.dev
-- **Code Generation**: https://riverpod.dev/docs/essentials/side_effects
+- **Riverpod Docs**: <https://riverpod.dev>
+- **Code Generation**: <https://riverpod.dev/docs/essentials/side_effects>
 - **Architecture**: `docs/architecture.md`
 - **Implementation Plan**: `docs/implementation-plan.md`
 
@@ -433,4 +433,3 @@ faiseur/
 **Status**: 📋 Ready for Implementation  
 **Next Phase**: Phase C (Go Router Navigation)  
 **Est. Completion**: October 20-21, 2025
-

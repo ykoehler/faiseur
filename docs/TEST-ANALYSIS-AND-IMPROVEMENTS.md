@@ -427,6 +427,7 @@ setUp(() {
 ## Test Coverage Targets
 
 ### Current State
+
 | Component | Status | Coverage |
 |-----------|--------|----------|
 | Enums | ✅ | ~90% |
@@ -439,6 +440,7 @@ setUp(() {
 | **TOTAL** | ⚠️ | ~20% |
 
 ### Target State (After Improvements)
+
 | Component | Target | Notes |
 |-----------|--------|-------|
 | Enums | 95% | Add edge cases |

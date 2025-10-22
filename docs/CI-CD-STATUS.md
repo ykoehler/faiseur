@@ -239,7 +239,7 @@ The production workflow should now work as-is:
 
 **Cause**: iOS job is commented out or iOS secrets missing
 
-**Solution**: 
+**Solution**:
 - This is expected - iOS job is intentionally commented out
 - To enable, follow "When Ready to Add iOS Support" section above
 
@@ -255,7 +255,7 @@ The production workflow should now work as-is:
 
 **Cause**: `SLACK_WEBHOOK_URL` not configured
 
-**Solution**: 
+**Solution**:
 - Slack notifications are optional
 - Either add the secret or ignore the notification failure
 - Web deployment will still succeed
@@ -275,4 +275,3 @@ The production workflow should now work as-is:
 ---
 
 **Last Updated**: October 20, 2025
-

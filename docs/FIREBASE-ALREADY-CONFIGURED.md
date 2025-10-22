@@ -101,7 +101,7 @@ The documentation had outdated indicators suggesting Firebase setup was incomple
 
 **The Faiseur project is fully configured and ready to begin Phase 1.2: Core Domain Models.**
 
-### You Can Now:
+### You Can Now
 
 1. ✅ Run the app locally with any environment (dev/staging/prod)
 2. ✅ Test with Firebase emulators
@@ -109,7 +109,7 @@ The documentation had outdated indicators suggesting Firebase setup was incomple
 4. ✅ Connect Firestore for data persistence
 5. ✅ Build and deploy to all platforms
 
-### Next Actions:
+### Next Actions
 
 1. **Begin Phase 1.2** - Implement core domain models
 2. **Reference** - Use `docs/implementation-plan.md` Step 1.2
@@ -175,4 +175,3 @@ flutter run -d web --dart-define=FLAVOR=dev
 ### No Blockers - Ready to Code
 
 Documentation has been corrected to reflect the actual state of the project. You can proceed directly to Phase 1.2: Core Domain Models without any additional setup.
-

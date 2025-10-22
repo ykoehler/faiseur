@@ -143,7 +143,7 @@ Once you've added the secrets:
 
 **Cause**: The `.env` file wasn't created (secrets are missing)
 
-**Fix**: 
+**Fix**:
 1. Check if all `PROD_FIREBASE_*` or `STAGING_FIREBASE_*` secrets exist
 2. Verify secret names match exactly (including underscores and capitalization)
 3. Re-run the workflow after adding secrets

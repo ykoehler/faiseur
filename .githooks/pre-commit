@@ -3,9 +3,10 @@
 # Runs verification checks before allowing commits
 # 
 # This script ensures code quality by running:
-# 1. flutter format check
+# 1. dart format check
 # 2. flutter analyze (linting)
-# 3. flutter test (unit tests)
+# 3. markdownlint (documentation)
+# 4. flutter test (unit tests)
 #
 # Install: cp .githooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
 # Test: git commit --no-verify to skip hooks
@@ -95,7 +96,45 @@ fi
 echo ""
 
 # ============================================================================
-# 3. RUN UNIT TESTS
+# 3. CHECK MARKDOWN FILES
+# ============================================================================
+echo ""
+echo "📖 Checking markdown files..."
+echo ""
+
+# Check if markdownlint is installed
+if ! command -v markdownlint-cli2 &> /dev/null; then
+  echo -e "${YELLOW}⚠ markdownlint-cli2 not found${NC}"
+  echo "  To enable markdown linting, install it:"
+  echo ""
+  echo "  ${YELLOW}npm install -g markdownlint-cli2${NC}"
+  echo ""
+else
+  # Run markdownlint on docs directory
+  MARKDOWN_OUTPUT=$(markdownlint-cli2 docs/ 2>&1) || true
+  
+  if [ -z "$MARKDOWN_OUTPUT" ]; then
+    echo -e "${GREEN}✓${NC} No markdown issues found"
+  else
+    echo -e "${RED}✗${NC} Markdown linting issues found:"
+    echo ""
+    echo "📋 Issues:"
+    echo "────────────────────────────────────────────────────────────────"
+    echo "$MARKDOWN_OUTPUT" | head -30
+    echo "────────────────────────────────────────────────────────────────"
+    echo ""
+    echo "💡 Tips:"
+    echo "  • See .markdownlint.yaml for linting rules"
+    echo "  • Most issues can be auto-fixed with 'markdownlint-cli2 --fix docs/'"
+    echo ""
+    FAILED=1
+  fi
+fi
+
+echo ""
+
+# ============================================================================
+# 4. RUN UNIT TESTS
 # ============================================================================
 echo ""
 echo "🧪 Running unit tests..."
@@ -131,14 +170,16 @@ else
   echo ""
   echo "📝 What happened:"
   echo "  • Formatting: Check the files listed above"
-  echo "  • Linting: Review the issues and fix them"
+  echo "  • Dart Linting: Review the issues and fix them"
+  echo "  • Markdown: Review the linting issues"
   echo "  • Tests: Ensure all tests pass"
   echo ""
   echo "🛠️  Quick fixes:"
   echo "  1. ${YELLOW}dart format lib/ test/ integration_test/${NC} (fix formatting)"
   echo "  2. ${YELLOW}dart fix --apply${NC} (auto-fix some lint issues)"
-  echo "  3. ${YELLOW}flutter test${NC} (run tests locally)"
-  echo "  4. ${YELLOW}git add -A && git commit${NC} (retry)"
+  echo "  3. ${YELLOW}markdownlint-cli2 --fix docs/${NC} (fix markdown issues)"
+  echo "  4. ${YELLOW}flutter test${NC} (run tests locally)"
+  echo "  5. ${YELLOW}git add -A && git commit${NC} (retry)"
   echo ""
   echo "⚡ To bypass these checks (not recommended):"
   echo "  ${YELLOW}git commit --no-verify${NC}"

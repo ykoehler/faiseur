@@ -259,9 +259,9 @@ To adjust line length in the future:
 
 ## References
 
-- **MD013 Documentation:** https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md013---line-length
-- **markdownlint:** https://github.com/DavidAnson/markdownlint
-- **Dart Formatting:** https://dart.dev/tools/dart-format
+- **MD013 Documentation:** <https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md013---line-length>
+- **markdownlint:** <https://github.com/DavidAnson/markdownlint>
+- **Dart Formatting:** <https://dart.dev/tools/dart-format>
 
 ---
 

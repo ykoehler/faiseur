@@ -622,9 +622,9 @@ faiseur/
 
 ## References
 
-- **Go Router Docs**: https://pub.dev/packages/go_router
-- **Flutter Routing**: https://flutter.dev/docs/development/ui/navigation
-- **Deep Linking**: https://flutter.dev/docs/development/ui-data/deep-linking
+- **Go Router Docs**: <https://pub.dev/packages/go_router>
+- **Flutter Routing**: <https://flutter.dev/docs/development/ui/navigation>
+- **Deep Linking**: <https://flutter.dev/docs/development/ui-data/deep-linking>
 - **ROUTER-SETUP.md**: Detailed how-to guide
 - **Architecture**: `docs/architecture.md`
 
@@ -634,4 +634,3 @@ faiseur/
 **Date Completed**: October 20, 2025  
 **Next Phase**: Phase 1.2 (Core Features)  
 **Tests**: 5/5 passing ✅
-

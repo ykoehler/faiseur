@@ -60,7 +60,7 @@
 
 - Pre-deployment checks: ✅ Running
 - Web build: ✅ Building for production
-- Firebase deployment: ✅ Deploying to https://faiseur.app
+- Firebase deployment: ✅ Deploying to <https://faiseur.app>
 - GitHub release: ✅ Creating release
 - Post-deployment: ✅ Running
 
@@ -254,4 +254,3 @@ git push origin test/ci-fix
 ---
 
 **The production workflow is now fixed and ready for your next merge to main.**
-

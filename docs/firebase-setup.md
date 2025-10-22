@@ -4,7 +4,7 @@ This guide walks you through setting up Firebase for the Faiseur app.
 
 ## Prerequisites
 
-- Firebase account (https://firebase.google.com/)
+- Firebase account (<https://firebase.google.com/>)
 - Flutter SDK installed
 - FlutterFire CLI installed
 
@@ -21,7 +21,7 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 ## Step 2: Create Firebase Projects
 
-1. Go to https://console.firebase.google.com/
+1. Go to <https://console.firebase.google.com/>
 2. Click "Add project"
 3. Create **three separate projects**:
    - `faiseur-dev` (Development)
@@ -244,7 +244,7 @@ source ~/.zshrc
 ```
 
 ### Issue: Firebase initialization fails on iOS
-**Solution**: 
+**Solution**:
 1. Open `ios/Runner.xcworkspace` in Xcode
 2. Check that `GoogleService-Info.plist` is added to the project
 3. Clean build folder (Cmd+Shift+K) and rebuild
@@ -256,7 +256,7 @@ source ~/.zshrc
 3. Run `flutter clean` and rebuild
 
 ### Issue: Permission denied errors in Firestore
-**Solution**: 
+**Solution**:
 1. Check security rules in Firebase Console
 2. Verify user is authenticated before accessing data
 3. Review rules in `docs/architecture.md`

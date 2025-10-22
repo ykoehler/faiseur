@@ -303,11 +303,11 @@ lcov --list coverage/lcov.info
 
 ## Useful Resources
 
-- **Flutter Docs**: https://flutter.dev/docs
-- **Dart Docs**: https://dart.dev/guides
-- **Firebase Docs**: https://firebase.google.com/docs
-- **Riverpod Docs**: https://riverpod.dev
-- **Go Router Docs**: https://pub.dev/packages/go_router
+- **Flutter Docs**: <https://flutter.dev/docs>
+- **Dart Docs**: <https://dart.dev/guides>
+- **Firebase Docs**: <https://firebase.google.com/docs>
+- **Riverpod Docs**: <https://riverpod.dev>
+- **Go Router Docs**: <https://pub.dev/packages/go_router>
 
 ## Getting Help
 

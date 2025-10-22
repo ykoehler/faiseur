@@ -291,7 +291,7 @@ final class ListsNotifierProvider extends $NotifierProvider<ListsNotifier, Async
   }
 }
 
-String _$listsNotifierHash() => r'75b72b4f9bef1b984e8b9ff2e24dabadc81abe46';
+String _$listsNotifierHash() => r'd222613230bf231b0203fefb7bf338b26067d3a5';
 
 /// Notifier for managing lists state and operations
 

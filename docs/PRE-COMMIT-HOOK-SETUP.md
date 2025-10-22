@@ -283,7 +283,7 @@ git commit --no-verify
   run: flutter test
 ```
 
-**Result**: 
+**Result**:
 - Local (pre-commit) + CI (GitHub Actions) = consistent standards
 - Issues caught twice ensures quality
 - Developer gets immediate feedback
