@@ -30,45 +30,42 @@ void main() {
     // ============================================================================
 
     group('Happy Path - Successful Sign Up', () {
-      test(
-        'should create new user successfully with valid credentials',
-        () async {
-          // Arrange
-          final testUser = UserBuilder()
-              .withEmail('newuser@example.com')
-              .withUsername('newuser')
-              .withDisplayName('New User')
-              .build();
+      test('should create new user successfully with valid credentials', () async {
+        // Arrange
+        final testUser = UserBuilder()
+            .withEmail('newuser@example.com')
+            .withUsername('newuser')
+            .withDisplayName('New User')
+            .build();
 
-          when(
-            () => mockRepository.signUpWithEmail(
-              email: 'newuser@example.com',
-              password: 'Password123!',
-              username: 'newuser',
-              displayName: 'New User',
-            ),
-          ).thenAnswer((_) async => testUser);
-
-          // Act
-          final result = await useCase.call(
+        when(
+          () => mockRepository.signUpWithEmail(
             email: 'newuser@example.com',
             password: 'Password123!',
             username: 'newuser',
             displayName: 'New User',
-          );
+          ),
+        ).thenAnswer((_) async => testUser);
 
-          // Assert
-          expect(result, testUser);
-          verify(
-            () => mockRepository.signUpWithEmail(
-              email: 'newuser@example.com',
-              password: 'Password123!',
-              username: 'newuser',
-              displayName: 'New User',
-            ),
-          ).called(1);
-        },
-      );
+        // Act
+        final result = await useCase.call(
+          email: 'newuser@example.com',
+          password: 'Password123!',
+          username: 'newuser',
+          displayName: 'New User',
+        );
+
+        // Assert
+        expect(result, testUser);
+        verify(
+          () => mockRepository.signUpWithEmail(
+            email: 'newuser@example.com',
+            password: 'Password123!',
+            username: 'newuser',
+            displayName: 'New User',
+          ),
+        ).called(1);
+      });
 
       test('should return user with all correct properties', () async {
         // Arrange
@@ -105,9 +102,7 @@ void main() {
 
       test('should create user with avatar URL if provided', () async {
         // Arrange
-        final testUser = UserBuilder()
-            .withAvatarUrl('https://example.com/avatar.jpg')
-            .build();
+        final testUser = UserBuilder().withAvatarUrl('https://example.com/avatar.jpg').build();
 
         when(
           () => mockRepository.signUpWithEmail(
@@ -145,21 +140,11 @@ void main() {
             username: any(named: 'username'),
             displayName: any(named: 'displayName'),
           ),
-        ).thenThrow(
-          const Failure.validation(
-            message: 'Email cannot be empty',
-            field: 'email',
-          ),
-        );
+        ).thenThrow(const Failure.validation(message: 'Email cannot be empty', field: 'email'));
 
         // Act & Assert
         expect(
-          () => useCase.call(
-            email: '',
-            password: 'password123',
-            username: 'testuser',
-            displayName: 'Test User',
-          ),
+          () => useCase.call(email: '', password: 'password123', username: 'testuser', displayName: 'Test User'),
           throwsA(isA<Failure>()),
         );
       });
@@ -173,12 +158,7 @@ void main() {
             username: any(named: 'username'),
             displayName: any(named: 'displayName'),
           ),
-        ).thenThrow(
-          const Failure.validation(
-            message: 'Invalid email format',
-            field: 'email',
-          ),
-        );
+        ).thenThrow(const Failure.validation(message: 'Invalid email format', field: 'email'));
 
         // Act & Assert
         expect(
@@ -201,9 +181,7 @@ void main() {
             username: any(named: 'username'),
             displayName: any(named: 'displayName'),
           ),
-        ).thenThrow(
-          const Failure.authentication(message: 'Email already in use'),
-        );
+        ).thenThrow(const Failure.authentication(message: 'Email already in use'));
 
         // Act & Assert
         expect(
@@ -232,21 +210,11 @@ void main() {
             username: any(named: 'username'),
             displayName: any(named: 'displayName'),
           ),
-        ).thenThrow(
-          const Failure.validation(
-            message: 'Password cannot be empty',
-            field: 'password',
-          ),
-        );
+        ).thenThrow(const Failure.validation(message: 'Password cannot be empty', field: 'password'));
 
         // Act & Assert
         expect(
-          () => useCase.call(
-            email: 'test@example.com',
-            password: '',
-            username: 'testuser',
-            displayName: 'Test User',
-          ),
+          () => useCase.call(email: 'test@example.com', password: '', username: 'testuser', displayName: 'Test User'),
           throwsA(isA<Failure>()),
         );
       });
@@ -260,12 +228,7 @@ void main() {
             username: any(named: 'username'),
             displayName: any(named: 'displayName'),
           ),
-        ).thenThrow(
-          const Failure.validation(
-            message: 'Password must be at least 6 characters',
-            field: 'password',
-          ),
-        );
+        ).thenThrow(const Failure.validation(message: 'Password must be at least 6 characters', field: 'password'));
 
         // Act & Assert
         expect(
@@ -288,9 +251,7 @@ void main() {
             username: any(named: 'username'),
             displayName: any(named: 'displayName'),
           ),
-        ).thenThrow(
-          const Failure.authentication(message: 'Password is too weak'),
-        );
+        ).thenThrow(const Failure.authentication(message: 'Password is too weak'));
 
         // Act & Assert
         expect(
@@ -319,21 +280,12 @@ void main() {
             username: any(named: 'username'),
             displayName: any(named: 'displayName'),
           ),
-        ).thenThrow(
-          const Failure.validation(
-            message: 'Username cannot be empty',
-            field: 'username',
-          ),
-        );
+        ).thenThrow(const Failure.validation(message: 'Username cannot be empty', field: 'username'));
 
         // Act & Assert
         expect(
-          () => useCase.call(
-            email: 'test@example.com',
-            password: 'password123',
-            username: '',
-            displayName: 'Test User',
-          ),
+          () =>
+              useCase.call(email: 'test@example.com', password: 'password123', username: '', displayName: 'Test User'),
           throwsA(isA<Failure>()),
         );
       });
@@ -347,12 +299,7 @@ void main() {
             username: any(named: 'username'),
             displayName: any(named: 'displayName'),
           ),
-        ).thenThrow(
-          const Failure.validation(
-            message: 'Username already taken',
-            field: 'username',
-          ),
-        );
+        ).thenThrow(const Failure.validation(message: 'Username already taken', field: 'username'));
 
         // Act & Assert
         expect(
@@ -375,12 +322,7 @@ void main() {
             username: any(named: 'username'),
             displayName: any(named: 'displayName'),
           ),
-        ).thenThrow(
-          const Failure.validation(
-            message: 'Username must be at least 3 characters',
-            field: 'username',
-          ),
-        );
+        ).thenThrow(const Failure.validation(message: 'Username must be at least 3 characters', field: 'username'));
 
         // Act & Assert
         expect(
@@ -409,21 +351,11 @@ void main() {
             username: any(named: 'username'),
             displayName: any(named: 'displayName'),
           ),
-        ).thenThrow(
-          const Failure.validation(
-            message: 'Display name cannot be empty',
-            field: 'displayName',
-          ),
-        );
+        ).thenThrow(const Failure.validation(message: 'Display name cannot be empty', field: 'displayName'));
 
         // Act & Assert
         expect(
-          () => useCase.call(
-            email: 'test@example.com',
-            password: 'password123',
-            username: 'testuser',
-            displayName: '',
-          ),
+          () => useCase.call(email: 'test@example.com', password: 'password123', username: 'testuser', displayName: ''),
           throwsA(isA<Failure>()),
         );
       });
@@ -488,8 +420,7 @@ void main() {
     group('Edge Cases', () {
       test('should handle very long email address', () async {
         // Arrange
-        const longEmail =
-            'verylongemailaddress.with.many.dots@subdomain.example.co.uk';
+        const longEmail = 'verylongemailaddress.with.many.dots@subdomain.example.co.uk';
         final testUser = UserBuilder().withEmail(longEmail).build();
 
         when(

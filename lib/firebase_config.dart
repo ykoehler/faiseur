@@ -15,10 +15,7 @@ import 'firebase_options_staging.dart' as staging;
 class FirebaseConfig {
   /// The current flavor/environment.
   /// Defaults to 'dev' if not specified.
-  static const String flavor = String.fromEnvironment(
-    'FLAVOR',
-    defaultValue: 'dev',
-  );
+  static const String flavor = String.fromEnvironment('FLAVOR', defaultValue: 'dev');
 
   /// Returns the Firebase options for the current platform and environment.
   ///

@@ -1,7 +1,6 @@
 // ignore_for_file: type=lint
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
-import 'package:flutter/foundation.dart'
-    show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter/foundation.dart' show defaultTargetPlatform, kIsWeb, TargetPlatform;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Firebase options for Staging environment
@@ -28,17 +27,11 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows',
-        );
+        throw UnsupportedError('DefaultFirebaseOptions have not been configured for windows');
       case TargetPlatform.linux:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for linux',
-        );
+        throw UnsupportedError('DefaultFirebaseOptions have not been configured for linux');
       default:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions are not supported for this platform.',
-        );
+        throw UnsupportedError('DefaultFirebaseOptions are not supported for this platform.');
     }
   }
 
@@ -47,15 +40,10 @@ class DefaultFirebaseOptions {
     return FirebaseOptions(
       apiKey: dotenv.env['STAGING_FIREBASE_API_KEY'] ?? '',
       appId: dotenv.env['STAGING_FIREBASE_APP_ID_WEB'] ?? '',
-      messagingSenderId:
-          dotenv.env['STAGING_FIREBASE_MESSAGING_SENDER_ID'] ?? '',
+      messagingSenderId: dotenv.env['STAGING_FIREBASE_MESSAGING_SENDER_ID'] ?? '',
       projectId: dotenv.env['STAGING_FIREBASE_PROJECT_ID'] ?? 'faiseur-staging',
-      authDomain:
-          dotenv.env['STAGING_FIREBASE_AUTH_DOMAIN'] ??
-          'faiseur-staging.firebaseapp.com',
-      storageBucket:
-          dotenv.env['STAGING_FIREBASE_STORAGE_BUCKET'] ??
-          'faiseur-staging.appspot.com',
+      authDomain: dotenv.env['STAGING_FIREBASE_AUTH_DOMAIN'] ?? 'faiseur-staging.firebaseapp.com',
+      storageBucket: dotenv.env['STAGING_FIREBASE_STORAGE_BUCKET'] ?? 'faiseur-staging.appspot.com',
       measurementId: dotenv.env['STAGING_FIREBASE_MEASUREMENT_ID'],
     );
   }
@@ -65,12 +53,9 @@ class DefaultFirebaseOptions {
     return FirebaseOptions(
       apiKey: dotenv.env['STAGING_FIREBASE_API_KEY'] ?? '',
       appId: dotenv.env['STAGING_FIREBASE_APP_ID_ANDROID'] ?? '',
-      messagingSenderId:
-          dotenv.env['STAGING_FIREBASE_MESSAGING_SENDER_ID'] ?? '',
+      messagingSenderId: dotenv.env['STAGING_FIREBASE_MESSAGING_SENDER_ID'] ?? '',
       projectId: dotenv.env['STAGING_FIREBASE_PROJECT_ID'] ?? 'faiseur-staging',
-      storageBucket:
-          dotenv.env['STAGING_FIREBASE_STORAGE_BUCKET'] ??
-          'faiseur-staging.appspot.com',
+      storageBucket: dotenv.env['STAGING_FIREBASE_STORAGE_BUCKET'] ?? 'faiseur-staging.appspot.com',
     );
   }
 
@@ -79,12 +64,9 @@ class DefaultFirebaseOptions {
     return FirebaseOptions(
       apiKey: dotenv.env['STAGING_FIREBASE_API_KEY'] ?? '',
       appId: dotenv.env['STAGING_FIREBASE_APP_ID_IOS'] ?? '',
-      messagingSenderId:
-          dotenv.env['STAGING_FIREBASE_MESSAGING_SENDER_ID'] ?? '',
+      messagingSenderId: dotenv.env['STAGING_FIREBASE_MESSAGING_SENDER_ID'] ?? '',
       projectId: dotenv.env['STAGING_FIREBASE_PROJECT_ID'] ?? 'faiseur-staging',
-      storageBucket:
-          dotenv.env['STAGING_FIREBASE_STORAGE_BUCKET'] ??
-          'faiseur-staging.appspot.com',
+      storageBucket: dotenv.env['STAGING_FIREBASE_STORAGE_BUCKET'] ?? 'faiseur-staging.appspot.com',
       iosBundleId: 'com.ykoehler.faiseur.staging',
     );
   }
@@ -94,12 +76,9 @@ class DefaultFirebaseOptions {
     return FirebaseOptions(
       apiKey: dotenv.env['STAGING_FIREBASE_API_KEY'] ?? '',
       appId: dotenv.env['STAGING_FIREBASE_APP_ID_MACOS'] ?? '',
-      messagingSenderId:
-          dotenv.env['STAGING_FIREBASE_MESSAGING_SENDER_ID'] ?? '',
+      messagingSenderId: dotenv.env['STAGING_FIREBASE_MESSAGING_SENDER_ID'] ?? '',
       projectId: dotenv.env['STAGING_FIREBASE_PROJECT_ID'] ?? 'faiseur-staging',
-      storageBucket:
-          dotenv.env['STAGING_FIREBASE_STORAGE_BUCKET'] ??
-          'faiseur-staging.appspot.com',
+      storageBucket: dotenv.env['STAGING_FIREBASE_STORAGE_BUCKET'] ?? 'faiseur-staging.appspot.com',
       iosBundleId: 'com.ykoehler.faiseur.staging',
     );
   }

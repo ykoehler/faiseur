@@ -12,23 +12,19 @@ AuthRepository authRepository(Ref ref) => AuthRepositoryImpl();
 
 /// Provider for SignInWithEmailUseCase
 @riverpod
-SignInWithEmailUseCase signInWithEmailUseCase(Ref ref) =>
-    SignInWithEmailUseCase(ref.watch(authRepositoryProvider));
+SignInWithEmailUseCase signInWithEmailUseCase(Ref ref) => SignInWithEmailUseCase(ref.watch(authRepositoryProvider));
 
 /// Provider for SignUpWithEmailUseCase
 @riverpod
-SignUpWithEmailUseCase signUpWithEmailUseCase(Ref ref) =>
-    SignUpWithEmailUseCase(ref.watch(authRepositoryProvider));
+SignUpWithEmailUseCase signUpWithEmailUseCase(Ref ref) => SignUpWithEmailUseCase(ref.watch(authRepositoryProvider));
 
 /// Provider for SignOutUseCase
 @riverpod
-SignOutUseCase signOutUseCase(Ref ref) =>
-    SignOutUseCase(ref.watch(authRepositoryProvider));
+SignOutUseCase signOutUseCase(Ref ref) => SignOutUseCase(ref.watch(authRepositoryProvider));
 
 /// Provider for GetCurrentUserUseCase
 @riverpod
-GetCurrentUserUseCase getCurrentUserUseCase(Ref ref) =>
-    GetCurrentUserUseCase(ref.watch(authRepositoryProvider));
+GetCurrentUserUseCase getCurrentUserUseCase(Ref ref) => GetCurrentUserUseCase(ref.watch(authRepositoryProvider));
 
 /// Provider for SignInAnonymouslyUseCase
 @riverpod
@@ -38,14 +34,12 @@ SignInAnonymouslyUseCase signInAnonymouslyUseCase(Ref ref) =>
 /// Stream provider for auth state changes
 /// Emits the current user whenever auth state changes
 @riverpod
-Stream<User?> authStateChanges(Ref ref) =>
-    ref.watch(authRepositoryProvider).authStateChanges;
+Stream<User?> authStateChanges(Ref ref) => ref.watch(authRepositoryProvider).authStateChanges;
 
 /// Future provider for current user
 /// Fetches the current user from the repository
 @riverpod
-Future<User?> currentUser(Ref ref) async =>
-    ref.watch(getCurrentUserUseCaseProvider).call();
+Future<User?> currentUser(Ref ref) async => ref.watch(getCurrentUserUseCaseProvider).call();
 
 /// Notifier for auth state management
 /// Handles all auth operations and maintains auth state
@@ -65,15 +59,10 @@ class AuthNotifier extends _$AuthNotifier {
   }
 
   /// Signs in with email and password
-  Future<void> signInWithEmail({
-    required String email,
-    required String password,
-  }) async {
+  Future<void> signInWithEmail({required String email, required String password}) async {
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final user = await ref
-          .read(signInWithEmailUseCaseProvider)
-          .call(email: email, password: password);
+      final user = await ref.read(signInWithEmailUseCaseProvider).call(email: email, password: password);
       return user;
     });
   }
@@ -89,12 +78,7 @@ class AuthNotifier extends _$AuthNotifier {
     state = await AsyncValue.guard(() async {
       final user = await ref
           .read(signUpWithEmailUseCaseProvider)
-          .call(
-            email: email,
-            password: password,
-            username: username,
-            displayName: displayName,
-          );
+          .call(email: email, password: password, username: username, displayName: displayName);
       return user;
     });
   }
@@ -120,8 +104,6 @@ class AuthNotifier extends _$AuthNotifier {
   /// Refreshes the current user
   Future<void> refresh() async {
     state = const AsyncValue.loading();
-    state = await AsyncValue.guard(
-      () => ref.read(getCurrentUserUseCaseProvider).call(),
-    );
+    state = await AsyncValue.guard(() => ref.read(getCurrentUserUseCaseProvider).call());
   }
 }

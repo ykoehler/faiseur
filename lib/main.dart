@@ -19,9 +19,7 @@ void main() async {
   try {
     await dotenv.load(fileName: '.env');
   } catch (e) {
-    debugPrint(
-      '⚠️  Note: .env file not found. Using GitHub Actions secrets or defaults.',
-    );
+    debugPrint('⚠️  Note: .env file not found. Using GitHub Actions secrets or defaults.');
   }
 
   // Initialize Firebase with environment-specific configuration

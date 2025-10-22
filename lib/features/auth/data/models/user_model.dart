@@ -29,10 +29,7 @@ UserModel userModelFromJson(Map<String, dynamic> json) => UserModel(
   displayName: json['displayName'] as String,
   avatarUrl: json['avatarUrl'] as String?,
   createdAt: parseFirestoreTimestamp(json['createdAt'], fieldName: 'createdAt'),
-  updatedAt: parseFirestoreTimestampNullable(
-    json['updatedAt'],
-    fieldName: 'updatedAt',
-  ),
+  updatedAt: parseFirestoreTimestampNullable(json['updatedAt'], fieldName: 'updatedAt'),
 );
 
 /// Convert a [UserModel] into a Firestore-ready map.

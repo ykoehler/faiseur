@@ -11,13 +11,7 @@ void main() {
       const username = 'testuser';
       const displayName = 'Test User';
 
-      final user = User(
-        id: userId,
-        email: email,
-        username: username,
-        displayName: displayName,
-        createdAt: now,
-      );
+      final user = User(id: userId, email: email, username: username, displayName: displayName, createdAt: now);
 
       expect(user.id, equals(userId));
       expect(user.email, equals(email));

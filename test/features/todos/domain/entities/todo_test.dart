@@ -12,13 +12,7 @@ void main() {
       const title = 'Buy groceries';
       const createdBy = 'user123';
 
-      final todo = Todo(
-        id: todoId,
-        listId: listId,
-        title: title,
-        createdBy: createdBy,
-        createdAt: now,
-      );
+      final todo = Todo(id: todoId, listId: listId, title: title, createdBy: createdBy, createdAt: now);
 
       expect(todo.id, equals(todoId));
       expect(todo.listId, equals(listId));
@@ -94,10 +88,7 @@ void main() {
         createdAt: now,
       );
 
-      final todo2 = todo1.copyWith(
-        status: TodoStatus.done,
-        priority: TodoPriority.high,
-      );
+      final todo2 = todo1.copyWith(status: TodoStatus.done, priority: TodoPriority.high);
 
       expect(todo2.id, equals(todo1.id));
       expect(todo2.status, equals(TodoStatus.done));

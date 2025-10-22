@@ -52,16 +52,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
       // Call auth notifier to sign in
       await ref
           .read(authProvider.notifier)
-          .signInWithEmail(
-            email: _emailController.text.trim(),
-            password: _passwordController.text,
-          );
+          .signInWithEmail(email: _emailController.text.trim(), password: _passwordController.text);
 
       // Sign in successful, navigation handled by router redirect
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Signed in successfully!')),
-        );
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Signed in successfully!')));
       }
     } on Failure catch (failure) {
       if (mounted) {
@@ -75,18 +70,14 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   }
 
   void _showErrorSnackBar(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message), backgroundColor: Colors.red[400]),
-    );
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message), backgroundColor: Colors.red[400]));
   }
 
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Email is required';
     }
-    if (!RegExp(
-      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
-    ).hasMatch(value)) {
+    if (!RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$').hasMatch(value)) {
       return 'Please enter a valid email';
     }
     return null;
@@ -108,11 +99,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     final isLoading = authNotifierState is AsyncLoading;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sign In'),
-        centerTitle: true,
-        elevation: 0,
-      ),
+      appBar: AppBar(title: const Text('Sign In'), centerTitle: true, elevation: 0),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(24),
@@ -125,17 +112,13 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               Text(
                 'Welcome Back',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               Text(
                 'Sign in to your account to continue',
                 textAlign: TextAlign.center,
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
               ),
               const SizedBox(height: 40),
 
@@ -152,9 +135,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         labelText: 'Email',
                         hintText: 'you@example.com',
                         prefixIcon: const Icon(Icons.email),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                       ),
                       keyboardType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.next,
@@ -170,20 +151,12 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         labelText: 'Password',
                         prefixIcon: const Icon(Icons.lock),
                         suffixIcon: IconButton(
-                          icon: Icon(
-                            _obscurePassword
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                          ),
+                          icon: Icon(_obscurePassword ? Icons.visibility : Icons.visibility_off),
                           onPressed: () {
-                            setState(
-                              () => _obscurePassword = !_obscurePassword,
-                            );
+                            setState(() => _obscurePassword = !_obscurePassword);
                           },
                         ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                       ),
                       obscureText: _obscurePassword,
                       textInputAction: TextInputAction.done,
@@ -200,13 +173,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                             : () {
                                 // ignore: todo
                                 // TODO: Navigate to forgot password page
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text(
-                                      'Forgot password feature coming soon',
-                                    ),
-                                  ),
-                                );
+                                ScaffoldMessenger.of(
+                                  context,
+                                ).showSnackBar(const SnackBar(content: Text('Forgot password feature coming soon')));
                               },
                         child: const Text('Forgot Password?'),
                       ),
@@ -220,15 +189,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               // Sign in button
               FilledButton(
                 onPressed: isLoading ? null : _handleSignIn,
-                style: FilledButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                ),
+                style: FilledButton.styleFrom(padding: const EdgeInsets.symmetric(vertical: 16)),
                 child: isLoading
-                    ? const SizedBox(
-                        height: 20,
-                        width: 20,
-                        child: CircularProgressIndicator(strokeWidth: 2),
-                      )
+                    ? const SizedBox(height: 20, width: 20, child: CircularProgressIndicator(strokeWidth: 2))
                     : const Text('Sign In'),
               ),
               const SizedBox(height: 16),
@@ -237,14 +200,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Don't have an account? ",
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
+                  Text("Don't have an account? ", style: Theme.of(context).textTheme.bodyMedium),
                   TextButton(
-                    onPressed: isLoading
-                        ? null
-                        : () => context.go('/auth/signup'),
+                    onPressed: isLoading ? null : () => context.go('/auth/signup'),
                     child: const Text('Sign Up'),
                   ),
                 ],
@@ -257,12 +215,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   Expanded(child: Divider(color: Colors.grey[300])),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: Text(
-                      'or',
-                      style: Theme.of(
-                        context,
-                      ).textTheme.bodySmall?.copyWith(color: Colors.grey[600]),
-                    ),
+                    child: Text('or', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.grey[600])),
                   ),
                   Expanded(child: Divider(color: Colors.grey[300])),
                 ],
@@ -275,15 +228,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     ? null
                     : () async {
                         try {
-                          await ref
-                              .read(authProvider.notifier)
-                              .signInAnonymously();
+                          await ref.read(authProvider.notifier).signInAnonymously();
                           if (mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Signed in anonymously'),
-                              ),
-                            );
+                            ScaffoldMessenger.of(
+                              context,
+                            ).showSnackBar(const SnackBar(content: Text('Signed in anonymously')));
                           }
                         } on Failure catch (failure) {
                           if (mounted) {
