@@ -48,4 +48,4 @@ final class NavigationServiceProvider
   }
 }
 
-String _$navigationServiceHash() => r'ca94d380e0a0dd33b0e6f34727a6d15b3474952e';
+String _$navigationServiceHash() => r'5bcdbdae7cbf45a67a94450deba08ac816728cf0';

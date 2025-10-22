@@ -1,5 +1,5 @@
 # Build configuration for build_runner
-# Skips custom_lint and other problematic builders
+# Configures builders for code generation
 
 targets:
   $default:
@@ -12,6 +12,4 @@ targets:
         enabled: true
       # Skip problematic builders
       custom_lint:
-        enabled: false
-      json_serializable:
         enabled: false
