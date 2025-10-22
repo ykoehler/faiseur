@@ -28,10 +28,14 @@ Cross-platform todo app built with Flutter and Firebase supporting web, macOS, i
 - [x] Create firebase_config.dart helper
 - [x] Update main.dart with environment-aware initialization
 - [x] Configure Firebase for all platforms (dev, staging, production)
+- [x] Step 1.1: Auth Feature (Entity, Repository, Use Cases)
+- [x] Step 1.2: Auth UI (Sign In, Sign Up, Forgot Password)
+- [x] Step 1.3: Auth Integration & Testing
+- [x] Step 1.4: Firestore Setup (Datasources, Repositories, Integration Tests)
 - [ ] Configure GitHub secrets
 - [ ] Set up branch protection rules
 - [ ] Test CI/CD pipeline
-- [ ] Begin Phase 1 implementation
+- [ ] Step 1.5: Lists Feature
 
 ## Next Steps
 

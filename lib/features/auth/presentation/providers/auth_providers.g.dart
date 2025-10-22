@@ -47,7 +47,7 @@ final class AuthRepositoryProvider extends $FunctionalProvider<AuthRepository, A
   }
 }
 
-String _$authRepositoryHash() => r'a8767550d220ede9bb05149c073a651c4422d5ef';
+String _$authRepositoryHash() => r'73f2cf57238e6fa5dfc299eb58ae9b96f900bd76';
 
 /// Provider for SignInWithEmailUseCase
 
@@ -89,7 +89,7 @@ final class SignInWithEmailUseCaseProvider
   }
 }
 
-String _$signInWithEmailUseCaseHash() => r'4554d6035586722fcff491df1ed2e6f961093df0';
+String _$signInWithEmailUseCaseHash() => r'85d655e9de2bf12757b0d8f231d4406e4290e12c';
 
 /// Provider for SignUpWithEmailUseCase
 
@@ -131,7 +131,7 @@ final class SignUpWithEmailUseCaseProvider
   }
 }
 
-String _$signUpWithEmailUseCaseHash() => r'12d4a0a85a909006c9fe40d378af86dcf201578f';
+String _$signUpWithEmailUseCaseHash() => r'b14fd6122f7136248c6577581d96f08de1f78692';
 
 /// Provider for SignOutUseCase
 
@@ -172,7 +172,7 @@ final class SignOutUseCaseProvider extends $FunctionalProvider<SignOutUseCase, S
   }
 }
 
-String _$signOutUseCaseHash() => r'952ce342ca22dc7bb696cc8e5787d2889240ef98';
+String _$signOutUseCaseHash() => r'43b88dc732fc2ec257d73871891f04dcae657f24';
 
 /// Provider for GetCurrentUserUseCase
 
@@ -214,7 +214,7 @@ final class GetCurrentUserUseCaseProvider
   }
 }
 
-String _$getCurrentUserUseCaseHash() => r'4a27d130940e444424e46ed4afad7c5a5c8cf5b2';
+String _$getCurrentUserUseCaseHash() => r'4c558036519273e5a4eae954197dcf61cff31679';
 
 /// Provider for SignInAnonymouslyUseCase
 
@@ -256,7 +256,7 @@ final class SignInAnonymouslyUseCaseProvider
   }
 }
 
-String _$signInAnonymouslyUseCaseHash() => r'41dceae4be76518427dce164729a976c9ccbfac6';
+String _$signInAnonymouslyUseCaseHash() => r'163f133a23bcca6bb56d7b413cffcff870caf4d7';
 
 /// Stream provider for auth state changes
 /// Emits the current user whenever auth state changes
@@ -295,7 +295,7 @@ final class AuthStateChangesProvider extends $FunctionalProvider<AsyncValue<User
   }
 }
 
-String _$authStateChangesHash() => r'f95512f3016c4609549bf37ef775d5ac547a7179';
+String _$authStateChangesHash() => r'28a9515a5821c6a99f48c22f9b8b818336fba75f';
 
 /// Future provider for current user
 /// Fetches the current user from the repository
@@ -334,7 +334,7 @@ final class CurrentUserProvider extends $FunctionalProvider<AsyncValue<User?>, U
   }
 }
 
-String _$currentUserHash() => r'9e8856be05e41215f756ab3c4ab1198a1e4ae83d';
+String _$currentUserHash() => r'b5db39f41f5969e1a9afcbf5f7f04601b354a490';
 
 /// Notifier for auth state management
 /// Handles all auth operations and maintains auth state
@@ -371,7 +371,7 @@ final class AuthNotifierProvider extends $NotifierProvider<AuthNotifier, AsyncVa
   }
 }
 
-String _$authNotifierHash() => r'6f8556f33e000b654a67e408d52da4ddc4680b15';
+String _$authNotifierHash() => r'002caab4ffb37c17360923a9c6c96bd0658dae5c';
 
 /// Notifier for auth state management
 /// Handles all auth operations and maintains auth state
