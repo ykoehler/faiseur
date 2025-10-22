@@ -1,5 +1,11 @@
 {
   "default": true,
+  "MD013": {
+    "line_length": 120,
+    "code_blocks": true,
+    "code_block_line_length": 120,
+    "tables": true
+  },
   "MD022": false,
   "MD024": false,
   "MD031": false,
