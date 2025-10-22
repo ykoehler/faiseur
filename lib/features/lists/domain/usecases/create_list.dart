@@ -4,7 +4,12 @@ import 'package:faiseur/features/lists/domain/repositories/lists_repository.dart
 /// Represents the parameters for creating a list
 class CreateListParams {
   /// Creates a new CreateListParams
-  const CreateListParams({required this.title, required this.color, required this.ownerId, this.description});
+  const CreateListParams({
+    required this.title,
+    required this.color,
+    required this.ownerId,
+    this.description,
+  });
 
   /// The title/name of the list
   final String title;
@@ -22,7 +27,8 @@ class CreateListParams {
 /// Use case for creating a new list
 class CreateList {
   /// Creates a new CreateList use case
-  const CreateList({required ListsRepository repository}) : _repository = repository;
+  const CreateList({required ListsRepository repository})
+    : _repository = repository;
 
   final ListsRepository _repository;
 
@@ -63,5 +69,6 @@ class CreateList {
     }
   }
 
-  bool _isValidHexColor(String color) => RegExp(r'^#[0-9A-F]{6}$', caseSensitive: false).hasMatch(color);
+  bool _isValidHexColor(String color) =>
+      RegExp(r'^#[0-9A-F]{6}$', caseSensitive: false).hasMatch(color);
 }

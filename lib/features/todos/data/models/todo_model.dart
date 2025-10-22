@@ -33,14 +33,18 @@ abstract class TodoModel with _$TodoModel {
   factory TodoModel.fromJson(Map<String, dynamic> json) {
     TodoStatus status;
     try {
-      status = TodoStatus.values.firstWhere((s) => s.name == (json['status'] as String? ?? 'new_'));
+      status = TodoStatus.values.firstWhere(
+        (s) => s.name == (json['status'] as String? ?? 'new_'),
+      );
     } catch (e) {
       status = TodoStatus.new_;
     }
 
     TodoPriority priority;
     try {
-      priority = TodoPriority.values.firstWhere((p) => p.name == (json['priority'] as String? ?? 'medium'));
+      priority = TodoPriority.values.firstWhere(
+        (p) => p.name == (json['priority'] as String? ?? 'medium'),
+      );
     } catch (e) {
       priority = TodoPriority.medium;
     }
@@ -50,15 +54,27 @@ abstract class TodoModel with _$TodoModel {
       listId: json['listId'] as String,
       title: json['title'] as String,
       createdBy: json['createdBy'] as String,
-      createdAt: parseFirestoreTimestamp(json['createdAt'], fieldName: 'createdAt'),
+      createdAt: parseFirestoreTimestamp(
+        json['createdAt'],
+        fieldName: 'createdAt',
+      ),
       status: status,
       priority: priority,
       xpReward: json['xpReward'] as int? ?? 10,
       isArchived: json['isArchived'] as bool? ?? false,
       description: json['description'] as String?,
-      dueDate: parseFirestoreTimestampNullable(json['dueDate'], fieldName: 'dueDate'),
-      updatedAt: parseFirestoreTimestampNullable(json['updatedAt'], fieldName: 'updatedAt'),
-      completedAt: parseFirestoreTimestampNullable(json['completedAt'], fieldName: 'completedAt'),
+      dueDate: parseFirestoreTimestampNullable(
+        json['dueDate'],
+        fieldName: 'dueDate',
+      ),
+      updatedAt: parseFirestoreTimestampNullable(
+        json['updatedAt'],
+        fieldName: 'updatedAt',
+      ),
+      completedAt: parseFirestoreTimestampNullable(
+        json['completedAt'],
+        fieldName: 'completedAt',
+      ),
       assignedTo: List<String>.from(json['assignedTo'] as List? ?? []),
       tags: List<String>.from(json['tags'] as List? ?? []),
     );

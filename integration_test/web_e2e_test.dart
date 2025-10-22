@@ -19,8 +19,16 @@ void main() {
       await tester.pumpAndSettle(const Duration(seconds: 3));
 
       // Verify basic widgets are rendered
-      expect(find.byType(MaterialApp), findsOneWidget, reason: 'MaterialApp should be present');
-      expect(tester.takeException(), isNull, reason: 'No exceptions during initialization');
+      expect(
+        find.byType(MaterialApp),
+        findsOneWidget,
+        reason: 'MaterialApp should be present',
+      );
+      expect(
+        tester.takeException(),
+        isNull,
+        reason: 'No exceptions during initialization',
+      );
     });
 
     testWidgets('Firebase initializes without errors', (tester) async {
@@ -31,7 +39,11 @@ void main() {
       await tester.pumpAndSettle(const Duration(seconds: 3));
 
       // Check for any exception
-      expect(tester.takeException(), isNull, reason: 'Firebase should initialize without errors');
+      expect(
+        tester.takeException(),
+        isNull,
+        reason: 'Firebase should initialize without errors',
+      );
 
       // App should still be running
       expect(find.byType(FaiseurApp), findsOneWidget);
@@ -48,26 +60,37 @@ void main() {
 
       // App should have transitioned from splash to main app
       final scaffolds = find.byType(Scaffold);
-      expect(scaffolds, findsWidgets, reason: 'App should have navigated from splash');
+      expect(
+        scaffolds,
+        findsWidgets,
+        reason: 'App should have navigated from splash',
+      );
 
       // No crashes
       expect(tester.takeException(), isNull);
     });
 
-    testWidgets('Riverpod providers initialize without circular dependency errors', (tester) async {
-      tester.binding.window.physicalSizeTestValue = const Size(1280, 720);
-      addTearDown(tester.binding.window.clearPhysicalSizeTestValue);
+    testWidgets(
+      'Riverpod providers initialize without circular dependency errors',
+      (tester) async {
+        tester.binding.window.physicalSizeTestValue = const Size(1280, 720);
+        addTearDown(tester.binding.window.clearPhysicalSizeTestValue);
 
-      await tester.pumpWidget(const ProviderScope(child: FaiseurApp()));
-      await tester.pumpAndSettle(const Duration(seconds: 3));
+        await tester.pumpWidget(const ProviderScope(child: FaiseurApp()));
+        await tester.pumpAndSettle(const Duration(seconds: 3));
 
-      // Check for Riverpod-specific errors
-      final exception = tester.takeException();
-      expect(exception, isNull, reason: 'No Riverpod provider modification errors');
+        // Check for Riverpod-specific errors
+        final exception = tester.takeException();
+        expect(
+          exception,
+          isNull,
+          reason: 'No Riverpod provider modification errors',
+        );
 
-      // App should still be functional
-      expect(find.byType(MaterialApp), findsOneWidget);
-    });
+        // App should still be functional
+        expect(find.byType(MaterialApp), findsOneWidget);
+      },
+    );
   });
 
   group('Web E2E Tests - Navigation', () {
@@ -79,7 +102,11 @@ void main() {
       await tester.pumpAndSettle(const Duration(seconds: 3));
 
       // Verify router is created and pages render
-      expect(find.byType(Scaffold), findsWidgets, reason: 'Router should render pages');
+      expect(
+        find.byType(Scaffold),
+        findsWidgets,
+        reason: 'Router should render pages',
+      );
 
       // No exceptions
       expect(tester.takeException(), isNull);
@@ -121,7 +148,9 @@ void main() {
       await tester.pumpAndSettle(const Duration(seconds: 2));
 
       // Get context and verify theme
-      final BuildContext context = tester.element(find.byType(FaiseurApp).first);
+      final BuildContext context = tester.element(
+        find.byType(FaiseurApp).first,
+      );
       final theme = Theme.of(context);
 
       // Material 3 theme should have color scheme
@@ -155,7 +184,11 @@ void main() {
       await tester.pumpAndSettle(const Duration(seconds: 2));
 
       // Verify text widgets are rendered
-      expect(find.byType(Text), findsWidgets, reason: 'App should have text content');
+      expect(
+        find.byType(Text),
+        findsWidgets,
+        reason: 'App should have text content',
+      );
     });
   });
 
@@ -172,7 +205,11 @@ void main() {
       stopwatch.stop();
 
       debugPrint('App initialization took ${stopwatch.elapsedMilliseconds}ms');
-      expect(stopwatch.elapsedMilliseconds, lessThan(10000), reason: 'App should initialize within 10 seconds');
+      expect(
+        stopwatch.elapsedMilliseconds,
+        lessThan(10000),
+        reason: 'App should initialize within 10 seconds',
+      );
 
       expect(tester.takeException(), isNull);
     });
@@ -208,7 +245,9 @@ void main() {
       expect(find.byType(MaterialApp), findsOneWidget);
     });
 
-    testWidgets('No assertions or exceptions during normal operation', (tester) async {
+    testWidgets('No assertions or exceptions during normal operation', (
+      tester,
+    ) async {
       tester.binding.window.physicalSizeTestValue = const Size(1280, 720);
       addTearDown(tester.binding.window.clearPhysicalSizeTestValue);
 
@@ -216,7 +255,11 @@ void main() {
       await tester.pumpAndSettle(const Duration(seconds: 5));
 
       // Verify no exceptions
-      expect(tester.takeException(), isNull, reason: 'App should run without exceptions');
+      expect(
+        tester.takeException(),
+        isNull,
+        reason: 'App should run without exceptions',
+      );
     });
   });
 }

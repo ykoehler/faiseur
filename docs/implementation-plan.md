@@ -106,14 +106,14 @@ Each phase must meet:
 #### Step 1.1: Project Setup (Week 1)
 **Tasks**:
 - [x] Create Flutter project structure
-- [ ] Configure Firebase for all platforms
-- [ ] Set up Riverpod state management
-- [ ] Configure Go Router
-- [ ] Set up code generation (Freezed, JSON Serialization)
-- [ ] Create core folder structure
-- [ ] Configure linting and analysis options
-- [ ] Set up GitHub repository
-- [ ] Configure CI/CD pipeline (basic)
+- [x] Configure Firebase for all platforms
+- [x] Set up Riverpod state management
+- [x] Configure Go Router
+- [x] Set up code generation (Freezed, JSON Serialization)
+- [x] Create core folder structure
+- [x] Configure linting and analysis options
+- [x] Set up GitHub repository
+- [x] Configure CI/CD pipeline (basic)
 
 **Deliverables**:
 - Project compiles on all platforms
@@ -344,7 +344,7 @@ test/features/todos/domain/entities/todo_test.dart
 - [x] Create loading indicators
 - [x] Create error widgets
 - [x] Create empty state widgets
-- [ ] Write widget tests
+- [x] Write widget tests
 
 **Deliverables**:
 - ✅ Material 3 theme created
@@ -375,25 +375,61 @@ lib/shared/widgets/widgets.dart
 
 ---
 
-#### Step 1.8: Settings & About (Week 5)
+#### Step 1.8: Integrate Onboarding Route into GoRouter (Week 5)
+**Status**: ✅ COMPLETE
+
 **Tasks**:
-- [ ] Create settings repository
-- [ ] Create settings state provider
-- [ ] Build settings page UI
-- [ ] Build account section
-- [ ] Build appearance settings
-- [ ] Build about page
-- [ ] Display version info
-- [ ] Create changelog page
-- [ ] Write tests
+- [x] Add onboarding route constants
+- [x] Register onboarding route in GoRouter
+- [x] Update redirect logic for first-time users
+- [x] Add navigation service methods
+- [x] Import onboarding page in router
 
 **Deliverables**:
-- Settings page functional
-- User preferences persist
-- About page with version info
-- Tests passing
+- ✅ Onboarding route defined
+- ✅ Automatic user routing after auth
+- ✅ Type-safe navigation
+- ✅ Integration complete
 
-**Files to Create**:
+**Files Modified**:
+```
+lib/routing/app_routes.dart (route constants)
+lib/routing/app_router.dart (route registration & redirect logic)
+lib/routing/navigation_service.dart (navigation methods)
+```
+
+**Success Criteria**:
+- ✅ Onboarding route defined in constants
+- ✅ Route registered in GoRouter
+- ✅ Redirect logic sends authenticated users to onboarding
+- ✅ Navigation service has methods for onboarding control
+- ✅ No compilation errors
+- ✅ Type-safe navigation implemented
+- ✅ Documentation complete
+
+---
+
+#### Step 1.9: Settings & About (Week 5)
+**Status**: ✅ COMPLETE
+
+**Tasks**:
+- [x] Create settings repository
+- [x] Create settings state provider
+- [x] Build settings page UI
+- [x] Build account section
+- [x] Build appearance settings
+- [x] Build about page
+- [x] Display version info
+- [x] Create changelog page
+- [x] Write tests
+
+**Deliverables**:
+- ✅ Settings page functional
+- ✅ User preferences persist
+- ✅ About page with version info
+- ✅ Tests passing
+
+**Files Created**:
 ```
 lib/features/settings/domain/entities/user_settings.dart
 lib/features/settings/data/models/user_settings_model.dart
@@ -406,13 +442,13 @@ lib/features/settings/presentation/widgets/settings_section.dart
 ```
 
 **Success Criteria**:
-- Theme setting persists
-- About page shows correct version
-- Sign out works correctly
+- ✅ Theme setting persists
+- ✅ About page shows correct version
+- ✅ Sign out works correctly
 
 ---
 
-#### Step 1.9: Tutorial & Onboarding (Week 6)
+#### Step 1.10: Tutorial & Onboarding (Week 6)
 **Status**: ✅ COMPLETE
 
 **Tasks**:
@@ -454,7 +490,7 @@ lib/features/onboarding/presentation/providers/onboarding_providers.dart
 
 ---
 
-#### Step 1.10: Testing & Polish (Weeks 7-8)
+#### Step 1.11: Testing & Polish (Weeks 7-8)
 **Tasks**:
 - [ ] Write missing unit tests (target >80%)
 - [ ] Write widget tests (target >70%)
@@ -489,7 +525,7 @@ lib/features/onboarding/presentation/providers/onboarding_providers.dart
 
 ---
 
-#### Step 1.11: Platform Setup & Submission (Week 8)
+#### Step 1.12: Platform Setup & Submission (Week 8)
 **Tasks**:
 - [ ] Set up Apple Developer account
 - [ ] Set up Google Play Console

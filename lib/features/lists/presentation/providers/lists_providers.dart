@@ -14,8 +14,9 @@ part 'lists_providers.g.dart';
 
 /// Provider for the ListsRepository singleton instance
 @riverpod
-ListsRepository listsRepository(Ref ref) =>
-    ListsRepositoryImpl(remoteDatasource: ref.watch(listsRemoteDatasourceProvider));
+ListsRepository listsRepository(Ref ref) => ListsRepositoryImpl(
+  remoteDatasource: ref.watch(listsRemoteDatasourceProvider),
+);
 
 // ============================================================================
 // USE CASE PROVIDERS
@@ -23,19 +24,23 @@ ListsRepository listsRepository(Ref ref) =>
 
 /// Provider for GetUserLists use case
 @riverpod
-GetUserLists getUserListsUseCase(Ref ref) => GetUserLists(repository: ref.watch(listsRepositoryProvider));
+GetUserLists getUserListsUseCase(Ref ref) =>
+    GetUserLists(repository: ref.watch(listsRepositoryProvider));
 
 /// Provider for CreateList use case
 @riverpod
-CreateList createListUseCase(Ref ref) => CreateList(repository: ref.watch(listsRepositoryProvider));
+CreateList createListUseCase(Ref ref) =>
+    CreateList(repository: ref.watch(listsRepositoryProvider));
 
 /// Provider for UpdateList use case
 @riverpod
-UpdateList updateListUseCase(Ref ref) => UpdateList(repository: ref.watch(listsRepositoryProvider));
+UpdateList updateListUseCase(Ref ref) =>
+    UpdateList(repository: ref.watch(listsRepositoryProvider));
 
 /// Provider for DeleteList use case
 @riverpod
-DeleteList deleteListUseCase(Ref ref) => DeleteList(repository: ref.watch(listsRepositoryProvider));
+DeleteList deleteListUseCase(Ref ref) =>
+    DeleteList(repository: ref.watch(listsRepositoryProvider));
 
 // ============================================================================
 // STREAM PROVIDERS FOR REAL-TIME DATA
@@ -76,13 +81,22 @@ class ListsNotifier extends _$ListsNotifier {
       );
 
   /// Creates a new list with the given parameters
-  Future<TodoList?> createList({required String title, required String color, String? description}) async {
+  Future<TodoList?> createList({
+    required String title,
+    required String color,
+    String? description,
+  }) async {
     final authState = ref.read(authProvider);
 
     if (authState case AsyncData(value: final user?)) {
       try {
         final useCase = ref.read(createListUseCaseProvider);
-        final params = CreateListParams(title: title, color: color, ownerId: user.id, description: description);
+        final params = CreateListParams(
+          title: title,
+          color: color,
+          ownerId: user.id,
+          description: description,
+        );
         return await useCase.call(params);
       } catch (e) {
         throw Exception('Failed to create list: $e');

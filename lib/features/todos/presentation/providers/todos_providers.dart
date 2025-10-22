@@ -14,8 +14,9 @@ part 'todos_providers.g.dart';
 
 /// Provider for the TodosRepository singleton instance
 @riverpod
-TodosRepository todosRepository(Ref ref) =>
-    TodosRepositoryImpl(remoteDatasource: ref.watch(todosRemoteDatasourceProvider));
+TodosRepository todosRepository(Ref ref) => TodosRepositoryImpl(
+  remoteDatasource: ref.watch(todosRemoteDatasourceProvider),
+);
 
 // ============================================================================
 // USE CASE PROVIDERS
@@ -23,19 +24,23 @@ TodosRepository todosRepository(Ref ref) =>
 
 /// Provider for GetTodos use case
 @riverpod
-GetTodos getTodosUseCase(Ref ref) => GetTodos(ref.watch(todosRepositoryProvider));
+GetTodos getTodosUseCase(Ref ref) =>
+    GetTodos(ref.watch(todosRepositoryProvider));
 
 /// Provider for CreateTodo use case
 @riverpod
-CreateTodo createTodoUseCase(Ref ref) => CreateTodo(ref.watch(todosRepositoryProvider));
+CreateTodo createTodoUseCase(Ref ref) =>
+    CreateTodo(ref.watch(todosRepositoryProvider));
 
 /// Provider for UpdateTodo use case
 @riverpod
-UpdateTodo updateTodoUseCase(Ref ref) => UpdateTodo(ref.watch(todosRepositoryProvider));
+UpdateTodo updateTodoUseCase(Ref ref) =>
+    UpdateTodo(ref.watch(todosRepositoryProvider));
 
 /// Provider for DeleteTodo use case
 @riverpod
-DeleteTodo deleteTodoUseCase(Ref ref) => DeleteTodo(ref.watch(todosRepositoryProvider));
+DeleteTodo deleteTodoUseCase(Ref ref) =>
+    DeleteTodo(ref.watch(todosRepositoryProvider));
 
 // ============================================================================
 // STREAM PROVIDERS FOR REAL-TIME DATA
@@ -48,7 +53,8 @@ DeleteTodo deleteTodoUseCase(Ref ref) => DeleteTodo(ref.watch(todosRepositoryPro
 ///
 /// Returns a stream of todos that updates whenever todos change.
 @riverpod
-Stream<List<Todo>> watchListTodos(Ref ref, String listId) => ref.watch(getTodosUseCaseProvider).watch(listId);
+Stream<List<Todo>> watchListTodos(Ref ref, String listId) =>
+    ref.watch(getTodosUseCaseProvider).watch(listId);
 
 // ============================================================================
 // NOTIFIER FOR STATE MANAGEMENT
@@ -65,7 +71,11 @@ class TodosNotifier extends _$TodosNotifier {
     _currentListId = listId;
     return ref
         .watch(watchListTodosProvider(listId))
-        .when(data: AsyncValue.data, loading: AsyncValue<List<Todo>>.loading, error: AsyncValue<List<Todo>>.error);
+        .when(
+          data: AsyncValue.data,
+          loading: AsyncValue<List<Todo>>.loading,
+          error: AsyncValue<List<Todo>>.error,
+        );
   }
 
   /// Creates a new todo with the given parameters

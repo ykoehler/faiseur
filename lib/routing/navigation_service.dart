@@ -49,12 +49,18 @@ class NavigationService {
 
   /// Navigate to list detail page
   void goToListDetail(String listId) {
-    _router.goNamed(kListDetailRouteName, pathParameters: {kListIdParam: listId});
+    _router.goNamed(
+      kListDetailRouteName,
+      pathParameters: {kListIdParam: listId},
+    );
   }
 
   /// Navigate to todo detail page
   void goToTodoDetail(String listId, String todoId) {
-    _router.goNamed(kTodoDetailRouteName, pathParameters: {kListIdParam: listId, kTodoIdParam: todoId});
+    _router.goNamed(
+      kTodoDetailRouteName,
+      pathParameters: {kListIdParam: listId, kTodoIdParam: todoId},
+    );
   }
 
   /// Navigate to settings page
@@ -65,6 +71,20 @@ class NavigationService {
   /// Navigate to about page
   void goToAbout() {
     _router.goNamed(kAboutRouteName);
+  }
+
+  // =========================================================================
+  // NAVIGATION METHODS - Onboarding routes
+  // =========================================================================
+
+  /// Navigate to onboarding page for first-time users
+  void goToOnboarding() {
+    _router.goNamed(kOnboardingRouteName);
+  }
+
+  /// Navigate to lists after completing onboarding
+  void completeOnboarding() {
+    _router.goNamed(kListsRouteName);
   }
 
   // =========================================================================
@@ -99,7 +119,8 @@ class NavigationService {
   bool canGoBack() => _router.canPop();
 
   /// Get current route location
-  String get currentLocation => _router.routeInformationProvider.value.uri.toString();
+  String get currentLocation =>
+      _router.routeInformationProvider.value.uri.toString();
 
   /// Check if currently at route
   bool isAtRoute(String routeName) => currentLocation.contains(routeName);

@@ -16,7 +16,12 @@ const settingsRepositoryProvider = SettingsRepositoryProvider._();
 /// Provider for the SettingsRepository singleton instance
 
 final class SettingsRepositoryProvider
-    extends $FunctionalProvider<SettingsRepository, SettingsRepository, SettingsRepository>
+    extends
+        $FunctionalProvider<
+          SettingsRepository,
+          SettingsRepository,
+          SettingsRepository
+        >
     with $Provider<SettingsRepository> {
   /// Provider for the SettingsRepository singleton instance
   const SettingsRepositoryProvider._()
@@ -35,7 +40,9 @@ final class SettingsRepositoryProvider
 
   @$internal
   @override
-  $ProviderElement<SettingsRepository> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<SettingsRepository> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
 
   @override
   SettingsRepository create(Ref ref) {
@@ -44,11 +51,15 @@ final class SettingsRepositoryProvider
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(SettingsRepository value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<SettingsRepository>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<SettingsRepository>(value),
+    );
   }
 }
 
-String _$settingsRepositoryHash() => r'a0927ba6d2b7845492260ea4abbe7787b58544d1';
+String _$settingsRepositoryHash() =>
+    r'a0927ba6d2b7845492260ea4abbe7787b58544d1';
 
 /// Provides a stream of the current user's settings.
 ///
@@ -64,7 +75,12 @@ const userSettingsProvider = UserSettingsProvider._();
 /// and updates in real-time as they change.
 
 final class UserSettingsProvider
-    extends $FunctionalProvider<AsyncValue<UserSettings>, UserSettings, Stream<UserSettings>>
+    extends
+        $FunctionalProvider<
+          AsyncValue<UserSettings>,
+          UserSettings,
+          Stream<UserSettings>
+        >
     with $FutureModifier<UserSettings>, $StreamProvider<UserSettings> {
   /// Provides a stream of the current user's settings.
   ///
@@ -86,7 +102,9 @@ final class UserSettingsProvider
 
   @$internal
   @override
-  $StreamProviderElement<UserSettings> $createElement($ProviderPointer pointer) => $StreamProviderElement(pointer);
+  $StreamProviderElement<UserSettings> $createElement(
+    $ProviderPointer pointer,
+  ) => $StreamProviderElement(pointer);
 
   @override
   Stream<UserSettings> create(Ref ref) {
@@ -108,7 +126,12 @@ const userSettingsAsyncProvider = UserSettingsAsyncProvider._();
 /// Use this when you need to fetch settings once without streaming.
 
 final class UserSettingsAsyncProvider
-    extends $FunctionalProvider<AsyncValue<UserSettings>, UserSettings, FutureOr<UserSettings>>
+    extends
+        $FunctionalProvider<
+          AsyncValue<UserSettings>,
+          UserSettings,
+          FutureOr<UserSettings>
+        >
     with $FutureModifier<UserSettings>, $FutureProvider<UserSettings> {
   /// Provides async version of current user settings for one-time fetches.
   ///
@@ -129,7 +152,9 @@ final class UserSettingsAsyncProvider
 
   @$internal
   @override
-  $FutureProviderElement<UserSettings> $createElement($ProviderPointer pointer) => $FutureProviderElement(pointer);
+  $FutureProviderElement<UserSettings> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
 
   @override
   FutureOr<UserSettings> create(Ref ref) {
@@ -149,7 +174,8 @@ const settingsProvider = SettingsNotifierProvider._();
 /// Notifier for managing settings state and operations.
 ///
 /// Provides methods for updating settings and handles state transitions.
-final class SettingsNotifierProvider extends $NotifierProvider<SettingsNotifier, void> {
+final class SettingsNotifierProvider
+    extends $NotifierProvider<SettingsNotifier, void> {
   /// Notifier for managing settings state and operations.
   ///
   /// Provides methods for updating settings and handles state transitions.
@@ -173,7 +199,10 @@ final class SettingsNotifierProvider extends $NotifierProvider<SettingsNotifier,
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(void value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<void>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<void>(value),
+    );
   }
 }
 
@@ -190,7 +219,14 @@ abstract class _$SettingsNotifier extends $Notifier<void> {
   void runBuild() {
     build();
     final ref = this.ref as $Ref<void, void>;
-    final element = ref.element as $ClassProviderElement<AnyNotifier<void, void>, void, Object?, Object?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<void, void>,
+              void,
+              Object?,
+              Object?
+            >;
     element.handleValue(ref, null);
   }
 }

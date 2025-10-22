@@ -16,7 +16,12 @@ const firebaseFirestoreProvider = FirebaseFirestoreProvider._();
 /// Provider for Firestore instance singleton.
 
 final class FirebaseFirestoreProvider
-    extends $FunctionalProvider<FirebaseFirestore, FirebaseFirestore, FirebaseFirestore>
+    extends
+        $FunctionalProvider<
+          FirebaseFirestore,
+          FirebaseFirestore,
+          FirebaseFirestore
+        >
     with $Provider<FirebaseFirestore> {
   /// Provider for Firestore instance singleton.
   const FirebaseFirestoreProvider._()
@@ -35,7 +40,9 @@ final class FirebaseFirestoreProvider
 
   @$internal
   @override
-  $ProviderElement<FirebaseFirestore> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<FirebaseFirestore> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
 
   @override
   FirebaseFirestore create(Ref ref) {
@@ -44,7 +51,10 @@ final class FirebaseFirestoreProvider
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(FirebaseFirestore value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<FirebaseFirestore>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<FirebaseFirestore>(value),
+    );
   }
 }
 
@@ -58,7 +68,12 @@ const settingsRemoteDatasourceProvider = SettingsRemoteDatasourceProvider._();
 /// Provider for settings remote datasource.
 
 final class SettingsRemoteDatasourceProvider
-    extends $FunctionalProvider<SettingsRemoteDatasource, SettingsRemoteDatasource, SettingsRemoteDatasource>
+    extends
+        $FunctionalProvider<
+          SettingsRemoteDatasource,
+          SettingsRemoteDatasource,
+          SettingsRemoteDatasource
+        >
     with $Provider<SettingsRemoteDatasource> {
   /// Provider for settings remote datasource.
   const SettingsRemoteDatasourceProvider._()
@@ -77,7 +92,9 @@ final class SettingsRemoteDatasourceProvider
 
   @$internal
   @override
-  $ProviderElement<SettingsRemoteDatasource> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<SettingsRemoteDatasource> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
 
   @override
   SettingsRemoteDatasource create(Ref ref) {
@@ -86,8 +103,12 @@ final class SettingsRemoteDatasourceProvider
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(SettingsRemoteDatasource value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<SettingsRemoteDatasource>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<SettingsRemoteDatasource>(value),
+    );
   }
 }
 
-String _$settingsRemoteDatasourceHash() => r'8ef51fff8269f7a9bc404e753af8f9c045bc6d18';
+String _$settingsRemoteDatasourceHash() =>
+    r'8ef51fff8269f7a9bc404e753af8f9c045bc6d18';

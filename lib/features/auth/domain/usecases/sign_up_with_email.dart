@@ -21,5 +21,10 @@ class SignUpWithEmailUseCase {
     required String password,
     required String username,
     required String displayName,
-  }) => _repository.signUpWithEmail(email: email, password: password, username: username, displayName: displayName);
+  }) => _repository.signUpWithEmail(
+    email: email,
+    password: password,
+    username: username,
+    displayName: displayName,
+  );
 }

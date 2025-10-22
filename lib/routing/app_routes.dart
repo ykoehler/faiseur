@@ -16,6 +16,12 @@ const String kRootRoute = '/';
 /// Splash screen route - shown during app initialization
 const String kSplashRoute = '/splash';
 
+/// Onboarding routes base path - shown for first-time users
+const String kOnboardingRoute = '/onboarding';
+
+/// Onboarding welcome page route
+const String kOnboardingWelcomeRoute = '/onboarding/welcome';
+
 /// Authentication routes base path
 const String kAuthRoute = '/auth';
 
@@ -57,6 +63,9 @@ const String kNotFoundRoute = '/404';
 
 /// Route name for lists home page
 const String kListsRouteName = 'lists';
+
+/// Route name for onboarding welcome page
+const String kOnboardingRouteName = 'onboarding';
 
 /// Route name for list detail page
 const String kListDetailRouteName = 'list-detail';
@@ -101,7 +110,8 @@ String listDetailRoute(String listId) => '/lists/$listId';
 /// Build todo detail route with list ID and todo ID parameters
 ///
 /// Example: `todoDetailRoute('list1', 'todo1')` → `/lists/list1/todo/todo1`
-String todoDetailRoute(String listId, String todoId) => '/lists/$listId/todo/$todoId';
+String todoDetailRoute(String listId, String todoId) =>
+    '/lists/$listId/todo/$todoId';
 
 // ============================================================================
 // ROUTE VALIDATION HELPERS - Useful for debugging
@@ -111,6 +121,8 @@ String todoDetailRoute(String listId, String todoId) => '/lists/$listId/todo/$to
 final Set<String> allDefinedRoutes = {
   kRootRoute,
   kSplashRoute,
+  kOnboardingRoute,
+  kOnboardingWelcomeRoute,
   kAuthRoute,
   kLoginRoute,
   kSignupRoute,
@@ -127,6 +139,7 @@ final Set<String> allDefinedRoutes = {
 /// List of all defined route names for validation
 final Set<String> allDefinedRouteNames = {
   kListsRouteName,
+  kOnboardingRouteName,
   kListDetailRouteName,
   kTodoDetailRouteName,
   kLoginRouteName,

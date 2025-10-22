@@ -43,8 +43,9 @@ final class AuthStateNotifierProvider
 
   @$internal
   @override
-  $ProviderElement<Raw<AsyncValueNotifier<bool?>>> $createElement($ProviderPointer pointer) =>
-      $ProviderElement(pointer);
+  $ProviderElement<Raw<AsyncValueNotifier<bool?>>> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
 
   @override
   Raw<AsyncValueNotifier<bool?>> create(Ref ref) {
@@ -53,7 +54,12 @@ final class AuthStateNotifierProvider
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(Raw<AsyncValueNotifier<bool?>> value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<Raw<AsyncValueNotifier<bool?>>>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<Raw<AsyncValueNotifier<bool?>>>(
+        value,
+      ),
+    );
   }
 }
 
@@ -62,7 +68,9 @@ String _$authStateNotifierHash() => r'64085f5b3f5dbeb601307834751413b7abe74f09';
 @ProviderFor(goRouter)
 const goRouterProvider = GoRouterProvider._();
 
-final class GoRouterProvider extends $FunctionalProvider<GoRouter, GoRouter, GoRouter> with $Provider<GoRouter> {
+final class GoRouterProvider
+    extends $FunctionalProvider<GoRouter, GoRouter, GoRouter>
+    with $Provider<GoRouter> {
   const GoRouterProvider._()
     : super(
         from: null,
@@ -79,7 +87,8 @@ final class GoRouterProvider extends $FunctionalProvider<GoRouter, GoRouter, GoR
 
   @$internal
   @override
-  $ProviderElement<GoRouter> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<GoRouter> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
 
   @override
   GoRouter create(Ref ref) {
@@ -88,8 +97,11 @@ final class GoRouterProvider extends $FunctionalProvider<GoRouter, GoRouter, GoR
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(GoRouter value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<GoRouter>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<GoRouter>(value),
+    );
   }
 }
 
-String _$goRouterHash() => r'b82dfaa50fe154b48576756918d0513aa1fa9a7e';
+String _$goRouterHash() => r'0926ce4e72d95bf89ccf814cd505c194447a7648';

@@ -27,22 +27,24 @@ abstract class UserSettingsModel with _$UserSettingsModel {
   const UserSettingsModel._();
 
   /// Creates a model from JSON (Firestore).
-  factory UserSettingsModel.fromJson(Map<String, dynamic> json) => UserSettingsModel(
-    userId: json['userId'] as String? ?? '',
-    themeMode: json['themeMode'] as String? ?? 'system',
-    notificationsEnabled: json['notificationsEnabled'] as bool? ?? true,
-    emailNotificationsEnabled: json['emailNotificationsEnabled'] as bool? ?? true,
-    defaultViewMode: json['defaultViewMode'] as String? ?? 'list',
-    showTutorialOnLaunch: json['showTutorialOnLaunch'] as bool? ?? true,
-    languageCode: json['languageCode'] as String? ?? 'en',
-    darkMode: json['darkMode'] as bool? ?? false,
-    updatedAt: json['updatedAt'] is String
-        ? DateTime.parse(json['updatedAt'] as String)
-        : (json['updatedAt'] as DateTime?)?.toLocal() ?? DateTime.now(),
-    createdAt: json['createdAt'] is String
-        ? DateTime.parse(json['createdAt'] as String)
-        : (json['createdAt'] as DateTime?)?.toLocal() ?? DateTime.now(),
-  );
+  factory UserSettingsModel.fromJson(Map<String, dynamic> json) =>
+      UserSettingsModel(
+        userId: json['userId'] as String? ?? '',
+        themeMode: json['themeMode'] as String? ?? 'system',
+        notificationsEnabled: json['notificationsEnabled'] as bool? ?? true,
+        emailNotificationsEnabled:
+            json['emailNotificationsEnabled'] as bool? ?? true,
+        defaultViewMode: json['defaultViewMode'] as String? ?? 'list',
+        showTutorialOnLaunch: json['showTutorialOnLaunch'] as bool? ?? true,
+        languageCode: json['languageCode'] as String? ?? 'en',
+        darkMode: json['darkMode'] as bool? ?? false,
+        updatedAt: json['updatedAt'] is String
+            ? DateTime.parse(json['updatedAt'] as String)
+            : (json['updatedAt'] as DateTime?)?.toLocal() ?? DateTime.now(),
+        createdAt: json['createdAt'] is String
+            ? DateTime.parse(json['createdAt'] as String)
+            : (json['createdAt'] as DateTime?)?.toLocal() ?? DateTime.now(),
+      );
 
   /// Converts the model to JSON for Firestore storage.
   Map<String, dynamic> toJson() => {
@@ -100,10 +102,14 @@ extension UserSettingsModelExt on UserSettingsModel {
       throw ArgumentError('userId cannot be empty');
     }
     if (!['light', 'dark', 'system'].contains(themeMode)) {
-      throw ArgumentError('themeMode must be one of: light, dark, system. Got: $themeMode');
+      throw ArgumentError(
+        'themeMode must be one of: light, dark, system. Got: $themeMode',
+      );
     }
     if (!['list', 'kanban', 'card'].contains(defaultViewMode)) {
-      throw ArgumentError('defaultViewMode must be one of: list, kanban, card. Got: $defaultViewMode');
+      throw ArgumentError(
+        'defaultViewMode must be one of: list, kanban, card. Got: $defaultViewMode',
+      );
     }
     if (languageCode.isEmpty) {
       throw ArgumentError('languageCode cannot be empty');

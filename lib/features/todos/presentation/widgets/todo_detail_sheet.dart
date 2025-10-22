@@ -5,7 +5,11 @@ import 'package:flutter/material.dart';
 /// Bottom sheet for viewing and editing todo details
 class TodoDetailSheet extends StatefulWidget {
   /// Creates a todo detail sheet
-  const TodoDetailSheet({required this.todo, required this.onUpdate, super.key});
+  const TodoDetailSheet({
+    required this.todo,
+    required this.onUpdate,
+    super.key,
+  });
 
   /// The todo to display
   final Todo todo;
@@ -28,7 +32,9 @@ class _TodoDetailSheetState extends State<TodoDetailSheet> {
   void initState() {
     super.initState();
     _titleController = TextEditingController(text: widget.todo.title);
-    _descriptionController = TextEditingController(text: widget.todo.description ?? '');
+    _descriptionController = TextEditingController(
+      text: widget.todo.description ?? '',
+    );
     _selectedStatus = widget.todo.status;
     _selectedPriority = widget.todo.priority;
     _selectedDueDate = widget.todo.dueDate;
@@ -46,28 +52,45 @@ class _TodoDetailSheetState extends State<TodoDetailSheet> {
     expand: false,
     builder: (context, scrollController) => ListView(
       controller: scrollController,
-      padding: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: MediaQuery.of(context).viewInsets.bottom + 16),
+      padding: EdgeInsets.only(
+        left: 16,
+        right: 16,
+        top: 16,
+        bottom: MediaQuery.of(context).viewInsets.bottom + 16,
+      ),
       children: [
         // Header with title
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('Todo Details', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            IconButton(icon: const Icon(Icons.close), onPressed: () => Navigator.of(context).pop()),
+            const Text(
+              'Todo Details',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            IconButton(
+              icon: const Icon(Icons.close),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
           ],
         ),
         const SizedBox(height: 16),
         // Title field
         TextField(
           controller: _titleController,
-          decoration: const InputDecoration(labelText: 'Title', border: OutlineInputBorder()),
+          decoration: const InputDecoration(
+            labelText: 'Title',
+            border: OutlineInputBorder(),
+          ),
           maxLength: 500,
         ),
         const SizedBox(height: 16),
         // Description field
         TextField(
           controller: _descriptionController,
-          decoration: const InputDecoration(labelText: 'Description', border: OutlineInputBorder()),
+          decoration: const InputDecoration(
+            labelText: 'Description',
+            border: OutlineInputBorder(),
+          ),
           maxLength: 5000,
           maxLines: 4,
         ),
@@ -85,11 +108,17 @@ class _TodoDetailSheetState extends State<TodoDetailSheet> {
         Row(
           children: [
             Expanded(
-              child: OutlinedButton(onPressed: () => Navigator.of(context).pop(), child: const Text('Cancel')),
+              child: OutlinedButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: const Text('Cancel'),
+              ),
             ),
             const SizedBox(width: 12),
             Expanded(
-              child: ElevatedButton(onPressed: _saveChanges, child: const Text('Save')),
+              child: ElevatedButton(
+                onPressed: _saveChanges,
+                child: const Text('Save'),
+              ),
             ),
           ],
         ),
@@ -99,9 +128,17 @@ class _TodoDetailSheetState extends State<TodoDetailSheet> {
 
   Widget _buildStatusDropdown() => DropdownButtonFormField<TodoStatus>(
     initialValue: _selectedStatus,
-    decoration: const InputDecoration(labelText: 'Status', border: OutlineInputBorder()),
+    decoration: const InputDecoration(
+      labelText: 'Status',
+      border: OutlineInputBorder(),
+    ),
     items: TodoStatus.values
-        .map((status) => DropdownMenuItem(value: status, child: Text(_statusLabel(status))))
+        .map(
+          (status) => DropdownMenuItem(
+            value: status,
+            child: Text(_statusLabel(status)),
+          ),
+        )
         .toList(),
     onChanged: (value) {
       if (value != null) {
@@ -112,9 +149,17 @@ class _TodoDetailSheetState extends State<TodoDetailSheet> {
 
   Widget _buildPriorityDropdown() => DropdownButtonFormField<TodoPriority>(
     initialValue: _selectedPriority,
-    decoration: const InputDecoration(labelText: 'Priority', border: OutlineInputBorder()),
+    decoration: const InputDecoration(
+      labelText: 'Priority',
+      border: OutlineInputBorder(),
+    ),
     items: TodoPriority.values
-        .map((priority) => DropdownMenuItem(value: priority, child: Text(_priorityLabel(priority))))
+        .map(
+          (priority) => DropdownMenuItem(
+            value: priority,
+            child: Text(_priorityLabel(priority)),
+          ),
+        )
         .toList(),
     onChanged: (value) {
       if (value != null) {
@@ -142,7 +187,10 @@ class _TodoDetailSheetState extends State<TodoDetailSheet> {
           ),
           TextButton(onPressed: _selectDueDate, child: const Text('Change')),
           if (_selectedDueDate != null)
-            TextButton(onPressed: () => setState(() => _selectedDueDate = null), child: const Text('Clear')),
+            TextButton(
+              onPressed: () => setState(() => _selectedDueDate = null),
+              child: const Text('Clear'),
+            ),
         ],
       ),
     ],
@@ -151,7 +199,8 @@ class _TodoDetailSheetState extends State<TodoDetailSheet> {
   Future<void> _selectDueDate() async {
     final picked = await showDatePicker(
       context: context,
-      initialDate: _selectedDueDate ?? DateTime.now().add(const Duration(days: 1)),
+      initialDate:
+          _selectedDueDate ?? DateTime.now().add(const Duration(days: 1)),
       firstDate: DateTime.now(),
       lastDate: DateTime.now().add(const Duration(days: 365)),
     );
@@ -165,13 +214,17 @@ class _TodoDetailSheetState extends State<TodoDetailSheet> {
     final title = _titleController.text.trim();
 
     if (title.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Please enter a title')));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Please enter a title')));
       return;
     }
 
     final updatedTodo = widget.todo.copyWith(
       title: title,
-      description: _descriptionController.text.trim().isEmpty ? null : _descriptionController.text.trim(),
+      description: _descriptionController.text.trim().isEmpty
+          ? null
+          : _descriptionController.text.trim(),
       status: _selectedStatus,
       priority: _selectedPriority,
       dueDate: _selectedDueDate,
@@ -184,7 +237,11 @@ class _TodoDetailSheetState extends State<TodoDetailSheet> {
   String _statusLabel(TodoStatus status) => status.toString().split('.').last;
 
   String _priorityLabel(TodoPriority priority) {
-    final labels = {TodoPriority.low: 'Low', TodoPriority.medium: 'Medium', TodoPriority.high: 'High'};
+    final labels = {
+      TodoPriority.low: 'Low',
+      TodoPriority.medium: 'Medium',
+      TodoPriority.high: 'High',
+    };
     return labels[priority] ?? 'Medium';
   }
 }

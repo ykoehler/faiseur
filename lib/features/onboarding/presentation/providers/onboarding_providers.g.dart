@@ -16,7 +16,12 @@ const createTutorialListUseCaseProvider = CreateTutorialListUseCaseProvider._();
 /// Provider for the CreateTutorialList use case
 
 final class CreateTutorialListUseCaseProvider
-    extends $FunctionalProvider<CreateTutorialList, CreateTutorialList, CreateTutorialList>
+    extends
+        $FunctionalProvider<
+          CreateTutorialList,
+          CreateTutorialList,
+          CreateTutorialList
+        >
     with $Provider<CreateTutorialList> {
   /// Provider for the CreateTutorialList use case
   const CreateTutorialListUseCaseProvider._()
@@ -35,7 +40,9 @@ final class CreateTutorialListUseCaseProvider
 
   @$internal
   @override
-  $ProviderElement<CreateTutorialList> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<CreateTutorialList> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
 
   @override
   CreateTutorialList create(Ref ref) {
@@ -44,11 +51,15 @@ final class CreateTutorialListUseCaseProvider
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(CreateTutorialList value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<CreateTutorialList>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<CreateTutorialList>(value),
+    );
   }
 }
 
-String _$createTutorialListUseCaseHash() => r'177e9054105307ff0fb7eb59546c17230e7ba838';
+String _$createTutorialListUseCaseHash() =>
+    r'177e9054105307ff0fb7eb59546c17230e7ba838';
 
 /// Notifier provider for onboarding state management
 
@@ -56,7 +67,8 @@ String _$createTutorialListUseCaseHash() => r'177e9054105307ff0fb7eb59546c17230e
 const onboardingProvider = OnboardingNotifierProvider._();
 
 /// Notifier provider for onboarding state management
-final class OnboardingNotifierProvider extends $NotifierProvider<OnboardingNotifier, OnboardingState> {
+final class OnboardingNotifierProvider
+    extends $NotifierProvider<OnboardingNotifier, OnboardingState> {
   /// Notifier provider for onboarding state management
   const OnboardingNotifierProvider._()
     : super(
@@ -78,11 +90,15 @@ final class OnboardingNotifierProvider extends $NotifierProvider<OnboardingNotif
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(OnboardingState value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<OnboardingState>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<OnboardingState>(value),
+    );
   }
 }
 
-String _$onboardingNotifierHash() => r'2fc7d3f69321829901110ce833a15e98e9ad04d7';
+String _$onboardingNotifierHash() =>
+    r'2fc7d3f69321829901110ce833a15e98e9ad04d7';
 
 /// Notifier provider for onboarding state management
 
@@ -95,7 +111,12 @@ abstract class _$OnboardingNotifier extends $Notifier<OnboardingState> {
     final ref = this.ref as $Ref<OnboardingState, OnboardingState>;
     final element =
         ref.element
-            as $ClassProviderElement<AnyNotifier<OnboardingState, OnboardingState>, OnboardingState, Object?, Object?>;
+            as $ClassProviderElement<
+              AnyNotifier<OnboardingState, OnboardingState>,
+              OnboardingState,
+              Object?,
+              Object?
+            >;
     element.handleValue(ref, created);
   }
 }
@@ -107,7 +128,8 @@ const hasCompletedOnboardingProvider = HasCompletedOnboardingProvider._();
 
 /// Provider that checks if user has completed onboarding
 
-final class HasCompletedOnboardingProvider extends $FunctionalProvider<AsyncValue<bool>, bool, FutureOr<bool>>
+final class HasCompletedOnboardingProvider
+    extends $FunctionalProvider<AsyncValue<bool>, bool, FutureOr<bool>>
     with $FutureModifier<bool>, $FutureProvider<bool> {
   /// Provider that checks if user has completed onboarding
   const HasCompletedOnboardingProvider._()
@@ -126,7 +148,8 @@ final class HasCompletedOnboardingProvider extends $FunctionalProvider<AsyncValu
 
   @$internal
   @override
-  $FutureProviderElement<bool> $createElement($ProviderPointer pointer) => $FutureProviderElement(pointer);
+  $FutureProviderElement<bool> $createElement($ProviderPointer pointer) =>
+      $FutureProviderElement(pointer);
 
   @override
   FutureOr<bool> create(Ref ref) {
@@ -134,7 +157,8 @@ final class HasCompletedOnboardingProvider extends $FunctionalProvider<AsyncValu
   }
 }
 
-String _$hasCompletedOnboardingHash() => r'5d9460c2dea29e57f65775bb91ef0f09dfe6cde6';
+String _$hasCompletedOnboardingHash() =>
+    r'5d9460c2dea29e57f65775bb91ef0f09dfe6cde6';
 
 /// Current onboarding step
 
@@ -143,7 +167,9 @@ const currentOnboardingStepProvider = CurrentOnboardingStepProvider._();
 
 /// Current onboarding step
 
-final class CurrentOnboardingStepProvider extends $FunctionalProvider<int, int, int> with $Provider<int> {
+final class CurrentOnboardingStepProvider
+    extends $FunctionalProvider<int, int, int>
+    with $Provider<int> {
   /// Current onboarding step
   const CurrentOnboardingStepProvider._()
     : super(
@@ -161,7 +187,8 @@ final class CurrentOnboardingStepProvider extends $FunctionalProvider<int, int, 
 
   @$internal
   @override
-  $ProviderElement<int> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<int> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
 
   @override
   int create(Ref ref) {
@@ -170,11 +197,15 @@ final class CurrentOnboardingStepProvider extends $FunctionalProvider<int, int, 
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(int value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<int>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<int>(value),
+    );
   }
 }
 
-String _$currentOnboardingStepHash() => r'8d7499ebbe0edc2cd3133f20873205cdb4a64372';
+String _$currentOnboardingStepHash() =>
+    r'8d7499ebbe0edc2cd3133f20873205cdb4a64372';
 
 /// Onboarding progress as percentage (0-1)
 
@@ -183,7 +214,9 @@ const onboardingProgressProvider = OnboardingProgressProvider._();
 
 /// Onboarding progress as percentage (0-1)
 
-final class OnboardingProgressProvider extends $FunctionalProvider<double, double, double> with $Provider<double> {
+final class OnboardingProgressProvider
+    extends $FunctionalProvider<double, double, double>
+    with $Provider<double> {
   /// Onboarding progress as percentage (0-1)
   const OnboardingProgressProvider._()
     : super(
@@ -201,7 +234,8 @@ final class OnboardingProgressProvider extends $FunctionalProvider<double, doubl
 
   @$internal
   @override
-  $ProviderElement<double> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<double> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
 
   @override
   double create(Ref ref) {
@@ -210,11 +244,15 @@ final class OnboardingProgressProvider extends $FunctionalProvider<double, doubl
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(double value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<double>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<double>(value),
+    );
   }
 }
 
-String _$onboardingProgressHash() => r'ffc7ea64fbd2607f05098f02ba1752ec6355b78d';
+String _$onboardingProgressHash() =>
+    r'ffc7ea64fbd2607f05098f02ba1752ec6355b78d';
 
 /// Check if onboarding is completed
 
@@ -223,7 +261,9 @@ const onboardingCompletedProvider = OnboardingCompletedProvider._();
 
 /// Check if onboarding is completed
 
-final class OnboardingCompletedProvider extends $FunctionalProvider<bool, bool, bool> with $Provider<bool> {
+final class OnboardingCompletedProvider
+    extends $FunctionalProvider<bool, bool, bool>
+    with $Provider<bool> {
   /// Check if onboarding is completed
   const OnboardingCompletedProvider._()
     : super(
@@ -241,7 +281,8 @@ final class OnboardingCompletedProvider extends $FunctionalProvider<bool, bool, 
 
   @$internal
   @override
-  $ProviderElement<bool> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<bool> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
 
   @override
   bool create(Ref ref) {
@@ -250,11 +291,15 @@ final class OnboardingCompletedProvider extends $FunctionalProvider<bool, bool, 
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(bool value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<bool>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<bool>(value),
+    );
   }
 }
 
-String _$onboardingCompletedHash() => r'2afd8720418216e6daeae1121be8bf498eb6b881';
+String _$onboardingCompletedHash() =>
+    r'2afd8720418216e6daeae1121be8bf498eb6b881';
 
 /// Check if currently loading onboarding completion
 
@@ -263,7 +308,9 @@ const onboardingIsLoadingProvider = OnboardingIsLoadingProvider._();
 
 /// Check if currently loading onboarding completion
 
-final class OnboardingIsLoadingProvider extends $FunctionalProvider<bool, bool, bool> with $Provider<bool> {
+final class OnboardingIsLoadingProvider
+    extends $FunctionalProvider<bool, bool, bool>
+    with $Provider<bool> {
   /// Check if currently loading onboarding completion
   const OnboardingIsLoadingProvider._()
     : super(
@@ -281,7 +328,8 @@ final class OnboardingIsLoadingProvider extends $FunctionalProvider<bool, bool, 
 
   @$internal
   @override
-  $ProviderElement<bool> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<bool> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
 
   @override
   bool create(Ref ref) {
@@ -290,11 +338,15 @@ final class OnboardingIsLoadingProvider extends $FunctionalProvider<bool, bool, 
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(bool value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<bool>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<bool>(value),
+    );
   }
 }
 
-String _$onboardingIsLoadingHash() => r'65d3e30c14f2c17252032b5ed0b425333089d4a3';
+String _$onboardingIsLoadingHash() =>
+    r'65d3e30c14f2c17252032b5ed0b425333089d4a3';
 
 /// Get any error message from onboarding process
 
@@ -303,7 +355,9 @@ const onboardingErrorProvider = OnboardingErrorProvider._();
 
 /// Get any error message from onboarding process
 
-final class OnboardingErrorProvider extends $FunctionalProvider<String?, String?, String?> with $Provider<String?> {
+final class OnboardingErrorProvider
+    extends $FunctionalProvider<String?, String?, String?>
+    with $Provider<String?> {
   /// Get any error message from onboarding process
   const OnboardingErrorProvider._()
     : super(
@@ -321,7 +375,8 @@ final class OnboardingErrorProvider extends $FunctionalProvider<String?, String?
 
   @$internal
   @override
-  $ProviderElement<String?> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
+  $ProviderElement<String?> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
 
   @override
   String? create(Ref ref) {
@@ -330,7 +385,10 @@ final class OnboardingErrorProvider extends $FunctionalProvider<String?, String?
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(String? value) {
-    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<String?>(value));
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<String?>(value),
+    );
   }
 }
 

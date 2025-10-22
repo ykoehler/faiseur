@@ -21,11 +21,25 @@ void main() {
     test('Should retrieve todos for a valid list', () async {
       // Arrange
       final todosList = [
-        Todo(id: 'todo-1', listId: testListId, title: 'First todo', createdBy: 'user-123', createdAt: DateTime.now()),
-        Todo(id: 'todo-2', listId: testListId, title: 'Second todo', createdBy: 'user-123', createdAt: DateTime.now()),
+        Todo(
+          id: 'todo-1',
+          listId: testListId,
+          title: 'First todo',
+          createdBy: 'user-123',
+          createdAt: DateTime.now(),
+        ),
+        Todo(
+          id: 'todo-2',
+          listId: testListId,
+          title: 'Second todo',
+          createdBy: 'user-123',
+          createdAt: DateTime.now(),
+        ),
       ];
 
-      when(() => mockRepository.getTodos(testListId)).thenAnswer((_) async => todosList);
+      when(
+        () => mockRepository.getTodos(testListId),
+      ).thenAnswer((_) async => todosList);
 
       // Act
       final result = await getTodos.call(testListId);
@@ -40,7 +54,9 @@ void main() {
 
     test('Should return empty list when no todos exist', () async {
       // Arrange
-      when(() => mockRepository.getTodos(testListId)).thenAnswer((_) async => []);
+      when(
+        () => mockRepository.getTodos(testListId),
+      ).thenAnswer((_) async => []);
 
       // Act
       final result = await getTodos.call(testListId);
@@ -66,7 +82,9 @@ void main() {
       );
 
       final todoStream = Stream.value([todo1]);
-      when(() => mockRepository.watchTodos(testListId)).thenAnswer((_) => todoStream);
+      when(
+        () => mockRepository.watchTodos(testListId),
+      ).thenAnswer((_) => todoStream);
 
       // Act
       final stream = getTodos.watch(testListId);
@@ -82,14 +100,19 @@ void main() {
       verify(() => mockRepository.watchTodos(testListId)).called(1);
     });
 
-    test('Should throw ArgumentError when watching with empty listId', () async {
-      // Act & Assert
-      expect(() => getTodos.watch(''), throwsA(isA<ArgumentError>()));
-    });
+    test(
+      'Should throw ArgumentError when watching with empty listId',
+      () async {
+        // Act & Assert
+        expect(() => getTodos.watch(''), throwsA(isA<ArgumentError>()));
+      },
+    );
 
     test('Should handle repository errors', () async {
       // Arrange
-      when(() => mockRepository.getTodos(testListId)).thenThrow(Exception('Firestore error'));
+      when(
+        () => mockRepository.getTodos(testListId),
+      ).thenThrow(Exception('Firestore error'));
 
       // Act & Assert
       expect(() => getTodos.call(testListId), throwsA(isA<Exception>()));

@@ -15,7 +15,11 @@ abstract class FirestoreDatasource {
   Future<DocumentSnapshot<Map<String, dynamic>>> getDoc(String path);
 
   /// Sets a document with the given data
-  Future<void> setDoc(String path, Map<String, dynamic> data, {bool merge = false});
+  Future<void> setDoc(
+    String path,
+    Map<String, dynamic> data, {
+    bool merge = false,
+  });
 
   /// Updates a document with the given data
   Future<void> updateDoc(String path, Map<String, dynamic> data);
@@ -27,10 +31,15 @@ abstract class FirestoreDatasource {
   Future<QuerySnapshot<Map<String, dynamic>>> getCollection(String path);
 
   /// Adds a document to a collection
-  Future<DocumentReference<Map<String, dynamic>>> addDoc(String collectionPath, Map<String, dynamic> data);
+  Future<DocumentReference<Map<String, dynamic>>> addDoc(
+    String collectionPath,
+    Map<String, dynamic> data,
+  );
 
   /// Runs a transaction
-  Future<T> runTransaction<T>(Future<T> Function(Transaction transaction) updateFunction);
+  Future<T> runTransaction<T>(
+    Future<T> Function(Transaction transaction) updateFunction,
+  );
 
   /// Creates a query for a collection
   Query<Map<String, dynamic>> query(String collectionPath);

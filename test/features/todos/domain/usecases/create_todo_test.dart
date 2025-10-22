@@ -47,7 +47,11 @@ void main() {
       ).thenAnswer((_) async => expectedTodo);
 
       // Act
-      final result = await createTodo.call(listId: testListId, title: testTitle, createdBy: testUserId);
+      final result = await createTodo.call(
+        listId: testListId,
+        title: testTitle,
+        createdBy: testUserId,
+      );
 
       // Assert
       expect(result.id, equals('todo-123'));
@@ -70,37 +74,67 @@ void main() {
 
     test('Should throw ArgumentError when listId is empty', () async {
       // Act & Assert
-      expect(() => createTodo.call(listId: '', title: testTitle, createdBy: testUserId), throwsA(isA<ArgumentError>()));
+      expect(
+        () => createTodo.call(
+          listId: '',
+          title: testTitle,
+          createdBy: testUserId,
+        ),
+        throwsA(isA<ArgumentError>()),
+      );
     });
 
     test('Should throw ArgumentError when title is empty', () async {
       // Act & Assert
       expect(
-        () => createTodo.call(listId: testListId, title: '', createdBy: testUserId),
+        () => createTodo.call(
+          listId: testListId,
+          title: '',
+          createdBy: testUserId,
+        ),
         throwsA(isA<ArgumentError>()),
       );
     });
 
     test('Should throw ArgumentError when createdBy is empty', () async {
       // Act & Assert
-      expect(() => createTodo.call(listId: testListId, title: testTitle, createdBy: ''), throwsA(isA<ArgumentError>()));
-    });
-
-    test('Should throw ArgumentError when title exceeds 500 characters', () async {
-      // Arrange
-      final longTitle = 'a' * 501;
-
-      // Act & Assert
       expect(
-        () => createTodo.call(listId: testListId, title: longTitle, createdBy: testUserId),
+        () => createTodo.call(
+          listId: testListId,
+          title: testTitle,
+          createdBy: '',
+        ),
         throwsA(isA<ArgumentError>()),
       );
     });
 
+    test(
+      'Should throw ArgumentError when title exceeds 500 characters',
+      () async {
+        // Arrange
+        final longTitle = 'a' * 501;
+
+        // Act & Assert
+        expect(
+          () => createTodo.call(
+            listId: testListId,
+            title: longTitle,
+            createdBy: testUserId,
+          ),
+          throwsA(isA<ArgumentError>()),
+        );
+      },
+    );
+
     test('Should throw ArgumentError when xpReward is negative', () async {
       // Act & Assert
       expect(
-        () => createTodo.call(listId: testListId, title: testTitle, createdBy: testUserId, xpReward: -1),
+        () => createTodo.call(
+          listId: testListId,
+          title: testTitle,
+          createdBy: testUserId,
+          xpReward: -1,
+        ),
         throwsA(isA<ArgumentError>()),
       );
     });
@@ -111,7 +145,12 @@ void main() {
 
       // Act & Assert
       expect(
-        () => createTodo.call(listId: testListId, title: testTitle, createdBy: testUserId, dueDate: pastDate),
+        () => createTodo.call(
+          listId: testListId,
+          title: testTitle,
+          createdBy: testUserId,
+          dueDate: pastDate,
+        ),
         throwsA(isA<ArgumentError>()),
       );
     });

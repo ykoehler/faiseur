@@ -4,7 +4,14 @@ import 'package:flutter/material.dart';
 /// A card widget displaying a TodoList with title, description, and action buttons.
 class ListCard extends StatelessWidget {
   /// Creates a ListCard widget.
-  const ListCard({required this.list, super.key, this.onTap, this.onEdit, this.onDelete, this.isLoading = false});
+  const ListCard({
+    required this.list,
+    super.key,
+    this.onTap,
+    this.onEdit,
+    this.onDelete,
+    this.isLoading = false,
+  });
 
   /// The TodoList to display
   final TodoList list;
@@ -41,7 +48,9 @@ class ListCard extends StatelessWidget {
                 height: 48,
                 decoration: BoxDecoration(
                   color: _parseColor(list.color),
-                  borderRadius: const BorderRadius.only(topRight: Radius.circular(12)),
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(12),
+                  ),
                 ),
               ),
             ),
@@ -74,7 +83,13 @@ class ListCard extends StatelessWidget {
                       itemBuilder: (context) => [
                         const PopupMenuItem(
                           value: 'edit',
-                          child: Row(children: [Icon(Icons.edit, size: 20), SizedBox(width: 12), Text('Edit')]),
+                          child: Row(
+                            children: [
+                              Icon(Icons.edit, size: 20),
+                              SizedBox(width: 12),
+                              Text('Edit'),
+                            ],
+                          ),
                         ),
                         const PopupMenuItem(
                           value: 'delete',
@@ -82,7 +97,10 @@ class ListCard extends StatelessWidget {
                             children: [
                               Icon(Icons.delete, size: 20, color: Colors.red),
                               SizedBox(width: 12),
-                              Text('Delete', style: TextStyle(color: Colors.red)),
+                              Text(
+                                'Delete',
+                                style: TextStyle(color: Colors.red),
+                              ),
                             ],
                           ),
                         ),
@@ -90,11 +108,14 @@ class ListCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                if (list.description != null && list.description!.isNotEmpty) ...[
+                if (list.description != null &&
+                    list.description!.isNotEmpty) ...[
                   const SizedBox(height: 8),
                   Text(
                     list.description!,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -104,7 +125,10 @@ class ListCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _StatBadge(icon: Icons.check_circle_outline, label: '${list.completedCount}/${list.todoCount}'),
+                    _StatBadge(
+                      icon: Icons.check_circle_outline,
+                      label: '${list.completedCount}/${list.todoCount}',
+                    ),
                     Text(
                       '${list.collaborators.length} ${list.collaborators.length == 1 ? 'collaborator' : 'collaborators'}',
                       style: Theme.of(context).textTheme.bodySmall,

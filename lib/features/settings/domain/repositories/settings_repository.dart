@@ -51,7 +51,10 @@ abstract class SettingsRepository {
   /// [enabled]: Whether notifications are enabled
   ///
   /// Throws [SettingsException] if update fails.
-  Future<void> updateNotificationsEnabled(String userId, {required bool enabled});
+  Future<void> updateNotificationsEnabled(
+    String userId, {
+    required bool enabled,
+  });
 
   /// Updates a single email notification preference.
   ///
@@ -61,7 +64,10 @@ abstract class SettingsRepository {
   /// [enabled]: Whether email notifications are enabled
   ///
   /// Throws [SettingsException] if update fails.
-  Future<void> updateEmailNotificationsEnabled(String userId, {required bool enabled});
+  Future<void> updateEmailNotificationsEnabled(
+    String userId, {
+    required bool enabled,
+  });
 
   /// Updates the default view mode preference.
   ///
@@ -108,5 +114,6 @@ class SettingsException implements Exception {
   final Object? originalError;
 
   @override
-  String toString() => 'SettingsException: $message${code != null ? ' ($code)' : ''}';
+  String toString() =>
+      'SettingsException: $message${code != null ? ' ($code)' : ''}';
 }

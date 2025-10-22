@@ -6,7 +6,8 @@ import 'package:faiseur/features/settings/domain/repositories/settings_repositor
 /// Implementation of [SettingsRepository] using Firestore backend.
 class SettingsRepositoryImpl implements SettingsRepository {
   /// Creates a settings repository.
-  SettingsRepositoryImpl({required SettingsRemoteDatasource remoteDatasource}) : _remoteDatasource = remoteDatasource;
+  SettingsRepositoryImpl({required SettingsRemoteDatasource remoteDatasource})
+    : _remoteDatasource = remoteDatasource;
 
   final SettingsRemoteDatasource _remoteDatasource;
 
@@ -16,25 +17,52 @@ class SettingsRepositoryImpl implements SettingsRepository {
       final model = await _remoteDatasource.getUserSettings(userId);
       return model.toEntity();
     } on SettingsRemoteDatasourceException catch (e) {
-      throw SettingsException(e.message, code: e.code, originalError: e.originalError);
+      throw SettingsException(
+        e.message,
+        code: e.code,
+        originalError: e.originalError,
+      );
     } catch (e) {
-      throw SettingsException('Failed to fetch settings', code: 'unknown_error', originalError: e);
+      throw SettingsException(
+        'Failed to fetch settings',
+        code: 'unknown_error',
+        originalError: e,
+      );
     }
   }
 
   @override
   Stream<UserSettings> watchUserSettings(String userId) {
     try {
-      return _remoteDatasource.watchUserSettings(userId).map((model) => model.toEntity()).handleError((dynamic error) {
-        if (error is SettingsRemoteDatasourceException) {
-          throw SettingsException(error.message, code: error.code, originalError: error.originalError);
-        }
-        throw SettingsException('Failed to watch user settings', code: 'unknown_error', originalError: error);
-      });
+      return _remoteDatasource
+          .watchUserSettings(userId)
+          .map((model) => model.toEntity())
+          .handleError((dynamic error) {
+            if (error is SettingsRemoteDatasourceException) {
+              throw SettingsException(
+                error.message,
+                code: error.code,
+                originalError: error.originalError,
+              );
+            }
+            throw SettingsException(
+              'Failed to watch user settings',
+              code: 'unknown_error',
+              originalError: error,
+            );
+          });
     } on SettingsRemoteDatasourceException catch (e) {
-      throw SettingsException(e.message, code: e.code, originalError: e.originalError);
+      throw SettingsException(
+        e.message,
+        code: e.code,
+        originalError: e.originalError,
+      );
     } catch (e) {
-      throw SettingsException('Failed to setup settings stream', code: 'unknown_error', originalError: e);
+      throw SettingsException(
+        'Failed to setup settings stream',
+        code: 'unknown_error',
+        originalError: e,
+      );
     }
   }
 
@@ -47,9 +75,17 @@ class SettingsRepositoryImpl implements SettingsRepository {
     } on SettingsException {
       rethrow;
     } on SettingsRemoteDatasourceException catch (e) {
-      throw SettingsException(e.message, code: e.code, originalError: e.originalError);
+      throw SettingsException(
+        e.message,
+        code: e.code,
+        originalError: e.originalError,
+      );
     } catch (e) {
-      throw SettingsException('Failed to update user settings', code: 'unknown_error', originalError: e);
+      throw SettingsException(
+        'Failed to update user settings',
+        code: 'unknown_error',
+        originalError: e,
+      );
     }
   }
 
@@ -69,12 +105,19 @@ class SettingsRepositoryImpl implements SettingsRepository {
     } on SettingsException {
       rethrow;
     } catch (e) {
-      throw SettingsException('Failed to update theme mode', code: 'unknown_error', originalError: e);
+      throw SettingsException(
+        'Failed to update theme mode',
+        code: 'unknown_error',
+        originalError: e,
+      );
     }
   }
 
   @override
-  Future<void> updateNotificationsEnabled(String userId, {required bool enabled}) async {
+  Future<void> updateNotificationsEnabled(
+    String userId, {
+    required bool enabled,
+  }) async {
     try {
       final current = await getUserSettings(userId);
       final updated = current.copyWith(notificationsEnabled: enabled);
@@ -82,12 +125,19 @@ class SettingsRepositoryImpl implements SettingsRepository {
     } on SettingsException {
       rethrow;
     } catch (e) {
-      throw SettingsException('Failed to update notifications', code: 'unknown_error', originalError: e);
+      throw SettingsException(
+        'Failed to update notifications',
+        code: 'unknown_error',
+        originalError: e,
+      );
     }
   }
 
   @override
-  Future<void> updateEmailNotificationsEnabled(String userId, {required bool enabled}) async {
+  Future<void> updateEmailNotificationsEnabled(
+    String userId, {
+    required bool enabled,
+  }) async {
     try {
       final current = await getUserSettings(userId);
       final updated = current.copyWith(emailNotificationsEnabled: enabled);
@@ -95,7 +145,11 @@ class SettingsRepositoryImpl implements SettingsRepository {
     } on SettingsException {
       rethrow;
     } catch (e) {
-      throw SettingsException('Failed to update email notifications', code: 'unknown_error', originalError: e);
+      throw SettingsException(
+        'Failed to update email notifications',
+        code: 'unknown_error',
+        originalError: e,
+      );
     }
   }
 
@@ -115,7 +169,11 @@ class SettingsRepositoryImpl implements SettingsRepository {
     } on SettingsException {
       rethrow;
     } catch (e) {
-      throw SettingsException('Failed to update view mode', code: 'unknown_error', originalError: e);
+      throw SettingsException(
+        'Failed to update view mode',
+        code: 'unknown_error',
+        originalError: e,
+      );
     }
   }
 
@@ -139,7 +197,11 @@ class SettingsRepositoryImpl implements SettingsRepository {
     } on SettingsException {
       rethrow;
     } catch (e) {
-      throw SettingsException('Failed to reset settings to defaults', code: 'unknown_error', originalError: e);
+      throw SettingsException(
+        'Failed to reset settings to defaults',
+        code: 'unknown_error',
+        originalError: e,
+      );
     }
   }
 
@@ -148,9 +210,17 @@ class SettingsRepositoryImpl implements SettingsRepository {
     try {
       await _remoteDatasource.deleteUserSettings(userId);
     } on SettingsRemoteDatasourceException catch (e) {
-      throw SettingsException(e.message, code: e.code, originalError: e.originalError);
+      throw SettingsException(
+        e.message,
+        code: e.code,
+        originalError: e.originalError,
+      );
     } catch (e) {
-      throw SettingsException('Failed to delete user settings', code: 'unknown_error', originalError: e);
+      throw SettingsException(
+        'Failed to delete user settings',
+        code: 'unknown_error',
+        originalError: e,
+      );
     }
   }
 }

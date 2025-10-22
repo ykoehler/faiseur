@@ -27,9 +27,18 @@ class AppStateController extends _$AppStateController {
       final auth = ref.read(firebaseAuthProvider);
       final currentUser = auth.currentUser;
 
-      return AppState(isInitialized: true, currentUserId: currentUser?.uid, isLoading: false, errorMessage: null);
+      return AppState(
+        isInitialized: true,
+        currentUserId: currentUser?.uid,
+        isLoading: false,
+        errorMessage: null,
+      );
     } catch (e) {
-      return AppState(isInitialized: true, isLoading: false, errorMessage: 'Initialization failed: $e');
+      return AppState(
+        isInitialized: true,
+        isLoading: false,
+        errorMessage: 'Initialization failed: $e',
+      );
     }
   }
 

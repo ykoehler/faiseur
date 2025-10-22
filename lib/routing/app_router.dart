@@ -6,6 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../features/auth/presentation/pages/login_page.dart';
 import '../features/auth/presentation/pages/signup_page.dart';
 import '../features/lists/presentation/pages/lists_page.dart';
+import '../features/onboarding/presentation/pages/onboarding_page.dart';
 import '../features/settings/presentation/pages/settings_page.dart';
 import '../shared/providers/app_providers.dart';
 import '../shared/providers/firebase_providers.dart';
@@ -32,7 +33,9 @@ Raw<AsyncValueNotifier<bool?>> authStateNotifier(Ref ref) {
 
   ref.listen<AsyncValue<bool?>>(isAuthenticatedProvider, (previous, next) {
     if (kDebugMode) {
-      print('[AUTH_NOTIFIER] Auth state changed: ${previous?.value} -> ${next.value}');
+      print(
+        '[AUTH_NOTIFIER] Auth state changed: ${previous?.value} -> ${next.value}',
+      );
     }
     notifier.update(next);
   });
@@ -52,11 +55,23 @@ GoRouter goRouter(Ref ref) {
       // Read the latest values on every redirect
       final isAuthenticatedAsync = ref.read(isAuthenticatedProvider);
       final isAppReady = ref.read(isAppReadyProvider);
-      return _handleRedirect(context, state, isAuthenticatedAsync, isAppReady);
+      return _handleRedirect(
+        context,
+        state,
+        isAuthenticatedAsync,
+        isAppReady,
+        ref,
+      );
     },
     // Tell GoRouter to refresh when auth state changes
     refreshListenable: authNotifier,
-    routes: [_buildSplashRoute(), _buildAuthRoutes(), _buildMainRoutes(), _buildErrorRoute()],
+    routes: [
+      _buildSplashRoute(),
+      _buildOnboardingRoute(),
+      _buildAuthRoutes(),
+      _buildMainRoutes(),
+      _buildErrorRoute(),
+    ],
     errorBuilder: (context, state) => ErrorPage(error: state.error?.toString()),
   );
 }
@@ -85,14 +100,16 @@ class AsyncValueNotifier<T> extends ChangeNotifier {
 ///
 /// Priority:
 /// 1. If app not initialized → splash screen
-/// 2. If user authenticated → main app routes
-/// 3. If user not authenticated → auth routes
-/// 4. Default to root (which redirects appropriately)
+/// 2. If user authenticated but hasn't completed onboarding → onboarding
+/// 3. If user authenticated → main app routes
+/// 4. If user not authenticated → auth routes
+/// 5. Default to root (which redirects appropriately)
 String? _handleRedirect(
   BuildContext context,
   GoRouterState state,
   AsyncValue<bool> isAuthenticatedAsync,
   bool isAppReady,
+  Ref ref,
 ) {
   if (kDebugMode) {
     print(
@@ -119,19 +136,30 @@ String? _handleRedirect(
   // If still loading auth state, stay on current route
   if (authed == null) {
     if (kDebugMode) {
-      print('[REDIRECT] Auth still loading, staying on ${state.matchedLocation}');
+      print(
+        '[REDIRECT] Auth still loading, staying on ${state.matchedLocation}',
+      );
     }
     return null;
   }
 
   // App is ready and we know auth state
-  // If on splash, redirect based on auth status
+  // If on splash, redirect based on auth status and onboarding completion
   if (state.matchedLocation == kSplashRoute) {
-    final target = authed ? kListsRoute : kLoginRoute;
-    if (kDebugMode) {
-      print('[REDIRECT] From splash -> $target (authed=$authed)');
+    if (!authed) {
+      if (kDebugMode) {
+        print('[REDIRECT] From splash -> login (not authenticated)');
+      }
+      return kLoginRoute;
     }
-    return target;
+
+    // User is authenticated - check onboarding status
+    // For now, we'll always redirect to onboarding for authenticated users on splash
+    // TODO: Implement proper onboarding completion check from SharedPreferences
+    if (kDebugMode) {
+      print('[REDIRECT] From splash -> onboarding (authenticated)');
+    }
+    return kOnboardingWelcomeRoute;
   }
 
   // Allow error route
@@ -141,12 +169,14 @@ String? _handleRedirect(
 
   // If user is authenticated
   if (authed) {
-    // Redirect auth routes to lists
+    // Redirect auth routes to onboarding
     if (state.matchedLocation.startsWith('/auth')) {
       if (kDebugMode) {
-        print('[REDIRECT] User authenticated, redirecting /auth -> /lists');
+        print(
+          '[REDIRECT] User authenticated, redirecting /auth -> /onboarding',
+        );
       }
-      return kListsRoute;
+      return kOnboardingWelcomeRoute;
     }
     return null; // Allow other routes
   }
@@ -168,7 +198,26 @@ String? _handleRedirect(
 // ============================================================================
 
 /// Builds the splash screen route.
-GoRoute _buildSplashRoute() => GoRoute(path: kSplashRoute, builder: (context, state) => const SplashPage());
+GoRoute _buildSplashRoute() => GoRoute(
+  path: kSplashRoute,
+  builder: (context, state) => const SplashPage(),
+);
+
+/// Builds the onboarding route for first-time users.
+///
+/// After authentication, new users see this flow before accessing the main app.
+/// Displays tutorial steps, creates tutorial list, and marks onboarding as complete.
+GoRoute _buildOnboardingRoute() => GoRoute(
+  path: kOnboardingRoute,
+  builder: (context, state) => const OnboardingPage(),
+  routes: [
+    GoRoute(
+      path: 'welcome',
+      name: kOnboardingRouteName,
+      builder: (context, state) => const OnboardingPage(),
+    ),
+  ],
+);
 
 /// Builds all authentication-related routes.
 ///
@@ -178,9 +227,21 @@ GoRoute _buildAuthRoutes() => GoRoute(
   path: kAuthRoute,
   builder: (context, state) => const LoginPage(), // Fallback
   routes: [
-    GoRoute(path: 'login', name: kLoginRouteName, builder: (context, state) => const LoginPage()),
-    GoRoute(path: 'signup', name: kSignupRouteName, builder: (context, state) => const SignupPage()),
-    GoRoute(path: 'forgot-password', name: kForgotPasswordRouteName, builder: (context, state) => const SplashPage()),
+    GoRoute(
+      path: 'login',
+      name: kLoginRouteName,
+      builder: (context, state) => const LoginPage(),
+    ),
+    GoRoute(
+      path: 'signup',
+      name: kSignupRouteName,
+      builder: (context, state) => const SignupPage(),
+    ),
+    GoRoute(
+      path: 'forgot-password',
+      name: kForgotPasswordRouteName,
+      builder: (context, state) => const SplashPage(),
+    ),
   ],
 );
 
@@ -215,19 +276,33 @@ ShellRoute _buildMainRoutes() => ShellRoute(
                 final listId = state.pathParameters[kListIdParam];
                 final todoId = state.pathParameters[kTodoIdParam];
                 if (listId == null || todoId == null) {
-                  return const ErrorPage(error: 'List ID and Todo ID are required');
+                  return const ErrorPage(
+                    error: 'List ID and Todo ID are required',
+                  );
                 }
-                return ListsPage(selectedListId: listId, selectedTodoId: todoId);
+                return ListsPage(
+                  selectedListId: listId,
+                  selectedTodoId: todoId,
+                );
               },
             ),
           ],
         ),
       ],
     ),
-    GoRoute(path: 'settings', name: kSettingsRouteName, builder: (context, state) => const SettingsPage()),
-    GoRoute(path: 'about', name: kAboutRouteName, builder: (context, state) => const SplashPage()),
+    GoRoute(
+      path: 'settings',
+      name: kSettingsRouteName,
+      builder: (context, state) => const SettingsPage(),
+    ),
+    GoRoute(
+      path: 'about',
+      name: kAboutRouteName,
+      builder: (context, state) => const SplashPage(),
+    ),
   ],
 );
 
 /// Builds error handling routes.
-GoRoute _buildErrorRoute() => GoRoute(path: kErrorRoute, builder: (context, state) => const ErrorPage());
+GoRoute _buildErrorRoute() =>
+    GoRoute(path: kErrorRoute, builder: (context, state) => const ErrorPage());

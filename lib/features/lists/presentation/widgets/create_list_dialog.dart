@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 /// Parameters for creating a new list
 class CreateListDialogParams {
   /// Creates a new CreateListDialogParams
-  CreateListDialogParams({required this.title, required this.description, required this.color});
+  CreateListDialogParams({
+    required this.title,
+    required this.description,
+    required this.color,
+  });
 
   /// The title entered by the user
   final String title;
@@ -71,7 +75,9 @@ class _CreateListDialogState extends State<CreateListDialog> {
             decoration: InputDecoration(
               hintText: 'List name',
               labelText: 'Title',
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
               prefixIcon: const Icon(Icons.list),
             ),
             maxLength: 255,
@@ -84,7 +90,9 @@ class _CreateListDialogState extends State<CreateListDialog> {
             decoration: InputDecoration(
               hintText: 'What is this list for?',
               labelText: 'Description (optional)',
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
               prefixIcon: const Icon(Icons.description),
             ),
             maxLines: 3,
@@ -114,7 +122,10 @@ class _CreateListDialogState extends State<CreateListDialog> {
                       width: 40,
                       decoration: BoxDecoration(
                         color: _parseColor(color),
-                        border: Border.all(color: isSelected ? Colors.black : Colors.transparent, width: 3),
+                        border: Border.all(
+                          color: isSelected ? Colors.black : Colors.transparent,
+                          width: 3,
+                        ),
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
@@ -127,8 +138,14 @@ class _CreateListDialogState extends State<CreateListDialog> {
       ),
     ),
     actions: [
-      TextButton(onPressed: () => Navigator.of(context).pop(), child: const Text('Cancel')),
-      ElevatedButton(onPressed: _isFormValid() ? _handleCreate : null, child: const Text('Create')),
+      TextButton(
+        onPressed: () => Navigator.of(context).pop(),
+        child: const Text('Cancel'),
+      ),
+      ElevatedButton(
+        onPressed: _isFormValid() ? _handleCreate : null,
+        child: const Text('Create'),
+      ),
     ],
   );
 

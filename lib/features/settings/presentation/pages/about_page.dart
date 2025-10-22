@@ -33,20 +33,33 @@ class AboutPage extends StatelessWidget {
                     shape: BoxShape.circle,
                     color: theme.colorScheme.primary.withValues(alpha: 0.1),
                   ),
-                  child: Icon(Icons.check_circle, size: 64, color: theme.colorScheme.primary),
+                  child: Icon(
+                    Icons.check_circle,
+                    size: 64,
+                    color: theme.colorScheme.primary,
+                  ),
                 ),
                 const SizedBox(height: 16),
                 // App Name
-                Text('Faiseur', style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold)),
+                Text(
+                  'Faiseur',
+                  style: theme.textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 const SizedBox(height: 8),
                 // Version Info
                 Text(
                   'Version 0.1.0 (Beta)',
-                  style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
                 ),
                 Text(
                   'Build 1 • Released Oct 19, 2025',
-                  style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
                 ),
               ],
             ),
@@ -68,7 +81,9 @@ class AboutPage extends StatelessWidget {
           Divider(
             indent: 16,
             endIndent: 16,
-            color: isDark ? Colors.white.withValues(alpha: 0.12) : Colors.black.withValues(alpha: 0.12),
+            color: isDark
+                ? Colors.white.withValues(alpha: 0.12)
+                : Colors.black.withValues(alpha: 0.12),
           ),
           const SizedBox(height: 16),
 
@@ -128,7 +143,11 @@ class AboutPage extends StatelessWidget {
             title: 'Open Source Licenses',
             subtitle: 'Third-party library licenses',
             onTap: () {
-              showLicensePage(context: context, applicationName: 'Faiseur', applicationVersion: '0.1.0');
+              showLicensePage(
+                context: context,
+                applicationName: 'Faiseur',
+                applicationVersion: '0.1.0',
+              );
             },
           ),
 
@@ -138,7 +157,9 @@ class AboutPage extends StatelessWidget {
           Divider(
             indent: 16,
             endIndent: 16,
-            color: isDark ? Colors.white.withValues(alpha: 0.12) : Colors.black.withValues(alpha: 0.12),
+            color: isDark
+                ? Colors.white.withValues(alpha: 0.12)
+                : Colors.black.withValues(alpha: 0.12),
           ),
           const SizedBox(height: 16),
 
@@ -154,7 +175,12 @@ class AboutPage extends StatelessWidget {
                       style: theme.textTheme.bodySmall,
                       children: [
                         const TextSpan(text: 'Made with '),
-                        TextSpan(text: '❤️', style: theme.textTheme.bodySmall?.copyWith(fontSize: 14)),
+                        TextSpan(
+                          text: '❤️',
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            fontSize: 14,
+                          ),
+                        ),
                         const TextSpan(text: ' by the Faiseur team'),
                       ],
                     ),
@@ -186,9 +212,12 @@ class AboutPage extends StatelessWidget {
 
   /// Shows a "Coming Soon" snackbar.
   void _showComingSoon(BuildContext context) {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text('This feature is coming soon!'), duration: Duration(seconds: 2)));
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('This feature is coming soon!'),
+        duration: Duration(seconds: 2),
+      ),
+    );
   }
 
   /// Shows the changelog dialog.
@@ -219,30 +248,48 @@ class AboutPage extends StatelessWidget {
             ],
           ),
         ),
-        actions: [TextButton(onPressed: () => Navigator.pop(context), child: const Text('Close'))],
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Close'),
+          ),
+        ],
       ),
     );
   }
 
   /// Builds a changelog version section.
-  Widget _buildChangelogVersion({required ThemeData theme, required String version, required List<String> changes}) =>
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(version, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
-          const SizedBox(height: 12),
-          ...changes.map(
-            (change) => Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('• ', style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.primary)),
-                  Expanded(child: Text(change, style: theme.textTheme.bodyMedium)),
-                ],
+  Widget _buildChangelogVersion({
+    required ThemeData theme,
+    required String version,
+    required List<String> changes,
+  }) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        version,
+        style: theme.textTheme.titleMedium?.copyWith(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      const SizedBox(height: 12),
+      ...changes.map(
+        (change) => Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '• ',
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.primary,
+                ),
               ),
-            ),
+              Expanded(child: Text(change, style: theme.textTheme.bodyMedium)),
+            ],
           ),
-        ],
-      );
+        ),
+      ),
+    ],
+  );
 }

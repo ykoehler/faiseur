@@ -37,7 +37,8 @@ class OnboardingState {
   }) => OnboardingState(
     currentStep: currentStep ?? this.currentStep,
     totalSteps: totalSteps ?? this.totalSteps,
-    hasCompletedOnboarding: hasCompletedOnboarding ?? this.hasCompletedOnboarding,
+    hasCompletedOnboarding:
+        hasCompletedOnboarding ?? this.hasCompletedOnboarding,
     isLoading: isLoading ?? this.isLoading,
     error: error,
   );
@@ -59,7 +60,12 @@ class OnboardingNotifier extends _$OnboardingNotifier {
   OnboardingState build() =>
       // Initialize with default state
       // User hasn't started onboarding yet, on step 0
-      OnboardingState(currentStep: 0, totalSteps: 5, hasCompletedOnboarding: false, isLoading: false);
+      OnboardingState(
+        currentStep: 0,
+        totalSteps: 5,
+        hasCompletedOnboarding: false,
+        isLoading: false,
+      );
 
   /// Move to the next onboarding step
   void nextStep() {
@@ -77,7 +83,10 @@ class OnboardingNotifier extends _$OnboardingNotifier {
 
   /// Skip the onboarding and mark as completed
   void skipOnboarding() {
-    state = state.copyWith(hasCompletedOnboarding: true, currentStep: state.totalSteps);
+    state = state.copyWith(
+      hasCompletedOnboarding: true,
+      currentStep: state.totalSteps,
+    );
   }
 
   /// Complete onboarding (called when user reaches the last step)
@@ -86,19 +95,33 @@ class OnboardingNotifier extends _$OnboardingNotifier {
       state = state.copyWith(isLoading: true);
 
       // Create tutorial list for the user
-      final createTutorialList = CreateTutorialList(ref.read(listsRepositoryProvider));
+      final createTutorialList = CreateTutorialList(
+        ref.read(listsRepositoryProvider),
+      );
 
       await createTutorialList(ownerId: userId);
 
-      state = state.copyWith(hasCompletedOnboarding: true, currentStep: state.totalSteps, isLoading: false);
+      state = state.copyWith(
+        hasCompletedOnboarding: true,
+        currentStep: state.totalSteps,
+        isLoading: false,
+      );
     } catch (e) {
-      state = state.copyWith(isLoading: false, error: 'Failed to complete onboarding: $e');
+      state = state.copyWith(
+        isLoading: false,
+        error: 'Failed to complete onboarding: $e',
+      );
     }
   }
 
   /// Reset onboarding state to show again
   void reset() {
-    state = OnboardingState(currentStep: 0, totalSteps: 5, hasCompletedOnboarding: false, isLoading: false);
+    state = OnboardingState(
+      currentStep: 0,
+      totalSteps: 5,
+      hasCompletedOnboarding: false,
+      isLoading: false,
+    );
   }
 
   /// Set error message
@@ -130,7 +153,8 @@ double onboardingProgress(Ref ref) => ref.watch(onboardingProvider).progress;
 
 /// Check if onboarding is completed
 @riverpod
-bool onboardingCompleted(Ref ref) => ref.watch(onboardingProvider).hasCompletedOnboarding;
+bool onboardingCompleted(Ref ref) =>
+    ref.watch(onboardingProvider).hasCompletedOnboarding;
 
 /// Check if currently loading onboarding completion
 @riverpod

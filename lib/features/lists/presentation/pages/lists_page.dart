@@ -25,7 +25,8 @@ class ListsPage extends ConsumerWidget {
       body: listsState.when(
         data: (lists) => _buildListsView(context, lists, listsNotifier),
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, stackTrace) => _buildErrorView(context, error.toString()),
+        error: (error, stackTrace) =>
+            _buildErrorView(context, error.toString()),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showCreateListDialog(context, listsNotifier),
@@ -35,7 +36,11 @@ class ListsPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildListsView(BuildContext context, List<TodoList> lists, dynamic listsNotifier) {
+  Widget _buildListsView(
+    BuildContext context,
+    List<TodoList> lists,
+    dynamic listsNotifier,
+  ) {
     if (lists.isEmpty) {
       return Center(
         child: Column(
@@ -43,11 +48,18 @@ class ListsPage extends ConsumerWidget {
           children: [
             Icon(Icons.list, size: 64, color: Colors.grey[400]),
             const SizedBox(height: 16),
-            Text('No lists yet', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.grey[600])),
+            Text(
+              'No lists yet',
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(color: Colors.grey[600]),
+            ),
             const SizedBox(height: 8),
             Text(
               'Create your first list to get started',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey[500]),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyMedium?.copyWith(color: Colors.grey[500]),
             ),
           ],
         ),
@@ -77,17 +89,25 @@ class ListsPage extends ConsumerWidget {
       children: [
         Icon(Icons.error_outline, size: 64, color: Colors.red[400]),
         const SizedBox(height: 16),
-        Text('Error loading lists', style: Theme.of(context).textTheme.titleLarge),
+        Text(
+          'Error loading lists',
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
         const SizedBox(height: 8),
-        Text(error, style: Theme.of(context).textTheme.bodyMedium, textAlign: TextAlign.center),
+        Text(
+          error,
+          style: Theme.of(context).textTheme.bodyMedium,
+          textAlign: TextAlign.center,
+        ),
       ],
     ),
   );
 
   void _showCreateListDialog(BuildContext context, dynamic listsNotifier) {
-    showDialog<CreateListDialogParams>(context: context, builder: (context) => const CreateListDialog()).then((
-      params,
-    ) async {
+    showDialog<CreateListDialogParams>(
+      context: context,
+      builder: (context) => const CreateListDialog(),
+    ).then((params) async {
       if (params == null) {
         return;
       }
@@ -100,19 +120,28 @@ class ListsPage extends ConsumerWidget {
         );
 
         if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('List created successfully')));
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('List created successfully')),
+          );
         }
       } catch (e) {
         if (context.mounted) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text('Error creating list: $e'), backgroundColor: Colors.red));
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Error creating list: $e'),
+              backgroundColor: Colors.red,
+            ),
+          );
         }
       }
     });
   }
 
-  void _showEditListDialog(BuildContext context, TodoList list, dynamic listsNotifier) {
+  void _showEditListDialog(
+    BuildContext context,
+    TodoList list,
+    dynamic listsNotifier,
+  ) {
     showDialog<EditListDialogParams>(
       context: context,
       builder: (context) => EditListDialog(list: list),
@@ -131,41 +160,58 @@ class ListsPage extends ConsumerWidget {
         await listsNotifier.updateList(updatedList);
 
         if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('List updated successfully')));
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('List updated successfully')),
+          );
         }
       } catch (e) {
         if (context.mounted) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text('Error updating list: $e'), backgroundColor: Colors.red));
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Error updating list: $e'),
+              backgroundColor: Colors.red,
+            ),
+          );
         }
       }
     });
   }
 
-  void _showDeleteConfirmation(BuildContext context, TodoList list, dynamic listsNotifier) {
+  void _showDeleteConfirmation(
+    BuildContext context,
+    TodoList list,
+    dynamic listsNotifier,
+  ) {
     showDialog<void>(
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Delete List'),
-        content: Text('Are you sure you want to delete "${list.title}"?\n\nThis action cannot be undone.'),
+        content: Text(
+          'Are you sure you want to delete "${list.title}"?\n\nThis action cannot be undone.',
+        ),
         actions: [
-          TextButton(onPressed: () => Navigator.of(context).pop(), child: const Text('Cancel')),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('Cancel'),
+          ),
           TextButton(
             onPressed: () async {
               Navigator.of(context).pop();
               try {
                 await listsNotifier.deleteList(list.id);
                 if (context.mounted) {
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(const SnackBar(content: Text('List deleted successfully')));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('List deleted successfully')),
+                  );
                 }
               } catch (e) {
                 if (context.mounted) {
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(content: Text('Error deleting list: $e'), backgroundColor: Colors.red));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Error deleting list: $e'),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
                 }
               }
             },

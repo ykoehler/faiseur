@@ -51,13 +51,19 @@ abstract class UserSettings with _$UserSettings {
       throw ArgumentError('userId cannot be empty');
     }
     if (!['light', 'dark', 'system'].contains(themeMode)) {
-      throw ArgumentError('themeMode must be one of: light, dark, system. Got: $themeMode');
+      throw ArgumentError(
+        'themeMode must be one of: light, dark, system. Got: $themeMode',
+      );
     }
     if (!['list', 'kanban', 'card'].contains(defaultViewMode)) {
-      throw ArgumentError('defaultViewMode must be one of: list, kanban, card. Got: $defaultViewMode');
+      throw ArgumentError(
+        'defaultViewMode must be one of: list, kanban, card. Got: $defaultViewMode',
+      );
     }
     if (languageCode.length != 2) {
-      throw ArgumentError('languageCode must be a 2-letter ISO code. Got: $languageCode');
+      throw ArgumentError(
+        'languageCode must be a 2-letter ISO code. Got: $languageCode',
+      );
     }
   }
 }
