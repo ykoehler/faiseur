@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UserSettingsModel {
 
- String get userId; String get themeMode; bool get notificationsEnabled; bool get emailNotificationsEnabled; String get defaultViewMode; bool get showTutorialOnLaunch; String get languageCode; bool get darkMode; DateTime get updatedAt; DateTime get createdAt;
+ String get userId; DateTime get updatedAt; DateTime get createdAt; String get themeMode; bool get notificationsEnabled; bool get emailNotificationsEnabled; String get defaultViewMode; bool get showTutorialOnLaunch; String get languageCode; bool get darkMode;
 /// Create a copy of UserSettingsModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $UserSettingsModelCopyWith<UserSettingsModel> get copyWith => _$UserSettingsMode
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserSettingsModel&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.themeMode, themeMode) || other.themeMode == themeMode)&&(identical(other.notificationsEnabled, notificationsEnabled) || other.notificationsEnabled == notificationsEnabled)&&(identical(other.emailNotificationsEnabled, emailNotificationsEnabled) || other.emailNotificationsEnabled == emailNotificationsEnabled)&&(identical(other.defaultViewMode, defaultViewMode) || other.defaultViewMode == defaultViewMode)&&(identical(other.showTutorialOnLaunch, showTutorialOnLaunch) || other.showTutorialOnLaunch == showTutorialOnLaunch)&&(identical(other.languageCode, languageCode) || other.languageCode == languageCode)&&(identical(other.darkMode, darkMode) || other.darkMode == darkMode)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserSettingsModel&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.themeMode, themeMode) || other.themeMode == themeMode)&&(identical(other.notificationsEnabled, notificationsEnabled) || other.notificationsEnabled == notificationsEnabled)&&(identical(other.emailNotificationsEnabled, emailNotificationsEnabled) || other.emailNotificationsEnabled == emailNotificationsEnabled)&&(identical(other.defaultViewMode, defaultViewMode) || other.defaultViewMode == defaultViewMode)&&(identical(other.showTutorialOnLaunch, showTutorialOnLaunch) || other.showTutorialOnLaunch == showTutorialOnLaunch)&&(identical(other.languageCode, languageCode) || other.languageCode == languageCode)&&(identical(other.darkMode, darkMode) || other.darkMode == darkMode));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,userId,themeMode,notificationsEnabled,emailNotificationsEnabled,defaultViewMode,showTutorialOnLaunch,languageCode,darkMode,updatedAt,createdAt);
+int get hashCode => Object.hash(runtimeType,userId,updatedAt,createdAt,themeMode,notificationsEnabled,emailNotificationsEnabled,defaultViewMode,showTutorialOnLaunch,languageCode,darkMode);
 
 @override
 String toString() {
-  return 'UserSettingsModel(userId: $userId, themeMode: $themeMode, notificationsEnabled: $notificationsEnabled, emailNotificationsEnabled: $emailNotificationsEnabled, defaultViewMode: $defaultViewMode, showTutorialOnLaunch: $showTutorialOnLaunch, languageCode: $languageCode, darkMode: $darkMode, updatedAt: $updatedAt, createdAt: $createdAt)';
+  return 'UserSettingsModel(userId: $userId, updatedAt: $updatedAt, createdAt: $createdAt, themeMode: $themeMode, notificationsEnabled: $notificationsEnabled, emailNotificationsEnabled: $emailNotificationsEnabled, defaultViewMode: $defaultViewMode, showTutorialOnLaunch: $showTutorialOnLaunch, languageCode: $languageCode, darkMode: $darkMode)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $UserSettingsModelCopyWith<$Res>  {
   factory $UserSettingsModelCopyWith(UserSettingsModel value, $Res Function(UserSettingsModel) _then) = _$UserSettingsModelCopyWithImpl;
 @useResult
 $Res call({
- String userId, String themeMode, bool notificationsEnabled, bool emailNotificationsEnabled, String defaultViewMode, bool showTutorialOnLaunch, String languageCode, bool darkMode, DateTime updatedAt, DateTime createdAt
+ String userId, DateTime updatedAt, DateTime createdAt, String themeMode, bool notificationsEnabled, bool emailNotificationsEnabled, String defaultViewMode, bool showTutorialOnLaunch, String languageCode, bool darkMode
 });
 
 
@@ -62,19 +62,19 @@ class _$UserSettingsModelCopyWithImpl<$Res>
 
 /// Create a copy of UserSettingsModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? userId = null,Object? themeMode = null,Object? notificationsEnabled = null,Object? emailNotificationsEnabled = null,Object? defaultViewMode = null,Object? showTutorialOnLaunch = null,Object? languageCode = null,Object? darkMode = null,Object? updatedAt = null,Object? createdAt = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? userId = null,Object? updatedAt = null,Object? createdAt = null,Object? themeMode = null,Object? notificationsEnabled = null,Object? emailNotificationsEnabled = null,Object? defaultViewMode = null,Object? showTutorialOnLaunch = null,Object? languageCode = null,Object? darkMode = null,}) {
   return _then(_self.copyWith(
 userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
-as String,themeMode: null == themeMode ? _self.themeMode : themeMode // ignore: cast_nullable_to_non_nullable
+as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+as DateTime,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as DateTime,themeMode: null == themeMode ? _self.themeMode : themeMode // ignore: cast_nullable_to_non_nullable
 as String,notificationsEnabled: null == notificationsEnabled ? _self.notificationsEnabled : notificationsEnabled // ignore: cast_nullable_to_non_nullable
 as bool,emailNotificationsEnabled: null == emailNotificationsEnabled ? _self.emailNotificationsEnabled : emailNotificationsEnabled // ignore: cast_nullable_to_non_nullable
 as bool,defaultViewMode: null == defaultViewMode ? _self.defaultViewMode : defaultViewMode // ignore: cast_nullable_to_non_nullable
 as String,showTutorialOnLaunch: null == showTutorialOnLaunch ? _self.showTutorialOnLaunch : showTutorialOnLaunch // ignore: cast_nullable_to_non_nullable
 as bool,languageCode: null == languageCode ? _self.languageCode : languageCode // ignore: cast_nullable_to_non_nullable
 as String,darkMode: null == darkMode ? _self.darkMode : darkMode // ignore: cast_nullable_to_non_nullable
-as bool,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
-as DateTime,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as DateTime,
+as bool,
   ));
 }
 
@@ -159,10 +159,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String userId,  String themeMode,  bool notificationsEnabled,  bool emailNotificationsEnabled,  String defaultViewMode,  bool showTutorialOnLaunch,  String languageCode,  bool darkMode,  DateTime updatedAt,  DateTime createdAt)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String userId,  DateTime updatedAt,  DateTime createdAt,  String themeMode,  bool notificationsEnabled,  bool emailNotificationsEnabled,  String defaultViewMode,  bool showTutorialOnLaunch,  String languageCode,  bool darkMode)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UserSettingsModel() when $default != null:
-return $default(_that.userId,_that.themeMode,_that.notificationsEnabled,_that.emailNotificationsEnabled,_that.defaultViewMode,_that.showTutorialOnLaunch,_that.languageCode,_that.darkMode,_that.updatedAt,_that.createdAt);case _:
+return $default(_that.userId,_that.updatedAt,_that.createdAt,_that.themeMode,_that.notificationsEnabled,_that.emailNotificationsEnabled,_that.defaultViewMode,_that.showTutorialOnLaunch,_that.languageCode,_that.darkMode);case _:
   return orElse();
 
 }
@@ -180,10 +180,10 @@ return $default(_that.userId,_that.themeMode,_that.notificationsEnabled,_that.em
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String userId,  String themeMode,  bool notificationsEnabled,  bool emailNotificationsEnabled,  String defaultViewMode,  bool showTutorialOnLaunch,  String languageCode,  bool darkMode,  DateTime updatedAt,  DateTime createdAt)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String userId,  DateTime updatedAt,  DateTime createdAt,  String themeMode,  bool notificationsEnabled,  bool emailNotificationsEnabled,  String defaultViewMode,  bool showTutorialOnLaunch,  String languageCode,  bool darkMode)  $default,) {final _that = this;
 switch (_that) {
 case _UserSettingsModel():
-return $default(_that.userId,_that.themeMode,_that.notificationsEnabled,_that.emailNotificationsEnabled,_that.defaultViewMode,_that.showTutorialOnLaunch,_that.languageCode,_that.darkMode,_that.updatedAt,_that.createdAt);case _:
+return $default(_that.userId,_that.updatedAt,_that.createdAt,_that.themeMode,_that.notificationsEnabled,_that.emailNotificationsEnabled,_that.defaultViewMode,_that.showTutorialOnLaunch,_that.languageCode,_that.darkMode);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -200,10 +200,10 @@ return $default(_that.userId,_that.themeMode,_that.notificationsEnabled,_that.em
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String userId,  String themeMode,  bool notificationsEnabled,  bool emailNotificationsEnabled,  String defaultViewMode,  bool showTutorialOnLaunch,  String languageCode,  bool darkMode,  DateTime updatedAt,  DateTime createdAt)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String userId,  DateTime updatedAt,  DateTime createdAt,  String themeMode,  bool notificationsEnabled,  bool emailNotificationsEnabled,  String defaultViewMode,  bool showTutorialOnLaunch,  String languageCode,  bool darkMode)?  $default,) {final _that = this;
 switch (_that) {
 case _UserSettingsModel() when $default != null:
-return $default(_that.userId,_that.themeMode,_that.notificationsEnabled,_that.emailNotificationsEnabled,_that.defaultViewMode,_that.showTutorialOnLaunch,_that.languageCode,_that.darkMode,_that.updatedAt,_that.createdAt);case _:
+return $default(_that.userId,_that.updatedAt,_that.createdAt,_that.themeMode,_that.notificationsEnabled,_that.emailNotificationsEnabled,_that.defaultViewMode,_that.showTutorialOnLaunch,_that.languageCode,_that.darkMode);case _:
   return null;
 
 }
@@ -215,10 +215,12 @@ return $default(_that.userId,_that.themeMode,_that.notificationsEnabled,_that.em
 
 
 class _UserSettingsModel extends UserSettingsModel {
-  const _UserSettingsModel({required this.userId, this.themeMode = 'system', this.notificationsEnabled = true, this.emailNotificationsEnabled = true, this.defaultViewMode = 'list', this.showTutorialOnLaunch = true, this.languageCode = 'en', this.darkMode = false, required this.updatedAt, required this.createdAt}): super._();
+  const _UserSettingsModel({required this.userId, required this.updatedAt, required this.createdAt, this.themeMode = 'system', this.notificationsEnabled = true, this.emailNotificationsEnabled = true, this.defaultViewMode = 'list', this.showTutorialOnLaunch = true, this.languageCode = 'en', this.darkMode = false}): super._();
   
 
 @override final  String userId;
+@override final  DateTime updatedAt;
+@override final  DateTime createdAt;
 @override@JsonKey() final  String themeMode;
 @override@JsonKey() final  bool notificationsEnabled;
 @override@JsonKey() final  bool emailNotificationsEnabled;
@@ -226,8 +228,6 @@ class _UserSettingsModel extends UserSettingsModel {
 @override@JsonKey() final  bool showTutorialOnLaunch;
 @override@JsonKey() final  String languageCode;
 @override@JsonKey() final  bool darkMode;
-@override final  DateTime updatedAt;
-@override final  DateTime createdAt;
 
 /// Create a copy of UserSettingsModel
 /// with the given fields replaced by the non-null parameter values.
@@ -239,16 +239,16 @@ _$UserSettingsModelCopyWith<_UserSettingsModel> get copyWith => __$UserSettingsM
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserSettingsModel&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.themeMode, themeMode) || other.themeMode == themeMode)&&(identical(other.notificationsEnabled, notificationsEnabled) || other.notificationsEnabled == notificationsEnabled)&&(identical(other.emailNotificationsEnabled, emailNotificationsEnabled) || other.emailNotificationsEnabled == emailNotificationsEnabled)&&(identical(other.defaultViewMode, defaultViewMode) || other.defaultViewMode == defaultViewMode)&&(identical(other.showTutorialOnLaunch, showTutorialOnLaunch) || other.showTutorialOnLaunch == showTutorialOnLaunch)&&(identical(other.languageCode, languageCode) || other.languageCode == languageCode)&&(identical(other.darkMode, darkMode) || other.darkMode == darkMode)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserSettingsModel&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.themeMode, themeMode) || other.themeMode == themeMode)&&(identical(other.notificationsEnabled, notificationsEnabled) || other.notificationsEnabled == notificationsEnabled)&&(identical(other.emailNotificationsEnabled, emailNotificationsEnabled) || other.emailNotificationsEnabled == emailNotificationsEnabled)&&(identical(other.defaultViewMode, defaultViewMode) || other.defaultViewMode == defaultViewMode)&&(identical(other.showTutorialOnLaunch, showTutorialOnLaunch) || other.showTutorialOnLaunch == showTutorialOnLaunch)&&(identical(other.languageCode, languageCode) || other.languageCode == languageCode)&&(identical(other.darkMode, darkMode) || other.darkMode == darkMode));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,userId,themeMode,notificationsEnabled,emailNotificationsEnabled,defaultViewMode,showTutorialOnLaunch,languageCode,darkMode,updatedAt,createdAt);
+int get hashCode => Object.hash(runtimeType,userId,updatedAt,createdAt,themeMode,notificationsEnabled,emailNotificationsEnabled,defaultViewMode,showTutorialOnLaunch,languageCode,darkMode);
 
 @override
 String toString() {
-  return 'UserSettingsModel(userId: $userId, themeMode: $themeMode, notificationsEnabled: $notificationsEnabled, emailNotificationsEnabled: $emailNotificationsEnabled, defaultViewMode: $defaultViewMode, showTutorialOnLaunch: $showTutorialOnLaunch, languageCode: $languageCode, darkMode: $darkMode, updatedAt: $updatedAt, createdAt: $createdAt)';
+  return 'UserSettingsModel(userId: $userId, updatedAt: $updatedAt, createdAt: $createdAt, themeMode: $themeMode, notificationsEnabled: $notificationsEnabled, emailNotificationsEnabled: $emailNotificationsEnabled, defaultViewMode: $defaultViewMode, showTutorialOnLaunch: $showTutorialOnLaunch, languageCode: $languageCode, darkMode: $darkMode)';
 }
 
 
@@ -259,7 +259,7 @@ abstract mixin class _$UserSettingsModelCopyWith<$Res> implements $UserSettingsM
   factory _$UserSettingsModelCopyWith(_UserSettingsModel value, $Res Function(_UserSettingsModel) _then) = __$UserSettingsModelCopyWithImpl;
 @override @useResult
 $Res call({
- String userId, String themeMode, bool notificationsEnabled, bool emailNotificationsEnabled, String defaultViewMode, bool showTutorialOnLaunch, String languageCode, bool darkMode, DateTime updatedAt, DateTime createdAt
+ String userId, DateTime updatedAt, DateTime createdAt, String themeMode, bool notificationsEnabled, bool emailNotificationsEnabled, String defaultViewMode, bool showTutorialOnLaunch, String languageCode, bool darkMode
 });
 
 
@@ -276,19 +276,19 @@ class __$UserSettingsModelCopyWithImpl<$Res>
 
 /// Create a copy of UserSettingsModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? userId = null,Object? themeMode = null,Object? notificationsEnabled = null,Object? emailNotificationsEnabled = null,Object? defaultViewMode = null,Object? showTutorialOnLaunch = null,Object? languageCode = null,Object? darkMode = null,Object? updatedAt = null,Object? createdAt = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? userId = null,Object? updatedAt = null,Object? createdAt = null,Object? themeMode = null,Object? notificationsEnabled = null,Object? emailNotificationsEnabled = null,Object? defaultViewMode = null,Object? showTutorialOnLaunch = null,Object? languageCode = null,Object? darkMode = null,}) {
   return _then(_UserSettingsModel(
 userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
-as String,themeMode: null == themeMode ? _self.themeMode : themeMode // ignore: cast_nullable_to_non_nullable
+as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+as DateTime,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as DateTime,themeMode: null == themeMode ? _self.themeMode : themeMode // ignore: cast_nullable_to_non_nullable
 as String,notificationsEnabled: null == notificationsEnabled ? _self.notificationsEnabled : notificationsEnabled // ignore: cast_nullable_to_non_nullable
 as bool,emailNotificationsEnabled: null == emailNotificationsEnabled ? _self.emailNotificationsEnabled : emailNotificationsEnabled // ignore: cast_nullable_to_non_nullable
 as bool,defaultViewMode: null == defaultViewMode ? _self.defaultViewMode : defaultViewMode // ignore: cast_nullable_to_non_nullable
 as String,showTutorialOnLaunch: null == showTutorialOnLaunch ? _self.showTutorialOnLaunch : showTutorialOnLaunch // ignore: cast_nullable_to_non_nullable
 as bool,languageCode: null == languageCode ? _self.languageCode : languageCode // ignore: cast_nullable_to_non_nullable
 as String,darkMode: null == darkMode ? _self.darkMode : darkMode // ignore: cast_nullable_to_non_nullable
-as bool,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
-as DateTime,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as DateTime,
+as bool,
   ));
 }
 

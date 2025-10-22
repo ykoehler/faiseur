@@ -155,11 +155,14 @@ class SettingsNotifier extends _$SettingsNotifier {
     final auth = ref.watch(currentUserProvider);
     await auth.when(
       data: (user) async {
-        if (user == null) return;
+        if (user == null) {
+          return;
+        }
         final repository = ref.read(settingsRepositoryProvider);
         await repository.resetToDefaults(user.id);
-        ref.invalidate(userSettingsProvider);
-        ref.invalidate(userSettingsAsyncProvider);
+        ref
+          ..invalidate(userSettingsProvider)
+          ..invalidate(userSettingsAsyncProvider);
       },
       loading: () => throw SettingsException('User not loaded yet', code: 'user_not_loaded'),
       error: (error, stackTrace) =>

@@ -177,7 +177,7 @@ final class SettingsNotifierProvider extends $NotifierProvider<SettingsNotifier,
   }
 }
 
-String _$settingsNotifierHash() => r'090692201ef6565d133dadaf722232ba3fa1f13a';
+String _$settingsNotifierHash() => r'e368d2faf0d4c544ebb60f28da46759c7bb04ec0';
 
 /// Notifier for managing settings state and operations.
 ///

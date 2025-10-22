@@ -8,7 +8,7 @@ part 'user_settings_model.freezed.dart';
 /// Used for Firebase Firestore serialization/deserialization.
 /// This is a separate class from UserSettings to avoid circular dependencies
 /// and to handle JSON serialization separately.
-@freezed
+@Freezed(toJson: false, fromJson: false)
 abstract class UserSettingsModel with _$UserSettingsModel {
   /// Creates a user settings model.
   const factory UserSettingsModel({
