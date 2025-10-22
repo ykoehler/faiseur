@@ -15,10 +15,7 @@ import 'firebase_options_staging.dart' as staging;
 class FirebaseConfig {
   /// The current flavor/environment.
   /// Defaults to 'dev' if not specified.
-  static const String flavor = String.fromEnvironment(
-    'FLAVOR',
-    defaultValue: 'dev',
-  );
+  static const String flavor = String.fromEnvironment('FLAVOR', defaultValue: 'dev');
 
   /// Returns the Firebase options for the current platform and environment.
   ///
@@ -65,15 +62,10 @@ class FirebaseConfig {
   /// Whether to use Firebase emulators.
   /// Enabled automatically in development unless overridden with the
   /// USE_FIREBASE_EMULATORS dart define.
-  static const bool _hasUseEmulatorsEnv = bool.hasEnvironment(
-    'USE_FIREBASE_EMULATORS',
-  );
-  static const bool _useEmulatorsEnvValue = bool.fromEnvironment(
-    'USE_FIREBASE_EMULATORS',
-  );
+  static const bool _hasUseEmulatorsEnv = bool.hasEnvironment('USE_FIREBASE_EMULATORS');
+  static const bool _useEmulatorsEnvValue = bool.fromEnvironment('USE_FIREBASE_EMULATORS');
 
-  static bool get useEmulators =>
-      _hasUseEmulatorsEnv ? _useEmulatorsEnvValue : isDevelopment;
+  static bool get useEmulators => _hasUseEmulatorsEnv ? _useEmulatorsEnvValue : isDevelopment;
 
   /// Returns the appropriate API endpoint based on environment.
   static String get apiEndpoint {

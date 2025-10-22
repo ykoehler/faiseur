@@ -165,9 +165,7 @@ class _AppTextFieldState extends State<AppTextField> {
             hintText: widget.hintText,
             helperText: widget.helperText,
             errorText: hasError ? widget.errorText : null,
-            prefixIcon: widget.prefixIcon != null
-                ? Icon(widget.prefixIcon)
-                : null,
+            prefixIcon: widget.prefixIcon != null ? Icon(widget.prefixIcon) : null,
             prefixText: widget.prefixText,
             suffixIcon: _buildSuffixIcon(),
             suffixText: widget.suffixText,
@@ -177,32 +175,23 @@ class _AppTextFieldState extends State<AppTextField> {
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(
-                color: hasError
-                    ? Theme.of(context).colorScheme.error
-                    : Theme.of(context).colorScheme.outline,
+                color: hasError ? Theme.of(context).colorScheme.error : Theme.of(context).colorScheme.outline,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(
-                color: hasError
-                    ? Theme.of(context).colorScheme.error
-                    : Theme.of(context).colorScheme.primary,
+                color: hasError ? Theme.of(context).colorScheme.error : Theme.of(context).colorScheme.primary,
                 width: 2,
               ),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.error,
-              ),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.error,
-                width: 2,
-              ),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 2),
             ),
           ),
         ),
@@ -290,9 +279,7 @@ class _AppSearchFieldState extends State<AppSearchField> {
     decoration: InputDecoration(
       hintText: widget.hintText,
       prefixIcon: const Icon(Icons.search),
-      suffixIcon: _hasText
-          ? IconButton(icon: const Icon(Icons.clear), onPressed: _clear)
-          : null,
+      suffixIcon: _hasText ? IconButton(icon: const Icon(Icons.clear), onPressed: _clear) : null,
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
     ),
@@ -348,10 +335,7 @@ class _AppPhoneNumberFieldState extends State<AppPhoneNumberField> {
     controller: _controller,
     keyboardType: TextInputType.phone,
     onChanged: widget.onChanged,
-    inputFormatters: [
-      FilteringTextInputFormatter.digitsOnly,
-      LengthLimitingTextInputFormatter(10),
-    ],
+    inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(10)],
     decoration: InputDecoration(
       labelText: widget.labelText,
       hintText: widget.hintText,

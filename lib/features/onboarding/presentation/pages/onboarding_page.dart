@@ -28,11 +28,7 @@ class OnboardingPage extends ConsumerWidget {
     final stepData = TutorialData.getStepByNumber(currentStep + 1);
 
     if (stepData == null) {
-      return Scaffold(
-        body: Center(
-          child: Text('Invalid onboarding step: ${currentStep + 1}'),
-        ),
-      );
+      return Scaffold(body: Center(child: Text('Invalid onboarding step: ${currentStep + 1}')));
     }
 
     return Scaffold(
@@ -48,24 +44,17 @@ class OnboardingPage extends ConsumerWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'Step ${currentStep + 1} of $totalSteps',
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
+                      Text('Step ${currentStep + 1} of $totalSteps', style: Theme.of(context).textTheme.labelMedium),
                       Text(
                         '${((currentStep + 1) / totalSteps * 100).toStringAsFixed(0)}%',
-                        style: Theme.of(context).textTheme.labelMedium
-                            ?.copyWith(fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.labelMedium?.copyWith(fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
                   const SizedBox(height: 8),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(4),
-                    child: LinearProgressIndicator(
-                      value: (currentStep + 1) / totalSteps,
-                      minHeight: 4,
-                    ),
+                    child: LinearProgressIndicator(value: (currentStep + 1) / totalSteps, minHeight: 4),
                   ),
                 ],
               ),
@@ -78,13 +67,7 @@ class OnboardingPage extends ConsumerWidget {
                   OnboardingStepCard(
                     step: stepData,
                     onNextPressed: () {
-                      _handleNextStep(
-                        context,
-                        ref,
-                        stepData,
-                        currentStep,
-                        totalSteps,
-                      );
+                      _handleNextStep(context, ref, stepData, currentStep, totalSteps);
                     },
                     onSkipPressed: () {
                       _handleSkip(context, ref);
@@ -120,10 +103,7 @@ class OnboardingPage extends ConsumerWidget {
                       Icon(Icons.error_outline, color: Colors.red[700]),
                       const SizedBox(width: 12),
                       Expanded(
-                        child: Text(
-                          error,
-                          style: TextStyle(color: Colors.red[700]),
-                        ),
+                        child: Text(error, style: TextStyle(color: Colors.red[700])),
                       ),
                       IconButton(
                         icon: Icon(Icons.close, color: Colors.red[700]),
@@ -142,13 +122,7 @@ class OnboardingPage extends ConsumerWidget {
   }
 
   /// Handle next button press
-  void _handleNextStep(
-    BuildContext context,
-    WidgetRef ref,
-    dynamic stepData,
-    int currentStep,
-    int totalSteps,
-  ) async {
+  void _handleNextStep(BuildContext context, WidgetRef ref, dynamic stepData, int currentStep, int totalSteps) async {
     // Check if this is the last step
     if (currentStep == totalSteps - 1) {
       // Complete onboarding
@@ -175,14 +149,9 @@ class OnboardingPage extends ConsumerWidget {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Skip Tutorial?'),
-        content: const Text(
-          'You can always view the tutorial again in Settings. Are you sure you want to skip?',
-        ),
+        content: const Text('You can always view the tutorial again in Settings. Are you sure you want to skip?'),
         actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
+          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
           TextButton(
             onPressed: () {
               ref.read(onboardingProvider.notifier).skipOnboarding();

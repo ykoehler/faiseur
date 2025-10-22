@@ -37,12 +37,7 @@ void main() {
     test('has all required values', () {
       expect(
         TodoPriority.values,
-        containsAll([
-          TodoPriority.low,
-          TodoPriority.medium,
-          TodoPriority.high,
-          TodoPriority.urgent,
-        ]),
+        containsAll([TodoPriority.low, TodoPriority.medium, TodoPriority.high, TodoPriority.urgent]),
       );
     });
 
@@ -63,10 +58,7 @@ void main() {
 
   group('UserRole enum', () {
     test('has all required values', () {
-      expect(
-        UserRole.values,
-        containsAll([UserRole.owner, UserRole.editor, UserRole.viewer]),
-      );
+      expect(UserRole.values, containsAll([UserRole.owner, UserRole.editor, UserRole.viewer]));
     });
 
     test('displayName returns correct string', () {
@@ -115,11 +107,7 @@ void main() {
     test('has all required values', () {
       expect(
         RedemptionStatus.values,
-        containsAll([
-          RedemptionStatus.pending,
-          RedemptionStatus.approved,
-          RedemptionStatus.denied,
-        ]),
+        containsAll([RedemptionStatus.pending, RedemptionStatus.approved, RedemptionStatus.denied]),
       );
     });
 
@@ -134,13 +122,7 @@ void main() {
     test('has all required values', () {
       expect(
         ViewType.values,
-        containsAll([
-          ViewType.list,
-          ViewType.kanban,
-          ViewType.card,
-          ViewType.sprint,
-          ViewType.calendar,
-        ]),
+        containsAll([ViewType.list, ViewType.kanban, ViewType.card, ViewType.sprint, ViewType.calendar]),
       );
     });
 

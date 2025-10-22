@@ -55,11 +55,7 @@ void main() {
     final guestButton = find.text('Continue as Guest');
     if (guestButton.evaluate().isEmpty) {
       debugPrint('❌ [DEBUG] "Continue as Guest" button not found');
-      expect(
-        guestButton,
-        findsOneWidget,
-        reason: 'Guest button should be visible',
-      );
+      expect(guestButton, findsOneWidget, reason: 'Guest button should be visible');
       return;
     }
 
@@ -89,9 +85,7 @@ void main() {
       final stillOnLogin = find.text('Continue as Guest').evaluate().isNotEmpty;
       if (!stillOnLogin) {
         navigatedAway = true;
-        debugPrint(
-          '✅ [DEBUG] Successfully signed in as guest and navigated away at ${i * 100}ms!',
-        );
+        debugPrint('✅ [DEBUG] Successfully signed in as guest and navigated away at ${i * 100}ms!');
         break;
       }
 
@@ -118,10 +112,6 @@ void main() {
     }
 
     expect(find.byType(FaiseurApp), findsOneWidget);
-    expect(
-      navigatedAway,
-      isTrue,
-      reason: 'Should navigate away from login after guest sign-in',
-    );
+    expect(navigatedAway, isTrue, reason: 'Should navigate away from login after guest sign-in');
   });
 }

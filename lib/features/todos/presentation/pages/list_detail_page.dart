@@ -24,8 +24,7 @@ class ListDetailPage extends ConsumerWidget {
       body: todosState.when(
         data: (todos) => _buildTodosView(context, todos, todosNotifier),
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, stackTrace) =>
-            _buildErrorView(context, error.toString()),
+        error: (error, stackTrace) => _buildErrorView(context, error.toString()),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showCreateTodoDialog(context, ref, todosNotifier),
@@ -35,11 +34,7 @@ class ListDetailPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildTodosView(
-    BuildContext context,
-    List<Todo> todos,
-    dynamic todosNotifier,
-  ) {
+  Widget _buildTodosView(BuildContext context, List<Todo> todos, dynamic todosNotifier) {
     if (todos.isEmpty) {
       return Center(
         child: Column(
@@ -47,18 +42,11 @@ class ListDetailPage extends ConsumerWidget {
           children: [
             Icon(Icons.task_outlined, size: 64, color: Colors.grey[400]),
             const SizedBox(height: 16),
-            Text(
-              'No todos yet',
-              style: Theme.of(
-                context,
-              ).textTheme.titleLarge?.copyWith(color: Colors.grey[600]),
-            ),
+            Text('No todos yet', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.grey[600])),
             const SizedBox(height: 8),
             Text(
               'Add your first task to get started',
-              style: Theme.of(
-                context,
-              ).textTheme.bodyMedium?.copyWith(color: Colors.grey[500]),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey[500]),
             ),
           ],
         ),
@@ -78,12 +66,9 @@ class ListDetailPage extends ConsumerWidget {
               await todosNotifier.updateTodo(updatedTodo);
             } catch (e) {
               if (context.mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('Error updating todo: $e'),
-                    backgroundColor: Colors.red,
-                  ),
-                );
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(SnackBar(content: Text('Error updating todo: $e'), backgroundColor: Colors.red));
               }
             }
           },
@@ -99,29 +84,17 @@ class ListDetailPage extends ConsumerWidget {
       children: [
         Icon(Icons.error_outline, size: 64, color: Colors.red[400]),
         const SizedBox(height: 16),
-        Text(
-          'Error loading todos',
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
+        Text('Error loading todos', style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(height: 8),
-        Text(
-          error,
-          style: Theme.of(context).textTheme.bodyMedium,
-          textAlign: TextAlign.center,
-        ),
+        Text(error, style: Theme.of(context).textTheme.bodyMedium, textAlign: TextAlign.center),
       ],
     ),
   );
 
-  void _showCreateTodoDialog(
-    BuildContext context,
-    WidgetRef ref,
-    dynamic todosNotifier,
-  ) {
-    showDialog<CreateTodoDialogParams>(
-      context: context,
-      builder: (context) => const CreateTodoDialog(),
-    ).then((params) async {
+  void _showCreateTodoDialog(BuildContext context, WidgetRef ref, dynamic todosNotifier) {
+    showDialog<CreateTodoDialogParams>(context: context, builder: (context) => const CreateTodoDialog()).then((
+      params,
+    ) async {
       if (params == null) {
         return;
       }
@@ -134,28 +107,19 @@ class ListDetailPage extends ConsumerWidget {
         );
 
         if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Todo created successfully')),
-          );
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Todo created successfully')));
         }
       } catch (e) {
         if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Error creating todo: $e'),
-              backgroundColor: Colors.red,
-            ),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text('Error creating todo: $e'), backgroundColor: Colors.red));
         }
       }
     });
   }
 
-  void _showTodoDetailsSheet(
-    BuildContext context,
-    Todo todo,
-    dynamic todosNotifier,
-  ) {
+  void _showTodoDetailsSheet(BuildContext context, Todo todo, dynamic todosNotifier) {
     showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
@@ -166,18 +130,13 @@ class ListDetailPage extends ConsumerWidget {
           try {
             await todosNotifier.updateTodo(updatedTodo);
             if (context.mounted) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Todo updated successfully')),
-              );
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Todo updated successfully')));
             }
           } catch (e) {
             if (context.mounted) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('Error updating todo: $e'),
-                  backgroundColor: Colors.red,
-                ),
-              );
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text('Error updating todo: $e'), backgroundColor: Colors.red));
             }
           }
         },
@@ -185,41 +144,29 @@ class ListDetailPage extends ConsumerWidget {
     );
   }
 
-  void _showDeleteConfirmation(
-    BuildContext context,
-    Todo todo,
-    dynamic todosNotifier,
-  ) {
+  void _showDeleteConfirmation(BuildContext context, Todo todo, dynamic todosNotifier) {
     showDialog<void>(
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Delete Todo'),
-        content: Text(
-          'Are you sure you want to delete "${todo.title}"?\n\nThis action cannot be undone.',
-        ),
+        content: Text('Are you sure you want to delete "${todo.title}"?\n\nThis action cannot be undone.'),
         actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: const Text('Cancel'),
-          ),
+          TextButton(onPressed: () => Navigator.of(context).pop(), child: const Text('Cancel')),
           TextButton(
             onPressed: () async {
               Navigator.of(context).pop();
               try {
                 await todosNotifier.deleteTodo(todo.id);
                 if (context.mounted) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Todo deleted successfully')),
-                  );
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(const SnackBar(content: Text('Todo deleted successfully')));
                 }
               } catch (e) {
                 if (context.mounted) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Error deleting todo: $e'),
-                      backgroundColor: Colors.red,
-                    ),
-                  );
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text('Error deleting todo: $e'), backgroundColor: Colors.red));
                 }
               }
             },

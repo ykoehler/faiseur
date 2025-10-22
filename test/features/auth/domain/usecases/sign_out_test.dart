@@ -24,9 +24,7 @@ void main() {
     group('Happy Path - Successful Sign Out', () {
       test('should sign out user successfully', () async {
         // Arrange
-        when(
-          () => mockRepository.signOut(),
-        ).thenAnswer((_) async => Future.value());
+        when(() => mockRepository.signOut()).thenAnswer((_) async => Future.value());
 
         // Act
         await useCase.call();
@@ -37,9 +35,7 @@ void main() {
 
       test('should call signOut method on repository', () async {
         // Arrange
-        when(
-          () => mockRepository.signOut(),
-        ).thenAnswer((_) async => Future.value());
+        when(() => mockRepository.signOut()).thenAnswer((_) async => Future.value());
 
         // Act
         await useCase.call();
@@ -57,11 +53,9 @@ void main() {
     group('Error Paths', () {
       test('should propagate network error from repository', () async {
         // Arrange
-        when(() => mockRepository.signOut()).thenThrow(
-          const Failure.network(
-            message: 'Network error: No internet connection',
-          ),
-        );
+        when(
+          () => mockRepository.signOut(),
+        ).thenThrow(const Failure.network(message: 'Network error: No internet connection'));
 
         // Act & Assert
         expect(() => useCase.call(), throwsA(isA<Failure>()));
@@ -69,9 +63,7 @@ void main() {
 
       test('should propagate unknown error from repository', () async {
         // Arrange
-        when(() => mockRepository.signOut()).thenThrow(
-          const Failure.unknown(message: 'Unexpected error occurred'),
-        );
+        when(() => mockRepository.signOut()).thenThrow(const Failure.unknown(message: 'Unexpected error occurred'));
 
         // Act & Assert
         expect(() => useCase.call(), throwsA(isA<Failure>()));
@@ -79,9 +71,7 @@ void main() {
 
       test('should propagate generic exceptions', () async {
         // Arrange
-        when(
-          () => mockRepository.signOut(),
-        ).thenThrow(Exception('Repository error'));
+        when(() => mockRepository.signOut()).thenThrow(Exception('Repository error'));
 
         // Act & Assert
         expect(() => useCase.call(), throwsException);
@@ -95,9 +85,7 @@ void main() {
     group('Edge Cases', () {
       test('should handle multiple sign-out calls', () async {
         // Arrange
-        when(
-          () => mockRepository.signOut(),
-        ).thenAnswer((_) async => Future.value());
+        when(() => mockRepository.signOut()).thenAnswer((_) async => Future.value());
 
         // Act
         await useCase.call();
@@ -109,9 +97,7 @@ void main() {
 
       test('should handle timeout error', () async {
         // Arrange
-        when(
-          () => mockRepository.signOut(),
-        ).thenThrow(const Failure.timeout(message: 'Request timed out'));
+        when(() => mockRepository.signOut()).thenThrow(const Failure.timeout(message: 'Request timed out'));
 
         // Act & Assert
         expect(() => useCase.call(), throwsA(isA<Failure>()));

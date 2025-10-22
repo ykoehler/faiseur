@@ -13,13 +13,7 @@ void main() {
 
   setUpAll(() {
     registerFallbackValue(
-      Todo(
-        id: 'test',
-        listId: 'test',
-        title: 'test',
-        createdBy: 'test',
-        createdAt: DateTime.now(),
-      ),
+      Todo(id: 'test', listId: 'test', title: 'test', createdBy: 'test', createdAt: DateTime.now()),
     );
   });
 
@@ -39,14 +33,9 @@ void main() {
 
     test('Should update todo with valid parameters', () async {
       // Arrange
-      final updatedTodo = testTodo.copyWith(
-        title: 'Buy groceries and cook',
-        status: TodoStatus.done,
-      );
+      final updatedTodo = testTodo.copyWith(title: 'Buy groceries and cook', status: TodoStatus.done);
 
-      when(
-        () => mockRepository.updateTodo(any()),
-      ).thenAnswer((_) async => updatedTodo);
+      when(() => mockRepository.updateTodo(any())).thenAnswer((_) async => updatedTodo);
 
       // Act
       final result = await updateTodo.call(updatedTodo);
@@ -82,35 +71,23 @@ void main() {
       expect(() => updateTodo.call(invalidTodo), throwsA(isA<ArgumentError>()));
     });
 
-    test(
-      'Should throw ArgumentError when title exceeds 500 characters',
-      () async {
-        // Arrange
-        final longTitle = 'a' * 501;
-        final invalidTodo = testTodo.copyWith(title: longTitle);
+    test('Should throw ArgumentError when title exceeds 500 characters', () async {
+      // Arrange
+      final longTitle = 'a' * 501;
+      final invalidTodo = testTodo.copyWith(title: longTitle);
 
-        // Act & Assert
-        expect(
-          () => updateTodo.call(invalidTodo),
-          throwsA(isA<ArgumentError>()),
-        );
-      },
-    );
+      // Act & Assert
+      expect(() => updateTodo.call(invalidTodo), throwsA(isA<ArgumentError>()));
+    });
 
-    test(
-      'Should throw ArgumentError when description exceeds 5000 characters',
-      () async {
-        // Arrange
-        final longDescription = 'a' * 5001;
-        final invalidTodo = testTodo.copyWith(description: longDescription);
+    test('Should throw ArgumentError when description exceeds 5000 characters', () async {
+      // Arrange
+      final longDescription = 'a' * 5001;
+      final invalidTodo = testTodo.copyWith(description: longDescription);
 
-        // Act & Assert
-        expect(
-          () => updateTodo.call(invalidTodo),
-          throwsA(isA<ArgumentError>()),
-        );
-      },
-    );
+      // Act & Assert
+      expect(() => updateTodo.call(invalidTodo), throwsA(isA<ArgumentError>()));
+    });
 
     test('Should update todo with all fields', () async {
       // Arrange
@@ -125,9 +102,7 @@ void main() {
         tags: ['urgent'],
       );
 
-      when(
-        () => mockRepository.updateTodo(any()),
-      ).thenAnswer((_) async => updatedTodo);
+      when(() => mockRepository.updateTodo(any())).thenAnswer((_) async => updatedTodo);
 
       // Act
       final result = await updateTodo.call(updatedTodo);

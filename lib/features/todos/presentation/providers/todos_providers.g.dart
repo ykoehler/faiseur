@@ -15,9 +15,7 @@ const todosRepositoryProvider = TodosRepositoryProvider._();
 
 /// Provider for the TodosRepository singleton instance
 
-final class TodosRepositoryProvider
-    extends
-        $FunctionalProvider<TodosRepository, TodosRepository, TodosRepository>
+final class TodosRepositoryProvider extends $FunctionalProvider<TodosRepository, TodosRepository, TodosRepository>
     with $Provider<TodosRepository> {
   /// Provider for the TodosRepository singleton instance
   const TodosRepositoryProvider._()
@@ -36,8 +34,7 @@ final class TodosRepositoryProvider
 
   @$internal
   @override
-  $ProviderElement<TodosRepository> $createElement($ProviderPointer pointer) =>
-      $ProviderElement(pointer);
+  $ProviderElement<TodosRepository> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
 
   @override
   TodosRepository create(Ref ref) {
@@ -46,10 +43,7 @@ final class TodosRepositoryProvider
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(TodosRepository value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<TodosRepository>(value),
-    );
+    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<TodosRepository>(value));
   }
 }
 
@@ -62,9 +56,7 @@ const getTodosUseCaseProvider = GetTodosUseCaseProvider._();
 
 /// Provider for GetTodos use case
 
-final class GetTodosUseCaseProvider
-    extends $FunctionalProvider<GetTodos, GetTodos, GetTodos>
-    with $Provider<GetTodos> {
+final class GetTodosUseCaseProvider extends $FunctionalProvider<GetTodos, GetTodos, GetTodos> with $Provider<GetTodos> {
   /// Provider for GetTodos use case
   const GetTodosUseCaseProvider._()
     : super(
@@ -82,8 +74,7 @@ final class GetTodosUseCaseProvider
 
   @$internal
   @override
-  $ProviderElement<GetTodos> $createElement($ProviderPointer pointer) =>
-      $ProviderElement(pointer);
+  $ProviderElement<GetTodos> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
 
   @override
   GetTodos create(Ref ref) {
@@ -92,10 +83,7 @@ final class GetTodosUseCaseProvider
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(GetTodos value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<GetTodos>(value),
-    );
+    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<GetTodos>(value));
   }
 }
 
@@ -108,8 +96,7 @@ const createTodoUseCaseProvider = CreateTodoUseCaseProvider._();
 
 /// Provider for CreateTodo use case
 
-final class CreateTodoUseCaseProvider
-    extends $FunctionalProvider<CreateTodo, CreateTodo, CreateTodo>
+final class CreateTodoUseCaseProvider extends $FunctionalProvider<CreateTodo, CreateTodo, CreateTodo>
     with $Provider<CreateTodo> {
   /// Provider for CreateTodo use case
   const CreateTodoUseCaseProvider._()
@@ -128,8 +115,7 @@ final class CreateTodoUseCaseProvider
 
   @$internal
   @override
-  $ProviderElement<CreateTodo> $createElement($ProviderPointer pointer) =>
-      $ProviderElement(pointer);
+  $ProviderElement<CreateTodo> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
 
   @override
   CreateTodo create(Ref ref) {
@@ -138,10 +124,7 @@ final class CreateTodoUseCaseProvider
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(CreateTodo value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<CreateTodo>(value),
-    );
+    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<CreateTodo>(value));
   }
 }
 
@@ -154,8 +137,7 @@ const updateTodoUseCaseProvider = UpdateTodoUseCaseProvider._();
 
 /// Provider for UpdateTodo use case
 
-final class UpdateTodoUseCaseProvider
-    extends $FunctionalProvider<UpdateTodo, UpdateTodo, UpdateTodo>
+final class UpdateTodoUseCaseProvider extends $FunctionalProvider<UpdateTodo, UpdateTodo, UpdateTodo>
     with $Provider<UpdateTodo> {
   /// Provider for UpdateTodo use case
   const UpdateTodoUseCaseProvider._()
@@ -174,8 +156,7 @@ final class UpdateTodoUseCaseProvider
 
   @$internal
   @override
-  $ProviderElement<UpdateTodo> $createElement($ProviderPointer pointer) =>
-      $ProviderElement(pointer);
+  $ProviderElement<UpdateTodo> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
 
   @override
   UpdateTodo create(Ref ref) {
@@ -184,10 +165,7 @@ final class UpdateTodoUseCaseProvider
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(UpdateTodo value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<UpdateTodo>(value),
-    );
+    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<UpdateTodo>(value));
   }
 }
 
@@ -200,8 +178,7 @@ const deleteTodoUseCaseProvider = DeleteTodoUseCaseProvider._();
 
 /// Provider for DeleteTodo use case
 
-final class DeleteTodoUseCaseProvider
-    extends $FunctionalProvider<DeleteTodo, DeleteTodo, DeleteTodo>
+final class DeleteTodoUseCaseProvider extends $FunctionalProvider<DeleteTodo, DeleteTodo, DeleteTodo>
     with $Provider<DeleteTodo> {
   /// Provider for DeleteTodo use case
   const DeleteTodoUseCaseProvider._()
@@ -220,8 +197,7 @@ final class DeleteTodoUseCaseProvider
 
   @$internal
   @override
-  $ProviderElement<DeleteTodo> $createElement($ProviderPointer pointer) =>
-      $ProviderElement(pointer);
+  $ProviderElement<DeleteTodo> $createElement($ProviderPointer pointer) => $ProviderElement(pointer);
 
   @override
   DeleteTodo create(Ref ref) {
@@ -230,10 +206,7 @@ final class DeleteTodoUseCaseProvider
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(DeleteTodo value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<DeleteTodo>(value),
-    );
+    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<DeleteTodo>(value));
   }
 }
 
@@ -256,13 +229,7 @@ const watchListTodosProvider = WatchListTodosFamily._();
 ///
 /// Returns a stream of todos that updates whenever todos change.
 
-final class WatchListTodosProvider
-    extends
-        $FunctionalProvider<
-          AsyncValue<List<Todo>>,
-          List<Todo>,
-          Stream<List<Todo>>
-        >
+final class WatchListTodosProvider extends $FunctionalProvider<AsyncValue<List<Todo>>, List<Todo>, Stream<List<Todo>>>
     with $FutureModifier<List<Todo>>, $StreamProvider<List<Todo>> {
   /// Stream provider for todos in a list (real-time updates)
   ///
@@ -270,16 +237,14 @@ final class WatchListTodosProvider
   /// - [listId]: ID of the list to watch
   ///
   /// Returns a stream of todos that updates whenever todos change.
-  const WatchListTodosProvider._({
-    required WatchListTodosFamily super.from,
-    required String super.argument,
-  }) : super(
-         retry: null,
-         name: r'watchListTodosProvider',
-         isAutoDispose: true,
-         dependencies: null,
-         $allTransitiveDependencies: null,
-       );
+  const WatchListTodosProvider._({required WatchListTodosFamily super.from, required String super.argument})
+    : super(
+        retry: null,
+        name: r'watchListTodosProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
   @override
   String debugGetCreateSourceHash() => _$watchListTodosHash();
@@ -293,8 +258,7 @@ final class WatchListTodosProvider
 
   @$internal
   @override
-  $StreamProviderElement<List<Todo>> $createElement($ProviderPointer pointer) =>
-      $StreamProviderElement(pointer);
+  $StreamProviderElement<List<Todo>> $createElement($ProviderPointer pointer) => $StreamProviderElement(pointer);
 
   @override
   Stream<List<Todo>> create(Ref ref) {
@@ -322,8 +286,7 @@ String _$watchListTodosHash() => r'6a7d7b31672a873d80fdd5c2cee5e54872705bc3';
 ///
 /// Returns a stream of todos that updates whenever todos change.
 
-final class WatchListTodosFamily extends $Family
-    with $FunctionalFamilyOverride<Stream<List<Todo>>, String> {
+final class WatchListTodosFamily extends $Family with $FunctionalFamilyOverride<Stream<List<Todo>>, String> {
   const WatchListTodosFamily._()
     : super(
         retry: null,
@@ -340,8 +303,7 @@ final class WatchListTodosFamily extends $Family
   ///
   /// Returns a stream of todos that updates whenever todos change.
 
-  WatchListTodosProvider call(String listId) =>
-      WatchListTodosProvider._(argument: listId, from: this);
+  WatchListTodosProvider call(String listId) => WatchListTodosProvider._(argument: listId, from: this);
 
   @override
   String toString() => r'watchListTodosProvider';
@@ -353,19 +315,16 @@ final class WatchListTodosFamily extends $Family
 const todosProvider = TodosNotifierFamily._();
 
 /// Notifier for managing todos state and operations
-final class TodosNotifierProvider
-    extends $NotifierProvider<TodosNotifier, AsyncValue<List<Todo>>> {
+final class TodosNotifierProvider extends $NotifierProvider<TodosNotifier, AsyncValue<List<Todo>>> {
   /// Notifier for managing todos state and operations
-  const TodosNotifierProvider._({
-    required TodosNotifierFamily super.from,
-    required String super.argument,
-  }) : super(
-         retry: null,
-         name: r'todosProvider',
-         isAutoDispose: true,
-         dependencies: null,
-         $allTransitiveDependencies: null,
-       );
+  const TodosNotifierProvider._({required TodosNotifierFamily super.from, required String super.argument})
+    : super(
+        retry: null,
+        name: r'todosProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
   @override
   String debugGetCreateSourceHash() => _$todosNotifierHash();
@@ -383,10 +342,7 @@ final class TodosNotifierProvider
 
   /// {@macro riverpod.override_with_value}
   Override overrideWithValue(AsyncValue<List<Todo>> value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<AsyncValue<List<Todo>>>(value),
-    );
+    return $ProviderOverride(origin: this, providerOverride: $SyncValueProvider<AsyncValue<List<Todo>>>(value));
   }
 
   @override
@@ -424,8 +380,7 @@ final class TodosNotifierFamily extends $Family
 
   /// Notifier for managing todos state and operations
 
-  TodosNotifierProvider call(String listId) =>
-      TodosNotifierProvider._(argument: listId, from: this);
+  TodosNotifierProvider call(String listId) => TodosNotifierProvider._(argument: listId, from: this);
 
   @override
   String toString() => r'todosProvider';
@@ -442,8 +397,7 @@ abstract class _$TodosNotifier extends $Notifier<AsyncValue<List<Todo>>> {
   @override
   void runBuild() {
     final created = build(_$args);
-    final ref =
-        this.ref as $Ref<AsyncValue<List<Todo>>, AsyncValue<List<Todo>>>;
+    final ref = this.ref as $Ref<AsyncValue<List<Todo>>, AsyncValue<List<Todo>>>;
     final element =
         ref.element
             as $ClassProviderElement<

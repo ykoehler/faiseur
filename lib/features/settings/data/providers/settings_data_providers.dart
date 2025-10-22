@@ -11,6 +11,4 @@ FirebaseFirestore firebaseFirestore(Ref ref) => FirebaseFirestore.instance;
 /// Provider for settings remote datasource.
 @riverpod
 SettingsRemoteDatasource settingsRemoteDatasource(Ref ref) =>
-    SettingsRemoteDatasourceImpl(
-      firestore: ref.watch(firebaseFirestoreProvider),
-    );
+    SettingsRemoteDatasourceImpl(firestore: ref.watch(firebaseFirestoreProvider));

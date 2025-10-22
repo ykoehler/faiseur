@@ -38,20 +38,10 @@ class SettingsPage extends ConsumerWidget {
                     title: const Text('Email'),
                     subtitle: Text(user?.email ?? 'Not available'),
                   ),
-                  loading: () => const ListTile(
-                    title: Text('Email'),
-                    subtitle: Text('Loading...'),
-                  ),
-                  error: (error, st) => const ListTile(
-                    title: Text('Email'),
-                    subtitle: Text('Error loading email'),
-                  ),
+                  loading: () => const ListTile(title: Text('Email'), subtitle: Text('Loading...')),
+                  error: (error, st) => const ListTile(title: Text('Email'), subtitle: Text('Error loading email')),
                 ),
-                const ListTile(
-                  leading: Icon(Icons.info),
-                  title: Text('Account Status'),
-                  subtitle: Text('Active'),
-                ),
+                const ListTile(leading: Icon(Icons.info), title: Text('Account Status'), subtitle: Text('Active')),
               ],
             ),
 
@@ -90,9 +80,7 @@ class SettingsPage extends ConsumerWidget {
                   icon: Icons.notifications,
                   value: settings.notificationsEnabled,
                   onChanged: (value) {
-                    ref
-                        .read(settingsProvider.notifier)
-                        .updateNotifications(enabled: value);
+                    ref.read(settingsProvider.notifier).updateNotifications(enabled: value);
                   },
                 ),
                 if (settings.notificationsEnabled)
@@ -102,9 +90,7 @@ class SettingsPage extends ConsumerWidget {
                     icon: Icons.email,
                     value: settings.emailNotificationsEnabled,
                     onChanged: (value) {
-                      ref
-                          .read(settingsProvider.notifier)
-                          .updateEmailNotifications(enabled: value);
+                      ref.read(settingsProvider.notifier).updateEmailNotifications(enabled: value);
                     },
                   ),
               ],
@@ -119,9 +105,7 @@ class SettingsPage extends ConsumerWidget {
                   title: 'Default View',
                   subtitle: 'List, Kanban, or Card view',
                   icon: Icons.view_agenda,
-                  trailing: _ViewModeDropdown(
-                    currentViewMode: settings.defaultViewMode,
-                  ),
+                  trailing: _ViewModeDropdown(currentViewMode: settings.defaultViewMode),
                 ),
               ],
             ),
@@ -138,11 +122,7 @@ class SettingsPage extends ConsumerWidget {
                     // TODO: Navigate to about page
                   },
                 ),
-                const ListTile(
-                  leading: Icon(Icons.code),
-                  title: Text('Version'),
-                  subtitle: Text('0.1.0 (Beta)'),
-                ),
+                const ListTile(leading: Icon(Icons.code), title: Text('Version'), subtitle: Text('0.1.0 (Beta)')),
               ],
             ),
 
@@ -193,10 +173,7 @@ class SettingsPage extends ConsumerWidget {
         title: const Text('Sign Out?'),
         content: const Text('Are you sure you want to sign out?'),
         actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
+          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
           TextButton(
             onPressed: () {
               Navigator.pop(context);

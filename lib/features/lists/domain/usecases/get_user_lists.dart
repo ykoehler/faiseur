@@ -4,8 +4,7 @@ import 'package:faiseur/features/lists/domain/repositories/lists_repository.dart
 /// Use case for retrieving all lists for a user
 class GetUserLists {
   /// Creates a new GetUserLists use case
-  const GetUserLists({required ListsRepository repository})
-    : _repository = repository;
+  const GetUserLists({required ListsRepository repository}) : _repository = repository;
 
   final ListsRepository _repository;
 

@@ -36,11 +36,7 @@ void main() {
       debugPrint('✅ [macOS E2E] Initial pump completed');
 
       // Verify app is present
-      expect(
-        find.byType(FaiseurApp),
-        findsOneWidget,
-        reason: 'FaiseurApp should be present',
-      );
+      expect(find.byType(FaiseurApp), findsOneWidget, reason: 'FaiseurApp should be present');
       debugPrint('✅ [macOS E2E] FaiseurApp widget found');
     });
 
@@ -59,11 +55,7 @@ void main() {
       if (exception != null) {
         debugPrint('❌ [macOS E2E] Exception during Firebase init: $exception');
       }
-      expect(
-        exception,
-        isNull,
-        reason: 'Firebase should initialize without throwing exceptions',
-      );
+      expect(exception, isNull, reason: 'Firebase should initialize without throwing exceptions');
       debugPrint('✅ [macOS E2E] No exceptions during Firebase initialization');
     });
 
@@ -78,11 +70,7 @@ void main() {
       debugPrint('✅ [macOS E2E] Initial render completed');
 
       // Verify MaterialApp is present
-      expect(
-        find.byType(MaterialApp),
-        findsOneWidget,
-        reason: 'MaterialApp should be present',
-      );
+      expect(find.byType(MaterialApp), findsOneWidget, reason: 'MaterialApp should be present');
       debugPrint('✅ [macOS E2E] MaterialApp found');
 
       // Wait for router to initialize
@@ -90,17 +78,11 @@ void main() {
       debugPrint('✅ [macOS E2E] Router initialized');
 
       // Verify we have a Scaffold (either splash or main app)
-      expect(
-        find.byType(Scaffold),
-        findsWidgets,
-        reason: 'At least one Scaffold should be present',
-      );
+      expect(find.byType(Scaffold), findsWidgets, reason: 'At least one Scaffold should be present');
       debugPrint('✅ [macOS E2E] Scaffold found');
     });
 
-    testWidgets('App transitions from splash screen within reasonable time', (
-      tester,
-    ) async {
+    testWidgets('App transitions from splash screen within reasonable time', (tester) async {
       debugPrint('📱 [macOS E2E] Starting splash transition test');
 
       final stopwatch = Stopwatch()..start();
@@ -123,42 +105,28 @@ void main() {
         final hasLoading = loadingIndicators.evaluate().isNotEmpty;
 
         if (pumpCount % 10 == 0) {
-          debugPrint(
-            '⏱️  [macOS E2E] Still initializing after ${pumpCount * 100}ms, hasLoading: $hasLoading',
-          );
+          debugPrint('⏱️  [macOS E2E] Still initializing after ${pumpCount * 100}ms, hasLoading: $hasLoading');
         }
 
         // If no loading indicator, we've likely transitioned
         if (!hasLoading) {
           splashDismissed = true;
-          debugPrint(
-            '✅ [macOS E2E] Splash screen dismissed after ${pumpCount * 100}ms',
-          );
+          debugPrint('✅ [macOS E2E] Splash screen dismissed after ${pumpCount * 100}ms');
         }
       }
 
       stopwatch.stop();
-      debugPrint(
-        '⏱️  [macOS E2E] Total initialization time: ${stopwatch.elapsedMilliseconds}ms',
-      );
+      debugPrint('⏱️  [macOS E2E] Total initialization time: ${stopwatch.elapsedMilliseconds}ms');
 
       // Verify app is still running
-      expect(
-        find.byType(FaiseurApp),
-        findsOneWidget,
-        reason: 'App should still be running',
-      );
+      expect(find.byType(FaiseurApp), findsOneWidget, reason: 'App should still be running');
 
       // Check for exceptions
       final exception = tester.takeException();
       if (exception != null) {
         debugPrint('❌ [macOS E2E] Exception during transition: $exception');
       }
-      expect(
-        exception,
-        isNull,
-        reason: 'No exceptions should occur during transition',
-      );
+      expect(exception, isNull, reason: 'No exceptions should occur during transition');
     });
 
     testWidgets('App providers initialize correctly', (tester) async {
@@ -171,9 +139,7 @@ void main() {
       for (int i = 0; i < 10; i++) {
         await tester.pump(const Duration(milliseconds: 100));
         if (i % 3 == 0) {
-          debugPrint(
-            '⏱️  [macOS E2E] Provider initialization pump ${i + 1}/10',
-          );
+          debugPrint('⏱️  [macOS E2E] Provider initialization pump ${i + 1}/10');
         }
       }
 
@@ -186,19 +152,13 @@ void main() {
       if (exception != null) {
         debugPrint('❌ [macOS E2E] Provider error: $exception');
         if (exception.toString().contains('circular')) {
-          debugPrint(
-            '⚠️  [macOS E2E] Circular dependency detected in providers!',
-          );
+          debugPrint('⚠️  [macOS E2E] Circular dependency detected in providers!');
         }
         if (exception.toString().contains('disposed')) {
           debugPrint('⚠️  [macOS E2E] Provider disposed prematurely!');
         }
       }
-      expect(
-        exception,
-        isNull,
-        reason: 'Providers should initialize without errors',
-      );
+      expect(exception, isNull, reason: 'Providers should initialize without errors');
       debugPrint('✅ [macOS E2E] No provider errors detected');
     });
   });
@@ -215,11 +175,7 @@ void main() {
       debugPrint('✅ [macOS E2E] Router settled');
 
       // Verify we have navigated to a valid route (Scaffold should exist)
-      expect(
-        find.byType(Scaffold),
-        findsWidgets,
-        reason: 'Router should render a page with Scaffold',
-      );
+      expect(find.byType(Scaffold), findsWidgets, reason: 'Router should render a page with Scaffold');
       debugPrint('✅ [macOS E2E] Router rendered valid page');
 
       // No exceptions
@@ -266,21 +222,9 @@ void main() {
       debugPrint('✅ [macOS E2E] Theme retrieved from context');
 
       // Verify Material 3 theme properties
-      expect(
-        theme.colorScheme,
-        isNotNull,
-        reason: 'ColorScheme should be present',
-      );
-      expect(
-        theme.colorScheme.primary,
-        isNotNull,
-        reason: 'Primary color should be set',
-      );
-      expect(
-        theme.colorScheme.secondary,
-        isNotNull,
-        reason: 'Secondary color should be set',
-      );
+      expect(theme.colorScheme, isNotNull, reason: 'ColorScheme should be present');
+      expect(theme.colorScheme.primary, isNotNull, reason: 'Primary color should be set');
+      expect(theme.colorScheme.secondary, isNotNull, reason: 'Secondary color should be set');
       expect(theme.textTheme, isNotNull, reason: 'TextTheme should be present');
       debugPrint('✅ [macOS E2E] Material 3 theme properties verified');
 
@@ -321,11 +265,7 @@ void main() {
       debugPrint('📝 [macOS E2E] Found $textCount Text widgets');
 
       // Verify at least some text is rendered
-      expect(
-        textWidgets,
-        findsWidgets,
-        reason: 'App should render text content',
-      );
+      expect(textWidgets, findsWidgets, reason: 'App should render text content');
       debugPrint('✅ [macOS E2E] Text widgets rendered');
 
       // Check that text is visible (not zero-sized)
@@ -366,11 +306,7 @@ void main() {
 
       // Verify app still renders
       expect(find.byType(FaiseurApp), findsOneWidget);
-      expect(
-        tester.takeException(),
-        isNull,
-        reason: 'No exceptions during resize',
-      );
+      expect(tester.takeException(), isNull, reason: 'No exceptions during resize');
 
       // Simulate resize to smaller size
       tester.view.physicalSize = const Size(800, 600);
@@ -379,19 +315,13 @@ void main() {
 
       // Verify responsive behavior
       expect(find.byType(FaiseurApp), findsOneWidget);
-      expect(
-        tester.takeException(),
-        isNull,
-        reason: 'No exceptions during resize',
-      );
+      expect(tester.takeException(), isNull, reason: 'No exceptions during resize');
       debugPrint('✅ [macOS E2E] Window resize handled correctly');
     });
   });
 
   group('macOS E2E Tests - Performance & Stability', () {
-    testWidgets('App initialization completes within acceptable time', (
-      tester,
-    ) async {
+    testWidgets('App initialization completes within acceptable time', (tester) async {
       debugPrint('📱 [macOS E2E] Starting performance test');
 
       final stopwatch = Stopwatch()..start();
@@ -407,11 +337,7 @@ void main() {
       debugPrint('⏱️  [macOS E2E] Full initialization took ${elapsed}ms');
 
       // Verify initialization time is reasonable (< 10 seconds)
-      expect(
-        elapsed,
-        lessThan(10000),
-        reason: 'App should initialize within 10 seconds',
-      );
+      expect(elapsed, lessThan(10000), reason: 'App should initialize within 10 seconds');
 
       // Log performance breakdown
       if (elapsed < 2000) {
@@ -442,16 +368,8 @@ void main() {
       }
 
       // Verify app is still stable
-      expect(
-        find.byType(FaiseurApp),
-        findsOneWidget,
-        reason: 'App should remain stable',
-      );
-      expect(
-        tester.takeException(),
-        isNull,
-        reason: 'No exceptions during rapid updates',
-      );
+      expect(find.byType(FaiseurApp), findsOneWidget, reason: 'App should remain stable');
+      expect(tester.takeException(), isNull, reason: 'No exceptions during rapid updates');
       debugPrint('✅ [macOS E2E] App remained stable during rapid pumps');
     });
 
@@ -492,16 +410,8 @@ void main() {
       final afterReloadCount = find.byType(FaiseurApp).evaluate().length;
       debugPrint('📊 [macOS E2E] After reload widget count: $afterReloadCount');
 
-      expect(
-        afterReloadCount,
-        equals(initialWidgetCount),
-        reason: 'Widget count should remain consistent',
-      );
-      expect(
-        tester.takeException(),
-        isNull,
-        reason: 'Hot reload should not cause errors',
-      );
+      expect(afterReloadCount, equals(initialWidgetCount), reason: 'Widget count should remain consistent');
+      expect(tester.takeException(), isNull, reason: 'Hot reload should not cause errors');
       debugPrint('✅ [macOS E2E] Hot reload handled correctly');
     });
   });
@@ -517,16 +427,8 @@ void main() {
       await tester.pumpAndSettle(const Duration(seconds: 3));
 
       // App should render even if Firebase has issues
-      expect(
-        find.byType(FaiseurApp),
-        findsOneWidget,
-        reason: 'App should still render',
-      );
-      expect(
-        find.byType(MaterialApp),
-        findsOneWidget,
-        reason: 'MaterialApp should be present',
-      );
+      expect(find.byType(FaiseurApp), findsOneWidget, reason: 'App should still render');
+      expect(find.byType(MaterialApp), findsOneWidget, reason: 'MaterialApp should be present');
       debugPrint('✅ [macOS E2E] App handles Firebase state gracefully');
     });
 
@@ -548,11 +450,7 @@ void main() {
 
       await tester.pumpAndSettle(const Duration(seconds: 2));
       final finalException = tester.takeException();
-      expect(
-        finalException,
-        isNull,
-        reason: 'No exceptions should occur during normal flow',
-      );
+      expect(finalException, isNull, reason: 'No exceptions should occur during normal flow');
       debugPrint('✅ [macOS E2E] No unhandled exceptions detected');
     });
 
@@ -565,11 +463,7 @@ void main() {
       // Look for error indicators if Firebase fails
       // (should show error UI, not crash)
       final hasScaffold = find.byType(Scaffold).evaluate().isNotEmpty;
-      expect(
-        hasScaffold,
-        isTrue,
-        reason: 'App should render UI even with errors',
-      );
+      expect(hasScaffold, isTrue, reason: 'App should render UI even with errors');
       debugPrint('✅ [macOS E2E] Error states handled gracefully');
     });
   });
@@ -587,9 +481,7 @@ void main() {
       // Window size
       final windowSize = tester.view.physicalSize;
       final pixelRatio = tester.view.devicePixelRatio;
-      debugPrint(
-        '📐 [macOS E2E] Window size: ${windowSize.width}x${windowSize.height}, DPR: $pixelRatio',
-      );
+      debugPrint('📐 [macOS E2E] Window size: ${windowSize.width}x${windowSize.height}, DPR: $pixelRatio');
 
       // Wait and collect widget tree info
       await tester.pumpAndSettle(const Duration(seconds: 3));
@@ -598,25 +490,16 @@ void main() {
       final scaffoldCount = find.byType(Scaffold).evaluate().length;
       final textCount = find.byType(Text).evaluate().length;
       final buttonCount = find.byType(ElevatedButton).evaluate().length;
-      debugPrint(
-        '🧱 [macOS E2E] Widget counts: Scaffold=$scaffoldCount, Text=$textCount, Button=$buttonCount',
-      );
+      debugPrint('🧱 [macOS E2E] Widget counts: Scaffold=$scaffoldCount, Text=$textCount, Button=$buttonCount');
 
       // Check for common widgets
       final hasAppBar = find.byType(AppBar).evaluate().isNotEmpty;
-      final hasCircularProgress = find
-          .byType(CircularProgressIndicator)
-          .evaluate()
-          .isNotEmpty;
-      debugPrint(
-        '🎨 [macOS E2E] UI elements: AppBar=$hasAppBar, Loading=$hasCircularProgress',
-      );
+      final hasCircularProgress = find.byType(CircularProgressIndicator).evaluate().isNotEmpty;
+      debugPrint('🎨 [macOS E2E] UI elements: AppBar=$hasAppBar, Loading=$hasCircularProgress');
 
       // Exception status
       final exception = tester.takeException();
-      debugPrint(
-        '❗ [macOS E2E] Exception status: ${exception == null ? "None" : exception.toString()}',
-      );
+      debugPrint('❗ [macOS E2E] Exception status: ${exception == null ? "None" : exception.toString()}');
 
       // Final state
       final appPresent = find.byType(FaiseurApp).evaluate().isNotEmpty;

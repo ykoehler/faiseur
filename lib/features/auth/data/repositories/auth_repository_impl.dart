@@ -16,18 +16,15 @@ class AuthRepositoryImpl implements AuthRepository {
   /// Creates a new [AuthRepositoryImpl].
   ///
   /// Accepts optional Firebase instances for dependency injection in tests.
-  AuthRepositoryImpl({
-    firebase_auth.FirebaseAuth? firebaseAuth,
-    FirebaseFirestore? firestore,
-  }) : _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance,
-       _firestore = firestore ?? FirebaseFirestore.instance;
+  AuthRepositoryImpl({firebase_auth.FirebaseAuth? firebaseAuth, FirebaseFirestore? firestore})
+    : _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance,
+      _firestore = firestore ?? FirebaseFirestore.instance;
 
   final firebase_auth.FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore;
 
   /// Users collection reference in Firestore
-  CollectionReference<Map<String, dynamic>> get _usersCollection =>
-      _firestore.collection('users');
+  CollectionReference<Map<String, dynamic>> get _usersCollection => _firestore.collection('users');
 
   /// Converts a Firebase [User] to our domain [User] entity.
   ///
@@ -57,15 +54,9 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<User> signInWithEmail({
-    required String email,
-    required String password,
-  }) async {
+  Future<User> signInWithEmail({required String email, required String password}) async {
     try {
-      final credentials = await _firebaseAuth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+      final credentials = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
 
       if (credentials.user == null) {
         throw AuthException.invalidCredentials();
@@ -90,17 +81,12 @@ class AuthRepositoryImpl implements AuthRepository {
       // Check if username already exists
       final usernameExists = await _checkUsernameExists(username);
       if (usernameExists) {
-        throw const Failure.authentication(
-          message: 'Username is already taken',
-        );
+        throw const Failure.authentication(message: 'Username is already taken');
       }
 
       // Check if email already exists (Firebase will also check this)
       // Create Firebase user
-      final credentials = await _firebaseAuth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+      final credentials = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
 
       if (credentials.user == null) {
         throw const UnknownException('Failed to create user');
@@ -119,9 +105,7 @@ class AuthRepositoryImpl implements AuthRepository {
         updatedAt: DateTime.now(),
       );
 
-      await _usersCollection
-          .doc(firebaseUser.uid)
-          .set(userModelToJson(userModel));
+      await _usersCollection.doc(firebaseUser.uid).set(userModelToJson(userModel));
 
       // Update Firebase auth profile
       await firebaseUser.updateDisplayName(displayName);
@@ -147,9 +131,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
       return _firebaseUserToUser(credentials.user!);
     } on firebase_auth.FirebaseAuthException catch (e) {
-      throw Failure.network(
-        message: 'Failed to sign in anonymously: ${e.code}',
-      );
+      throw Failure.network(message: 'Failed to sign in anonymously: ${e.code}');
     } catch (e) {
       throw Failure.unknown(message: e.toString());
     }
@@ -180,13 +162,12 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Stream<User?> get authStateChanges =>
-      _firebaseAuth.authStateChanges().asyncMap((firebaseUser) async {
-        if (firebaseUser == null) {
-          return null;
-        }
-        return _firebaseUserToUser(firebaseUser);
-      });
+  Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges().asyncMap((firebaseUser) async {
+    if (firebaseUser == null) {
+      return null;
+    }
+    return _firebaseUserToUser(firebaseUser);
+  });
 
   @override
   Future<bool> isUsernameAvailable(String username) async {
@@ -226,10 +207,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<User> updateUserProfile({
-    String? displayName,
-    String? avatarUrl,
-  }) async {
+  Future<User> updateUserProfile({String? displayName, String? avatarUrl}) async {
     try {
       final firebaseUser = _firebaseAuth.currentUser;
 
@@ -244,9 +222,7 @@ class AuthRepositoryImpl implements AuthRepository {
       }
 
       // Update Firestore profile
-      final updates = <String, dynamic>{
-        'updatedAt': DateTime.now().toIso8601String(),
-      };
+      final updates = <String, dynamic>{'updatedAt': DateTime.now().toIso8601String()};
 
       if (displayName != null) {
         updates['displayName'] = displayName;
@@ -271,15 +247,10 @@ class AuthRepositoryImpl implements AuthRepository {
   /// Checks if a username already exists in Firestore.
   Future<bool> _checkUsernameExists(String username) async {
     try {
-      final query = await _usersCollection
-          .where('username', isEqualTo: username.toLowerCase())
-          .limit(1)
-          .get();
+      final query = await _usersCollection.where('username', isEqualTo: username.toLowerCase()).limit(1).get();
       return query.docs.isNotEmpty;
     } catch (e) {
-      throw Failure.network(
-        message: 'Failed to check username availability: $e',
-      );
+      throw Failure.network(message: 'Failed to check username availability: $e');
     }
   }
 

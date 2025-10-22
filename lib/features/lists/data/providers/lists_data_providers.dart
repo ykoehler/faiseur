@@ -7,12 +7,9 @@ part 'lists_data_providers.g.dart';
 
 /// Provider for FirestoreDatasourceImpl singleton
 @riverpod
-FirestoreDatasourceImpl firestoreDatasource(Ref ref) =>
-    FirestoreDatasourceImpl();
+FirestoreDatasourceImpl firestoreDatasource(Ref ref) => FirestoreDatasourceImpl();
 
 /// Provider for ListsRemoteDatasource
 @riverpod
 ListsRemoteDatasource listsRemoteDatasource(Ref ref) =>
-    ListsRemoteDatasourceImpl(
-      firestoreDatasource: ref.watch(firestoreDatasourceProvider),
-    );
+    ListsRemoteDatasourceImpl(firestoreDatasource: ref.watch(firestoreDatasourceProvider));

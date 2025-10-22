@@ -6,8 +6,7 @@ import 'package:faiseur/features/lists/domain/entities/todo_list.dart';
 
 /// Implementation of ListsRemoteDatasource using Firestore
 class ListsRemoteDatasourceImpl implements ListsRemoteDatasource {
-  ListsRemoteDatasourceImpl({required FirestoreDatasource firestoreDatasource})
-    : _firestore = firestoreDatasource;
+  ListsRemoteDatasourceImpl({required FirestoreDatasource firestoreDatasource}) : _firestore = firestoreDatasource;
 
   final FirestoreDatasource _firestore;
 
@@ -17,9 +16,7 @@ class ListsRemoteDatasourceImpl implements ListsRemoteDatasource {
   Future<List<TodoList>> getUserLists(String userId) async {
     try {
       // Query lists where user is owner or collaborator
-      final ownerListsQuery = _firestore
-          .query(_listsCollection)
-          .where('ownerId', isEqualTo: userId);
+      final ownerListsQuery = _firestore.query(_listsCollection).where('ownerId', isEqualTo: userId);
       final ownerListsSnapshot = await ownerListsQuery.get();
 
       final collaboratorListsQuery = _firestore
@@ -28,12 +25,8 @@ class ListsRemoteDatasourceImpl implements ListsRemoteDatasource {
       final collaboratorListsSnapshot = await collaboratorListsQuery.get();
 
       // Combine and deduplicate results
-      final allDocs = [
-        ...ownerListsSnapshot.docs,
-        ...collaboratorListsSnapshot.docs,
-      ];
-      final uniqueDocs =
-          <String, QueryDocumentSnapshot<Map<String, dynamic>>>{};
+      final allDocs = [...ownerListsSnapshot.docs, ...collaboratorListsSnapshot.docs];
+      final uniqueDocs = <String, QueryDocumentSnapshot<Map<String, dynamic>>>{};
 
       for (final doc in allDocs) {
         uniqueDocs[doc.id] = doc;
@@ -76,8 +69,7 @@ class ListsRemoteDatasourceImpl implements ListsRemoteDatasource {
   Future<TodoList> createList(TodoList list) async {
     try {
       final model = list.toModel();
-      final data = todoListModelToJson(model)
-        ..remove('id'); // Remove ID for auto-generation
+      final data = todoListModelToJson(model)..remove('id'); // Remove ID for auto-generation
 
       final docRef = await _firestore.addDoc(_listsCollection, data);
       final createdList = list.copyWith(id: docRef.id);
@@ -111,39 +103,36 @@ class ListsRemoteDatasourceImpl implements ListsRemoteDatasource {
   }
 
   @override
-  Stream<List<TodoList>> watchUserLists(String userId) =>
-      _firestore.watchCollection(_listsCollection).map((snapshot) {
-        final docs = snapshot.docs.where((doc) {
-          final data = doc.data();
-          final isOwner = data['ownerId'] == userId;
-          final isCollaborator =
-              (data['collaborators'] as Map<String, dynamic>?)?[userId] != null;
-          return isOwner || isCollaborator;
-        });
+  Stream<List<TodoList>> watchUserLists(String userId) => _firestore.watchCollection(_listsCollection).map((snapshot) {
+    final docs = snapshot.docs.where((doc) {
+      final data = doc.data();
+      final isOwner = data['ownerId'] == userId;
+      final isCollaborator = (data['collaborators'] as Map<String, dynamic>?)?[userId] != null;
+      return isOwner || isCollaborator;
+    });
 
-        final models = docs.map((doc) {
-          final data = doc.data();
-          data['id'] = doc.id;
-          return todoListModelFromJson(data);
-        }).toList();
+    final models = docs.map((doc) {
+      final data = doc.data();
+      data['id'] = doc.id;
+      return todoListModelFromJson(data);
+    }).toList();
 
-        return models.map((model) => model.toEntity()).toList();
-      });
+    return models.map((model) => model.toEntity()).toList();
+  });
 
   @override
-  Stream<TodoList?> watchList(String listId) =>
-      _firestore.watchDoc('$_listsCollection/$listId').map((doc) {
-        if (!doc.exists) {
-          return null;
-        }
+  Stream<TodoList?> watchList(String listId) => _firestore.watchDoc('$_listsCollection/$listId').map((doc) {
+    if (!doc.exists) {
+      return null;
+    }
 
-        final data = doc.data();
-        if (data == null) {
-          return null;
-        }
+    final data = doc.data();
+    if (data == null) {
+      return null;
+    }
 
-        data['id'] = doc.id;
-        final model = todoListModelFromJson(data);
-        return model.toEntity();
-      });
+    data['id'] = doc.id;
+    final model = todoListModelFromJson(data);
+    return model.toEntity();
+  });
 }

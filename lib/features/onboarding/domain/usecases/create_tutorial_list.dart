@@ -53,9 +53,7 @@ class CreateTutorialList {
       title: title,
       color: color,
       ownerId: ownerId,
-      description:
-          description ??
-          'Learn how to use Faiseur. Complete these tasks to get started!',
+      description: description ?? 'Learn how to use Faiseur. Complete these tasks to get started!',
     );
 
     return tutorialList;
@@ -65,25 +63,10 @@ class CreateTutorialList {
   ///
   /// Returns the list of all tutorial steps for reference
   List<Map<String, String>> getTutorialSteps() => [
-    {
-      'step': '1. Welcome to Faiseur',
-      'description': 'Learn the basics of task management',
-    },
-    {
-      'step': '2. Create Lists',
-      'description': 'Organize your tasks into different lists',
-    },
-    {
-      'step': '3. Add Todos',
-      'description': 'Create and manage individual tasks',
-    },
-    {
-      'step': '4. Customize Your Preferences',
-      'description': 'Personalize your app experience',
-    },
-    {
-      'step': '5. You\'re All Set!',
-      'description': 'Start using Faiseur to organize your life',
-    },
+    {'step': '1. Welcome to Faiseur', 'description': 'Learn the basics of task management'},
+    {'step': '2. Create Lists', 'description': 'Organize your tasks into different lists'},
+    {'step': '3. Add Todos', 'description': 'Create and manage individual tasks'},
+    {'step': '4. Customize Your Preferences', 'description': 'Personalize your app experience'},
+    {'step': '5. You\'re All Set!', 'description': 'Start using Faiseur to organize your life'},
   ];
 }

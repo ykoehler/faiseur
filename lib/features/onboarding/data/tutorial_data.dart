@@ -12,8 +12,7 @@ class TutorialData {
       id: 'onboarding_1_welcome',
       stepNumber: 1,
       title: 'Welcome to Faiseur',
-      description:
-          'Stay organized with your personal todo lists. Create, manage, and complete your tasks with ease.',
+      description: 'Stay organized with your personal todo lists. Create, manage, and complete your tasks with ease.',
       iconName: 'tasks',
       actionButtonText: 'Next',
       isLastStep: false,
@@ -45,8 +44,7 @@ class TutorialData {
       id: 'onboarding_3_todos',
       stepNumber: 3,
       title: 'Add Todos',
-      description:
-          'Create todos within each list. Set priorities, due dates, and track your progress.',
+      description: 'Create todos within each list. Set priorities, due dates, and track your progress.',
       iconName: 'check_circle',
       actionButtonText: 'Next',
       isLastStep: false,
@@ -65,18 +63,13 @@ class TutorialData {
       id: 'onboarding_4_customize',
       stepNumber: 4,
       title: 'Customize Your Preferences',
-      description:
-          'Visit Settings to personalize your experience. Choose your theme, adjust notifications, and more.',
+      description: 'Visit Settings to personalize your experience. Choose your theme, adjust notifications, and more.',
       iconName: 'settings',
       actionButtonText: 'Next',
       isLastStep: false,
       secondaryButtonText: 'Skip Tour',
       canSkip: true,
-      tips: [
-        'Dark mode available in Settings',
-        'Control notification preferences',
-        'View your account information',
-      ],
+      tips: ['Dark mode available in Settings', 'Control notification preferences', 'View your account information'],
     ),
 
     /// Step 5: Get Started (Final Step)
@@ -84,16 +77,12 @@ class TutorialData {
       id: 'onboarding_5_ready',
       stepNumber: 5,
       title: 'You\'re All Set!',
-      description:
-          'You\'re ready to start organizing your tasks. Create your first list now and get things done!',
+      description: 'You\'re ready to start organizing your tasks. Create your first list now and get things done!',
       iconName: 'rocket',
       actionButtonText: 'Get Started',
       isLastStep: true,
       canSkip: false,
-      tips: [
-        'Tap the Home button to create your first list',
-        'Don\'t worry, you can always review tips in Settings',
-      ],
+      tips: ['Tap the Home button to create your first list', 'Don\'t worry, you can always review tips in Settings'],
     ),
   ];
 

@@ -38,10 +38,7 @@ TodoListModel todoListModelFromJson(Map<String, dynamic> json) => TodoListModel(
   isArchived: json['isArchived'] as bool? ?? false,
   todoCount: json['todoCount'] as int? ?? 0,
   completedCount: json['completedCount'] as int? ?? 0,
-  updatedAt: parseFirestoreTimestampNullable(
-    json['updatedAt'],
-    fieldName: 'updatedAt',
-  ),
+  updatedAt: parseFirestoreTimestampNullable(json['updatedAt'], fieldName: 'updatedAt'),
 );
 
 /// Convert a [TodoListModel] into a JSON map for Firestore.
@@ -68,9 +65,7 @@ extension TodoListModelX on TodoListModel {
     final collaboratorsMap = <String, UserRole>{};
     for (final entry in collaborators.entries) {
       try {
-        collaboratorsMap[entry.key] = UserRole.values.firstWhere(
-          (role) => role.name == entry.value,
-        );
+        collaboratorsMap[entry.key] = UserRole.values.firstWhere((role) => role.name == entry.value);
       } catch (e) {
         // If role string doesn't match, default to viewer
         collaboratorsMap[entry.key] = UserRole.viewer;

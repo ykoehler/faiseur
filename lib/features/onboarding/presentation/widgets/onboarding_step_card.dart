@@ -39,27 +39,15 @@ class OnboardingStepCard extends StatelessWidget {
     // Map icon names to actual icons
     switch (step.iconName) {
       case 'tasks':
-        return const Icon(
-          Icons.assignment,
-          size: iconSize,
-          color: primaryColor,
-        );
+        return const Icon(Icons.assignment, size: iconSize, color: primaryColor);
       case 'list':
         return const Icon(Icons.list, size: iconSize, color: primaryColor);
       case 'check_circle':
-        return const Icon(
-          Icons.check_circle,
-          size: iconSize,
-          color: primaryColor,
-        );
+        return const Icon(Icons.check_circle, size: iconSize, color: primaryColor);
       case 'settings':
         return const Icon(Icons.settings, size: iconSize, color: primaryColor);
       case 'rocket':
-        return const Icon(
-          Icons.rocket_launch,
-          size: iconSize,
-          color: primaryColor,
-        );
+        return const Icon(Icons.rocket_launch, size: iconSize, color: primaryColor);
       default:
         return const Icon(Icons.info, size: iconSize, color: primaryColor);
     }
@@ -75,10 +63,7 @@ class OnboardingStepCard extends StatelessWidget {
           // Icon
           Container(
             padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: LightColors.primary.withValues(alpha: 0.1),
-              shape: BoxShape.circle,
-            ),
+            decoration: BoxDecoration(color: LightColors.primary.withValues(alpha: 0.1), shape: BoxShape.circle),
             child: _buildIcon(),
           ),
           const SizedBox(height: 32),
@@ -87,9 +72,7 @@ class OnboardingStepCard extends StatelessWidget {
           Text(
             step.title,
             textAlign: TextAlign.center,
-            style: Theme.of(
-              context,
-            ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
 
@@ -97,9 +80,7 @@ class OnboardingStepCard extends StatelessWidget {
           Text(
             step.description,
             textAlign: TextAlign.center,
-            style: Theme.of(
-              context,
-            ).textTheme.bodyLarge?.copyWith(color: Colors.grey[600]),
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.grey[600]),
           ),
           const SizedBox(height: 24),
 
@@ -115,12 +96,7 @@ class OnboardingStepCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Tips:',
-                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  Text('Tips:', style: Theme.of(context).textTheme.labelLarge?.copyWith(fontWeight: FontWeight.bold)),
                   const SizedBox(height: 8),
                   ...step.tips.map(
                     (tip) => Padding(
@@ -128,17 +104,9 @@ class OnboardingStepCard extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            '• ',
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
+                          Text('• ', style: Theme.of(context).textTheme.bodyMedium),
                           const SizedBox(width: 8),
-                          Expanded(
-                            child: Text(
-                              tip,
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                          ),
+                          Expanded(child: Text(tip, style: Theme.of(context).textTheme.bodyMedium)),
                         ],
                       ),
                     ),
@@ -162,17 +130,9 @@ class OnboardingStepCard extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: LightColors.primary,
                     foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                   ),
-                  child: Text(
-                    step.actionButtonText,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+                  child: Text(step.actionButtonText, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
                 ),
               ),
               const SizedBox(height: 12),
@@ -188,16 +148,11 @@ class OnboardingStepCard extends StatelessWidget {
                         style: OutlinedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           side: const BorderSide(color: LightColors.primary),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                         ),
                         child: const Text(
                           'Previous',
-                          style: TextStyle(
-                            color: LightColors.primary,
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: TextStyle(color: LightColors.primary, fontWeight: FontWeight.w600),
                         ),
                       ),
                     ),
@@ -210,14 +165,9 @@ class OnboardingStepCard extends StatelessWidget {
                         onPressed: onSkipPressed,
                         style: TextButton.styleFrom(
                           padding: const EdgeInsets.symmetric(vertical: 12),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                         ),
-                        child: Text(
-                          step.secondaryButtonText!,
-                          style: const TextStyle(fontWeight: FontWeight.w600),
-                        ),
+                        child: Text(step.secondaryButtonText!, style: const TextStyle(fontWeight: FontWeight.w600)),
                       ),
                     ),
                 ],

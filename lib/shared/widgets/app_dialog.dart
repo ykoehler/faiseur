@@ -5,13 +5,7 @@ import 'package:flutter/material.dart';
 /// Provides a consistent dialog appearance with title, content, and actions.
 class AppDialog extends StatelessWidget {
   /// Creates an app dialog.
-  const AppDialog({
-    required this.title,
-    required this.content,
-    this.actions,
-    this.icon,
-    super.key,
-  });
+  const AppDialog({required this.title, required this.content, this.actions, this.icon, super.key});
 
   /// Dialog title
   final String title;
@@ -37,12 +31,7 @@ class AppDialog extends StatelessWidget {
 
   List<Widget> _buildActions(BuildContext context) {
     if (actions == null || actions!.isEmpty) {
-      return [
-        TextButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: const Text('OK'),
-        ),
-      ];
+      return [TextButton(onPressed: () => Navigator.of(context).pop(), child: const Text('OK'))];
     }
 
     return actions!
@@ -108,10 +97,7 @@ class AppConfirmationDialog extends StatelessWidget {
     title: Text(title),
     content: Text(message),
     actions: [
-      TextButton(
-        onPressed: () => Navigator.of(context).pop(false),
-        child: Text(cancelLabel),
-      ),
+      TextButton(onPressed: () => Navigator.of(context).pop(false), child: Text(cancelLabel)),
       ElevatedButton(
         style: isDangerous
             ? ElevatedButton.styleFrom(
@@ -134,10 +120,7 @@ class AppCustomDialog extends StatelessWidget {
     this.title,
     this.actions,
     this.icon,
-    this.insetPadding = const EdgeInsets.symmetric(
-      horizontal: 40,
-      vertical: 24,
-    ),
+    this.insetPadding = const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
     super.key,
   });
 
@@ -164,16 +147,9 @@ class AppCustomDialog extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (icon != null) ...[
-              Icon(icon, size: 32),
-              const SizedBox(height: 16),
-            ],
+            if (icon != null) ...[Icon(icon, size: 32), const SizedBox(height: 16)],
             if (title != null) ...[
-              Text(
-                title!,
-                style: Theme.of(context).textTheme.headlineSmall,
-                textAlign: TextAlign.center,
-              ),
+              Text(title!, style: Theme.of(context).textTheme.headlineSmall, textAlign: TextAlign.center),
               const SizedBox(height: 16),
             ],
             content,
@@ -191,12 +167,7 @@ class AppCustomDialog extends StatelessWidget {
 /// A dialog with loading state.
 class AppLoadingDialog extends StatelessWidget {
   /// Creates a loading dialog.
-  const AppLoadingDialog({
-    required this.message,
-    this.title,
-    this.dismissible = false,
-    super.key,
-  });
+  const AppLoadingDialog({required this.message, this.title, this.dismissible = false, super.key});
 
   /// Dialog title
   final String? title;
@@ -220,17 +191,9 @@ class AppLoadingDialog extends StatelessWidget {
               Text(title!, style: Theme.of(context).textTheme.headlineSmall),
               const SizedBox(height: 16),
             ],
-            const SizedBox(
-              width: 50,
-              height: 50,
-              child: CircularProgressIndicator(),
-            ),
+            const SizedBox(width: 50, height: 50, child: CircularProgressIndicator()),
             const SizedBox(height: 16),
-            Text(
-              message,
-              style: Theme.of(context).textTheme.bodyMedium,
-              textAlign: TextAlign.center,
-            ),
+            Text(message, style: Theme.of(context).textTheme.bodyMedium, textAlign: TextAlign.center),
           ],
         ),
       ),
@@ -241,13 +204,7 @@ class AppLoadingDialog extends StatelessWidget {
 /// A bottom sheet dialog.
 class AppBottomSheet extends StatelessWidget {
   /// Creates a bottom sheet.
-  const AppBottomSheet({
-    required this.child,
-    this.title,
-    this.actions,
-    this.isScrollable = true,
-    super.key,
-  });
+  const AppBottomSheet({required this.child, this.title, this.actions, this.isScrollable = true, super.key});
 
   /// Sheet title
   final String? title;
@@ -284,18 +241,12 @@ class AppBottomSheet extends StatelessWidget {
         ),
         Divider(height: 0, color: Theme.of(context).colorScheme.outline),
       ],
-      if (isScrollable)
-        Flexible(child: SingleChildScrollView(child: child))
-      else
-        child,
+      if (isScrollable) Flexible(child: SingleChildScrollView(child: child)) else child,
       if (actions != null) ...[
         Divider(height: 0, color: Theme.of(context).colorScheme.outline),
         Padding(
           padding: const EdgeInsets.all(16),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: actions!,
-          ),
+          child: Row(mainAxisAlignment: MainAxisAlignment.end, children: actions!),
         ),
       ],
     ],
@@ -311,8 +262,7 @@ Future<T?> showAppDialog<T>({
   IconData? icon,
 }) async => showDialog<T>(
   context: context,
-  builder: (context) =>
-      AppDialog(title: title, content: content, actions: actions, icon: icon),
+  builder: (context) => AppDialog(title: title, content: content, actions: actions, icon: icon),
 );
 
 /// Show a confirmation dialog
@@ -343,12 +293,7 @@ Future<T?> showAppCustomDialog<T>({
   IconData? icon,
 }) async => showDialog<T>(
   context: context,
-  builder: (context) => AppCustomDialog(
-    title: title,
-    content: content,
-    actions: actions,
-    icon: icon,
-  ),
+  builder: (context) => AppCustomDialog(title: title, content: content, actions: actions, icon: icon),
 );
 
 /// Show a loading dialog
@@ -360,11 +305,7 @@ Future<T?> showAppLoadingDialog<T>({
 }) async => showDialog<T>(
   context: context,
   barrierDismissible: dismissible,
-  builder: (context) => AppLoadingDialog(
-    title: title,
-    message: message,
-    dismissible: dismissible,
-  ),
+  builder: (context) => AppLoadingDialog(title: title, message: message, dismissible: dismissible),
 );
 
 /// Show a bottom sheet
@@ -376,13 +317,6 @@ Future<T?> showAppBottomSheet<T>({
   bool isScrollable = true,
 }) async => showModalBottomSheet<T>(
   context: context,
-  builder: (context) => AppBottomSheet(
-    title: title,
-    actions: actions,
-    isScrollable: isScrollable,
-    child: child,
-  ),
-  shape: const RoundedRectangleBorder(
-    borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-  ),
+  builder: (context) => AppBottomSheet(title: title, actions: actions, isScrollable: isScrollable, child: child),
+  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
 );

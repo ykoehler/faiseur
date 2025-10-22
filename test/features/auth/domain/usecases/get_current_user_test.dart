@@ -26,9 +26,7 @@ void main() {
       test('should return current user when authenticated', () async {
         // Arrange
         final testUser = UserBuilder().build();
-        when(
-          () => mockRepository.getCurrentUser(),
-        ).thenAnswer((_) async => testUser);
+        when(() => mockRepository.getCurrentUser()).thenAnswer((_) async => testUser);
 
         // Act
         final result = await useCase.call();
@@ -40,9 +38,7 @@ void main() {
 
       test('should return null when user is not authenticated', () async {
         // Arrange
-        when(
-          () => mockRepository.getCurrentUser(),
-        ).thenAnswer((_) async => null);
+        when(() => mockRepository.getCurrentUser()).thenAnswer((_) async => null);
 
         // Act
         final result = await useCase.call();
@@ -61,9 +57,7 @@ void main() {
             .withDisplayName('John Doe')
             .build();
 
-        when(
-          () => mockRepository.getCurrentUser(),
-        ).thenAnswer((_) async => testUser);
+        when(() => mockRepository.getCurrentUser()).thenAnswer((_) async => testUser);
 
         // Act
         final result = await useCase.call();
@@ -77,13 +71,9 @@ void main() {
 
       test('should return user with avatar URL if available', () async {
         // Arrange
-        final testUser = UserBuilder()
-            .withAvatarUrl('https://example.com/avatar.jpg')
-            .build();
+        final testUser = UserBuilder().withAvatarUrl('https://example.com/avatar.jpg').build();
 
-        when(
-          () => mockRepository.getCurrentUser(),
-        ).thenAnswer((_) async => testUser);
+        when(() => mockRepository.getCurrentUser()).thenAnswer((_) async => testUser);
 
         // Act
         final result = await useCase.call();
@@ -100,34 +90,27 @@ void main() {
     group('Error Paths', () {
       test('should throw Failure.network on connectivity error', () async {
         // Arrange
-        when(() => mockRepository.getCurrentUser()).thenThrow(
-          const Failure.network(
-            message: 'Network error: No internet connection',
-          ),
-        );
+        when(
+          () => mockRepository.getCurrentUser(),
+        ).thenThrow(const Failure.network(message: 'Network error: No internet connection'));
 
         // Act & Assert
         expect(() => useCase.call(), throwsA(isA<Failure>()));
       });
 
-      test(
-        'should throw Failure.authentication when session expired',
-        () async {
-          // Arrange
-          when(
-            () => mockRepository.getCurrentUser(),
-          ).thenThrow(const Failure.authentication(message: 'Session expired'));
+      test('should throw Failure.authentication when session expired', () async {
+        // Arrange
+        when(() => mockRepository.getCurrentUser()).thenThrow(const Failure.authentication(message: 'Session expired'));
 
-          // Act & Assert
-          expect(() => useCase.call(), throwsA(isA<Failure>()));
-        },
-      );
+        // Act & Assert
+        expect(() => useCase.call(), throwsA(isA<Failure>()));
+      });
 
       test('should throw Failure.unknown on unexpected error', () async {
         // Arrange
-        when(() => mockRepository.getCurrentUser()).thenThrow(
-          const Failure.unknown(message: 'Unexpected error occurred'),
-        );
+        when(
+          () => mockRepository.getCurrentUser(),
+        ).thenThrow(const Failure.unknown(message: 'Unexpected error occurred'));
 
         // Act & Assert
         expect(() => useCase.call(), throwsA(isA<Failure>()));
@@ -135,9 +118,7 @@ void main() {
 
       test('should propagate generic exceptions', () async {
         // Arrange
-        when(
-          () => mockRepository.getCurrentUser(),
-        ).thenThrow(Exception('Repository error'));
+        when(() => mockRepository.getCurrentUser()).thenThrow(Exception('Repository error'));
 
         // Act & Assert
         expect(() => useCase.call(), throwsException);
@@ -152,9 +133,7 @@ void main() {
       test('should handle multiple calls when user is authenticated', () async {
         // Arrange
         final testUser = UserBuilder().build();
-        when(
-          () => mockRepository.getCurrentUser(),
-        ).thenAnswer((_) async => testUser);
+        when(() => mockRepository.getCurrentUser()).thenAnswer((_) async => testUser);
 
         // Act
         final result1 = await useCase.call();
@@ -168,13 +147,10 @@ void main() {
 
       test('should handle user with very long email', () async {
         // Arrange
-        const longEmail =
-            'verylongemailaddress.with.many.dots@subdomain.example.co.uk';
+        const longEmail = 'verylongemailaddress.with.many.dots@subdomain.example.co.uk';
         final testUser = UserBuilder().withEmail(longEmail).build();
 
-        when(
-          () => mockRepository.getCurrentUser(),
-        ).thenAnswer((_) async => testUser);
+        when(() => mockRepository.getCurrentUser()).thenAnswer((_) async => testUser);
 
         // Act
         final result = await useCase.call();
@@ -183,30 +159,23 @@ void main() {
         expect(result?.email, longEmail);
       });
 
-      test(
-        'should handle user with special characters in display name',
-        () async {
-          // Arrange
-          const displayName = "Jean-Pierre O'Brien-Müller";
-          final testUser = UserBuilder().withDisplayName(displayName).build();
+      test('should handle user with special characters in display name', () async {
+        // Arrange
+        const displayName = "Jean-Pierre O'Brien-Müller";
+        final testUser = UserBuilder().withDisplayName(displayName).build();
 
-          when(
-            () => mockRepository.getCurrentUser(),
-          ).thenAnswer((_) async => testUser);
+        when(() => mockRepository.getCurrentUser()).thenAnswer((_) async => testUser);
 
-          // Act
-          final result = await useCase.call();
+        // Act
+        final result = await useCase.call();
 
-          // Assert
-          expect(result?.displayName, displayName);
-        },
-      );
+        // Assert
+        expect(result?.displayName, displayName);
+      });
 
       test('should handle timeout error', () async {
         // Arrange
-        when(
-          () => mockRepository.getCurrentUser(),
-        ).thenThrow(const Failure.timeout(message: 'Request timed out'));
+        when(() => mockRepository.getCurrentUser()).thenThrow(const Failure.timeout(message: 'Request timed out'));
 
         // Act & Assert
         expect(() => useCase.call(), throwsA(isA<Failure>()));
@@ -220,9 +189,7 @@ void main() {
     group('Null Handling', () {
       test('should return null when user is not authenticated', () async {
         // Arrange
-        when(
-          () => mockRepository.getCurrentUser(),
-        ).thenAnswer((_) async => null);
+        when(() => mockRepository.getCurrentUser()).thenAnswer((_) async => null);
 
         // Act
         final result = await useCase.call();
@@ -233,9 +200,7 @@ void main() {
 
       test('should return null when explicitly set by repository', () async {
         // Arrange
-        when(
-          () => mockRepository.getCurrentUser(),
-        ).thenAnswer((_) async => Future.value(null));
+        when(() => mockRepository.getCurrentUser()).thenAnswer((_) async => Future.value(null));
 
         // Act
         final result = await useCase.call();

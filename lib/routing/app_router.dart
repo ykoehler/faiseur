@@ -33,9 +33,7 @@ Raw<AsyncValueNotifier<bool?>> authStateNotifier(Ref ref) {
 
   ref.listen<AsyncValue<bool?>>(isAuthenticatedProvider, (previous, next) {
     if (kDebugMode) {
-      print(
-        '[AUTH_NOTIFIER] Auth state changed: ${previous?.value} -> ${next.value}',
-      );
+      print('[AUTH_NOTIFIER] Auth state changed: ${previous?.value} -> ${next.value}');
     }
     notifier.update(next);
   });
@@ -55,23 +53,11 @@ GoRouter goRouter(Ref ref) {
       // Read the latest values on every redirect
       final isAuthenticatedAsync = ref.read(isAuthenticatedProvider);
       final isAppReady = ref.read(isAppReadyProvider);
-      return _handleRedirect(
-        context,
-        state,
-        isAuthenticatedAsync,
-        isAppReady,
-        ref,
-      );
+      return _handleRedirect(context, state, isAuthenticatedAsync, isAppReady, ref);
     },
     // Tell GoRouter to refresh when auth state changes
     refreshListenable: authNotifier,
-    routes: [
-      _buildSplashRoute(),
-      _buildOnboardingRoute(),
-      _buildAuthRoutes(),
-      _buildMainRoutes(),
-      _buildErrorRoute(),
-    ],
+    routes: [_buildSplashRoute(), _buildOnboardingRoute(), _buildAuthRoutes(), _buildMainRoutes(), _buildErrorRoute()],
     errorBuilder: (context, state) => ErrorPage(error: state.error?.toString()),
   );
 }
@@ -136,9 +122,7 @@ String? _handleRedirect(
   // If still loading auth state, stay on current route
   if (authed == null) {
     if (kDebugMode) {
-      print(
-        '[REDIRECT] Auth still loading, staying on ${state.matchedLocation}',
-      );
+      print('[REDIRECT] Auth still loading, staying on ${state.matchedLocation}');
     }
     return null;
   }
@@ -172,9 +156,7 @@ String? _handleRedirect(
     // Redirect auth routes to onboarding
     if (state.matchedLocation.startsWith('/auth')) {
       if (kDebugMode) {
-        print(
-          '[REDIRECT] User authenticated, redirecting /auth -> /onboarding',
-        );
+        print('[REDIRECT] User authenticated, redirecting /auth -> /onboarding');
       }
       return kOnboardingWelcomeRoute;
     }
@@ -198,10 +180,7 @@ String? _handleRedirect(
 // ============================================================================
 
 /// Builds the splash screen route.
-GoRoute _buildSplashRoute() => GoRoute(
-  path: kSplashRoute,
-  builder: (context, state) => const SplashPage(),
-);
+GoRoute _buildSplashRoute() => GoRoute(path: kSplashRoute, builder: (context, state) => const SplashPage());
 
 /// Builds the onboarding route for first-time users.
 ///
@@ -210,13 +189,7 @@ GoRoute _buildSplashRoute() => GoRoute(
 GoRoute _buildOnboardingRoute() => GoRoute(
   path: kOnboardingRoute,
   builder: (context, state) => const OnboardingPage(),
-  routes: [
-    GoRoute(
-      path: 'welcome',
-      name: kOnboardingRouteName,
-      builder: (context, state) => const OnboardingPage(),
-    ),
-  ],
+  routes: [GoRoute(path: 'welcome', name: kOnboardingRouteName, builder: (context, state) => const OnboardingPage())],
 );
 
 /// Builds all authentication-related routes.
@@ -227,21 +200,9 @@ GoRoute _buildAuthRoutes() => GoRoute(
   path: kAuthRoute,
   builder: (context, state) => const LoginPage(), // Fallback
   routes: [
-    GoRoute(
-      path: 'login',
-      name: kLoginRouteName,
-      builder: (context, state) => const LoginPage(),
-    ),
-    GoRoute(
-      path: 'signup',
-      name: kSignupRouteName,
-      builder: (context, state) => const SignupPage(),
-    ),
-    GoRoute(
-      path: 'forgot-password',
-      name: kForgotPasswordRouteName,
-      builder: (context, state) => const SplashPage(),
-    ),
+    GoRoute(path: 'login', name: kLoginRouteName, builder: (context, state) => const LoginPage()),
+    GoRoute(path: 'signup', name: kSignupRouteName, builder: (context, state) => const SignupPage()),
+    GoRoute(path: 'forgot-password', name: kForgotPasswordRouteName, builder: (context, state) => const SplashPage()),
   ],
 );
 
@@ -276,33 +237,19 @@ ShellRoute _buildMainRoutes() => ShellRoute(
                 final listId = state.pathParameters[kListIdParam];
                 final todoId = state.pathParameters[kTodoIdParam];
                 if (listId == null || todoId == null) {
-                  return const ErrorPage(
-                    error: 'List ID and Todo ID are required',
-                  );
+                  return const ErrorPage(error: 'List ID and Todo ID are required');
                 }
-                return ListsPage(
-                  selectedListId: listId,
-                  selectedTodoId: todoId,
-                );
+                return ListsPage(selectedListId: listId, selectedTodoId: todoId);
               },
             ),
           ],
         ),
       ],
     ),
-    GoRoute(
-      path: 'settings',
-      name: kSettingsRouteName,
-      builder: (context, state) => const SettingsPage(),
-    ),
-    GoRoute(
-      path: 'about',
-      name: kAboutRouteName,
-      builder: (context, state) => const SplashPage(),
-    ),
+    GoRoute(path: 'settings', name: kSettingsRouteName, builder: (context, state) => const SettingsPage()),
+    GoRoute(path: 'about', name: kAboutRouteName, builder: (context, state) => const SplashPage()),
   ],
 );
 
 /// Builds error handling routes.
-GoRoute _buildErrorRoute() =>
-    GoRoute(path: kErrorRoute, builder: (context, state) => const ErrorPage());
+GoRoute _buildErrorRoute() => GoRoute(path: kErrorRoute, builder: (context, state) => const ErrorPage());

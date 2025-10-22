@@ -43,10 +43,7 @@ class AppButton extends StatelessWidget {
     final isDisabled = isLoading || !isEnabled;
 
     final buttonChild = isLoading
-        ? SizedBox(
-            height: _getHeight(),
-            child: const AppLoadingIndicatorSmall(),
-          )
+        ? SizedBox(height: _getHeight(), child: const AppLoadingIndicatorSmall())
         : Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -57,10 +54,7 @@ class AppButton extends StatelessWidget {
 
     final button = ElevatedButton(
       onPressed: isDisabled ? null : onPressed,
-      style: ElevatedButton.styleFrom(
-        padding: _getPadding(),
-        minimumSize: Size.zero,
-      ),
+      style: ElevatedButton.styleFrom(padding: _getPadding(), minimumSize: Size.zero),
       child: buttonChild,
     );
 
@@ -132,10 +126,7 @@ class AppOutlinedButton extends StatelessWidget {
     final isDisabled = isLoading || !isEnabled;
 
     final buttonChild = isLoading
-        ? SizedBox(
-            height: _getHeight(),
-            child: const AppLoadingIndicatorSmall(),
-          )
+        ? SizedBox(height: _getHeight(), child: const AppLoadingIndicatorSmall())
         : Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -146,10 +137,7 @@ class AppOutlinedButton extends StatelessWidget {
 
     final button = OutlinedButton(
       onPressed: isDisabled ? null : onPressed,
-      style: OutlinedButton.styleFrom(
-        padding: _getPadding(),
-        minimumSize: Size.zero,
-      ),
+      style: OutlinedButton.styleFrom(padding: _getPadding(), minimumSize: Size.zero),
       child: buttonChild,
     );
 
@@ -220,10 +208,7 @@ class AppTextButton extends StatelessWidget {
             ],
           );
 
-    return TextButton(
-      onPressed: isDisabled ? null : onPressed,
-      child: buttonChild,
-    );
+    return TextButton(onPressed: isDisabled ? null : onPressed, child: buttonChild);
   }
 }
 
@@ -317,18 +302,10 @@ class AppButtonRow extends StatelessWidget {
     mainAxisAlignment: MainAxisAlignment.end,
     children: [
       if (secondaryLabel != null && onSecondaryPressed != null) ...[
-        AppTextButton(
-          label: secondaryLabel!,
-          onPressed: onSecondaryPressed!,
-          isLoading: secondaryLoading,
-        ),
+        AppTextButton(label: secondaryLabel!, onPressed: onSecondaryPressed!, isLoading: secondaryLoading),
         const SizedBox(width: 8),
       ],
-      AppButton(
-        label: primaryLabel,
-        onPressed: onPrimaryPressed,
-        isLoading: primaryLoading,
-      ),
+      AppButton(label: primaryLabel, onPressed: onPrimaryPressed, isLoading: primaryLoading),
     ],
   );
 }

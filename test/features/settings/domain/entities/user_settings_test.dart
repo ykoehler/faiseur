@@ -32,11 +32,7 @@ void main() {
     });
 
     test('should use default values when not specified', () {
-      final settings = UserSettings(
-        userId: 'user123',
-        updatedAt: now,
-        createdAt: now,
-      );
+      final settings = UserSettings(userId: 'user123', updatedAt: now, createdAt: now);
 
       expect(settings.themeMode, 'system');
       expect(settings.notificationsEnabled, true);
@@ -50,151 +46,75 @@ void main() {
     test('should validate userId is not empty', () {
       final settings = UserSettings(userId: '', updatedAt: now, createdAt: now);
 
-      expect(
-        settings.validate,
-        throwsA(
-          isA<ArgumentError>().having(
-            (e) => e.message,
-            'message',
-            contains('userId'),
-          ),
-        ),
-      );
+      expect(settings.validate, throwsA(isA<ArgumentError>().having((e) => e.message, 'message', contains('userId'))));
     });
 
     test('should validate themeMode is valid', () {
-      final settings = UserSettings(
-        userId: 'user123',
-        themeMode: 'invalid',
-        updatedAt: now,
-        createdAt: now,
-      );
+      final settings = UserSettings(userId: 'user123', themeMode: 'invalid', updatedAt: now, createdAt: now);
 
       expect(
         settings.validate,
-        throwsA(
-          isA<ArgumentError>().having(
-            (e) => e.message,
-            'message',
-            contains('themeMode'),
-          ),
-        ),
+        throwsA(isA<ArgumentError>().having((e) => e.message, 'message', contains('themeMode'))),
       );
     });
 
     test('should accept valid themeModes', () {
       for (final mode in ['light', 'dark', 'system']) {
-        final settings = UserSettings(
-          userId: 'user123',
-          themeMode: mode,
-          updatedAt: now,
-          createdAt: now,
-        );
+        final settings = UserSettings(userId: 'user123', themeMode: mode, updatedAt: now, createdAt: now);
 
         expect(settings.validate, returnsNormally);
       }
     });
 
     test('should validate defaultViewMode is valid', () {
-      final settings = UserSettings(
-        userId: 'user123',
-        defaultViewMode: 'invalid',
-        updatedAt: now,
-        createdAt: now,
-      );
+      final settings = UserSettings(userId: 'user123', defaultViewMode: 'invalid', updatedAt: now, createdAt: now);
 
       expect(
         settings.validate,
-        throwsA(
-          isA<ArgumentError>().having(
-            (e) => e.message,
-            'message',
-            contains('defaultViewMode'),
-          ),
-        ),
+        throwsA(isA<ArgumentError>().having((e) => e.message, 'message', contains('defaultViewMode'))),
       );
     });
 
     test('should accept valid viewModes', () {
       for (final mode in ['list', 'kanban', 'card']) {
-        final settings = UserSettings(
-          userId: 'user123',
-          defaultViewMode: mode,
-          updatedAt: now,
-          createdAt: now,
-        );
+        final settings = UserSettings(userId: 'user123', defaultViewMode: mode, updatedAt: now, createdAt: now);
 
         expect(settings.validate, returnsNormally);
       }
     });
 
     test('should validate languageCode is 2 characters', () {
-      final settings = UserSettings(
-        userId: 'user123',
-        languageCode: 'eng',
-        updatedAt: now,
-        createdAt: now,
-      );
+      final settings = UserSettings(userId: 'user123', languageCode: 'eng', updatedAt: now, createdAt: now);
 
       expect(
         settings.validate,
-        throwsA(
-          isA<ArgumentError>().having(
-            (e) => e.message,
-            'message',
-            contains('languageCode'),
-          ),
-        ),
+        throwsA(isA<ArgumentError>().having((e) => e.message, 'message', contains('languageCode'))),
       );
     });
 
     test('should validate with valid languageCode', () {
-      final settings = UserSettings(
-        userId: 'user123',
-        languageCode: 'en',
-        updatedAt: now,
-        createdAt: now,
-      );
+      final settings = UserSettings(userId: 'user123', languageCode: 'en', updatedAt: now, createdAt: now);
 
       expect(settings.validate, returnsNormally);
     });
 
     test('should be immutable', () {
-      final settings = UserSettings(
-        userId: 'user123',
-        updatedAt: now,
-        createdAt: now,
-      );
+      final settings = UserSettings(userId: 'user123', updatedAt: now, createdAt: now);
 
       // Attempting to modify should not work (Freezed generates immutable classes)
       expect(identical(settings, settings), true);
     });
 
     test('should support equality comparison', () {
-      final settings1 = UserSettings(
-        userId: 'user123',
-        themeMode: 'dark',
-        updatedAt: now,
-        createdAt: now,
-      );
+      final settings1 = UserSettings(userId: 'user123', themeMode: 'dark', updatedAt: now, createdAt: now);
 
-      final settings2 = UserSettings(
-        userId: 'user123',
-        themeMode: 'dark',
-        updatedAt: now,
-        createdAt: now,
-      );
+      final settings2 = UserSettings(userId: 'user123', themeMode: 'dark', updatedAt: now, createdAt: now);
 
       expect(settings1, equals(settings2));
     });
 
     test('should support copyWith', () {
-      final settings = UserSettings(
-        userId: 'user123',
-        themeMode: 'light',
-        updatedAt: now,
-        createdAt: now,
-      );
+      final settings = UserSettings(userId: 'user123', themeMode: 'light', updatedAt: now, createdAt: now);
 
       final updated = settings.copyWith(themeMode: 'dark');
 

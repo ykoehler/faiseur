@@ -3,11 +3,7 @@ import 'package:flutter/material.dart';
 /// Parameters returned from the create todo dialog
 class CreateTodoDialogParams {
   /// Creates parameters for a new todo
-  CreateTodoDialogParams({
-    required this.title,
-    this.description = '',
-    this.dueDate,
-  });
+  CreateTodoDialogParams({required this.title, this.description = '', this.dueDate});
 
   /// The title of the todo
   final String title;
@@ -80,14 +76,8 @@ class _CreateTodoDialogState extends State<CreateTodoDialog> {
       ),
     ),
     actions: [
-      TextButton(
-        onPressed: () => Navigator.of(context).pop(),
-        child: const Text('Cancel'),
-      ),
-      ElevatedButton(
-        onPressed: _validateAndSubmit,
-        child: const Text('Create'),
-      ),
+      TextButton(onPressed: () => Navigator.of(context).pop(), child: const Text('Cancel')),
+      ElevatedButton(onPressed: _validateAndSubmit, child: const Text('Create')),
     ],
   );
 
@@ -107,10 +97,7 @@ class _CreateTodoDialogState extends State<CreateTodoDialog> {
           const Spacer(),
           TextButton(onPressed: _selectDueDate, child: const Text('Set Date')),
           if (_selectedDueDate != null)
-            TextButton(
-              onPressed: () => setState(() => _selectedDueDate = null),
-              child: const Text('Clear'),
-            ),
+            TextButton(onPressed: () => setState(() => _selectedDueDate = null), child: const Text('Clear')),
         ],
       ),
     ],
@@ -119,8 +106,7 @@ class _CreateTodoDialogState extends State<CreateTodoDialog> {
   Future<void> _selectDueDate() async {
     final picked = await showDatePicker(
       context: context,
-      initialDate:
-          _selectedDueDate ?? DateTime.now().add(const Duration(days: 1)),
+      initialDate: _selectedDueDate ?? DateTime.now().add(const Duration(days: 1)),
       firstDate: DateTime.now(),
       lastDate: DateTime.now().add(const Duration(days: 365)),
     );
@@ -134,18 +120,12 @@ class _CreateTodoDialogState extends State<CreateTodoDialog> {
     final title = _titleController.text.trim();
 
     if (title.isEmpty) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('Please enter a title')));
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Please enter a title')));
       return;
     }
 
     Navigator.of(context).pop(
-      CreateTodoDialogParams(
-        title: title,
-        description: _descriptionController.text.trim(),
-        dueDate: _selectedDueDate,
-      ),
+      CreateTodoDialogParams(title: title, description: _descriptionController.text.trim(), dueDate: _selectedDueDate),
     );
   }
 }

@@ -5,12 +5,7 @@ import 'package:flutter/material.dart';
 /// Shows an error icon, message, and optional action button.
 class AppErrorWidget extends StatelessWidget {
   /// Creates an error widget.
-  const AppErrorWidget({
-    required this.error,
-    this.onRetry,
-    this.details,
-    super.key,
-  });
+  const AppErrorWidget({required this.error, this.onRetry, this.details, super.key});
 
   /// The error message to display
   final String error;
@@ -28,34 +23,20 @@ class AppErrorWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.error_outline,
-            size: 64,
-            color: Theme.of(context).colorScheme.error,
-          ),
+          Icon(Icons.error_outline, size: 64, color: Theme.of(context).colorScheme.error),
           const SizedBox(height: 16),
           Text(
             error,
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-              color: Theme.of(context).colorScheme.error,
-            ),
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Theme.of(context).colorScheme.error),
             textAlign: TextAlign.center,
           ),
           if (details != null) ...[
             const SizedBox(height: 8),
-            Text(
-              details!,
-              style: Theme.of(context).textTheme.bodyMedium,
-              textAlign: TextAlign.center,
-            ),
+            Text(details!, style: Theme.of(context).textTheme.bodyMedium, textAlign: TextAlign.center),
           ],
           if (onRetry != null) ...[
             const SizedBox(height: 24),
-            ElevatedButton.icon(
-              onPressed: onRetry,
-              icon: const Icon(Icons.refresh),
-              label: const Text('Retry'),
-            ),
+            ElevatedButton.icon(onPressed: onRetry, icon: const Icon(Icons.refresh), label: const Text('Retry')),
           ],
         ],
       ),
@@ -68,13 +49,7 @@ class AppErrorWidget extends StatelessWidget {
 /// Used for showing error details in a dismissible dialog.
 class AppErrorDialog extends StatelessWidget {
   /// Creates an error dialog.
-  const AppErrorDialog({
-    required this.title,
-    required this.message,
-    this.stackTrace,
-    this.onDismiss,
-    super.key,
-  });
+  const AppErrorDialog({required this.title, required this.message, this.stackTrace, this.onDismiss, super.key});
 
   /// Title of the error
   final String title;
@@ -108,9 +83,7 @@ class AppErrorDialog extends StatelessWidget {
               ),
               child: Text(
                 stackTrace!,
-                style: Theme.of(
-                  context,
-                ).textTheme.bodySmall?.copyWith(fontFamily: 'monospace'),
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(fontFamily: 'monospace'),
                 maxLines: 10,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -145,11 +118,7 @@ void showAppErrorSnackbar(
       content: Text(message),
       backgroundColor: Theme.of(context).colorScheme.error,
       action: onRetry != null
-          ? SnackBarAction(
-              label: 'Retry',
-              textColor: Theme.of(context).colorScheme.onError,
-              onPressed: onRetry,
-            )
+          ? SnackBarAction(label: 'Retry', textColor: Theme.of(context).colorScheme.onError, onPressed: onRetry)
           : null,
       duration: duration,
     ),
@@ -161,12 +130,7 @@ void showAppErrorSnackbar(
 /// Displays at the top of the screen with dismissible option.
 class AppErrorBanner extends StatefulWidget {
   /// Creates an error banner.
-  const AppErrorBanner({
-    required this.message,
-    this.onDismiss,
-    this.onRetry,
-    super.key,
-  });
+  const AppErrorBanner({required this.message, this.onDismiss, this.onRetry, super.key});
 
   /// Error message to display
   final String message;
@@ -201,27 +165,21 @@ class _AppErrorBannerState extends State<AppErrorBanner> {
             Expanded(
               child: Text(
                 widget.message,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onErrorContainer,
-                ),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.onErrorContainer),
               ),
             ),
             if (widget.onRetry != null) ...[
               const SizedBox(width: 8),
               TextButton(
                 onPressed: widget.onRetry,
-                child: Text(
-                  'Retry',
-                  style: TextStyle(color: Theme.of(context).colorScheme.error),
-                ),
+                child: Text('Retry', style: TextStyle(color: Theme.of(context).colorScheme.error)),
               ),
             ],
             const SizedBox(width: 8),
             IconButton(
-              icon: Icon(
-                Icons.close,
-                color: Theme.of(context).colorScheme.onErrorContainer,
-              ),
+              icon: Icon(Icons.close, color: Theme.of(context).colorScheme.onErrorContainer),
               onPressed: () {
                 setState(() => _dismissed = true);
                 widget.onDismiss?.call();

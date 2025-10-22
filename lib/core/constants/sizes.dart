@@ -118,10 +118,7 @@ class AppInputSize {
   static const double buttonHeightSmall = 40;
 
   /// Standard button padding
-  static const EdgeInsets buttonPadding = EdgeInsets.symmetric(
-    horizontal: AppSpacing.lg,
-    vertical: AppSpacing.md,
-  );
+  static const EdgeInsets buttonPadding = EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md);
 
   /// Icon button size (48dp touch target)
   static const double iconButtonSize = 48;

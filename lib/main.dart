@@ -16,9 +16,7 @@ void main() async {
   // Initialize Firebase with environment-specific configuration
   // Environment is set via --dart-define or --dart-define-from-file at build time
   try {
-    debugPrint(
-      '🔧 Initializing Firebase for ${FirebaseConfig.environmentName}...',
-    );
+    debugPrint('🔧 Initializing Firebase for ${FirebaseConfig.environmentName}...');
 
     await Firebase.initializeApp(options: FirebaseConfig.currentPlatform);
 
@@ -41,15 +39,11 @@ void main() async {
       debugPrint('Stack trace: $stackTrace');
     }
     debugPrint('💡 Troubleshooting steps:');
-    debugPrint(
-      '   1. Use --dart-define-from-file to set environment variables:',
-    );
+    debugPrint('   1. Use --dart-define-from-file to set environment variables:');
     debugPrint('      flutter run --dart-define-from-file=.env.dev');
     debugPrint('   2. Or use individual --dart-define flags:');
     debugPrint('      flutter run --dart-define=FLAVOR=dev');
-    debugPrint(
-      '   3. Ensure Firebase options are generated in lib/firebase_options_*.dart',
-    );
+    debugPrint('   3. Ensure Firebase options are generated in lib/firebase_options_*.dart');
     debugPrint('   4. Check docs/firebase-setup.md for detailed instructions.');
   }
 

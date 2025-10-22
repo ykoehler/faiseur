@@ -20,9 +20,7 @@ void main() {
 
     test('Should delete todo with valid parameters', () async {
       // Arrange
-      when(
-        () => mockRepository.deleteTodo(testListId, testTodoId),
-      ).thenAnswer((_) async => Future.value());
+      when(() => mockRepository.deleteTodo(testListId, testTodoId)).thenAnswer((_) async => Future.value());
 
       // Act
       await deleteTodo.call(testListId, testTodoId);
@@ -33,31 +31,20 @@ void main() {
 
     test('Should throw ArgumentError when listId is empty', () async {
       // Act & Assert
-      expect(
-        () => deleteTodo.call('', testTodoId),
-        throwsA(isA<ArgumentError>()),
-      );
+      expect(() => deleteTodo.call('', testTodoId), throwsA(isA<ArgumentError>()));
     });
 
     test('Should throw ArgumentError when todoId is empty', () async {
       // Act & Assert
-      expect(
-        () => deleteTodo.call(testListId, ''),
-        throwsA(isA<ArgumentError>()),
-      );
+      expect(() => deleteTodo.call(testListId, ''), throwsA(isA<ArgumentError>()));
     });
 
     test('Should handle repository errors', () async {
       // Arrange
-      when(
-        () => mockRepository.deleteTodo(testListId, testTodoId),
-      ).thenThrow(Exception('Firestore error'));
+      when(() => mockRepository.deleteTodo(testListId, testTodoId)).thenThrow(Exception('Firestore error'));
 
       // Act & Assert
-      expect(
-        () => deleteTodo.call(testListId, testTodoId),
-        throwsA(isA<Exception>()),
-      );
+      expect(() => deleteTodo.call(testListId, testTodoId), throwsA(isA<Exception>()));
     });
   });
 }

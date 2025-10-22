@@ -3,8 +3,7 @@ import 'package:faiseur/features/lists/domain/repositories/lists_repository.dart
 /// Use case for deleting a list
 class DeleteList {
   /// Creates a new DeleteList use case
-  const DeleteList({required ListsRepository repository})
-    : _repository = repository;
+  const DeleteList({required ListsRepository repository}) : _repository = repository;
 
   final ListsRepository _repository;
 

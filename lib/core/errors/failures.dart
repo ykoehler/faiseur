@@ -23,20 +23,16 @@ sealed class Failure with _$Failure {
   const factory Failure.timeout({required String message}) = TimeoutFailure;
 
   /// Authentication failed
-  const factory Failure.authentication({required String message}) =
-      AuthenticationFailure;
+  const factory Failure.authentication({required String message}) = AuthenticationFailure;
 
   /// Authorization denied
-  const factory Failure.authorization({required String message}) =
-      AuthorizationFailure;
+  const factory Failure.authorization({required String message}) = AuthorizationFailure;
 
   /// Validation error
-  const factory Failure.validation({required String message, String? field}) =
-      ValidationFailure;
+  const factory Failure.validation({required String message, String? field}) = ValidationFailure;
 
   /// Firestore database error
-  const factory Failure.firestore({required String message, String? code}) =
-      FirestoreFailure;
+  const factory Failure.firestore({required String message, String? code}) = FirestoreFailure;
 
   /// Storage error
   const factory Failure.storage({required String message}) = StorageFailure;
@@ -59,8 +55,7 @@ sealed class Failure with _$Failure {
     timeout: (message) => 'Request timed out. Please try again.',
     authentication: (message) => 'Authentication failed. Please sign in again.',
     authorization: (message) => 'You do not have permission for this action.',
-    validation: (message, field) =>
-        field != null ? '$field: $message' : message,
+    validation: (message, field) => field != null ? '$field: $message' : message,
     firestore: (message, code) => 'Database error occurred.',
     storage: (message) => 'Storage error occurred.',
     notFound: (message) => 'The requested item was not found.',

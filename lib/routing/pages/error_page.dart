@@ -19,25 +19,14 @@ class ErrorPage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.error_outline,
-            size: 64,
-            color: Theme.of(context).colorScheme.error,
-          ),
+          Icon(Icons.error_outline, size: 64, color: Theme.of(context).colorScheme.error),
           const SizedBox(height: 16),
-          Text(
-            'Something went wrong',
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
+          Text('Something went wrong', style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 8),
           if (error != null)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32),
-              child: Text(
-                error!,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
+              child: Text(error!, textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodySmall),
             ),
           const SizedBox(height: 24),
           Wrap(

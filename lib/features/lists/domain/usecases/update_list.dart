@@ -4,8 +4,7 @@ import 'package:faiseur/features/lists/domain/repositories/lists_repository.dart
 /// Use case for updating an existing list
 class UpdateList {
   /// Creates a new UpdateList use case
-  const UpdateList({required ListsRepository repository})
-    : _repository = repository;
+  const UpdateList({required ListsRepository repository}) : _repository = repository;
 
   final ListsRepository _repository;
 
@@ -43,6 +42,5 @@ class UpdateList {
     }
   }
 
-  bool _isValidHexColor(String color) =>
-      RegExp(r'^#[0-9A-F]{6}$', caseSensitive: false).hasMatch(color);
+  bool _isValidHexColor(String color) => RegExp(r'^#[0-9A-F]{6}$', caseSensitive: false).hasMatch(color);
 }

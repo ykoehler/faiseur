@@ -4,18 +4,15 @@ import 'package:faiseur/features/lists/domain/repositories/lists_repository.dart
 
 /// Implementation of ListsRepository using remote datasource
 class ListsRepositoryImpl implements ListsRepository {
-  ListsRepositoryImpl({required ListsRemoteDatasource remoteDatasource})
-    : _remoteDatasource = remoteDatasource;
+  ListsRepositoryImpl({required ListsRemoteDatasource remoteDatasource}) : _remoteDatasource = remoteDatasource;
 
   final ListsRemoteDatasource _remoteDatasource;
 
   @override
-  Future<List<TodoList>> getUserLists(String userId) async =>
-      _remoteDatasource.getUserLists(userId);
+  Future<List<TodoList>> getUserLists(String userId) async => _remoteDatasource.getUserLists(userId);
 
   @override
-  Future<TodoList?> getList(String listId) async =>
-      _remoteDatasource.getList(listId);
+  Future<TodoList?> getList(String listId) async => _remoteDatasource.getList(listId);
 
   @override
   Future<TodoList> createList({
@@ -37,8 +34,7 @@ class ListsRepositoryImpl implements ListsRepository {
   }
 
   @override
-  Future<TodoList> updateList(TodoList list) async =>
-      _remoteDatasource.updateList(list);
+  Future<TodoList> updateList(TodoList list) async => _remoteDatasource.updateList(list);
 
   @override
   Future<void> deleteList(String listId) async {
@@ -46,10 +42,8 @@ class ListsRepositoryImpl implements ListsRepository {
   }
 
   @override
-  Stream<List<TodoList>> watchUserLists(String userId) =>
-      _remoteDatasource.watchUserLists(userId);
+  Stream<List<TodoList>> watchUserLists(String userId) => _remoteDatasource.watchUserLists(userId);
 
   @override
-  Stream<TodoList?> watchList(String listId) =>
-      _remoteDatasource.watchList(listId);
+  Stream<TodoList?> watchList(String listId) => _remoteDatasource.watchList(listId);
 }

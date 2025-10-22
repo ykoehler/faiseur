@@ -22,25 +22,11 @@ void main() {
       // Arrange
       const userId = 'user123';
       final mockLists = [
-        TodoList(
-          id: 'list1',
-          title: 'Shopping',
-          color: '#3498db',
-          ownerId: userId,
-          createdAt: DateTime.now(),
-        ),
-        TodoList(
-          id: 'list2',
-          title: 'Work',
-          color: '#e74c3c',
-          ownerId: userId,
-          createdAt: DateTime.now(),
-        ),
+        TodoList(id: 'list1', title: 'Shopping', color: '#3498db', ownerId: userId, createdAt: DateTime.now()),
+        TodoList(id: 'list2', title: 'Work', color: '#e74c3c', ownerId: userId, createdAt: DateTime.now()),
       ];
 
-      when(
-        () => mockRepository.getUserLists(userId),
-      ).thenAnswer((_) async => mockLists);
+      when(() => mockRepository.getUserLists(userId)).thenAnswer((_) async => mockLists);
 
       final useCase = GetUserLists(repository: mockRepository);
 
@@ -63,9 +49,7 @@ void main() {
     test('should return empty list when user has no lists', () async {
       // Arrange
       const userId = 'user123';
-      when(
-        () => mockRepository.getUserLists(userId),
-      ).thenAnswer((_) async => <TodoList>[]);
+      when(() => mockRepository.getUserLists(userId)).thenAnswer((_) async => <TodoList>[]);
 
       final useCase = GetUserLists(repository: mockRepository);
 
@@ -88,9 +72,7 @@ void main() {
         createdAt: DateTime.now(),
       );
 
-      when(
-        () => mockRepository.watchUserLists(userId),
-      ).thenAnswer((_) => Stream.value([mockList]));
+      when(() => mockRepository.watchUserLists(userId)).thenAnswer((_) => Stream.value([mockList]));
 
       final useCase = GetUserLists(repository: mockRepository);
 
@@ -140,11 +122,7 @@ void main() {
     });
 
     test('should throw when title is empty', () async {
-      const params = CreateListParams(
-        title: '',
-        color: '#3498db',
-        ownerId: 'user123',
-      );
+      const params = CreateListParams(title: '', color: '#3498db', ownerId: 'user123');
 
       final useCase = CreateList(repository: mockRepository);
 
@@ -153,11 +131,7 @@ void main() {
     });
 
     test('should throw when title exceeds max length', () async {
-      final params = CreateListParams(
-        title: 'a' * 260,
-        color: '#3498db',
-        ownerId: 'user123',
-      );
+      final params = CreateListParams(title: 'a' * 260, color: '#3498db', ownerId: 'user123');
 
       final useCase = CreateList(repository: mockRepository);
 
@@ -166,11 +140,7 @@ void main() {
     });
 
     test('should throw when color is invalid', () async {
-      const params = CreateListParams(
-        title: 'Shopping',
-        color: 'invalid-color',
-        ownerId: 'user123',
-      );
+      const params = CreateListParams(title: 'Shopping', color: 'invalid-color', ownerId: 'user123');
 
       final useCase = CreateList(repository: mockRepository);
 
@@ -179,11 +149,7 @@ void main() {
     });
 
     test('should throw when ownerId is empty', () async {
-      const params = CreateListParams(
-        title: 'Shopping',
-        color: '#3498db',
-        ownerId: '',
-      );
+      const params = CreateListParams(title: 'Shopping', color: '#3498db', ownerId: '');
 
       final useCase = CreateList(repository: mockRepository);
 
@@ -192,12 +158,7 @@ void main() {
     });
 
     test('should throw when description exceeds max length', () async {
-      final params = CreateListParams(
-        title: 'Shopping',
-        color: '#3498db',
-        ownerId: 'user123',
-        description: 'a' * 1001,
-      );
+      final params = CreateListParams(title: 'Shopping', color: '#3498db', ownerId: 'user123', description: 'a' * 1001);
 
       final useCase = CreateList(repository: mockRepository);
 
@@ -219,9 +180,7 @@ void main() {
 
       final updatedList = list.copyWith(title: 'Updated Shopping');
 
-      when(
-        () => mockRepository.updateList(updatedList),
-      ).thenAnswer((_) async => updatedList);
+      when(() => mockRepository.updateList(updatedList)).thenAnswer((_) async => updatedList);
 
       final useCase = UpdateList(repository: mockRepository);
 
@@ -235,13 +194,7 @@ void main() {
 
     test('should throw when list ID is empty', () async {
       // Arrange
-      final list = TodoList(
-        id: '',
-        title: 'Shopping',
-        color: '#3498db',
-        ownerId: 'user123',
-        createdAt: DateTime.now(),
-      );
+      final list = TodoList(id: '', title: 'Shopping', color: '#3498db', ownerId: 'user123', createdAt: DateTime.now());
 
       final useCase = UpdateList(repository: mockRepository);
 
@@ -251,13 +204,7 @@ void main() {
 
     test('should throw when title is empty', () async {
       // Arrange
-      final list = TodoList(
-        id: 'list1',
-        title: '',
-        color: '#3498db',
-        ownerId: 'user123',
-        createdAt: DateTime.now(),
-      );
+      final list = TodoList(id: 'list1', title: '', color: '#3498db', ownerId: 'user123', createdAt: DateTime.now());
 
       final useCase = UpdateList(repository: mockRepository);
 
@@ -293,9 +240,7 @@ void main() {
       // Arrange
       const listId = 'list1';
 
-      when(
-        () => mockRepository.deleteList(listId),
-      ).thenThrow(Exception('Deletion failed'));
+      when(() => mockRepository.deleteList(listId)).thenThrow(Exception('Deletion failed'));
 
       final useCase = DeleteList(repository: mockRepository);
 

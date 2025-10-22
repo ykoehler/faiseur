@@ -53,9 +53,7 @@ class TodoItem extends StatelessWidget {
                         todo.description!,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: Colors.grey[600],
-                        ),
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.grey[600]),
                       ),
                     ),
                   if (todo.dueDate != null) _buildDueDate(context),
@@ -91,9 +89,7 @@ class TodoItem extends StatelessWidget {
     style: TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      decoration: todo.status == TodoStatus.done
-          ? TextDecoration.lineThrough
-          : null,
+      decoration: todo.status == TodoStatus.done ? TextDecoration.lineThrough : null,
       color: todo.status == TodoStatus.done ? Colors.grey[500] : null,
     ),
     maxLines: 2,
@@ -114,17 +110,11 @@ class TodoItem extends StatelessWidget {
       padding: const EdgeInsets.only(top: 4),
       child: Row(
         children: [
-          Icon(
-            Icons.calendar_today,
-            size: 14,
-            color: isOverdue ? Colors.red : Colors.grey[600],
-          ),
+          Icon(Icons.calendar_today, size: 14, color: isOverdue ? Colors.red : Colors.grey[600]),
           const SizedBox(width: 4),
           Text(
             _formatDueDate(dueDate, daysUntil),
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: isOverdue ? Colors.red : Colors.grey[600],
-            ),
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(color: isOverdue ? Colors.red : Colors.grey[600]),
           ),
         ],
       ),
@@ -151,17 +141,9 @@ class TodoItem extends StatelessWidget {
   }
 
   Widget _buildPriorityBadge() {
-    final colors = {
-      TodoPriority.low: Colors.blue,
-      TodoPriority.medium: Colors.orange,
-      TodoPriority.high: Colors.red,
-    };
+    final colors = {TodoPriority.low: Colors.blue, TodoPriority.medium: Colors.orange, TodoPriority.high: Colors.red};
 
-    final labels = {
-      TodoPriority.low: 'L',
-      TodoPriority.medium: 'M',
-      TodoPriority.high: 'H',
-    };
+    final labels = {TodoPriority.low: 'L', TodoPriority.medium: 'M', TodoPriority.high: 'H'};
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -172,11 +154,7 @@ class TodoItem extends StatelessWidget {
       ),
       child: Text(
         labels[todo.priority] ?? 'M',
-        style: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.bold,
-          color: colors[todo.priority],
-        ),
+        style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: colors[todo.priority]),
       ),
     );
   }

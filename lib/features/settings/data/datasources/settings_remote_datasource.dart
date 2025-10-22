@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:faiseur/features/settings/data/models/user_settings_model.dart';
-import 'package:faiseur/features/settings/domain/repositories/settings_repository.dart'
-    show SettingsException;
+import 'package:faiseur/features/settings/domain/repositories/settings_repository.dart' show SettingsException;
 
 /// Remote datasource for user settings using Firestore.
 ///
@@ -41,8 +40,7 @@ abstract class SettingsRemoteDatasource {
 /// Implementation of [SettingsRemoteDatasource] using Firebase Cloud Firestore.
 class SettingsRemoteDatasourceImpl implements SettingsRemoteDatasource {
   /// Creates a settings remote datasource.
-  SettingsRemoteDatasourceImpl({required FirebaseFirestore firestore})
-    : _firestore = firestore;
+  SettingsRemoteDatasourceImpl({required FirebaseFirestore firestore}) : _firestore = firestore;
 
   final FirebaseFirestore _firestore;
 
@@ -52,10 +50,7 @@ class SettingsRemoteDatasourceImpl implements SettingsRemoteDatasource {
   @override
   Future<UserSettingsModel> getUserSettings(String userId) async {
     try {
-      final doc = await _firestore
-          .collection(_collectionPath)
-          .doc(userId)
-          .get();
+      final doc = await _firestore.collection(_collectionPath).doc(userId).get();
 
       if (!doc.exists) {
         // Return default settings if document doesn't exist
@@ -106,10 +101,7 @@ class SettingsRemoteDatasourceImpl implements SettingsRemoteDatasource {
     try {
       settings.validate();
       final data = settings.toJson();
-      await _firestore
-          .collection(_collectionPath)
-          .doc(settings.userId)
-          .set(data, SetOptions(merge: true));
+      await _firestore.collection(_collectionPath).doc(settings.userId).set(data, SetOptions(merge: true));
     } catch (e) {
       throw SettingsRemoteDatasourceException(
         'Failed to save settings for user ${settings.userId}',
@@ -153,11 +145,7 @@ class SettingsRemoteDatasourceImpl implements SettingsRemoteDatasource {
 /// Exception thrown by settings remote datasource.
 class SettingsRemoteDatasourceException implements Exception {
   /// Creates a settings datasource exception.
-  SettingsRemoteDatasourceException(
-    this.message, {
-    this.code,
-    this.originalError,
-  });
+  SettingsRemoteDatasourceException(this.message, {this.code, this.originalError});
 
   /// The error message.
   final String message;
@@ -169,6 +157,5 @@ class SettingsRemoteDatasourceException implements Exception {
   final Object? originalError;
 
   @override
-  String toString() =>
-      'SettingsRemoteDatasourceException: $message${code != null ? ' ($code)' : ''}';
+  String toString() => 'SettingsRemoteDatasourceException: $message${code != null ? ' ($code)' : ''}';
 }

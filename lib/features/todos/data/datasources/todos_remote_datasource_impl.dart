@@ -6,8 +6,7 @@ import 'package:faiseur/features/todos/domain/entities/todo.dart';
 
 /// Implementation of TodosRemoteDatasource using Firestore
 class TodosRemoteDatasourceImpl implements TodosRemoteDatasource {
-  TodosRemoteDatasourceImpl({required FirestoreDatasource firestoreDatasource})
-    : _firestore = firestoreDatasource;
+  TodosRemoteDatasourceImpl({required FirestoreDatasource firestoreDatasource}) : _firestore = firestoreDatasource;
 
   final FirestoreDatasource _firestore;
 
@@ -54,8 +53,7 @@ class TodosRemoteDatasourceImpl implements TodosRemoteDatasource {
   Future<Todo> createTodo(Todo todo) async {
     try {
       final model = todo.toModel();
-      final data = model.toJson()
-        ..remove('id'); // Remove ID for auto-generation
+      final data = model.toJson()..remove('id'); // Remove ID for auto-generation
 
       final docRef = await _firestore.addDoc(_getTodosPath(todo.listId), data);
       final createdTodo = todo.copyWith(id: docRef.id);
@@ -72,10 +70,7 @@ class TodosRemoteDatasourceImpl implements TodosRemoteDatasource {
       final data = model.toJson()..remove('id'); // Don't update ID
       data['updatedAt'] = FieldValue.serverTimestamp(); // Update timestamp
 
-      await _firestore.updateDoc(
-        '${_getTodosPath(todo.listId)}/${todo.id}',
-        data,
-      );
+      await _firestore.updateDoc('${_getTodosPath(todo.listId)}/${todo.id}', data);
       return todo.copyWith(updatedAt: DateTime.now());
     } catch (e) {
       throw Exception('Failed to update todo: $e');
@@ -92,16 +87,15 @@ class TodosRemoteDatasourceImpl implements TodosRemoteDatasource {
   }
 
   @override
-  Stream<List<Todo>> watchTodos(String listId) =>
-      _firestore.watchCollection(_getTodosPath(listId)).map((snapshot) {
-        final models = snapshot.docs.map((doc) {
-          final data = doc.data();
-          data['id'] = doc.id;
-          return TodoModel.fromJson(data);
-        }).toList();
+  Stream<List<Todo>> watchTodos(String listId) => _firestore.watchCollection(_getTodosPath(listId)).map((snapshot) {
+    final models = snapshot.docs.map((doc) {
+      final data = doc.data();
+      data['id'] = doc.id;
+      return TodoModel.fromJson(data);
+    }).toList();
 
-        return models.map((model) => model.toEntity()).toList();
-      });
+    return models.map((model) => model.toEntity()).toList();
+  });
 
   @override
   Stream<Todo?> watchTodo(String listId, String todoId) =>

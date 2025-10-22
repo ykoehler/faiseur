@@ -53,12 +53,7 @@ class SettingsSection extends StatelessWidget {
               ),
               if (subtitle != null) ...[
                 const SizedBox(height: 4),
-                Text(
-                  subtitle!,
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.onSurfaceVariant,
-                  ),
-                ),
+                Text(subtitle!, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
               ],
             ],
           ),
@@ -70,9 +65,7 @@ class SettingsSection extends StatelessWidget {
           const SizedBox(height: 12),
           Divider(
             height: 1,
-            color: isDark
-                ? Colors.white.withValues(alpha: 0.12)
-                : Colors.black.withValues(alpha: 0.12),
+            color: isDark ? Colors.white.withValues(alpha: 0.12) : Colors.black.withValues(alpha: 0.12),
           ),
         ],
       ],
@@ -119,9 +112,7 @@ class SettingsTile extends StatelessWidget {
     final theme = Theme.of(context);
 
     return ListTile(
-      leading: icon != null
-          ? Icon(icon, color: iconColor ?? theme.colorScheme.primary)
-          : null,
+      leading: icon != null ? Icon(icon, color: iconColor ?? theme.colorScheme.primary) : null,
       title: Text(title),
       subtitle: subtitle != null ? Text(subtitle!) : null,
       trailing: Switch(value: value, onChanged: onChanged),
@@ -168,9 +159,7 @@ class SettingsTileTrailing extends StatelessWidget {
     final theme = Theme.of(context);
 
     return ListTile(
-      leading: icon != null
-          ? Icon(icon, color: iconColor ?? theme.colorScheme.primary)
-          : null,
+      leading: icon != null ? Icon(icon, color: iconColor ?? theme.colorScheme.primary) : null,
       title: Text(title),
       subtitle: subtitle != null ? Text(subtitle!) : null,
       trailing: trailing,
@@ -207,9 +196,7 @@ class SettingsActionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final buttonColor = isDestructive
-        ? theme.colorScheme.error
-        : theme.colorScheme.primary;
+    final buttonColor = isDestructive ? theme.colorScheme.error : theme.colorScheme.primary;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -219,10 +206,7 @@ class SettingsActionTile extends StatelessWidget {
           onPressed: onPressed,
           icon: icon != null ? Icon(icon) : null,
           label: Text(label),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: buttonColor,
-            foregroundColor: Colors.white,
-          ),
+          style: ElevatedButton.styleFrom(backgroundColor: buttonColor, foregroundColor: Colors.white),
         ),
       ),
     );

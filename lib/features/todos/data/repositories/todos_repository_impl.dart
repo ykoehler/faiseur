@@ -4,18 +4,15 @@ import 'package:faiseur/features/todos/domain/repositories/todos_repository.dart
 
 /// Implementation of TodosRepository using remote datasource
 class TodosRepositoryImpl implements TodosRepository {
-  TodosRepositoryImpl({required TodosRemoteDatasource remoteDatasource})
-    : _remoteDatasource = remoteDatasource;
+  TodosRepositoryImpl({required TodosRemoteDatasource remoteDatasource}) : _remoteDatasource = remoteDatasource;
 
   final TodosRemoteDatasource _remoteDatasource;
 
   @override
-  Future<List<Todo>> getTodos(String listId) async =>
-      _remoteDatasource.getTodos(listId);
+  Future<List<Todo>> getTodos(String listId) async => _remoteDatasource.getTodos(listId);
 
   @override
-  Future<Todo?> getTodo(String listId, String todoId) async =>
-      _remoteDatasource.getTodo(listId, todoId);
+  Future<Todo?> getTodo(String listId, String todoId) async => _remoteDatasource.getTodo(listId, todoId);
 
   @override
   Future<Todo> createTodo({
@@ -43,8 +40,7 @@ class TodosRepositoryImpl implements TodosRepository {
   }
 
   @override
-  Future<Todo> updateTodo(Todo todo) async =>
-      _remoteDatasource.updateTodo(todo);
+  Future<Todo> updateTodo(Todo todo) async => _remoteDatasource.updateTodo(todo);
 
   @override
   Future<void> deleteTodo(String listId, String todoId) async {
@@ -52,10 +48,8 @@ class TodosRepositoryImpl implements TodosRepository {
   }
 
   @override
-  Stream<List<Todo>> watchTodos(String listId) =>
-      _remoteDatasource.watchTodos(listId);
+  Stream<List<Todo>> watchTodos(String listId) => _remoteDatasource.watchTodos(listId);
 
   @override
-  Stream<Todo?> watchTodo(String listId, String todoId) =>
-      _remoteDatasource.watchTodo(listId, todoId);
+  Stream<Todo?> watchTodo(String listId, String todoId) => _remoteDatasource.watchTodo(listId, todoId);
 }

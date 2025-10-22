@@ -16,9 +16,7 @@ class SplashPage extends ConsumerWidget {
     // Watch app initialization status (sync provider that returns bool)
     final isInitialized = ref.watch(appInitializedProvider);
 
-    return Scaffold(
-      body: Center(child: _buildLoadingState(context, isInitialized)),
-    );
+    return Scaffold(body: Center(child: _buildLoadingState(context, isInitialized)));
   }
 
   /// Build loading state with spinner
@@ -28,10 +26,7 @@ class SplashPage extends ConsumerWidget {
       children: [
         const CircularProgressIndicator(),
         const SizedBox(height: 16),
-        Text(
-          isInitialized ? 'Loading...' : 'Initializing app...',
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
+        Text(isInitialized ? 'Loading...' : 'Initializing app...', style: Theme.of(context).textTheme.bodyMedium),
       ],
     ),
   );

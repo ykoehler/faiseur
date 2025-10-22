@@ -5,12 +5,7 @@ import 'package:flutter/material.dart';
 /// Shows a circular progress indicator with optional message text.
 class AppLoadingIndicator extends StatelessWidget {
   /// Creates a loading indicator.
-  const AppLoadingIndicator({
-    this.message,
-    this.size = 48,
-    this.strokeWidth = 4,
-    super.key,
-  });
+  const AppLoadingIndicator({this.message, this.size = 48, this.strokeWidth = 4, super.key});
 
   /// Optional message to display below the loading indicator
   final String? message;
@@ -31,18 +26,12 @@ class AppLoadingIndicator extends StatelessWidget {
           height: size,
           child: CircularProgressIndicator(
             strokeWidth: strokeWidth,
-            valueColor: AlwaysStoppedAnimation<Color>(
-              Theme.of(context).colorScheme.primary,
-            ),
+            valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.primary),
           ),
         ),
         if (message != null) ...[
           const SizedBox(height: 16),
-          Text(
-            message!,
-            style: Theme.of(context).textTheme.bodyMedium,
-            textAlign: TextAlign.center,
-          ),
+          Text(message!, style: Theme.of(context).textTheme.bodyMedium, textAlign: TextAlign.center),
         ],
       ],
     ),
@@ -54,11 +43,7 @@ class AppLoadingIndicator extends StatelessWidget {
 /// Displays a smaller loading indicator suitable for buttons, cards, or inline usage.
 class AppLoadingIndicatorSmall extends StatelessWidget {
   /// Creates a small loading indicator.
-  const AppLoadingIndicatorSmall({
-    this.size = 24,
-    this.strokeWidth = 2,
-    super.key,
-  });
+  const AppLoadingIndicatorSmall({this.size = 24, this.strokeWidth = 2, super.key});
 
   /// Size of the loading indicator in logical pixels
   final double size;
@@ -72,9 +57,7 @@ class AppLoadingIndicatorSmall extends StatelessWidget {
     height: size,
     child: CircularProgressIndicator(
       strokeWidth: strokeWidth,
-      valueColor: AlwaysStoppedAnimation<Color>(
-        Theme.of(context).colorScheme.primary,
-      ),
+      valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.primary),
     ),
   );
 }
@@ -84,12 +67,7 @@ class AppLoadingIndicatorSmall extends StatelessWidget {
 /// Shows a horizontal progress bar with optional label.
 class AppLinearProgressIndicator extends StatelessWidget {
   /// Creates a linear progress indicator.
-  const AppLinearProgressIndicator({
-    required this.value,
-    this.label,
-    this.minHeight = 4,
-    super.key,
-  });
+  const AppLinearProgressIndicator({required this.value, this.label, this.minHeight = 4, super.key});
 
   /// Progress value between 0 and 1
   final double value;
@@ -109,10 +87,7 @@ class AppLinearProgressIndicator extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(label!, style: Theme.of(context).textTheme.bodySmall),
-            Text(
-              '${(value * 100).toStringAsFixed(0)}%',
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
+            Text('${(value * 100).toStringAsFixed(0)}%', style: Theme.of(context).textTheme.bodySmall),
           ],
         ),
         const SizedBox(height: 8),
@@ -122,12 +97,8 @@ class AppLinearProgressIndicator extends StatelessWidget {
         child: LinearProgressIndicator(
           value: value,
           minHeight: minHeight,
-          backgroundColor: Theme.of(
-            context,
-          ).colorScheme.surfaceContainerHighest,
-          valueColor: AlwaysStoppedAnimation<Color>(
-            Theme.of(context).colorScheme.primary,
-          ),
+          backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+          valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.primary),
         ),
       ),
     ],

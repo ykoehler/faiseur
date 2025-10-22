@@ -13,9 +13,8 @@ part 'settings_providers.g.dart';
 
 /// Provider for the SettingsRepository singleton instance
 @riverpod
-SettingsRepository settingsRepository(Ref ref) => SettingsRepositoryImpl(
-  remoteDatasource: ref.watch(settingsRemoteDatasourceProvider),
-);
+SettingsRepository settingsRepository(Ref ref) =>
+    SettingsRepositoryImpl(remoteDatasource: ref.watch(settingsRemoteDatasourceProvider));
 
 // ============================================================================
 // STATE PROVIDERS
@@ -31,21 +30,14 @@ Stream<UserSettings> userSettings(Ref ref) {
   return auth.when(
     data: (user) {
       if (user == null) {
-        throw SettingsException(
-          'User not authenticated',
-          code: 'not_authenticated',
-        );
+        throw SettingsException('User not authenticated', code: 'not_authenticated');
       }
       final repository = ref.watch(settingsRepositoryProvider);
       return repository.watchUserSettings(user.id);
     },
-    loading: () =>
-        throw SettingsException('User not loaded yet', code: 'user_not_loaded'),
-    error: (error, stackTrace) => throw SettingsException(
-      'Failed to load user',
-      code: 'user_load_failed',
-      originalError: error,
-    ),
+    loading: () => throw SettingsException('User not loaded yet', code: 'user_not_loaded'),
+    error: (error, stackTrace) =>
+        throw SettingsException('Failed to load user', code: 'user_load_failed', originalError: error),
   );
 }
 
@@ -58,21 +50,14 @@ Future<UserSettings> userSettingsAsync(Ref ref) async {
   return auth.when(
     data: (user) {
       if (user == null) {
-        throw SettingsException(
-          'User not authenticated',
-          code: 'not_authenticated',
-        );
+        throw SettingsException('User not authenticated', code: 'not_authenticated');
       }
       final repository = ref.watch(settingsRepositoryProvider);
       return repository.getUserSettings(user.id);
     },
-    loading: () =>
-        throw SettingsException('User not loaded yet', code: 'user_not_loaded'),
-    error: (error, stackTrace) => throw SettingsException(
-      'Failed to load user',
-      code: 'user_load_failed',
-      originalError: error,
-    ),
+    loading: () => throw SettingsException('User not loaded yet', code: 'user_not_loaded'),
+    error: (error, stackTrace) =>
+        throw SettingsException('Failed to load user', code: 'user_load_failed', originalError: error),
   );
 }
 
@@ -99,15 +84,9 @@ class SettingsNotifier extends _$SettingsNotifier {
           ..invalidate(userSettingsProvider)
           ..invalidate(userSettingsAsyncProvider);
       },
-      loading: () => throw SettingsException(
-        'User not loaded yet',
-        code: 'user_not_loaded',
-      ),
-      error: (error, stackTrace) => throw SettingsException(
-        'Failed to load user',
-        code: 'user_load_failed',
-        originalError: error,
-      ),
+      loading: () => throw SettingsException('User not loaded yet', code: 'user_not_loaded'),
+      error: (error, stackTrace) =>
+          throw SettingsException('Failed to load user', code: 'user_load_failed', originalError: error),
     );
   }
 
@@ -125,15 +104,9 @@ class SettingsNotifier extends _$SettingsNotifier {
           ..invalidate(userSettingsProvider)
           ..invalidate(userSettingsAsyncProvider);
       },
-      loading: () => throw SettingsException(
-        'User not loaded yet',
-        code: 'user_not_loaded',
-      ),
-      error: (error, stackTrace) => throw SettingsException(
-        'Failed to load user',
-        code: 'user_load_failed',
-        originalError: error,
-      ),
+      loading: () => throw SettingsException('User not loaded yet', code: 'user_not_loaded'),
+      error: (error, stackTrace) =>
+          throw SettingsException('Failed to load user', code: 'user_load_failed', originalError: error),
     );
   }
 
@@ -146,23 +119,14 @@ class SettingsNotifier extends _$SettingsNotifier {
           return;
         }
         final repository = ref.read(settingsRepositoryProvider);
-        await repository.updateEmailNotificationsEnabled(
-          user.id,
-          enabled: enabled,
-        );
+        await repository.updateEmailNotificationsEnabled(user.id, enabled: enabled);
         ref
           ..invalidate(userSettingsProvider)
           ..invalidate(userSettingsAsyncProvider);
       },
-      loading: () => throw SettingsException(
-        'User not loaded yet',
-        code: 'user_not_loaded',
-      ),
-      error: (error, stackTrace) => throw SettingsException(
-        'Failed to load user',
-        code: 'user_load_failed',
-        originalError: error,
-      ),
+      loading: () => throw SettingsException('User not loaded yet', code: 'user_not_loaded'),
+      error: (error, stackTrace) =>
+          throw SettingsException('Failed to load user', code: 'user_load_failed', originalError: error),
     );
   }
 
@@ -180,15 +144,9 @@ class SettingsNotifier extends _$SettingsNotifier {
           ..invalidate(userSettingsProvider)
           ..invalidate(userSettingsAsyncProvider);
       },
-      loading: () => throw SettingsException(
-        'User not loaded yet',
-        code: 'user_not_loaded',
-      ),
-      error: (error, stackTrace) => throw SettingsException(
-        'Failed to load user',
-        code: 'user_load_failed',
-        originalError: error,
-      ),
+      loading: () => throw SettingsException('User not loaded yet', code: 'user_not_loaded'),
+      error: (error, stackTrace) =>
+          throw SettingsException('Failed to load user', code: 'user_load_failed', originalError: error),
     );
   }
 
@@ -206,15 +164,9 @@ class SettingsNotifier extends _$SettingsNotifier {
           ..invalidate(userSettingsProvider)
           ..invalidate(userSettingsAsyncProvider);
       },
-      loading: () => throw SettingsException(
-        'User not loaded yet',
-        code: 'user_not_loaded',
-      ),
-      error: (error, stackTrace) => throw SettingsException(
-        'Failed to load user',
-        code: 'user_load_failed',
-        originalError: error,
-      ),
+      loading: () => throw SettingsException('User not loaded yet', code: 'user_not_loaded'),
+      error: (error, stackTrace) =>
+          throw SettingsException('Failed to load user', code: 'user_load_failed', originalError: error),
     );
   }
 

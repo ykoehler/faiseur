@@ -42,9 +42,7 @@ class ValidationFailure extends Failure {
   final String? field;
 
   @override
-  String toString() => field != null
-      ? 'ValidationFailure($field): $message'
-      : 'ValidationFailure: $message';
+  String toString() => field != null ? 'ValidationFailure($field): $message' : 'ValidationFailure: $message';
 }
 
 /// Firestore database error
@@ -54,9 +52,7 @@ class FirestoreFailure extends Failure {
   final String? code;
 
   @override
-  String toString() => code != null
-      ? 'FirestoreFailure($code): $message'
-      : 'FirestoreFailure: $message';
+  String toString() => code != null ? 'FirestoreFailure($code): $message' : 'FirestoreFailure: $message';
 }
 
 /// Storage error

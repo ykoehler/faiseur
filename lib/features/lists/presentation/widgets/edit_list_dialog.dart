@@ -4,11 +4,7 @@ import 'package:flutter/material.dart';
 /// Parameters for updating a list
 class EditListDialogParams {
   /// Creates a new EditListDialogParams
-  EditListDialogParams({
-    required this.title,
-    required this.description,
-    required this.color,
-  });
+  EditListDialogParams({required this.title, required this.description, required this.color});
 
   /// The updated title
   final String title;
@@ -52,9 +48,7 @@ class _EditListDialogState extends State<EditListDialog> {
   void initState() {
     super.initState();
     _titleController = TextEditingController(text: widget.list.title);
-    _descriptionController = TextEditingController(
-      text: widget.list.description ?? '',
-    );
+    _descriptionController = TextEditingController(text: widget.list.description ?? '');
     _selectedColor = widget.list.color;
   }
 
@@ -77,9 +71,7 @@ class _EditListDialogState extends State<EditListDialog> {
             controller: _titleController,
             decoration: InputDecoration(
               labelText: 'Title',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
               prefixIcon: const Icon(Icons.list),
             ),
             maxLength: 255,
@@ -91,9 +83,7 @@ class _EditListDialogState extends State<EditListDialog> {
             controller: _descriptionController,
             decoration: InputDecoration(
               labelText: 'Description (optional)',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
               prefixIcon: const Icon(Icons.description),
             ),
             maxLines: 3,
@@ -123,10 +113,7 @@ class _EditListDialogState extends State<EditListDialog> {
                       width: 40,
                       decoration: BoxDecoration(
                         color: _parseColor(color),
-                        border: Border.all(
-                          color: isSelected ? Colors.black : Colors.transparent,
-                          width: 3,
-                        ),
+                        border: Border.all(color: isSelected ? Colors.black : Colors.transparent, width: 3),
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
@@ -139,14 +126,8 @@ class _EditListDialogState extends State<EditListDialog> {
       ),
     ),
     actions: [
-      TextButton(
-        onPressed: () => Navigator.of(context).pop(),
-        child: const Text('Cancel'),
-      ),
-      ElevatedButton(
-        onPressed: _isFormValid() ? _handleSave : null,
-        child: const Text('Save'),
-      ),
+      TextButton(onPressed: () => Navigator.of(context).pop(), child: const Text('Cancel')),
+      ElevatedButton(onPressed: _isFormValid() ? _handleSave : null, child: const Text('Save')),
     ],
   );
 
