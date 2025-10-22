@@ -115,7 +115,8 @@ else
   
   # Check if there are actual errors (not just summary line)
   # Count lines that contain "error(s)" and extract the number
-  ERROR_COUNT=$(echo "$MARKDOWN_OUTPUT" | grep -oP "Summary: \K[0-9]+" | head -1)
+  # Using grep -E and sed for cross-platform compatibility (BSD grep on macOS, GNU grep on Linux)
+  ERROR_COUNT=$(echo "$MARKDOWN_OUTPUT" | grep -E "Summary: [0-9]+" | sed -E 's/.*Summary: ([0-9]+).*/\1/' | head -1)
   
   if [ -z "$ERROR_COUNT" ] || [ "$ERROR_COUNT" -eq 0 ]; then
     echo -e "${GREEN}✓${NC} No markdown issues found"
