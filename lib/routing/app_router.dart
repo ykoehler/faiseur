@@ -128,7 +128,7 @@ String? _handleRedirect(
   }
 
   // App is ready and we know auth state
-  // If on splash, redirect based on auth status and onboarding completion
+  // If on splash, redirect based on auth status
   if (state.matchedLocation == kSplashRoute) {
     if (!authed) {
       if (kDebugMode) {
@@ -137,9 +137,9 @@ String? _handleRedirect(
       return kLoginRoute;
     }
 
-    // User is authenticated - check onboarding status
-    // For now, we'll always redirect to onboarding for authenticated users on splash
-    // TODO: Implement proper onboarding completion check from SharedPreferences
+    // User is authenticated - redirect to onboarding or main app
+    // Onboarding checks internally if user has completed onboarding already
+    // using SharedPreferences, so we can safely always redirect here for first-time auth
     if (kDebugMode) {
       print('[REDIRECT] From splash -> onboarding (authenticated)');
     }

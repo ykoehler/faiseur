@@ -1,6 +1,9 @@
 import 'package:faiseur/features/lists/presentation/providers/lists_providers.dart';
-import 'package:faiseur/features/onboarding/domain/usecases/create_tutorial_list.dart';
+import 'package:faiseur/features/todos/presentation/providers/todos_providers.dart';
+import 'package:faiseur/shared/providers/app_providers.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../../domain/usecases/create_tutorial_list.dart';
 
 part 'onboarding_providers.g.dart';
 
@@ -8,7 +11,8 @@ part 'onboarding_providers.g.dart';
 @riverpod
 CreateTutorialList createTutorialListUseCase(Ref ref) {
   final listsRepository = ref.watch(listsRepositoryProvider);
-  return CreateTutorialList(listsRepository);
+  final todosRepository = ref.watch(todosRepositoryProvider);
+  return CreateTutorialList(listsRepository: listsRepository, todosRepository: todosRepository);
 }
 
 /// State class for onboarding
@@ -75,24 +79,37 @@ class OnboardingNotifier extends _$OnboardingNotifier {
     }
   }
 
-  /// Skip the onboarding and mark as completed
-  void skipOnboarding() {
-    state = state.copyWith(hasCompletedOnboarding: true, currentStep: state.totalSteps);
-  }
-
   /// Complete onboarding (called when user reaches the last step)
   Future<void> completeOnboarding(String userId) async {
     try {
       state = state.copyWith(isLoading: true);
 
-      // Create tutorial list for the user
-      final createTutorialList = CreateTutorialList(ref.read(listsRepositoryProvider));
-
+      // Create tutorial list for the user using the provider
+      final createTutorialList = ref.watch(createTutorialListUseCaseProvider);
       await createTutorialList(ownerId: userId);
+
+      // Mark onboarding as completed in storage
+      final storage = await ref.read(localStorageServiceProvider.future);
+      await storage.markOnboardingCompleted(userId);
 
       state = state.copyWith(hasCompletedOnboarding: true, currentStep: state.totalSteps, isLoading: false);
     } catch (e) {
       state = state.copyWith(isLoading: false, error: 'Failed to complete onboarding: $e');
+    }
+  }
+
+  /// Skip the onboarding and mark as completed
+  Future<void> skipOnboarding(String userId) async {
+    try {
+      state = state.copyWith(isLoading: true);
+
+      // Mark onboarding as completed in storage even though user skipped
+      final storage = await ref.read(localStorageServiceProvider.future);
+      await storage.markOnboardingCompleted(userId);
+
+      state = state.copyWith(hasCompletedOnboarding: true, currentStep: state.totalSteps, isLoading: false);
+    } catch (e) {
+      state = state.copyWith(isLoading: false, error: 'Failed to skip onboarding: $e');
     }
   }
 
@@ -114,11 +131,19 @@ class OnboardingNotifier extends _$OnboardingNotifier {
 
 /// Provider that checks if user has completed onboarding
 @riverpod
-Future<bool> hasCompletedOnboarding(Ref ref) async =>
-    // Check from local storage (SharedPreferences)
-    // For now, we'll always return false so new users see onboarding
-    // TODO: Implement persistent storage in SharedPreferences
-    false;
+Future<bool> hasCompletedOnboarding(Ref ref, String userId) async {
+  if (userId.isEmpty) {
+    return true; // Skip onboarding for invalid user
+  }
+
+  try {
+    final storage = await ref.watch(localStorageServiceProvider.future);
+    return storage.hasCompletedOnboarding(userId);
+  } catch (e) {
+    // If storage fails, assume not completed so user sees onboarding
+    return false;
+  }
+}
 
 /// Current onboarding step
 @riverpod

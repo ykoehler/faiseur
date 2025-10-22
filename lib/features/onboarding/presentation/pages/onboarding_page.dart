@@ -4,6 +4,7 @@ import 'package:faiseur/features/onboarding/presentation/widgets/onboarding_step
 import 'package:faiseur/shared/providers/app_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 /// Onboarding page showing a step-by-step tutorial for new users
 ///
@@ -130,10 +131,9 @@ class OnboardingPage extends ConsumerWidget {
       if (userId != null) {
         await ref.read(onboardingProvider.notifier).completeOnboarding(userId);
 
-        // Navigate away from onboarding page
+        // Navigate to lists page
         if (context.mounted) {
-          // Pop or navigate based on how onboarding was shown
-          Navigator.of(context).pop();
+          context.go('/lists');
         }
       }
     } else {
@@ -153,11 +153,14 @@ class OnboardingPage extends ConsumerWidget {
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
           TextButton(
-            onPressed: () {
-              ref.read(onboardingProvider.notifier).skipOnboarding();
-              Navigator.pop(context); // Close dialog
-              if (context.mounted) {
-                Navigator.pop(context); // Pop onboarding page
+            onPressed: () async {
+              final userId = ref.read(currentUserIdFromStateProvider);
+              if (userId != null) {
+                await ref.read(onboardingProvider.notifier).skipOnboarding(userId);
+                if (context.mounted) {
+                  Navigator.pop(context); // Close dialog
+                  context.go('/lists'); // Go to lists
+                }
               }
             },
             style: TextButton.styleFrom(foregroundColor: Colors.red),

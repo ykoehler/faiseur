@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../core/services/local_storage_service.dart';
 import '../models/app_state_model.dart';
 import 'firebase_providers.dart';
 
@@ -174,4 +175,50 @@ String? appError(Ref ref) {
 bool appIsLoading(Ref ref) {
   final appState = ref.watch(appStateControllerProvider);
   return appState.isLoading;
+}
+
+/// Local storage service provider
+///
+/// Provides access to SharedPreferences for storing user preferences
+/// and app state like onboarding completion.
+///
+/// Example:
+/// ```dart
+/// final storage = await ref.read(localStorageServiceProvider.future);
+/// storage.markOnboardingCompleted(userId);
+/// ```
+@riverpod
+Future<LocalStorageService> localStorageService(Ref ref) async {
+  final service = LocalStorageService();
+  await service.init();
+  return service;
+}
+
+/// Check if current user has completed onboarding
+///
+/// Async provider that checks if the authenticated user has completed onboarding.
+/// Returns false for unauthenticated users.
+///
+/// Example:
+/// ```dart
+/// final completed = await ref.watch(userHasCompletedOnboardingProvider.future);
+/// if (!completed) {
+///   redirectToOnboarding();
+/// }
+/// ```
+@riverpod
+Future<bool> userHasCompletedOnboarding(Ref ref) async {
+  final userId = ref.watch(currentUserIdFromStateProvider);
+
+  if (userId == null || userId.isEmpty) {
+    return false; // Not authenticated
+  }
+
+  try {
+    final storage = await ref.read(localStorageServiceProvider.future);
+    return storage.hasCompletedOnboarding(userId);
+  } catch (e) {
+    // If storage check fails, assume not completed to show onboarding
+    return false;
+  }
 }

@@ -1,14 +1,37 @@
 import 'package:faiseur/features/lists/domain/entities/todo_list.dart';
 import 'package:faiseur/features/lists/domain/repositories/lists_repository.dart';
+import 'package:faiseur/features/todos/domain/repositories/todos_repository.dart';
 
 /// Use case for creating a tutorial list on first launch
 ///
 /// Creates a sample list with onboarding instructions and tips
 /// to help new users get started with the app.
 class CreateTutorialList {
-  CreateTutorialList(this.listsRepository);
+  CreateTutorialList({required this.listsRepository, required this.todosRepository});
 
   final ListsRepository listsRepository;
+  final TodosRepository todosRepository;
+
+  /// Sample tutorial todos to populate the getting started list
+  static const List<Map<String, String>> _tutorialTodos = [
+    {
+      'title': '✨ Welcome to Faiseur!',
+      'description': 'This is a sample todo. You can mark it complete by clicking the checkbox.',
+    },
+    {'title': '📝 Create your own todos', 'description': 'Tap the + button to create new todos in this list.'},
+    {
+      'title': '🎯 Set priorities and due dates',
+      'description': 'Each todo can have a priority level and due date to help you stay organized.',
+    },
+    {
+      'title': '👥 Collaborate with others',
+      'description': 'You can share lists with friends and family to collaborate together.',
+    },
+    {
+      'title': '🌙 Customize your experience',
+      'description': 'Visit Settings to change themes, notifications, and more!',
+    },
+  ];
 
   /// Creates a tutorial/onboarding list for the user
   ///
@@ -56,17 +79,27 @@ class CreateTutorialList {
       description: description ?? 'Learn how to use Faiseur. Complete these tasks to get started!',
     );
 
+    // Create sample todos in the list
+    for (final todoData in _tutorialTodos) {
+      try {
+        await todosRepository.createTodo(
+          listId: tutorialList.id,
+          title: todoData['title']!,
+          createdBy: ownerId,
+          description: todoData['description'],
+          // Don't set due dates or other fields for tutorial todos
+        );
+      } catch (e) {
+        // Log error but continue creating other todos
+        // Ignore individual todo creation failures
+      }
+    }
+
     return tutorialList;
   }
 
   /// Get tutorial steps data
   ///
-  /// Returns the list of all tutorial steps for reference
-  List<Map<String, String>> getTutorialSteps() => [
-    {'step': '1. Welcome to Faiseur', 'description': 'Learn the basics of task management'},
-    {'step': '2. Create Lists', 'description': 'Organize your tasks into different lists'},
-    {'step': '3. Add Todos', 'description': 'Create and manage individual tasks'},
-    {'step': '4. Customize Your Preferences', 'description': 'Personalize your app experience'},
-    {'step': '5. You\'re All Set!', 'description': 'Start using Faiseur to organize your life'},
-  ];
+  /// Returns the list of all tutorial todos for reference
+  List<Map<String, String>> getTutorialTodos() => List.from(_tutorialTodos);
 }

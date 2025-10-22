@@ -567,3 +567,68 @@ final class AppIsLoadingProvider extends $FunctionalProvider<bool, bool, bool> w
 }
 
 String _$appIsLoadingHash() => r'786e0981fe12e4a171560f33f98cc7ba3ff6ec34';
+
+/// Local storage service provider
+///
+/// Provides access to SharedPreferences for storing user preferences
+/// and app state like onboarding completion.
+///
+/// Example:
+/// ```dart
+/// final storage = await ref.read(localStorageServiceProvider.future);
+/// storage.markOnboardingCompleted(userId);
+/// ```
+
+@ProviderFor(localStorageService)
+const localStorageServiceProvider = LocalStorageServiceProvider._();
+
+/// Local storage service provider
+///
+/// Provides access to SharedPreferences for storing user preferences
+/// and app state like onboarding completion.
+///
+/// Example:
+/// ```dart
+/// final storage = await ref.read(localStorageServiceProvider.future);
+/// storage.markOnboardingCompleted(userId);
+/// ```
+
+final class LocalStorageServiceProvider
+    extends $FunctionalProvider<AsyncValue<LocalStorageService>, LocalStorageService, FutureOr<LocalStorageService>>
+    with $FutureModifier<LocalStorageService>, $FutureProvider<LocalStorageService> {
+  /// Local storage service provider
+  ///
+  /// Provides access to SharedPreferences for storing user preferences
+  /// and app state like onboarding completion.
+  ///
+  /// Example:
+  /// ```dart
+  /// final storage = await ref.read(localStorageServiceProvider.future);
+  /// storage.markOnboardingCompleted(userId);
+  /// ```
+  const LocalStorageServiceProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'localStorageServiceProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$localStorageServiceHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<LocalStorageService> $createElement($ProviderPointer pointer) =>
+      $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<LocalStorageService> create(Ref ref) {
+    return localStorageService(ref);
+  }
+}
+
+String _$localStorageServiceHash() => r'9aaf5a9fbf956c30bf07878a06f0117f8a7a4a6d';

@@ -48,7 +48,7 @@ final class CreateTutorialListUseCaseProvider
   }
 }
 
-String _$createTutorialListUseCaseHash() => r'177e9054105307ff0fb7eb59546c17230e7ba838';
+String _$createTutorialListUseCaseHash() => r'9c332ab94d4e916e2834ba1f61cd3a50516fc5c1';
 
 /// Notifier provider for onboarding state management
 
@@ -82,7 +82,7 @@ final class OnboardingNotifierProvider extends $NotifierProvider<OnboardingNotif
   }
 }
 
-String _$onboardingNotifierHash() => r'2fc7d3f69321829901110ce833a15e98e9ad04d7';
+String _$onboardingNotifierHash() => r'0875be81a0ad39d0ca235221873ddc1b37240ea5';
 
 /// Notifier provider for onboarding state management
 
@@ -103,26 +103,33 @@ abstract class _$OnboardingNotifier extends $Notifier<OnboardingState> {
 /// Provider that checks if user has completed onboarding
 
 @ProviderFor(hasCompletedOnboarding)
-const hasCompletedOnboardingProvider = HasCompletedOnboardingProvider._();
+const hasCompletedOnboardingProvider = HasCompletedOnboardingFamily._();
 
 /// Provider that checks if user has completed onboarding
 
 final class HasCompletedOnboardingProvider extends $FunctionalProvider<AsyncValue<bool>, bool, FutureOr<bool>>
     with $FutureModifier<bool>, $FutureProvider<bool> {
   /// Provider that checks if user has completed onboarding
-  const HasCompletedOnboardingProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'hasCompletedOnboardingProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+  const HasCompletedOnboardingProvider._({
+    required HasCompletedOnboardingFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'hasCompletedOnboardingProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
   String debugGetCreateSourceHash() => _$hasCompletedOnboardingHash();
+
+  @override
+  String toString() {
+    return r'hasCompletedOnboardingProvider'
+        ''
+        '($argument)';
+  }
 
   @$internal
   @override
@@ -130,11 +137,42 @@ final class HasCompletedOnboardingProvider extends $FunctionalProvider<AsyncValu
 
   @override
   FutureOr<bool> create(Ref ref) {
-    return hasCompletedOnboarding(ref);
+    final argument = this.argument as String;
+    return hasCompletedOnboarding(ref, argument);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is HasCompletedOnboardingProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
   }
 }
 
-String _$hasCompletedOnboardingHash() => r'5d9460c2dea29e57f65775bb91ef0f09dfe6cde6';
+String _$hasCompletedOnboardingHash() => r'5be97045a26f20785449418d929e8e7d331d6217';
+
+/// Provider that checks if user has completed onboarding
+
+final class HasCompletedOnboardingFamily extends $Family with $FunctionalFamilyOverride<FutureOr<bool>, String> {
+  const HasCompletedOnboardingFamily._()
+    : super(
+        retry: null,
+        name: r'hasCompletedOnboardingProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  /// Provider that checks if user has completed onboarding
+
+  HasCompletedOnboardingProvider call(String userId) => HasCompletedOnboardingProvider._(argument: userId, from: this);
+
+  @override
+  String toString() => r'hasCompletedOnboardingProvider';
+}
 
 /// Current onboarding step
 
