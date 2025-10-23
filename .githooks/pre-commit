@@ -106,7 +106,11 @@ if grep -E "Formatted.*\([1-9]" "$TEMP_FORMAT" > /dev/null; then
   echo ""
   FAILED=1
 else
-  echo -e "${GREEN}✓${NC} Code formatting is correct"
+  if [ -n "$STAGED_DART_FILES" ]; then
+    echo -e "${GREEN}✓${NC} Code formatting is correct"
+  else
+    echo -e "${GREEN}✓${NC} No Dart files staged for formatting check"
+  fi
 fi
 
 echo ""
