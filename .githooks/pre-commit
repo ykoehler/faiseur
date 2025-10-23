@@ -26,6 +26,42 @@ NC='\033[0m' # No Color
 FAILED=0
 
 # ============================================================================
+# 0. CHECK FOR UNSTAGED FILES
+# ============================================================================
+echo "📋 Checking for unstaged changes..."
+echo ""
+
+# Get count of unstaged modified files (exclude deleted, untracked)
+UNSTAGED_COUNT=$(git diff --name-only --diff-filter=M | wc -l | tr -d ' ')
+
+if [ "$UNSTAGED_COUNT" -gt 0 ]; then
+  echo -e "${RED}✗${NC} Found unstaged changes that could affect test results"
+  echo ""
+  echo "📝 Unstaged files:"
+  echo "────────────────────────────────────────────────────────────────"
+  git diff --name-only --diff-filter=M | sed 's/^/  /'
+  echo "────────────────────────────────────────────────────────────────"
+  echo ""
+  echo "🛠️  To fix this:"
+  echo "  1. Either stage all changes:"
+  echo "     ${YELLOW}git add -A${NC}"
+  echo ""
+  echo "  2. Or stash unstaged changes (they will be restored after commit):"
+  echo "     ${YELLOW}git stash${NC}"
+  echo "     ${YELLOW}git commit${NC}"
+  echo "     ${YELLOW}git stash pop${NC}"
+  echo ""
+  FAILED=1
+fi
+
+if [ $FAILED -eq 0 ]; then
+  echo -e "${GREEN}✓${NC} No unstaged changes"
+  echo ""
+fi
+
+echo ""
+
+# ============================================================================
 # 1. CHECK FORMATTING
 # ============================================================================
 echo "📋 Checking code formatting..."
