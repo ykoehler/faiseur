@@ -59,14 +59,6 @@ class FirebaseConfig {
   /// Whether to show debug information in the UI.
   static bool get showDebugInfo => !isProduction;
 
-  /// Whether to use Firebase emulators.
-  /// Enabled automatically in development unless overridden with the
-  /// USE_FIREBASE_EMULATORS dart define.
-  static const bool _hasUseEmulatorsEnv = bool.hasEnvironment('USE_FIREBASE_EMULATORS');
-  static const bool _useEmulatorsEnvValue = bool.fromEnvironment('USE_FIREBASE_EMULATORS');
-
-  static bool get useEmulators => _hasUseEmulatorsEnv ? _useEmulatorsEnvValue : isDevelopment;
-
   /// Returns the appropriate API endpoint based on environment.
   static String get apiEndpoint {
     switch (flavor) {

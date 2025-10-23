@@ -459,58 +459,6 @@ Add to `.gitignore` (already done):
 lib/firebase_options.dart
 ```
 
-### 2. Use Firebase Emulators
-
-**firebase.json**:
-
-```json
-{
-  "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
-  },
-  "hosting": {
-    "public": "build/web",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
-  },
-  "emulators": {
-    "auth": {
-      "port": 9099
-    },
-    "firestore": {
-      "port": 8080
-    },
-    "storage": {
-      "port": 9199
-    },
-    "ui": {
-      "enabled": true,
-      "port": 4000
-    }
-  }
-}
-```
-
-Start emulators:
-
-```bash
-firebase emulators:start
-```
-
-Connect to emulators in code (already in main.dart):
-
-```dart
-if (kDebugMode && useEmulators) {
-  await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
-  FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
-  await FirebaseStorage.instance.useStorageEmulator('localhost', 9199);
-}
-```
-
 ---
 
 ## Testing Secrets Locally

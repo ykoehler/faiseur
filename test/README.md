@@ -1,6 +1,7 @@
 # Testing Infrastructure
 
-The Faiseur project includes comprehensive testing infrastructure to ensure quality across all platforms (web, iOS, Android, macOS).
+The Faiseur project includes comprehensive testing infrastructure to ensure quality
+across all platforms (web, iOS, Android, macOS).
 
 ## Test Structure
 
@@ -288,6 +289,47 @@ testWidgets('Firebase initialization', (tester) async {
   // Verify no initialization errors
   expect(tester.takeException(), isNull);
 });
+```
+
+## Debugging Tests
+
+### Run with verbose output
+
+```bash
+flutter test test/ -v
+```
+
+### Run single test
+
+```bash
+flutter test test/widget_test.dart -k "App launches"
+```
+
+### Debug test in IDE
+
+Set breakpoint and run:
+```bash
+flutter test test/widget_test.dart --start-paused
+```
+
+Then attach debugger in IDE.
+
+### Common Issues
+
+**Tests hang with pumpAndSettle()**:
+- Increase timeout: `await tester.pumpAndSettle(const Duration(seconds: 5));`
+- Use manual pump loop instead
+
+**FirebaseException in tests**:
+- Mock Firebase services using mocktail
+
+**Find returns no widgets**:
+- Add debug output: `debugPrintBeginFrame = true;`
+- Check widget tree with `expect(find.byType(MyWidget), findsOne);`
+
+## Test Metrics
+
+````
 ```
 
 ## Firebase Emulator Testing

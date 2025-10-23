@@ -197,20 +197,6 @@ class ErrorMessages {
   static const String operationCancelled = 'Operation was cancelled.';
 }
 
-/// Firebase emulator configuration
-class FirebaseEmulatorConstants {
-  FirebaseEmulatorConstants._();
-
-  /// Emulator host and ports
-  static const String emulatorHost = 'localhost';
-  static const int authEmulatorPort = 9099;
-  static const int firestoreEmulatorPort = 8080;
-  static const int storageEmulatorPort = 9199;
-
-  /// Enable/disable emulator by default in development
-  static const bool enableEmulatorByDefault = true;
-}
-
 /// Feature flags for gradual rollout
 class FeatureFlags {
   FeatureFlags._();

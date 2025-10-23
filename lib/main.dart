@@ -1,7 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -28,10 +25,6 @@ void main() async {
       debugPrint('📦 Flavor: ${FirebaseConfig.flavor}');
       debugPrint('🌐 Platform: ${kIsWeb ? 'Web' : defaultTargetPlatform}');
     }
-
-    if (FirebaseConfig.useEmulators && kDebugMode) {
-      await _connectToEmulators();
-    }
   } catch (e, stackTrace) {
     // If Firebase is not configured yet, show helpful error message
     debugPrint('❌ Firebase initialization failed: $e');
@@ -48,15 +41,6 @@ void main() async {
   }
 
   runApp(const ProviderScope(child: FaiseurApp()));
-}
-
-/// Connects to Firebase emulators for local development.
-///
-Future<void> _connectToEmulators() async {
-  await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
-  FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
-  await FirebaseStorage.instance.useStorageEmulator('localhost', 9199);
-  debugPrint('🔧 Connected to Firebase emulators');
 }
 
 /// Main app widget.

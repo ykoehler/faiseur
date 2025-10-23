@@ -1,6 +1,8 @@
 # Integration Tests
 
-This directory contains Flutter integration tests for the Faiseur app. These tests run against the actual Flutter app (not mocked), making them ideal for smoke tests, E2E flows, and platform-specific testing.
+This directory contains Flutter integration tests for the Faiseur app. These tests
+run against the actual Flutter app (not mocked), making them ideal for smoke tests,
+E2E flows, and platform-specific testing.
 
 ## Overview
 
@@ -75,7 +77,7 @@ flutter test integration_test/app_test.dart -d ios
 # Basic smoke tests
 flutter test integration_test/app_test.dart -d macos
 
-# Comprehensive E2E tests with splash/init debugging (recommended)
+# Comprehensive E2E tests (recommended)
 flutter test integration_test/macos_e2e_test.dart \
   --dart-define=FLAVOR=dev \
   --device=macos
@@ -97,28 +99,6 @@ chmod +x run_macos_e2e.sh
 flutter test integration_test/app_test.dart -d macos
 flutter test integration_test/app_test.dart -d linux
 flutter test integration_test/app_test.dart -d windows
-```
-
-## Firebase Emulator Integration
-
-For future integration tests that require Firebase services:
-
-```dart
-// In test setup
-Future<void> setUpAll() async {
-  // Use Firebase emulators for testing
-  // Requires: firebase emulators:start
-}
-```
-
-To run Firebase emulators:
-
-```bash
-# Terminal 1: Start emulators
-firebase emulators:start
-
-# Terminal 2: Run tests (they'll use localhost emulators)
-flutter test integration_test/ -d chrome
 ```
 
 ## CI/CD Integration
