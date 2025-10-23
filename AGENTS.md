@@ -1,6 +1,8 @@
 # AI Coding Agents Guide for Faiseur
 
-This document provides recommendations and best practices for using AI coding agents (GitHub Copilot, Cursor, Claude, etc.) to develop the Faiseur project efficiently.
+This document provides recommendations and best practices for using AI coding
+agents (GitHub Copilot, Cursor, Claude, etc.) to develop the Faiseur project
+efficiently.
 
 ## 📋 Table of Contents
 
@@ -284,6 +286,73 @@ When generating Riverpod providers, use these imports:
 ```
 For each use case you generate, also generate the corresponding 
 unit test file. Use mocktail for mocking dependencies.
+```
+
+### 5. Respect Line Length Limits
+
+**Always enforce a maximum line length of 120 characters** in all generated code and files,
+unless it is impossible to do so (e.g., long URLs, auto-generated code that cannot be wrapped).
+
+When asking agents to generate code, explicitly request this:
+
+```
+Generate this code with a maximum line length of 120 characters. 
+Break long lines appropriately (function arguments, method chains, 
+string concatenations, etc.) to stay within this limit.
+```
+
+Examples of proper wrapping:
+```dart
+// ✅ Good: Long parameter list wrapped
+final result = someVeryLongFunctionName(
+  parameter1: value1,
+  parameter2: value2,
+  parameter3: value3,
+);
+
+// ✅ Good: Long string broken into parts
+final message = 'This is a very long message that exceeds '
+    'the line length limit so it is split across '
+    'multiple lines for readability';
+
+// ✅ Good: Method chains wrapped
+final data = repository
+    .fetchItems()
+    .where((item) => item.isActive)
+    .map((item) => item.toModel())
+    .toList();
+
+// ❌ Avoid: Exceeding 120 characters
+final result = someVeryLongFunctionName(parameter1: value1, parameter2: value2, parameter3: value3);
+```
+
+### 6. Address All Lint Issues Properly
+
+**All generated code must pass linting without any issues**, including info-level warnings.
+Do NOT skip lint issues using ignore comments or linter overrides.
+
+When asking agents to generate code, explicitly request this:
+
+```
+Generate this code following all project lint rules. After generation, 
+run `flutter analyze` and fix any issues found (errors, warnings, and 
+info-level issues). Do not use ignore comments.
+```
+
+Best practices:
+- ✅ Fix the root cause of lint issues (e.g., restructure code, rename variables)
+- ✅ Follow Dart/Flutter best practices to prevent lint violations
+- ✅ Use modern language features and idioms
+- ✅ Request agents to run analysis and report results
+- ❌ Never use `// ignore:` or `// ignore_for_file:` comments
+- ❌ Never suppress warnings with linter configuration
+- ❌ Never commit code with unaddressed lint issues
+
+Example prompt:
+```
+After generating the code, run `flutter analyze` and show me any 
+lint issues. Fix all issues (errors, warnings, and info) by improving 
+the code, not by adding ignore comments.
 ```
 
 ---
@@ -783,6 +852,8 @@ They all follow the same pattern. Generate them as a batch with:
 - ❌ Don't ask vague questions
 - ❌ Don't commit generated code without testing
 - ❌ Don't ignore agent suggestions without reason
+- ❌ **Never bypass pre-commit hooks (no `--no-verify` flags)** - Even if you bypass local
+  hooks, CI/CD will enforce them anyway, causing PR failures and wasted time
 
 ---
 
@@ -825,6 +896,7 @@ They all follow the same pattern. Generate them as a batch with:
 
 ---
 
-**Remember:** AI agents are powerful tools, but you're the architect. Use agents to accelerate development while maintaining code quality and architectural integrity.
+**Remember:** AI agents are powerful tools, but you're the architect. Use agents to
+accelerate development while maintaining code quality and architectural integrity.
 
-**Last Updated:** October 19, 2025
+**Last Updated:** October 23, 2025

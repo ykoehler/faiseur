@@ -35,9 +35,18 @@ echo ""
 TEMP_FORMAT=$(mktemp)
 trap "rm -f $TEMP_FORMAT" EXIT
 
-# Run dart format and capture output (this will reformat files if needed)
-echo "  Analyzing code formatting..."
-dart format --line-length 120 lib/ test/ integration_test/ > "$TEMP_FORMAT" 2>&1
+# Get list of staged Dart files
+STAGED_DART_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(dart|g\.dart)$' | tr '\n' ' ')
+
+# If there are staged Dart files, check their formatting
+if [ -n "$STAGED_DART_FILES" ]; then
+  echo "  Analyzing code formatting for staged files..."
+  # Run dart format on only staged files and capture output
+  dart format --line-length 120 $STAGED_DART_FILES > "$TEMP_FORMAT" 2>&1
+else
+  echo "  No Dart files staged for commit"
+  echo "Formatted 0 files (0 changed)" > "$TEMP_FORMAT"
+fi
 
 # Check if any files were actually changed (not just analyzed)
 # Pattern: "Formatted X files (Y changed)" - we only fail if Y > 0
@@ -73,24 +82,31 @@ echo ""
 echo "🔎 Running linting analysis..."
 echo ""
 
-# Capture lint output
-LINT_OUTPUT=$(flutter analyze --no-pub 2>&1)
+# Get list of staged Dart files for linting
+STAGED_DART_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(dart|g\.dart)$' | tr '\n' ' ')
 
-if echo "$LINT_OUTPUT" | grep -q "No issues found"; then
-  echo -e "${GREEN}✓${NC} No linting issues found"
+if [ -n "$STAGED_DART_FILES" ]; then
+  # Capture lint output for staged files only
+  LINT_OUTPUT=$(flutter analyze --no-pub $STAGED_DART_FILES 2>&1)
+  
+  if echo "$LINT_OUTPUT" | grep -q "No issues found"; then
+    echo -e "${GREEN}✓${NC} No linting issues found in staged files"
+  else
+    echo -e "${RED}✗${NC} Linting issues found in staged files:"
+    echo ""
+    echo "📋 Issues:"
+    echo "────────────────────────────────────────────────────────────────"
+    echo "$LINT_OUTPUT" | grep -E "^   (info|warning|error)" | head -30
+    echo "────────────────────────────────────────────────────────────────"
+    echo ""
+    echo "💡 Tips:"
+    echo "  • Run 'flutter analyze' to see all issues"
+    echo "  • Most issues can be auto-fixed with 'dart fix --apply'"
+    echo ""
+    FAILED=1
+  fi
 else
-  echo -e "${RED}✗${NC} Linting issues found:"
-  echo ""
-  echo "📋 Issues:"
-  echo "────────────────────────────────────────────────────────────────"
-  echo "$LINT_OUTPUT" | grep -E "^   (info|warning|error)" | head -30
-  echo "────────────────────────────────────────────────────────────────"
-  echo ""
-  echo "💡 Tips:"
-  echo "  • Run 'flutter analyze' to see all issues"
-  echo "  • Most issues can be auto-fixed with 'dart fix --apply'"
-  echo ""
-  FAILED=1
+  echo -e "${GREEN}✓${NC} No Dart files staged for linting check"
 fi
 
 echo ""
@@ -102,38 +118,45 @@ echo ""
 echo "📖 Checking markdown files..."
 echo ""
 
-# Check if markdownlint is installed
-if ! command -v markdownlint-cli2 &> /dev/null; then
-  echo -e "${YELLOW}⚠ markdownlint-cli2 not found${NC}"
-  echo "  To enable markdown linting, install it:"
-  echo ""
-  echo "  ${YELLOW}npm install -g markdownlint-cli2${NC}"
-  echo ""
-else
-  # Run markdownlint on docs directory
-  MARKDOWN_OUTPUT=$(markdownlint-cli2 docs/ 2>&1) || true
-  
-  # Check if there are actual errors (not just summary line)
-  # Count lines that contain "error(s)" and extract the number
-  # Using grep -E and sed for cross-platform compatibility (BSD grep on macOS, GNU grep on Linux)
-  ERROR_COUNT=$(echo "$MARKDOWN_OUTPUT" | grep -E "Summary: [0-9]+" | sed -E 's/.*Summary: ([0-9]+).*/\1/' | head -1)
-  
-  if [ -z "$ERROR_COUNT" ] || [ "$ERROR_COUNT" -eq 0 ]; then
-    echo -e "${GREEN}✓${NC} No markdown issues found"
+# Get list of staged markdown files
+STAGED_MARKDOWN_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.md$' | tr '\n' ' ')
+
+if [ -n "$STAGED_MARKDOWN_FILES" ]; then
+  # Check if markdownlint is installed
+  if ! command -v markdownlint-cli2 &> /dev/null; then
+    echo -e "${YELLOW}⚠ markdownlint-cli2 not found${NC}"
+    echo "  To enable markdown linting, install it:"
+    echo ""
+    echo "  ${YELLOW}npm install -g markdownlint-cli2${NC}"
+    echo ""
   else
-    echo -e "${RED}✗${NC} Markdown linting issues found:"
-    echo ""
-    echo "📋 Issues:"
-    echo "────────────────────────────────────────────────────────────────"
-    echo "$MARKDOWN_OUTPUT" | head -30
-    echo "────────────────────────────────────────────────────────────────"
-    echo ""
-    echo "💡 Tips:"
-    echo "  • See .markdownlint.yaml for linting rules"
-    echo "  • Most issues can be auto-fixed with 'markdownlint-cli2 --fix docs/'"
-    echo ""
-    FAILED=1
+    # Run markdownlint on only staged markdown files
+    MARKDOWN_OUTPUT=$(markdownlint-cli2 $STAGED_MARKDOWN_FILES 2>&1) || true
+    
+    # Check if there are actual errors (not just summary line)
+    # Count lines that contain "error(s)" and extract the number
+    # Using grep -E and sed for cross-platform compatibility (BSD grep on macOS, GNU grep on Linux)
+    ERROR_COUNT=$(echo "$MARKDOWN_OUTPUT" | grep -E "Summary: [0-9]+" | sed -E 's/.*Summary: ([0-9]+).*/\1/' | head -1)
+    
+    if [ -z "$ERROR_COUNT" ] || [ "$ERROR_COUNT" -eq 0 ]; then
+      echo -e "${GREEN}✓${NC} No markdown issues found in staged files"
+    else
+      echo -e "${RED}✗${NC} Markdown linting issues found in staged files:"
+      echo ""
+      echo "📋 Issues:"
+      echo "────────────────────────────────────────────────────────────────"
+      echo "$MARKDOWN_OUTPUT" | head -30
+      echo "────────────────────────────────────────────────────────────────"
+      echo ""
+      echo "💡 Tips:"
+      echo "  • See .markdownlint.yaml for linting rules"
+      echo "  • Most issues can be auto-fixed with 'markdownlint-cli2 --fix docs/'"
+      echo ""
+      FAILED=1
+    fi
   fi
+else
+  echo -e "${GREEN}✓${NC} No markdown files staged for checking"
 fi
 
 echo ""
